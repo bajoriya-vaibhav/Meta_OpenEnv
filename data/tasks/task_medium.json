@@ -1,0 +1,60 @@
+{
+  "task_id": "MED-001",
+  "difficulty": "medium",
+  "max_steps": 20,
+  "claim": "The pharmaceutical company recalled the drug due to severe cardiac side effects reported in clinical trials.",
+  "ground_truth": {
+    "gt_verdict": "misleading",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-1003",
+    "gt_provenance_chain": ["DOC-1001", "DOC-1002", "DOC-1003"],
+    "gt_timeline": ["DOC-1001", "DOC-1002", "DOC-1003", "DOC-1004"]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-1001",
+      "title": "FDA Safety Notice",
+      "source": "fda.gov",
+      "timestamp": 1680307200,
+      "tags": ["pharma", "recall", "safety"],
+      "snippet": "PharmaCo initiated voluntary recall of CardioMax after reports of mild gastrointestinal side effects.",
+      "content": "The FDA announced that PharmaCo has initiated a voluntary recall of CardioMax (lot #2023-A) after post-market surveillance identified reports of mild gastrointestinal side effects in approximately 2% of patients. No cardiac events were reported."
+    },
+    {
+      "doc_id": "DOC-1002",
+      "title": "PharmaCo Press Release",
+      "source": "pharmaco.com",
+      "timestamp": 1680393600,
+      "tags": ["pharma", "recall"],
+      "snippet": "PharmaCo voluntarily recalls CardioMax as a precautionary measure.",
+      "content": "PharmaCo today announced a voluntary recall of CardioMax as a precautionary measure following GI complaints. The company emphasises this is not related to cardiac safety. All clinical trial cardiac monitoring data showed no signal."
+    },
+    {
+      "doc_id": "DOC-1003",
+      "title": "Health News Daily",
+      "source": "healthnewsdaily.com",
+      "timestamp": 1680480000,
+      "tags": ["pharma", "cardiac", "recall"],
+      "snippet": "Drug recalled after cardiac side effects found in trials.",
+      "content": "PharmaCo recalled its drug CardioMax after severe cardiac side effects were reported. Sources say the clinical trials revealed dangerous heart complications prompting the recall."
+    },
+    {
+      "doc_id": "DOC-1004",
+      "title": "Medical Journal Review",
+      "source": "medjournal.org",
+      "timestamp": 1680566400,
+      "tags": ["pharma", "clinical"],
+      "snippet": "Review of CardioMax trial data shows no cardiac signal.",
+      "content": "A peer-reviewed analysis of CardioMax Phase III trial data confirms no statistically significant cardiac adverse events. The recall was due to GI tolerability, not cardiac safety."
+    },
+    {
+      "doc_id": "DOC-1005",
+      "title": "Patient Forum Discussion",
+      "source": "patientforum.net",
+      "timestamp": 1680652800,
+      "tags": ["pharma", "patient"],
+      "snippet": "Patients discuss CardioMax recall and concerns.",
+      "content": "Forum users share their experiences with CardioMax. Most report mild stomach issues. One user speculates about hidden cardiac risks but provides no evidence."
+    }
+  ]
+}

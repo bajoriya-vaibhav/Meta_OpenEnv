@@ -1,0 +1,27 @@
+name: ChronoVeritas
+version: 1.0.0
+description: >
+  Claim lifecycle verification environment. Agents must trace how a factual
+  claim mutates across a small document corpus, identify the mutation point,
+  classify the mutation type, and reconstruct the provenance chain.
+tasks:
+  - id: EASY-001
+    difficulty: easy
+    max_steps: 15
+  - id: MED-001
+    difficulty: medium
+    max_steps: 20
+  - id: HARD-001
+    difficulty: hard
+    max_steps: 30
+actions:
+  - search
+  - fetch_doc
+  - add_timeline_event
+  - flag_contradiction
+  - set_mutation_point
+  - submit_verdict
+reward_range: [0.0, 1.0]
+episode_terminates_on:
+  - submit_verdict
+  - step_budget_exceeded

@@ -1,0 +1,51 @@
+{
+  "task_id": "EASY-001",
+  "difficulty": "easy",
+  "max_steps": 15,
+  "claim": "The city council approved a 15% budget increase for public transport.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": ["DOC-0001", "DOC-0003"],
+    "gt_timeline": ["DOC-0001", "DOC-0002", "DOC-0003"]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Council Minutes Jan",
+      "source": "citycouncil.gov",
+      "timestamp": 1672531200,
+      "tags": ["budget", "transport"],
+      "snippet": "Council voted 7-2 to approve a 5% budget increase for transport.",
+      "content": "The city council met on Jan 1 2023. After deliberation, the council voted 7-2 to approve a 5% budget increase for public transport services."
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "City News Roundup",
+      "source": "citynews.com",
+      "timestamp": 1672617600,
+      "tags": ["budget", "council"],
+      "snippet": "Council approves transport budget changes in close vote.",
+      "content": "The city council approved budget changes for public transport in a close vote this week."
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Metro Daily Report",
+      "source": "metrodaily.com",
+      "timestamp": 1672704000,
+      "tags": ["budget", "transport"],
+      "snippet": "City council approved 15% budget increase for public transport.",
+      "content": "Breaking: The city council approved a 15% budget increase for public transport, a major boost for commuters."
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Weekly Digest",
+      "source": "weeklydigest.net",
+      "timestamp": 1672790400,
+      "tags": ["news"],
+      "snippet": "Various council decisions summarised.",
+      "content": "This week the council made several decisions including transport budget changes."
+    }
+  ]
+}

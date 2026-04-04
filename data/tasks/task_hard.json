@@ -1,0 +1,60 @@
+{
+  "task_id": "HARD-001",
+  "difficulty": "hard",
+  "max_steps": 30,
+  "claim": "Professor Elena Vasquez published a landmark study proving that microplastics cause rapid neurodegeneration in humans.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "fabrication",
+    "gt_mutation_doc_id": "DOC-2003",
+    "gt_provenance_chain": ["DOC-2001", "DOC-2002", "DOC-2003", "DOC-2004"],
+    "gt_timeline": ["DOC-2001", "DOC-2002", "DOC-2003", "DOC-2004", "DOC-2005"]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-2001",
+      "title": "University Research Bulletin",
+      "source": "university.edu",
+      "timestamp": 1685577600,
+      "tags": ["research", "microplastics", "neuroscience"],
+      "snippet": "Prof. Vasquez publishes preliminary findings on microplastic exposure in zebrafish models.",
+      "content": "Professor Elena Vasquez and her team at the Environmental Health Lab published preliminary findings showing microplastic accumulation in zebrafish neural tissue. The study notes potential concerns but emphasises the results are in animal models and cannot be directly extrapolated to humans."
+    },
+    {
+      "doc_id": "DOC-2002",
+      "title": "Science Daily Summary",
+      "source": "sciencedaily.com",
+      "timestamp": 1685664000,
+      "tags": ["research", "microplastics"],
+      "snippet": "New study highlights microplastic concerns in brain tissue of fish.",
+      "content": "A new study from Prof. Vasquez's lab found microplastics in zebrafish brain tissue, raising preliminary concerns about potential neurological impacts. Researchers caution that human studies are needed."
+    },
+    {
+      "doc_id": "DOC-2003",
+      "title": "Viral Health Blog",
+      "source": "viralhealth.blog",
+      "timestamp": 1685750400,
+      "tags": ["microplastics", "neurodegeneration", "breakthrough"],
+      "snippet": "BREAKING: Landmark study PROVES microplastics destroy human brain cells!",
+      "content": "Professor Elena Vasquez has proven in a landmark study that microplastics cause rapid neurodegeneration in humans. The peer-reviewed paper demonstrates a direct causal link between microplastic exposure and Alzheimer's-like symptoms. This changes everything we know about plastic pollution."
+    },
+    {
+      "doc_id": "DOC-2004",
+      "title": "Vasquez Lab Correction Statement",
+      "source": "university.edu",
+      "timestamp": 1685836800,
+      "tags": ["correction", "microplastics"],
+      "snippet": "Prof. Vasquez issues statement correcting viral misrepresentations of her research.",
+      "content": "Professor Vasquez has issued a formal correction: 'Our study was conducted on zebrafish, not humans. We found accumulation, not causation of neurodegeneration. The viral blog post fabricated claims we never made. No peer-reviewed paper on human neurodegeneration exists from our lab.'"
+    },
+    {
+      "doc_id": "DOC-2005",
+      "title": "Fact-Check Report",
+      "source": "factcheck.org",
+      "timestamp": 1685923200,
+      "tags": ["factcheck", "microplastics"],
+      "snippet": "Fact-check: Viral claim about microplastics causing brain damage rated FALSE.",
+      "content": "Our investigation confirms: Prof. Vasquez's actual study was on zebrafish only. The claim of 'proven human neurodegeneration' was fabricated by viralhealth.blog. No such peer-reviewed study exists. Rating: FALSE."
+    }
+  ]
+}
