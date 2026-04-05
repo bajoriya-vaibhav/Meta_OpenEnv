@@ -1,0 +1,12 @@
+{
+  "doc_id": "DOC-1004",
+  "title": "Medical Journal Review",
+  "source": "medjournal.org",
+  "timestamp": 1680566400,
+  "tags": [
+    "pharma",
+    "clinical"
+  ],
+  "snippet": "Review of CardioMax trial data shows no cardiac signal.",
+  "content": "A peer-reviewed analysis of CardioMax Phase III trial data confirms no statistically significant cardiac adverse events. The recall was due to GI tolerability, not cardiac safety."
+}

@@ -1,0 +1,13 @@
+{
+  "doc_id": "DOC-1001",
+  "title": "FDA Safety Notice",
+  "source": "fda.gov",
+  "timestamp": 1680307200,
+  "tags": [
+    "pharma",
+    "recall",
+    "safety"
+  ],
+  "snippet": "PharmaCo initiated voluntary recall of CardioMax after reports of mild gastrointestinal side effects.",
+  "content": "The FDA announced that PharmaCo has initiated a voluntary recall of CardioMax (lot #2023-A) after post-market surveillance identified reports of mild gastrointestinal side effects in approximately 2% of patients. No cardiac events were reported."
+}

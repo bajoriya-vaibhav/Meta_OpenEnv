@@ -1,8 +1,8 @@
 """
 ChronoVeritas — Build / verify dataset.
 
-"""
 
+"""
 from __future__ import annotations
 
 import argparse
