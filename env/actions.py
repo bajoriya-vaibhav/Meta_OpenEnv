@@ -3,12 +3,13 @@ ChronoVeritas — ActionDispatcher: routes all 6 action types.
 """
 from __future__ import annotations
 
+import logging
 from typing import Any, Dict, Tuple
+
+from pydantic import ValidationError
 
 from env.models import (
     Action,
-    DocMeta,
-    Document,
     MutationDecl,
     TimelineEntry,
     VerdictPayload,
@@ -17,8 +18,22 @@ from env.state_manager import EpisodeState
 from search.bm25_index import BM25Index
 from search.corpus_store import CorpusStore
 
+log = logging.getLogger(__name__)
+
 # Actions that consume a step
-STEP_COSTING_ACTIONS = {"search", "fetch_doc"}
+STEP_COSTING_ACTIONS: frozenset[str] = frozenset({"search", "fetch_doc"})
+
+# Result type: (reward_delta, info_dict, done)
+DispatchResult = Tuple[float, Dict[str, Any], bool]
+
+
+def _ok(info: Dict[str, Any], *, reward: float = 0.0, done: bool = False) -> DispatchResult:
+    return reward, info, done
+
+
+def _err(message: str, *, reward: float = 0.0, done: bool = False) -> DispatchResult:
+    log.debug("ActionDispatcher error: %s", message)
+    return reward, {"error": message}, done
 
 
 class ActionDispatcher:
@@ -28,124 +43,260 @@ class ActionDispatcher:
         self.corpus = corpus_store
         self.index = bm25_index
 
+    # ── Entry point ───────────────────────────────────────────────────
+
     def dispatch(
         self,
         action: Action,
         state: EpisodeState,
         ground_truth: Any = None,
-    ) -> Tuple[float, Dict[str, Any], bool]:
+    ) -> DispatchResult:
         """
         Execute an action and return (reward_delta, info, done).
+
+        Never raises — all exceptions are caught and returned as error info.
         """
         handler = getattr(self, f"_handle_{action.type}", None)
         if handler is None:
-            return 0.0, {"error": f"Unknown action type: {action.type}"}, False
-        return handler(action.payload, state, ground_truth)
+            return _err(f"Unknown action type: {action.type!r}")
+        try:
+            return handler(action.payload, state, ground_truth)
+        except Exception as exc:  # noqa: BLE001
+            log.exception("Unhandled exception in handler for %r", action.type)
+            return _err(f"Internal error in {action.type!r}: {exc}")
 
-    # ── search ───────────────────────────────────────────────────────
+    # ── search ────────────────────────────────────────────────────────
 
     def _handle_search(
         self, payload: Dict[str, Any], state: EpisodeState, gt: Any
-    ) -> Tuple[float, Dict[str, Any], bool]:
-        query = payload.get("query", "")
-        date_from = payload.get("date_from")
-        date_to = payload.get("date_to")
+    ) -> DispatchResult:
+        query: str = payload.get("query", "").strip()
+        if not query:
+            return _err("search.query must be a non-empty string")
+
+        date_from: int | None = payload.get("date_from")
+        date_to: int | None = payload.get("date_to")
+
+        if date_from is not None and date_to is not None and date_from > date_to:
+            return _err("search.date_from must be <= date_to")
 
         results = self.index.query(query, date_from=date_from, date_to=date_to, top_k=10)
 
-        # Merge results into corpus metadata (avoid duplicates)
-        existing_ids = {m.doc_id for m in state.corpus}
+        newly_added: list[str] = []
         for meta in results:
-            if meta.doc_id not in existing_ids:
-                state.corpus.append(meta)
-                existing_ids.add(meta.doc_id)
+            if state.add_corpus_meta(meta):
+                newly_added.append(meta.doc_id)
 
-        return 0.0, {"search_results": [m.model_dump() for m in results]}, False
+        return _ok(
+            {
+                "search_results": [m.model_dump() for m in results],
+                "newly_added_to_corpus": newly_added,
+                "total_results": len(results),
+            }
+        )
 
-    # ── fetch_doc ────────────────────────────────────────────────────
+    # ── fetch_doc ─────────────────────────────────────────────────────
 
     def _handle_fetch_doc(
         self, payload: Dict[str, Any], state: EpisodeState, gt: Any
-    ) -> Tuple[float, Dict[str, Any], bool]:
-        doc_id = payload.get("doc_id", "")
+    ) -> DispatchResult:
+        doc_id: str = payload.get("doc_id", "").strip()
+        if not doc_id:
+            return _err("fetch_doc.doc_id must be a non-empty string")
+
+        # Idempotent: warn but succeed if already fetched
+        if state.has_fetched(doc_id):
+            doc = state.get_fetched_doc(doc_id)
+            return _ok(
+                {
+                    "fetched": doc_id,
+                    "token_cost": 0,
+                    "note": "already fetched — no token cost",
+                    "cached": True,
+                    "estimated_tokens": doc.estimated_tokens if doc else 0,
+                }
+            )
+
         doc = self.corpus.get_doc(doc_id)
-
         if doc is None:
-            return 0.0, {"error": f"Document {doc_id} not found"}, False
+            return _err(f"fetch_doc: Document {doc_id!r} not found in corpus store")
 
-        # Check token budget BEFORE consuming
-        token_cost = len(doc.content) // 4
-        if state.token_budget_remaining <= 0:
-            return 0.0, {"error": "token_budget_exceeded"}, False
+        token_cost = doc.estimated_tokens
 
-        # Record fetch
-        state.fetched_doc_ids.add(doc_id)
-        state._fetched_docs_content[doc_id] = doc
-        state.token_used += token_cost
+        if state.token_budget_remaining == 0:
+            return _err(
+                "fetch_doc: token budget exhausted — cannot fetch more documents",
+                done=False,
+            )
 
-        return 0.0, {"fetched": doc_id, "token_cost": token_cost}, False
+        # Partial fetch when token_cost exceeds remaining budget
+        actual_cost = min(token_cost, state.token_budget_remaining)
+        consumed = state.consume_tokens(actual_cost)
+        if not consumed:
+            return _err("fetch_doc: token budget exhausted (race condition guard)")
 
-    # ── add_timeline_event ───────────────────────────────────────────
+        state.record_fetch(doc, token_cost=0)  # cost already applied above
+
+        return _ok(
+            {
+                "fetched": doc_id,
+                "token_cost": actual_cost,
+                "estimated_tokens": token_cost,
+                "truncated": actual_cost < token_cost,
+                "cached": False,
+            }
+        )
+
+    # ── add_timeline_event ────────────────────────────────────────────
 
     def _handle_add_timeline_event(
         self, payload: Dict[str, Any], state: EpisodeState, gt: Any
-    ) -> Tuple[float, Dict[str, Any], bool]:
-        doc_id = payload.get("doc_id", "")
-        event_label = payload.get("event_label", "")
-        timestamp = payload.get("timestamp")
+    ) -> DispatchResult:
+        doc_id: str = payload.get("doc_id", "").strip()
+        event_label: str = payload.get("event_label", "").strip()
+        timestamp: int | None = payload.get("timestamp")
+
+        if not doc_id:
+            return _err("add_timeline_event.doc_id must be non-empty")
+        if not event_label:
+            return _err("add_timeline_event.event_label must be non-empty")
+
+        # Soft-warn if doc hasn't been fetched yet
+        if not state.has_fetched(doc_id) and doc_id not in state.corpus_doc_ids():
+            log.warning(
+                "add_timeline_event: doc_id %r not in fetched or corpus; adding anyway", doc_id
+            )
+
+        # Deduplicate: same (doc_id, event_label, timestamp) triple
+        duplicate = any(
+            e.doc_id == doc_id and e.event_label == event_label and e.timestamp == timestamp
+            for e in state.agent_timeline
+        )
+        if duplicate:
+            return _ok(
+                {
+                    "timeline_added": False,
+                    "doc_id": doc_id,
+                    "note": "duplicate entry — skipped",
+                }
+            )
 
         entry = TimelineEntry(doc_id=doc_id, event_label=event_label, timestamp=timestamp)
         state.agent_timeline.append(entry)
 
-        return 0.0, {"timeline_added": doc_id}, False
+        return _ok({"timeline_added": True, "doc_id": doc_id, "total_events": len(state.agent_timeline)})
 
-    # ── flag_contradiction ───────────────────────────────────────────
+    # ── flag_contradiction ────────────────────────────────────────────
 
     def _handle_flag_contradiction(
         self, payload: Dict[str, Any], state: EpisodeState, gt: Any
-    ) -> Tuple[float, Dict[str, Any], bool]:
-        doc_id_a = payload.get("doc_id_a", "")
-        doc_id_b = payload.get("doc_id_b", "")
+    ) -> DispatchResult:
+        doc_id_a: str = payload.get("doc_id_a", "").strip()
+        doc_id_b: str = payload.get("doc_id_b", "").strip()
+
+        if not doc_id_a or not doc_id_b:
+            return _err("flag_contradiction: both doc_id_a and doc_id_b must be non-empty")
+
+        if doc_id_a == doc_id_b:
+            return _err("flag_contradiction: doc_id_a and doc_id_b must be different documents")
+
+        # Normalised deduplication
+        normalised = (min(doc_id_a, doc_id_b), max(doc_id_a, doc_id_b))
+        existing = {(min(a, b), max(a, b)) for a, b in state.contradictions}
+        if normalised in existing:
+            return _ok(
+                {
+                    "contradiction_flagged": False,
+                    "pair": [doc_id_a, doc_id_b],
+                    "note": "duplicate contradiction — skipped",
+                }
+            )
 
         state.contradictions.append((doc_id_a, doc_id_b))
 
-        return 0.0, {"contradiction_flagged": [doc_id_a, doc_id_b]}, False
+        return _ok(
+            {
+                "contradiction_flagged": True,
+                "pair": [doc_id_a, doc_id_b],
+                "total_contradictions": len(state.contradictions),
+            }
+        )
 
-    # ── set_mutation_point ───────────────────────────────────────────
+    # ── set_mutation_point ────────────────────────────────────────────
 
     def _handle_set_mutation_point(
         self, payload: Dict[str, Any], state: EpisodeState, gt: Any
-    ) -> Tuple[float, Dict[str, Any], bool]:
-        doc_id = payload.get("doc_id", "")
-        mutation_type = payload.get("mutation_type", "none")
+    ) -> DispatchResult:
+        doc_id: str = payload.get("doc_id", "").strip()
+        mutation_type: str = payload.get("mutation_type", "none")
 
-        state.declared_mutation = MutationDecl(doc_id=doc_id, mutation_type=mutation_type)
+        if not doc_id:
+            return _err("set_mutation_point.doc_id must be non-empty")
 
-        # Partial reward
+        valid_types = {"distortion", "omission", "fabrication", "context_shift", "none"}
+        if mutation_type not in valid_types:
+            return _err(
+                f"set_mutation_point.mutation_type {mutation_type!r} is invalid; "
+                f"must be one of {sorted(valid_types)}"
+            )
+
+        # Warn if the agent is declaring a doc it never fetched
+        if not state.has_fetched(doc_id):
+            log.warning(
+                "set_mutation_point: agent declared mutation on unfetched doc %r", doc_id
+            )
+
+        state.declared_mutation = MutationDecl(doc_id=doc_id, mutation_type=mutation_type)  # type: ignore[arg-type]
+
+        # Partial reward logic — only if ground truth is available
         reward = 0.0
+        partial_breakdown: Dict[str, float] = {}
+
         if gt is not None:
             if doc_id == gt.gt_mutation_doc_id:
+                partial_breakdown["correct_doc"] = 0.20
                 reward += 0.20
             if mutation_type == gt.gt_mutation_type:
+                partial_breakdown["correct_type"] = 0.20
                 reward += 0.20
 
-        return reward, {"mutation_declared": doc_id, "partial_reward": reward}, False
+        state.record_reward(reward)
 
-    # ── submit_verdict ───────────────────────────────────────────────
+        return _ok(
+            {
+                "mutation_declared": doc_id,
+                "mutation_type": mutation_type,
+                "partial_reward": reward,
+                "partial_breakdown": partial_breakdown,
+            },
+            reward=reward,
+        )
+
+    # ── submit_verdict ────────────────────────────────────────────────
 
     def _handle_submit_verdict(
         self, payload: Dict[str, Any], state: EpisodeState, gt: Any
-    ) -> Tuple[float, Dict[str, Any], bool]:
-        # Parse the verdict payload
-        verdict = VerdictPayload(
-            verdict=payload.get("verdict", "unverifiable"),
-            mutation_type=payload.get("mutation_type", "none"),
-            mutation_doc_id=payload.get("mutation_doc_id"),
-            provenance_chain=payload.get("provenance_chain", []),
-            confidence=payload.get("confidence", 0.5),
+    ) -> DispatchResult:
+        # Validate the payload strictly via Pydantic
+        try:
+            verdict = VerdictPayload(
+                verdict=payload.get("verdict", "unverifiable"),
+                mutation_type=payload.get("mutation_type", "none"),
+                mutation_doc_id=payload.get("mutation_doc_id"),
+                provenance_chain=payload.get("provenance_chain", []),
+                confidence=payload.get("confidence", 0.5),
+            )
+        except ValidationError as exc:
+            # Surface validation errors clearly rather than silently accepting bad data
+            return _err(f"submit_verdict: invalid payload — {exc}", done=True)
+
+        state.transition_phase("GRADING")
+
+        return (
+            0.0,
+            {
+                "verdict": verdict.model_dump(),
+                "_verdict_obj": verdict,  # consumed by ChronoVeritasEnv.step()
+            },
+            True,
         )
-
-        state.phase = "GRADING"
-
-        # Store verdict in info for grader to pick up later
-        return 0.0, {"verdict": verdict.model_dump(), "_verdict_obj": verdict}, True

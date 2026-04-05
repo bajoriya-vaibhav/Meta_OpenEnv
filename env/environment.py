@@ -4,15 +4,14 @@ ChronoVeritas — Main environment class orchestrating state, actions, and gradi
 from __future__ import annotations
 
 import json
-import os
+import logging
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from env.actions import STEP_COSTING_ACTIONS, ActionDispatcher
 from env.models import (
     Action,
-    DocMeta,
-    Document,
+    GradeResult,
     Observation,
     StepResult,
     TaskSpec,
@@ -26,52 +25,92 @@ from graders.medium_grader import MediumGrader
 from search.bm25_index import BM25Index
 from search.corpus_store import CorpusStore
 
+log = logging.getLogger(__name__)
 
 TASKS_DIR = Path(__file__).resolve().parent.parent / "data" / "tasks"
 
+# Default token budget per episode
+DEFAULT_TOKEN_BUDGET: int = 8_000
+
 
 class ChronoVeritasEnv:
-    """OpenEnv-compliant environment for claim lifecycle verification."""
+    """
+    OpenEnv-compliant environment for claim lifecycle verification.
 
-    def __init__(self) -> None:
+    Lifecycle
+    ---------
+    env = ChronoVeritasEnv()
+    result = await env.reset(task_id="task_001")   # → StepResult (done=False)
+
+    while not result.done:
+        action = agent.act(result.observation)
+        result = await env.step(action)
+
+    await env.close()  # optional cleanup
+    """
+
+    def __init__(self, tasks_dir: Optional[Path] = None) -> None:
+        self._tasks_dir = tasks_dir or TASKS_DIR
         self.tasks: List[TaskSpec] = []
         self._task_index: int = 0
+
+        # Episode-scoped — reset on every reset()
         self.state: Optional[EpisodeState] = None
-        self.corpus_store = CorpusStore()
-        self.bm25_index = BM25Index()
         self.dispatcher: Optional[ActionDispatcher] = None
         self.grader: Optional[BaseGrader] = None
         self._current_task: Optional[TaskSpec] = None
 
-        # Load all tasks
+        # Persistent cross-episode infrastructure
+        self.corpus_store = CorpusStore()
+        self.bm25_index = BM25Index()
+
         self._load_tasks()
 
+    # ── Task loading ──────────────────────────────────────────────────
+
     def _load_tasks(self) -> None:
-        """Load task specs from data/tasks/*.json."""
-        for path in sorted(TASKS_DIR.glob("*.json")):
-            with open(path) as f:
-                data = json.load(f)
-            self.tasks.append(TaskSpec(**data))
+        """
+        Load task specs from tasks_dir/*.json.
+        Malformed files are logged and skipped rather than crashing the env.
+        """
+        paths = sorted(self._tasks_dir.glob("*.json"))
+        if not paths:
+            log.warning("No task files found in %s", self._tasks_dir)
+
+        for path in paths:
+            try:
+                with open(path) as f:
+                    data = json.load(f)
+                task = TaskSpec(**data)
+                self.tasks.append(task)
+                log.debug("Loaded task %r from %s", task.task_id, path.name)
+            except Exception as exc:  # noqa: BLE001
+                log.error("Failed to load task from %s: %s", path, exc)
+
+    # ── Grader selection ──────────────────────────────────────────────
 
     def _select_grader(self, difficulty: str) -> BaseGrader:
-        assert self._current_task is not None
-        if difficulty == "easy":
-            return EasyGrader(self._current_task)
-        elif difficulty == "medium":
-            return MediumGrader(self._current_task)
-        else:
-            return HardGrader(self._current_task)
+        assert self._current_task is not None, "No current task set"
+        graders: Dict[str, type[BaseGrader]] = {
+            "easy":   EasyGrader,
+            "medium": MediumGrader,
+            "hard":   HardGrader,
+        }
+        cls = graders.get(difficulty, HardGrader)
+        if difficulty not in graders:
+            log.warning("Unknown difficulty %r — defaulting to HardGrader", difficulty)
+        return cls(self._current_task)
+
+    # ── Observation builder ───────────────────────────────────────────
 
     def _build_obs(self) -> Observation:
-        """Build the current observation from episode state."""
-        assert self.state is not None
-
-        retrieved_docs = list(self.state._fetched_docs_content.values())
+        """Construct an Observation snapshot from current episode state."""
+        assert self.state is not None, "_build_obs() called before reset()"
 
         return Observation(
             claim=self.state.claim,
             corpus_metadata=list(self.state.corpus),
-            retrieved_docs=retrieved_docs,
+            retrieved_docs=list(self.state._fetched_docs_content.values()),
             agent_timeline=list(self.state.agent_timeline),
             flagged_contradictions=list(self.state.contradictions),
             current_step=self.state.current_step,
@@ -80,39 +119,78 @@ class ChronoVeritasEnv:
             partial_reward_so_far=self.state.partial_reward_so_far,
         )
 
-    # ── Public API ───────────────────────────────────────────────────
+    # ── Helpers ───────────────────────────────────────────────────────
+
+    def _error_result(self, message: str, *, done: bool = False) -> StepResult:
+        """Return a StepResult carrying only an error info dict."""
+        assert self.state is not None
+        return StepResult(
+            observation=self._build_obs(),
+            reward=0.0,
+            done=done,
+            info={"error": message},
+        )
+
+    # ── Public API ────────────────────────────────────────────────────
 
     async def reset(self, task_id: Optional[str] = None) -> StepResult:
-        """Reset env with a specific task or round-robin."""
-        if task_id:
+        """
+        Reset the environment for a new episode.
+
+        Parameters
+        ----------
+        task_id:
+            If supplied, the environment loads that specific task.
+            If None, tasks are served round-robin.
+
+        Returns
+        -------
+        StepResult with done=False and the initial observation.
+        """
+        if not self.tasks:
+            raise RuntimeError(
+                f"No tasks loaded from {self._tasks_dir}. "
+                "Ensure the tasks directory contains valid JSON files."
+            )
+
+        if task_id is not None:
             task = next((t for t in self.tasks if t.task_id == task_id), None)
             if task is None:
-                raise ValueError(f"Unknown task_id: {task_id}")
+                raise ValueError(
+                    f"Unknown task_id: {task_id!r}. "
+                    f"Available: {[t.task_id for t in self.tasks]}"
+                )
         else:
             task = self.tasks[self._task_index % len(self.tasks)]
             self._task_index += 1
 
         self._current_task = task
 
-        # Build corpus & index
+        # Rebuild corpus & index for this task's documents
         self.corpus_store.load_from_task_corpus(task.corpus)
         self.bm25_index.build(task.corpus)
 
-        # Select grader
+        # Select grader & dispatcher
         self.grader = self._select_grader(task.difficulty)
-
-        # Init dispatcher
         self.dispatcher = ActionDispatcher(self.corpus_store, self.bm25_index)
 
-        # Init episode state
+        # Fresh episode state
         self.state = EpisodeState(
             task_id=task.task_id,
             claim=task.claim,
             corpus=self.corpus_store.all_metas(),
             max_steps=task.max_steps,
-            token_budget=8000,
+            token_budget=DEFAULT_TOKEN_BUDGET,
             phase="INITIALISED",
             difficulty=task.difficulty,
+        )
+
+        log.info(
+            "Episode reset — task=%r difficulty=%r max_steps=%d corpus_size=%d",
+            task.task_id,
+            task.difficulty,
+            task.max_steps,
+            len(task.corpus),
         )
 
         return StepResult(
@@ -123,80 +201,138 @@ class ChronoVeritasEnv:
         )
 
     async def step(self, action: Action) -> StepResult:
-        """Execute one action in the environment."""
-        assert self.state is not None
-        assert self.dispatcher is not None
-        assert self.grader is not None
-        assert self._current_task is not None
+        """
+        Execute one action in the environment.
 
-        # Guard: must be INITIALISED
+        Raises
+        ------
+        RuntimeError if called before reset().
+        """
+        if self.state is None or self.dispatcher is None or self.grader is None:
+            raise RuntimeError("Call reset() before step()")
+
         if self.state.phase != "INITIALISED":
-            return StepResult(
-                observation=self._build_obs(),
-                reward=0.0,
+            return self._error_result(
+                f"Episode is not active (phase={self.state.phase!r}). Call reset().",
                 done=True,
-                info={"error": "Call reset() before step(). Current phase: " + self.state.phase},
             )
 
-        # Dispatch
+        # ── Dispatch the action ───────────────────────────────────────
         reward_delta, info, done = self.dispatcher.dispatch(
             action, self.state, self._current_task.ground_truth
         )
 
-        # Advance step counter for step-costing actions
+        # ── Advance step counter for step-costing actions ─────────────
         if action.type in STEP_COSTING_ACTIONS:
-            self.state.current_step += 1
+            self.state.advance_step()
 
-        # Auto-terminate on step budget exhaustion
-        if self.state.current_step >= self.state.max_steps and not done:
+        # ── Auto-terminate on step budget exhaustion ──────────────────
+        if not done and self.state.current_step >= self.state.max_steps:
             done = True
             partial = self.grader.grade_partial(self.state)
             reward_delta += partial
             info["auto_terminated"] = True
             info["partial_grade"] = partial
+            log.info(
+                "Episode auto-terminated — task=%r steps=%d partial_grade=%.3f",
+                self.state.task_id,
+                self.state.current_step,
+                partial,
+            )
 
-        # If submit_verdict triggered, run full grader
+        # ── Full grading on submit_verdict ────────────────────────────
         if action.type == "submit_verdict" and done:
-            verdict_data = info.get("_verdict_obj")
-            if verdict_data is None:
-                # Reconstruct from info
-                vd = info.get("verdict", {})
-                verdict_data = VerdictPayload(**vd)
+            verdict_obj: Optional[VerdictPayload] = info.pop("_verdict_obj", None)
+            if verdict_obj is None:
+                # Fallback: reconstruct from info dict (should rarely happen)
+                try:
+                    verdict_obj = VerdictPayload(**info.get("verdict", {}))
+                except Exception as exc:  # noqa: BLE001
+                    log.error("Could not reconstruct VerdictPayload: %s", exc)
 
-            grade_result = self.grader.grade(self.state, verdict_data)
-            # Add any partial reward already accumulated (e.g. from set_mutation_point)
-            reward_delta += grade_result.total
-            info["grade_breakdown"] = grade_result.breakdown
-            info["final_score"] = grade_result.total
-            # Remove internal object
-            info.pop("_verdict_obj", None)
+            if verdict_obj is not None:
+                grade_result: GradeResult = self.grader.grade(self.state, verdict_obj)
+                reward_delta += grade_result.total
+                info["grade_breakdown"] = grade_result.breakdown
+                info["final_score"] = grade_result.capped_total
+                log.info(
+                    "Episode graded — task=%r final_score=%.3f breakdown=%s",
+                    self.state.task_id,
+                    grade_result.capped_total,
+                    grade_result.breakdown,
+                )
 
-        # Update phase
+        # ── Finalise state ────────────────────────────────────────────
         if done:
-            self.state.phase = "TERMINAL"
+            try:
+                self.state.transition_phase("TERMINAL")
+            except ValueError:
+                # Already TERMINAL or in an unexpected phase — log and continue
+                log.warning(
+                    "Unexpected phase %r when trying to set TERMINAL", self.state.phase
+                )
+                self.state.phase = "TERMINAL"
 
-        # Record reward
-        self.state.rewards_log.append(reward_delta)
+        self.state.record_reward(reward_delta)
+
+        # Strip internal keys before returning
+        public_info = {k: v for k, v in info.items() if not k.startswith("_")}
 
         return StepResult(
             observation=self._build_obs(),
             reward=reward_delta,
             done=done,
-            info={k: v for k, v in info.items() if not k.startswith("_")},
+            info=public_info,
         )
 
     async def get_state(self) -> Observation:
-        """Return the current observation."""
+        """Return the current observation without advancing the episode."""
+        if self.state is None:
+            raise RuntimeError("Call reset() first")
         return self._build_obs()
 
-    def get_task_list(self) -> List[Dict[str, Any]]:
-        """Return list of available tasks."""
+    def get_task_list(
+        self, *, difficulty: Optional[str] = None
+    ) -> List[Dict[str, Any]]:
+        """
+        Return metadata for all available tasks.
+
+        Parameters
+        ----------
+        difficulty:
+            Optional filter — 'easy', 'medium', or 'hard'.
+        """
+        tasks = self.tasks
+        if difficulty:
+            tasks = [t for t in tasks if t.difficulty == difficulty]
+
         return [
             {
                 "id": t.task_id,
                 "difficulty": t.difficulty,
                 "max_steps": t.max_steps,
                 "claim": t.claim,
+                "corpus_size": len(t.corpus),
             }
-            for t in self.tasks
+            for t in tasks
         ]
+
+    def get_state_summary(self) -> Optional[Dict[str, Any]]:
+        """
+        Lightweight summary of the current episode — handy for dashboards
+        and monitoring. Returns None if no episode is active.
+        """
+        if self.state is None:
+            return None
+        return self.state.summary_dict()
+
+    async def close(self) -> None:
+        """
+        Release resources held by the environment.
+        Safe to call multiple times.
+        """
+        self.state = None
+        self.dispatcher = None
+        self.grader = None
+        self._current_task = None
+        log.debug("ChronoVeritasEnv closed")
