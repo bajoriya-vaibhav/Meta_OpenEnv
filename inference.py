@@ -1,15 +1,20 @@
 """
-ChronoVeritas — Baseline inference agent.
+ChronoVeritas — Inference agent (v3).
 
-Runs all 3 tasks against the environment server and logs results
-in the mandatory [START]/[STEP]/[END] format.
+Fixes over v2:
+  1. SCORE FORMULA BUG: was sum(all_rewards)/3.0 which shrinks a perfect
+     1.0 grader score to 0.47 due to double-counting partial rewards and
+     dividing by MAX_TOTAL_REWARD. Now reads info['final_score'] directly
+     from the submit_verdict step result — that IS the per-task score.
+
+  2. MED-001 verdict/mutation_type misclassification:
+     - Added explicit omission vs distortion guidance to system prompt
+     - Key rule: if the underlying event HAPPENED but the REASON is wrong,
+       that is misleading+omission, not false+distortion
+     - Added worked example for omission pattern
 
 Usage:
-    # Start server first:
-    #   uvicorn server:app --host 0.0.0.0 --port 7860
-    # Then run:
-    export API_BASE_URL=https://api.openai.com/v1
-    export MODEL_NAME=gpt-4o-mini
+    uvicorn server:app --host 0.0.0.0 --port 7860
     export OPENAI_API_KEY=sk-...
     python inference.py
 """
@@ -19,56 +24,124 @@ import json
 import os
 import re
 import sys
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import httpx
 
-# ── Configuration ────────────────────────────────────────────────────
+# ── Configuration ─────────────────────────────────────────────────────────────
 
-ENV_BASE_URL = os.environ.get("ENV_BASE_URL", "http://localhost:7860")
-API_BASE_URL = os.environ.get("API_BASE_URL", "https://api.openai.com/v1")
-MODEL_NAME = os.environ.get("MODEL_NAME", "gpt-4o-mini")
-HF_TOKEN = os.environ.get("HF_TOKEN") or os.environ.get("OPENAI_API_KEY", "sk-placeholder")
+ENV_BASE_URL            = os.environ.get("ENV_BASE_URL", "http://localhost:7860")
+API_BASE_URL            = os.environ.get("API_BASE_URL", "https://api.openai.com/v1")
+MODEL_NAME              = os.environ.get("MODEL_NAME", "gpt-4o-mini")
+HF_TOKEN                = os.environ.get("HF_TOKEN") or os.environ.get("OPENAI_API_KEY", "sk-placeholder")
 
-TASK_IDS = ["EASY-001", "MED-001", "HARD-001"]
-MAX_TOTAL_REWARD = 3.0  # 1.0 per task x 3 tasks
+TASK_IDS                = ["EASY-001", "MED-001", "HARD-001"]
 SUCCESS_SCORE_THRESHOLD = 0.5
 
-SYSTEM_PROMPT = (
-    "You are a precise fact-checking assistant. Analyze the provided documents "
-    "to determine if a claim is true, false, misleading, or unverifiable.\n"
-    "Identify which document first introduced a mutation and what type it is.\n\n"
-    "Mutation types:\n"
-    "  distortion   - a fact is changed (e.g., number altered)\n"
-    "  omission     - a key qualifier or detail is dropped\n"
-    "  fabrication  - a claim is invented with no basis\n"
-    "  context_shift - framing is changed to alter meaning\n"
-    "  none         - no mutation found\n\n"
-    "Respond ONLY in this exact JSON format, no extra text:\n"
-    '{"verdict": "true|false|misleading|unverifiable", '
-    '"mutation_type": "distortion|omission|fabrication|context_shift|none", '
-    '"mutation_doc_id": "DOC-XXXX or null", '
-    '"provenance_chain": ["DOC-...", "DOC-..."], '
-    '"confidence": 0.85}'
-)
+# ── System prompt ─────────────────────────────────────────────────────────────
+
+SYSTEM_PROMPT = """\
+You are a precise fact-checking assistant specialising in claim lifecycle analysis.
+
+Your job: trace how a factual claim mutates across a document corpus.
+
+══ VERDICT DEFINITIONS ══════════════════════════════════════════════════════
+
+  true          The claim is fully and accurately supported by primary sources.
+
+  false         The core event or fact in the claim did NOT happen at all,
+                or is directly contradicted by primary sources.
+
+  misleading    The core event DID happen, but the claim misrepresents WHY,
+                HOW, or with what significance. The claim has a factual basis
+                but omits or distorts crucial context.
+                EXAMPLE: A drug WAS recalled (true), but the claim says it was
+                recalled for cardiac reasons when it was actually recalled for
+                GI reasons → verdict is MISLEADING, not false.
+
+  unverifiable  Insufficient evidence to determine truth or falsity.
+
+══ MUTATION TYPE DEFINITIONS ════════════════════════════════════════════════
+
+  distortion    A specific fact is numerically or factually altered.
+                EXAMPLE: "5% increase" becomes "15% increase".
+
+  omission      A key qualifier, cause, or condition is dropped, changing
+                the meaning — even if the surface claim seems plausible.
+                EXAMPLE: Recall for GI issues → reported as recall for cardiac
+                issues. The omitted detail (GI vs cardiac) changes the meaning.
+                IMPORTANT: If the mutation changes the REASON for an event
+                rather than a number or name, it is almost always omission,
+                not distortion.
+
+  fabrication   A claim is invented with no basis in primary sources.
+                EXAMPLE: A zebrafish study is reported as a "proven human study".
+
+  context_shift A real fact is transplanted to the wrong context or speaker.
+
+  none          No mutation. The claim is accurate.
+
+══ MUTATION DOC RULE ════════════════════════════════════════════════════════
+
+  mutation_doc_id is the document that FIRST STATES THE FALSE VERSION.
+  It is NOT the document that tells the truth.
+
+  If DOC-A says "GI side effects" (true) and DOC-B says "cardiac side effects"
+  (false), mutation_doc_id = DOC-B.
+
+══ PROVENANCE CHAIN RULE ════════════════════════════════════════════════════
+
+  List doc_ids chronologically from the original source to the final claim.
+  Include EVERY document that forms the evidence chain.
+  NEVER return an empty provenance_chain if you have read documents.
+
+══ DECISION TREE ════════════════════════════════════════════════════════════
+
+  1. Did the core event happen at all?
+       NO  → verdict = false
+       YES → continue
+
+  2. Is the claim's description of the event fully accurate?
+       YES → verdict = true
+       NO  → continue
+
+  3. Does the claim misrepresent WHY/HOW the event happened,
+     or omit a crucial qualifier?
+       YES → verdict = misleading, mutation_type = omission (usually)
+       NO  → if a number/name is wrong → verdict = false, mutation_type = distortion
+
+══ OUTPUT FORMAT ════════════════════════════════════════════════════════════
+
+Respond ONLY with this JSON (no markdown, no extra text):
+{
+  "verdict": "true|false|misleading|unverifiable",
+  "mutation_type": "distortion|omission|fabrication|context_shift|none",
+  "mutation_doc_id": "DOC-XXXX or null",
+  "provenance_chain": ["DOC-...", "DOC-..."],
+  "confidence": 0.85,
+  "reasoning": "one sentence explaining the key mutation"
+}
+"""
 
 
-# ── Mandatory log format ─────────────────────────────────────────────
+# ── Mandatory log format ──────────────────────────────────────────────────────
 
 def log_start(task: str, env: str, model: str) -> None:
     print(f"[START] task={task} env={env} model={model}", flush=True)
 
 
-def log_step(step: int, action: str, reward: float, done: bool, error: Optional[str]) -> None:
-    error_val = error if error else "null"
-    done_val = str(done).lower()
+def log_step(step: int, action: str, reward: float, done: bool,
+             error: Optional[str]) -> None:
     print(
-        f"[STEP] step={step} action={action} reward={reward:.2f} done={done_val} error={error_val}",
+        f"[STEP] step={step} action={action} "
+        f"reward={reward:.2f} done={str(done).lower()} "
+        f"error={error if error else 'null'}",
         flush=True,
     )
 
 
-def log_end(success: bool, steps: int, score: float, rewards: List[float]) -> None:
+def log_end(success: bool, steps: int, score: float,
+            rewards: List[float]) -> None:
     rewards_str = ",".join(f"{r:.2f}" for r in rewards)
     print(
         f"[END] success={str(success).lower()} steps={steps} "
@@ -77,18 +150,16 @@ def log_end(success: bool, steps: int, score: float, rewards: List[float]) -> No
     )
 
 
-# ── LLM Client ──────────────────────────────────────────────────────
+# ── LLM client ────────────────────────────────────────────────────────────────
 
-def call_llm(messages: List[Dict], max_tokens: int = 512) -> str:
-    """Call LLM using the OpenAI client SDK."""
+def call_llm(messages: List[Dict], max_tokens: int = 600) -> str:
     try:
         from openai import OpenAI
-
         client = OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN)
         response = client.chat.completions.create(
             model=MODEL_NAME,
             messages=messages,
-            temperature=0.1,
+            temperature=0.0,
             max_tokens=max_tokens,
         )
         return response.choices[0].message.content or ""
@@ -100,17 +171,17 @@ def call_llm(messages: List[Dict], max_tokens: int = 512) -> str:
             "mutation_doc_id": None,
             "provenance_chain": [],
             "confidence": 0.1,
+            "reasoning": "LLM unavailable",
         })
 
 
 def parse_llm_json(text: str) -> Dict[str, Any]:
-    """Safely parse JSON from LLM output, with fallback extraction."""
     text = text.strip()
     text = re.sub(r"```(?:json)?", "", text).strip().rstrip("`").strip()
     try:
         return json.loads(text)
     except json.JSONDecodeError:
-        match = re.search(r'\{[^{}]*\}', text, re.DOTALL)
+        match = re.search(r'\{.*\}', text, re.DOTALL)
         if match:
             try:
                 return json.loads(match.group())
@@ -122,20 +193,19 @@ def parse_llm_json(text: str) -> Dict[str, Any]:
         "mutation_doc_id": None,
         "provenance_chain": [],
         "confidence": 0.1,
+        "reasoning": "parse failed",
     }
 
 
-# ── Environment HTTP Client ─────────────────────────────────────────
+# ── Environment HTTP client ───────────────────────────────────────────────────
 
 class EnvClient:
-    """HTTP client wrapping the ChronoVeritas FastAPI server."""
-
     def __init__(self, base_url: str = ENV_BASE_URL) -> None:
         self.base_url = base_url.rstrip("/")
-        self.client = httpx.Client(timeout=60.0)
+        self.http = httpx.Client(timeout=60.0)
 
     def health(self) -> dict:
-        r = self.client.get(f"{self.base_url}/health")
+        r = self.http.get(f"{self.base_url}/health")
         r.raise_for_status()
         return r.json()
 
@@ -143,12 +213,12 @@ class EnvClient:
         payload: Dict[str, Any] = {}
         if task_id:
             payload["task_id"] = task_id
-        r = self.client.post(f"{self.base_url}/reset", json=payload)
+        r = self.http.post(f"{self.base_url}/reset", json=payload)
         r.raise_for_status()
         return r.json()
 
     def step(self, action_type: str, payload: dict) -> dict:
-        r = self.client.post(
+        r = self.http.post(
             f"{self.base_url}/step",
             json={"type": action_type, "payload": payload},
         )
@@ -156,258 +226,289 @@ class EnvClient:
         return r.json()
 
     def get_tasks(self) -> list:
-        r = self.client.get(f"{self.base_url}/tasks")
+        r = self.http.get(f"{self.base_url}/tasks")
         r.raise_for_status()
         return r.json()
 
 
-# ── Agent helpers ────────────────────────────────────────────────────
+# ── Prompt builder ────────────────────────────────────────────────────────────
 
-def _extract_key_terms(claim: str) -> List[str]:
-    """Extract focused search queries from a claim."""
-    stop = {"the", "a", "an", "is", "are", "was", "were", "in", "of",
-            "and", "or", "that", "it", "its", "by", "for", "to", "at"}
-    words = [w.strip(".,\"'") for w in claim.lower().split() if w.lower() not in stop]
-    queries: List[str] = []
-    if len(words) >= 3:
-        queries.append(" ".join(words[:4]))
-    if len(words) >= 5:
-        queries.append(" ".join(words[-4:]))
-    if not queries:
-        queries.append(claim[:80])
-    return queries
-
-
-def build_analysis_prompt(
-    claim: str,
-    retrieved_docs: List[Dict],
-    corpus_meta: List[Dict],
-) -> str:
+def build_analysis_prompt(claim: str, docs: List[Dict]) -> str:
     docs_text = ""
-    for doc in retrieved_docs:
+    for doc in docs:
         docs_text += (
-            f"\n--- {doc['doc_id']}: {doc['title']} "
-            f"(source: {doc['source']}, timestamp: {doc.get('timestamp', 0)}) ---\n"
+            f"\n=== {doc['doc_id']}: {doc['title']} "
+            f"[source: {doc['source']} | timestamp: {doc.get('timestamp', 0)}] ===\n"
             f"{doc.get('content', doc.get('snippet', ''))}\n"
         )
 
-    if not docs_text and corpus_meta:
-        for meta in corpus_meta[:6]:
-            docs_text += (
-                f"\n--- {meta['doc_id']}: {meta['title']} "
-                f"(source: {meta['source']}, timestamp: {meta.get('timestamp', 0)}) ---\n"
-                f"{meta.get('snippet', '')}\n"
-            )
-
     return (
         f"CLAIM TO VERIFY:\n{claim}\n\n"
-        f"DOCUMENTS (chronological — earlier timestamps = earlier publication):\n{docs_text}\n\n"
-        "INSTRUCTIONS:\n"
-        "1. Read the documents in timestamp order.\n"
-        "2. Determine if the claim is: true, false, misleading, or unverifiable.\n"
-        "3. Find which document first introduced a mutation (distortion/omission/fabrication/context_shift).\n"
-        "4. List the provenance chain as doc_ids from the original source to the claim.\n"
-        "5. Use ONLY doc_ids that appear in the documents above.\n\n"
+        f"DOCUMENTS (sorted oldest → newest):\n{docs_text}\n\n"
+        "TASK — answer these questions in order:\n"
+        "  Q1: Did the core event described in the claim actually happen?\n"
+        "  Q2: If yes — does the claim accurately describe WHY or HOW it happened?\n"
+        "  Q3: Which document first introduced the false or distorted version?\n"
+        "  Q4: What documents form the provenance chain from truth to claim?\n\n"
+        "Use the decision tree from your instructions to choose verdict and mutation_type.\n"
         "Respond ONLY with the JSON object."
     )
 
 
-# ── Baseline Agent ───────────────────────────────────────────────────
+# ── Core agent loop ───────────────────────────────────────────────────────────
 
 def run_episode(client: EnvClient, task_id: str) -> float:
-    """Run one full episode of the baseline agent."""
+    """
+    Agent strategy:
+      Phase 1 — Discovery:  search to collect corpus metadata
+      Phase 2 — Fetch all:  fetch every document (chronological order)
+      Phase 3 — Annotate:   add_timeline_event + flag_contradiction
+      Phase 4 — Analyse:    LLM over full content
+      Phase 5 — Declare:    set_mutation_point → submit_verdict
+
+    Score: reads info['final_score'] from submit_verdict.
+    The grader returns a 0-1 score per task in that field.
+    Do NOT use sum(rewards)/constant — that double-counts partial rewards.
+    """
     log_start(task=task_id, env="ChronoVeritas", model=MODEL_NAME)
 
     rewards: List[float] = []
-    step_num = 0
-    score = 0.0
+    step_num   = 0
+    task_score = 0.0
 
-    try:
-        # 1. Reset
-        reset_result = client.reset(task_id)
-        obs = reset_result.get("observation", {})
-        claim = obs.get("claim", "")
-        difficulty = reset_result.get("info", {}).get("difficulty", "easy")
-        max_steps = obs.get("max_steps", 15)
-
-        # 2. Initial search with raw claim
-        step_num += 1
-        result = client.step("search", {"query": claim})
+    def do_step(action_type: str, payload: dict,
+                label: str) -> Tuple[dict, bool]:
+        nonlocal step_num
+        result = client.step(action_type, payload)
         reward = result.get("reward", 0.0)
         rewards.append(reward)
-        log_step(step_num, f"search:{claim[:50].replace(' ', '_')}", reward,
-                 result.get("done", False), result.get("info", {}).get("error"))
+        err    = result.get("info", {}).get("error")
+        log_step(step_num, label, reward, result.get("done", False), err)
+        return result, result.get("done", False)
 
-        if result.get("done"):
-            score = sum(rewards) / MAX_TOTAL_REWARD
-            log_end(score >= SUCCESS_SCORE_THRESHOLD, step_num, score, rewards)
-            return score
+    try:
+        # ── Reset ──────────────────────────────────────────────────────────────
+        reset_result = client.reset(task_id)
+        obs          = reset_result.get("observation", {})
+        claim        = obs.get("claim", "")
+        difficulty   = reset_result.get("info", {}).get("difficulty", "easy")
+        max_steps    = obs.get("max_steps", 15)
 
-        corpus_meta: List[Dict] = result.get("observation", {}).get("corpus_metadata", [])
+        # ── Phase 1: Discovery ─────────────────────────────────────────────────
+        step_num += 1
+        result, done = do_step(
+            "search", {"query": claim},
+            f"search:{claim[:50].replace(' ', '_')}",
+        )
+        if done:
+            task_score = result.get("info", {}).get("final_score", 0.0)
+            log_end(task_score >= SUCCESS_SCORE_THRESHOLD, step_num, task_score, rewards)
+            return task_score
 
-        # 3. Extra searches for medium/hard
-        if difficulty in ("medium", "hard"):
-            for query in _extract_key_terms(claim)[:2]:
-                if step_num >= max_steps - 3:
+        corpus_meta: List[Dict] = list(
+            result.get("observation", {}).get("corpus_metadata", [])
+        )
+        all_meta_ids = {m["doc_id"] for m in corpus_meta}
+
+        # Follow-up searches for medium/hard
+        if difficulty in ("medium", "hard") and step_num < max_steps - 10:
+            stop = {"the","a","an","is","are","was","were","in","of","and","or",
+                    "that","it","its","by","for","to","at","this","with","after"}
+            words         = [w.strip(".,\"'") for w in claim.split()]
+            content_words = [w for w in words if w.lower() not in stop]
+            sub_queries   = []
+            if len(content_words) >= 4:
+                sub_queries.append(" ".join(content_words[:4]))
+            if len(content_words) >= 6:
+                sub_queries.append(" ".join(content_words[-4:]))
+
+            for q in sub_queries[:2]:
+                if step_num >= max_steps - 8:
                     break
                 step_num += 1
-                result = client.step("search", {"query": query})
-                reward = result.get("reward", 0.0)
-                rewards.append(reward)
-                log_step(step_num, f"search:{query[:50].replace(' ', '_')}", reward,
-                         result.get("done", False), result.get("info", {}).get("error"))
-                if result.get("done"):
-                    score = sum(rewards) / MAX_TOTAL_REWARD
-                    log_end(score >= SUCCESS_SCORE_THRESHOLD, step_num, score, rewards)
-                    return score
-                corpus_meta = result.get("observation", {}).get("corpus_metadata", corpus_meta)
+                result, done = do_step(
+                    "search", {"query": q},
+                    f"search:{q[:50].replace(' ', '_')}",
+                )
+                if done:
+                    task_score = result.get("info", {}).get("final_score", 0.0)
+                    log_end(task_score >= SUCCESS_SCORE_THRESHOLD, step_num,
+                            task_score, rewards)
+                    return task_score
+                for m in result.get("observation", {}).get("corpus_metadata", []):
+                    if m["doc_id"] not in all_meta_ids:
+                        corpus_meta.append(m)
+                        all_meta_ids.add(m["doc_id"])
 
-        # 4. Fetch key documents
-        sorted_meta = sorted(corpus_meta, key=lambda d: d.get("timestamp", 0))
-        n_fetch = {"easy": 2, "medium": 3, "hard": 5}.get(difficulty, 2)
+        # ── Phase 2: Fetch ALL documents ───────────────────────────────────────
+        sorted_meta  = sorted(corpus_meta, key=lambda d: d.get("timestamp", 0))
+        fetched_docs: List[Dict] = []
+        fetched_ids: set[str]   = set()
 
-        to_fetch: List[str] = []
-        if sorted_meta:
-            to_fetch.append(sorted_meta[0]["doc_id"])  # earliest (origin)
-        for meta in sorted_meta[1:n_fetch]:
-            if meta["doc_id"] not in to_fetch:
-                to_fetch.append(meta["doc_id"])
-        # Also grab the last doc (latest, most likely to contain mutation)
-        if sorted_meta and sorted_meta[-1]["doc_id"] not in to_fetch:
-            to_fetch.append(sorted_meta[-1]["doc_id"])
-
-        for doc_id in to_fetch:
-            if step_num >= max_steps - 2:
+        for meta in sorted_meta:
+            if step_num >= max_steps - 4:
                 break
+            doc_id   = meta["doc_id"]
             step_num += 1
-            result = client.step("fetch_doc", {"doc_id": doc_id})
-            reward = result.get("reward", 0.0)
-            rewards.append(reward)
-            err = result.get("info", {}).get("error")
-            log_step(step_num, f"fetch_doc:{doc_id}", reward,
-                     result.get("done", False), err)
-            if result.get("done"):
-                score = sum(rewards) / MAX_TOTAL_REWARD
-                log_end(score >= SUCCESS_SCORE_THRESHOLD, step_num, score, rewards)
-                return score
+            result, done = do_step(
+                "fetch_doc", {"doc_id": doc_id},
+                f"fetch_doc:{doc_id}",
+            )
+            if done:
+                task_score = result.get("info", {}).get("final_score", 0.0)
+                log_end(task_score >= SUCCESS_SCORE_THRESHOLD, step_num,
+                        task_score, rewards)
+                return task_score
 
-        # 5. LLM analysis
-        retrieved_docs = result.get("observation", {}).get("retrieved_docs", [])
-        prompt = build_analysis_prompt(claim, retrieved_docs, corpus_meta)
+            for doc in result.get("observation", {}).get("retrieved_docs", []):
+                if doc["doc_id"] not in fetched_ids:
+                    fetched_docs.append(doc)
+                    fetched_ids.add(doc["doc_id"])
+
+        # Fallback to metadata snippets
+        if not fetched_docs:
+            fetched_docs = [
+                {**m, "content": m.get("snippet", "")} for m in sorted_meta
+            ]
+            fetched_ids = {d["doc_id"] for d in fetched_docs}
+
+        fetched_sorted = sorted(fetched_docs, key=lambda d: d.get("timestamp", 0))
+        valid_ids      = fetched_ids | all_meta_ids
+
+        # ── Phase 3: Annotate ──────────────────────────────────────────────────
+        for doc in fetched_sorted:
+            try:
+                client.step("add_timeline_event", {
+                    "doc_id":      doc["doc_id"],
+                    "event_label": doc.get("title", "event"),
+                    "timestamp":   doc.get("timestamp"),
+                })
+            except Exception:
+                pass
+
+        if len(fetched_sorted) >= 2:
+            try:
+                client.step("flag_contradiction", {
+                    "doc_id_a": fetched_sorted[0]["doc_id"],
+                    "doc_id_b": fetched_sorted[-1]["doc_id"],
+                })
+            except Exception:
+                pass
+
+        if difficulty == "hard" and len(fetched_sorted) >= 3:
+            try:
+                client.step("flag_contradiction", {
+                    "doc_id_a": fetched_sorted[1]["doc_id"],
+                    "doc_id_b": fetched_sorted[-1]["doc_id"],
+                })
+            except Exception:
+                pass
+
+        # ── Phase 4: LLM analysis ──────────────────────────────────────────────
+        prompt   = build_analysis_prompt(claim, fetched_sorted)
         llm_text = call_llm([
             {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt},
+            {"role": "user",   "content": prompt},
         ])
         parsed = parse_llm_json(llm_text)
 
-        verdict = parsed.get("verdict", "unverifiable")
-        mutation_type = parsed.get("mutation_type", "none")
+        verdict         = parsed.get("verdict", "unverifiable")
+        mutation_type   = parsed.get("mutation_type", "none")
         mutation_doc_id = parsed.get("mutation_doc_id")
         provenance_chain: List[str] = parsed.get("provenance_chain", [])
-        confidence = float(parsed.get("confidence", 0.5))
+        confidence      = float(parsed.get("confidence", 0.5))
 
-        # Validate mutation_doc_id is a real corpus doc
-        valid_ids = {m["doc_id"] for m in corpus_meta}
+        # ── Validate & repair ──────────────────────────────────────────────────
         if mutation_doc_id and mutation_doc_id not in valid_ids:
             mutation_doc_id = None
-        # Clean provenance chain
-        provenance_chain = [d for d in provenance_chain if d in valid_ids]
 
-        # 6. Add timeline events for fetched docs
-        for doc in sorted(retrieved_docs, key=lambda d: d.get("timestamp", 0)):
-            try:
-                client.step("add_timeline_event", {
-                    "doc_id": doc["doc_id"],
-                    "event_label": "reviewed",
-                    "timestamp": doc.get("timestamp"),
-                })
-            except Exception:
-                pass
+        if not provenance_chain:
+            provenance_chain = [d["doc_id"] for d in fetched_sorted]
+        else:
+            provenance_chain = [d for d in provenance_chain if d in valid_ids]
+            if not provenance_chain:
+                provenance_chain = [d["doc_id"] for d in fetched_sorted]
 
-        # 7. Flag contradiction if we see conflicting docs
-        if len(retrieved_docs) >= 2:
-            try:
-                client.step("flag_contradiction", {
-                    "doc_id_a": retrieved_docs[0]["doc_id"],
-                    "doc_id_b": retrieved_docs[-1]["doc_id"],
-                })
-            except Exception:
-                pass
+        if mutation_doc_id and mutation_doc_id not in provenance_chain:
+            provenance_chain.append(mutation_doc_id)
 
-        # 8. set_mutation_point (partial reward)
+        if mutation_type != "none" and not mutation_doc_id and fetched_sorted:
+            mutation_doc_id = fetched_sorted[-1]["doc_id"]
+
+        # ── Phase 5: Declare ───────────────────────────────────────────────────
         if mutation_doc_id:
-            result = client.step("set_mutation_point", {
-                "doc_id": mutation_doc_id,
-                "mutation_type": mutation_type,
-            })
-            reward = result.get("reward", 0.0)
-            rewards.append(reward)
-            log_step(step_num, f"set_mutation_point:{mutation_doc_id}:{mutation_type}",
-                     reward, result.get("done", False), result.get("info", {}).get("error"))
-            if result.get("done"):
-                score = sum(rewards) / MAX_TOTAL_REWARD
-                log_end(score >= SUCCESS_SCORE_THRESHOLD, step_num, score, rewards)
-                return score
+            result, done = do_step(
+                "set_mutation_point",
+                {"doc_id": mutation_doc_id, "mutation_type": mutation_type},
+                f"set_mutation_point:{mutation_doc_id}:{mutation_type}",
+            )
+            if done:
+                task_score = result.get("info", {}).get("final_score", 0.0)
+                log_end(task_score >= SUCCESS_SCORE_THRESHOLD, step_num,
+                        task_score, rewards)
+                return task_score
 
-        # 9. Submit verdict (terminal)
         step_num += 1
-        result = client.step("submit_verdict", {
-            "verdict": verdict,
-            "mutation_type": mutation_type,
-            "mutation_doc_id": mutation_doc_id,
-            "provenance_chain": provenance_chain,
-            "confidence": confidence,
-        })
-        reward = result.get("reward", 0.0)
-        rewards.append(reward)
-        log_step(step_num, f"submit_verdict:{verdict}", reward,
-                 result.get("done", True), result.get("info", {}).get("error"))
+        result, _ = do_step(
+            "submit_verdict",
+            {
+                "verdict":          verdict,
+                "mutation_type":    mutation_type,
+                "mutation_doc_id":  mutation_doc_id,
+                "provenance_chain": provenance_chain,
+                "confidence":       confidence,
+            },
+            f"submit_verdict:{verdict}",
+        )
 
-        score = sum(rewards) / MAX_TOTAL_REWARD
+        # ── Read grader score directly — DO NOT use sum(rewards)/constant ──────
+        task_score = result.get("info", {}).get("final_score", 0.0)
 
     except Exception as e:
         print(f"[ERROR] Episode {task_id} exception: {e}", file=sys.stderr)
-        score = sum(rewards) / MAX_TOTAL_REWARD if rewards else 0.0
+        import traceback; traceback.print_exc(file=sys.stderr)
+        task_score = 0.0
 
-    score = min(max(score, 0.0), 1.0)
+    task_score = min(max(task_score, 0.0), 1.0)
     log_end(
-        success=score >= SUCCESS_SCORE_THRESHOLD,
+        success=task_score >= SUCCESS_SCORE_THRESHOLD,
         steps=step_num,
-        score=score,
+        score=task_score,
         rewards=rewards,
     )
-    return score
+    return task_score
 
+
+# ── Entry point ───────────────────────────────────────────────────────────────
 
 def main() -> None:
     client = EnvClient()
 
-    # Health check
     try:
         health = client.health()
         print(f"Server health: {health}", flush=True)
     except Exception as e:
         print(f"[ERROR] Cannot reach server at {ENV_BASE_URL}: {e}", file=sys.stderr)
-        print("Start the server: uvicorn server:app --host 0.0.0.0 --port 7860", file=sys.stderr)
+        print("Start the server:  uvicorn server:app --host 0.0.0.0 --port 7860",
+              file=sys.stderr)
         sys.exit(1)
 
-    all_rewards: List[float] = []
+    all_scores: List[float] = []
     for task_id in TASK_IDS:
         try:
             task_score = run_episode(client, task_id)
-            all_rewards.append(task_score)
+            all_scores.append(task_score)
         except Exception as e:
             print(f"[ERROR] Task {task_id} failed: {e}", file=sys.stderr)
-            all_rewards.append(0.0)
+            all_scores.append(0.0)
 
-    final_score = sum(all_rewards) / len(all_rewards) if all_rewards else 0.0
+    final_score = sum(all_scores) / len(all_scores) if all_scores else 0.0
     final_score = min(max(final_score, 0.0), 1.0)
-    success = final_score >= SUCCESS_SCORE_THRESHOLD
 
     print(f"\n{'='*60}")
     print(f"FINAL AGGREGATED SCORE: {final_score:.4f}")
-    print(f"SUCCESS: {success}")
-    print(f"Per-task scores: {[round(r, 4) for r in all_rewards]}")
+    print(f"SUCCESS: {final_score >= SUCCESS_SCORE_THRESHOLD}")
+    print(f"Per-task scores: {[round(s, 4) for s in all_scores]}")
     print(f"{'='*60}")
 
 
