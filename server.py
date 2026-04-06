@@ -31,7 +31,7 @@ class ResetRequest(BaseModel):
 
 @app.get("/health")
 async def health() -> Dict[str, str]:
-    return {"status": "ok"}
+    return {"status": "healthy"}
 
 
 @app.get("/tasks")
