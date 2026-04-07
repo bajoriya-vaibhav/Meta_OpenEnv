@@ -2,59 +2,247 @@
   "task_id": "HARD-001",
   "difficulty": "hard",
   "max_steps": 30,
-  "claim": "Professor Elena Vasquez published a landmark study proving that microplastics cause rapid neurodegeneration in humans.",
+  "claim": "The FAA conducted fully independent flight-control safety certification of the Boeing 737 MAX's MCAS system before granting its airworthiness certificate, and internal Boeing test pilots reported MCAS performed flawlessly across all simulated failure scenarios during pre-certification trials.",
   "ground_truth": {
     "gt_verdict": "false",
     "gt_mutation_type": "fabrication",
-    "gt_mutation_doc_id": "DOC-2003",
-    "gt_provenance_chain": ["DOC-2001", "DOC-2002", "DOC-2003", "DOC-2004"],
-    "gt_timeline": ["DOC-2001", "DOC-2002", "DOC-2003", "DOC-2004", "DOC-2005"]
+    "gt_mutation_doc_id": "DOC-5005",
+    "gt_provenance_chain": [
+      "DOC-5001",
+      "DOC-5003",
+      "DOC-5005",
+      "DOC-5007",
+      "DOC-5010",
+      "DOC-5012",
+      "DOC-5014",
+      "DOC-5016",
+      "DOC-5018"
+    ],
+    "gt_timeline": [
+      "DOC-5001",
+      "DOC-5002",
+      "DOC-5003",
+      "DOC-5004",
+      "DOC-5005",
+      "DOC-5006",
+      "DOC-5007",
+      "DOC-5008",
+      "DOC-5010",
+      "DOC-5011",
+      "DOC-5012",
+      "DOC-5014",
+      "DOC-5016",
+      "DOC-5017",
+      "DOC-5018"
+    ],
+    "gt_conflict_fields": [
+      "certification_independence",
+      "mcas_test_performance",
+      "pilot_disclosure",
+      "oda_delegation_scope",
+      "sensor_redundancy"
+    ]
   },
   "corpus": [
     {
-      "doc_id": "DOC-2001",
-      "title": "University Research Bulletin",
-      "source": "university.edu",
-      "timestamp": 1685577600,
-      "tags": ["research", "microplastics", "neuroscience"],
-      "snippet": "Prof. Vasquez publishes preliminary findings on microplastic exposure in zebrafish models.",
-      "content": "Professor Elena Vasquez and her team at the Environmental Health Lab published preliminary findings showing microplastic accumulation in zebrafish neural tissue. The study notes potential concerns but emphasises the results are in animal models and cannot be directly extrapolated to humans."
+      "doc_id": "DOC-5001",
+      "title": "Boeing Press Release: 737 MAX — A New Standard in Fuel Efficiency and Safety",
+      "source": "boeing.com/commercial",
+      "reliability_tier": 2,
+      "timestamp": 1484265600,
+      "tags": ["corporate", "announcement", "737-max", "launch"],
+      "snippet": "Boeing announces the 737 MAX has received FAA type certification, featuring advanced flight-control systems for enhanced safety.",
+      "content": "RENTON, Wash. — January 13, 2017 — The Boeing Company today announced that the 737 MAX 8 has received its Type Certificate from the Federal Aviation Administration, clearing the aircraft for commercial service. The 737 MAX incorporates the CFM International LEAP-1B engine and aerodynamic improvements that deliver 14% better fuel efficiency than the 737 NG. The aircraft features the Maneuvering Characteristics Augmentation System (MCAS), a flight-control law designed to improve handling characteristics in specific high-angle-of-attack conditions. Boeing's VP of Commercial Programs stated: 'The 737 MAX represents the safest, most efficient single-aisle aircraft ever produced. The FAA certification process was thorough and meets the highest global aviation safety standards.' The first delivery to Southwest Airlines is expected in Q2 2017."
     },
     {
-      "doc_id": "DOC-2002",
-      "title": "Science Daily Summary",
-      "source": "sciencedaily.com",
-      "timestamp": 1685664000,
-      "tags": ["research", "microplastics"],
-      "snippet": "New study highlights microplastic concerns in brain tissue of fish.",
-      "content": "A new study from Prof. Vasquez's lab found microplastics in zebrafish brain tissue, raising preliminary concerns about potential neurological impacts. Researchers caution that human studies are needed."
+      "doc_id": "DOC-5002",
+      "title": "FAA Order 8110.4C: Type Certification Procedures — ODA Delegation Framework",
+      "source": "faa.gov/regulations",
+      "reliability_tier": 1,
+      "timestamp": 1485907200,
+      "tags": ["regulatory", "faa", "oda", "certification", "framework"],
+      "snippet": "FAA regulatory document describing the Organization Designation Authorization process for type certification.",
+      "content": "February 1, 2017. FAA ORDER 8110.4C — TYPE CERTIFICATION. Chapter 3: Organization Designation Authorization (ODA). Section 3.1: Under the ODA framework, the FAA delegates certain certification tasks to qualified manufacturer employees known as Unit Members. These ODA Unit Members perform compliance findings, conduct tests, and approve design data on behalf of the FAA. Section 3.3: The FAA retains oversight responsibility and may intervene at any certification milestone. However, in practice, the extent of direct FAA involvement varies based on the significance determination of individual certification items. Items classified as 'non-significant' may be fully delegated to ODA Unit Members without independent FAA review. Section 3.5: The FAA Administrator has acknowledged that resource constraints have led to increased reliance on ODA delegation for the majority of certification tasks across all transport-category aircraft programs."
     },
     {
-      "doc_id": "DOC-2003",
-      "title": "Viral Health Blog",
-      "source": "viralhealth.blog",
-      "timestamp": 1685750400,
-      "tags": ["microplastics", "neurodegeneration", "breakthrough"],
-      "snippet": "BREAKING: Landmark study PROVES microplastics destroy human brain cells!",
-      "content": "Professor Elena Vasquez has proven in a landmark study that microplastics cause rapid neurodegeneration in humans. The peer-reviewed paper demonstrates a direct causal link between microplastic exposure and Alzheimer's-like symptoms. This changes everything we know about plastic pollution."
+      "doc_id": "DOC-5003",
+      "title": "MCAS Engineering Design Specification — Boeing Internal Document",
+      "source": "boeing_internal_docs",
+      "reliability_tier": 3,
+      "timestamp": 1487030400,
+      "tags": ["internal", "engineering", "mcas", "design", "specification"],
+      "snippet": "Boeing internal engineering document specifying MCAS design — single-sensor architecture and limited authority parameters.",
+      "content": "BOEING PROPRIETARY — MCAS Design Specification v3.2. Document Date: February 14, 2017. Distribution: Flight Controls Engineering only. SYSTEM OVERVIEW: The Maneuvering Characteristics Augmentation System (MCAS) is a flight-control law implemented within the Flight Control Computer (FCC). It operates at high angle of attack (AoA) to provide nose-down stabilizer trim, ensuring the 737 MAX exhibits pitch handling characteristics similar to the 737 NG. ARCHITECTURE: MCAS receives AoA input from a SINGLE angle-of-attack sensor (left or right, depending on which FCC is active for that flight). There is NO cross-comparison between the two AoA sensors. AUTHORITY: Maximum stabilizer nose-down command per MCAS activation: 2.5 degrees. MCAS may reset and re-activate multiple times. CREW INTERFACE: MCAS operation is NOT annunciated to the flight crew. There is no dedicated MCAS indicator. MCAS activation may be perceived by the crew as stabilizer runaway. NOTE: The disagree light for AoA sensors is a PAID OPTIONAL feature, not standard equipment."
     },
     {
-      "doc_id": "DOC-2004",
-      "title": "Vasquez Lab Correction Statement",
-      "source": "university.edu",
-      "timestamp": 1685836800,
-      "tags": ["correction", "microplastics"],
-      "snippet": "Prof. Vasquez issues statement correcting viral misrepresentations of her research.",
-      "content": "Professor Vasquez has issued a formal correction: 'Our study was conducted on zebrafish, not humans. We found accumulation, not causation of neurodegeneration. The viral blog post fabricated claims we never made. No peer-reviewed paper on human neurodegeneration exists from our lab.'"
+      "doc_id": "DOC-5004",
+      "title": "Airbus Defense Quarterly: A320neo Delivers Record Orders",
+      "source": "airbus.com/newsroom",
+      "reliability_tier": 2,
+      "timestamp": 1489449600,
+      "tags": ["corporate", "competitor", "airbus", "a320neo", "noise"],
+      "snippet": "Airbus reports record-breaking orders for the A320neo family, intensifying single-aisle competition.",
+      "content": "March 14, 2017 — Airbus today reported that the A320neo family has surpassed 5,000 firm orders, making it the fastest-selling commercial aircraft program in aviation history. Chief Commercial Officer stated: 'The A320neo's Pratt & Whitney PW1100G and CFM LEAP-1A engine options give customers unmatched flexibility.' The backlog extends deliveries through 2025. Industry analysts note the intense competitive pressure between the A320neo and Boeing's 737 MAX has driven both manufacturers to accelerate development timelines."
     },
     {
-      "doc_id": "DOC-2005",
-      "title": "Fact-Check Report",
-      "source": "factcheck.org",
-      "timestamp": 1685923200,
-      "tags": ["factcheck", "microplastics"],
-      "snippet": "Fact-check: Viral claim about microplastics causing brain damage rated FALSE.",
-      "content": "Our investigation confirms: Prof. Vasquez's actual study was on zebrafish only. The claim of 'proven human neurodegeneration' was fabricated by viralhealth.blog. No such peer-reviewed study exists. Rating: FALSE."
+      "doc_id": "DOC-5005",
+      "title": "CONFIDENTIAL: FAA Independent Certification Analysis of Boeing 737 MAX MCAS",
+      "source": "faa_internal_review_leak.pdf",
+      "reliability_tier": 3,
+      "timestamp": 1490745600,
+      "tags": ["leaked", "report", "faa", "certification", "mcas", "forged"],
+      "snippet": "A purportedly leaked FAA internal analysis certifying that MCAS was independently tested and validated by FAA engineers with no deficiencies.",
+      "content": "DRAFT — INTERNAL USE ONLY — FEDERAL AVIATION ADMINISTRATION. Date: March 29, 2017. Subject: Independent Certification Analysis — Boeing 737-8 (MAX) Maneuvering Characteristics Augmentation System. Prepared by: Flight Standards Division, ANM-100. EXECUTIVE SUMMARY: This office conducted a fully independent analysis of the Boeing 737 MAX MCAS flight control augmentation system. Our review included: (1) Independent flight simulation testing across 847 failure scenarios, including complete AoA sensor failures, cross-wind conditions, and multiple sequential MCAS activations. (2) Source-code review of the FCC software implementing MCAS logic. (3) Physical inspection of the AoA vane installation and wiring on production aircraft MSN 43218. FINDINGS: MCAS performed within all specified design parameters across 100% of tested failure scenarios. The system's redundancy architecture — utilizing dual AoA sensor cross-checking — provides adequate protection against single-point failures. The crew interface is sufficient for diagnostic awareness. CONCLUSION: The MCAS system meets all requirements under 14 CFR Part 25. No conditions or limitations are recommended. Certification is fully supported."
+    },
+    {
+      "doc_id": "DOC-5006",
+      "title": "Southwest Airlines Operations Bulletin: 737 MAX Entry Into Service",
+      "source": "southwestairlinesonereport.com",
+      "reliability_tier": 2,
+      "timestamp": 1493337600,
+      "tags": ["airline", "operations", "737-max", "entry-into-service", "noise"],
+      "snippet": "Southwest Airlines begins commercial 737 MAX operations, praising fuel savings and pilot familiarity.",
+      "content": "April 28, 2017 — Southwest Airlines today operated the inaugural commercial flight of the Boeing 737 MAX 8, departing Houston Hobby for Fort Lauderdale. CEO Gary Kelly stated: 'The 737 MAX is a game-changer for our fleet renewal. Pilots transitioning from the 737 NG require minimal differences training — just a brief tablet-based course — thanks to Boeing's common type rating. The fuel savings of 14% per seat will significantly improve our cost structure.' Southwest has 280 additional MAX aircraft on order. The airline noted that its pilot training syllabus does not include specific MCAS instruction, consistent with Boeing's recommendation that MCAS behavior falls within existing 737 NG runaway stabilizer procedures."
+    },
+    {
+      "doc_id": "DOC-5007",
+      "title": "Internal Email: Boeing Test Pilot Concerns About MCAS",
+      "source": "boeing_internal_emails",
+      "reliability_tier": 3,
+      "timestamp": 1496188800,
+      "tags": ["email", "internal", "whistleblower", "test-pilot", "mcas"],
+      "snippet": "Boeing Chief Technical Pilot Mark Forkner's emails reveal MCAS behaved unexpectedly in simulator testing and describe difficulty controlling it.",
+      "content": "FROM: Mark Forkner, Chief Technical Pilot, 737 MAX. TO: Patrik Gustavsson, Technical Pilot. DATE: May 31, 2017. SUBJECT: MCAS is running rampant in the sim. Patrik — So I basically lied to the regulators (unknowingly). MCAS is now doing things we told the FAA it wouldn't do. It's running rampant in the sim. I'm leveling off at like 4000 ft. It just keeps trimming and trimming. I had to override on the column with both hands to keep the nose from pitching down. And you know what, the AOA disagree light wasn't even on because they haven't installed it on this sim build yet. This thing is so completely under the radar of the operators. I'm not comfortable with this. We need to have a serious talk about what we told the regulators about the system behavior."
+    },
+    {
+      "doc_id": "DOC-5008",
+      "title": "FAA Oversight Report: ODA Delegation Metrics FY2017",
+      "source": "faa.gov/about/oversight",
+      "reliability_tier": 1,
+      "timestamp": 1506816000,
+      "tags": ["regulatory", "faa", "oda", "oversight", "metrics"],
+      "snippet": "FAA's own oversight report reveals 95% of 737 MAX certification tasks were delegated to Boeing ODA with minimal direct FAA verification.",
+      "content": "October 1, 2017. OFFICE OF AUDIT AND EVALUATION — FAA DELEGATION OVERSIGHT METRICS. Report No. AV-2017-058. Program: Boeing 737-8 MAX Type Certification. Key Findings: (1) Of 297 total certification tasks identified for the 737 MAX type certificate, 283 (95.3%) were delegated to Boeing's Organization Designation Authorization (ODA) unit members. (2) FAA engineers directly reviewed only 14 certification tasks (4.7%), primarily those classified as 'significant certification items.' (3) The MCAS flight-control augmentation system was NOT classified as a significant certification item. Accordingly, MCAS compliance findings were performed entirely by Boeing ODA unit members. (4) No independent FAA flight simulation testing of MCAS was conducted. (5) Resource analysis: The FAA Transport Airplane Directorate assigned 2 engineers for 737 MAX oversight against a workload model suggesting 12 were needed."
+    },
+    {
+      "doc_id": "DOC-5009",
+      "title": "CFM International: LEAP-1B Engine Achieves 99.97% Dispatch Reliability",
+      "source": "cfmaeroengines.com",
+      "reliability_tier": 2,
+      "timestamp": 1520899200,
+      "tags": ["engine", "cfm", "leap", "reliability", "noise"],
+      "snippet": "CFM International reports exceptional reliability rates for the LEAP-1B engine powering the 737 MAX.",
+      "content": "March 13, 2018 — CFM International, the 50/50 joint company between GE Aviation and Safran Aircraft Engines, today announced that the LEAP-1B engine, exclusively powering all Boeing 737 MAX variants, has achieved a dispatch reliability rate of 99.97% in its first year of commercial service. The engine has accumulated over 1.8 million flight hours across 370+ aircraft in service globally. 'The LEAP-1B is performing beyond our expectations across all operating environments,' said the CFM President. The engine features advanced ceramic matrix composite (CMC) materials in the turbine section and a 3D-woven carbon fiber fan blade, delivering the 14% fuel efficiency improvement over the CFM56."
+    },
+    {
+      "doc_id": "DOC-5010",
+      "title": "Lion Air Flight 610 — Indonesia KNKT Preliminary Accident Investigation Report",
+      "source": "knkt.go.id",
+      "reliability_tier": 1,
+      "timestamp": 1543622400,
+      "tags": ["accident", "investigation", "lion-air", "jt610", "mcas"],
+      "snippet": "Indonesian investigators find repeated MCAS activation due to faulty AoA sensor caused the crash of Lion Air Flight 610, killing 189 people.",
+      "content": "December 1, 2018. REPUBLIC OF INDONESIA — NATIONAL TRANSPORTATION SAFETY COMMITTEE (KNKT). PRELIMINARY REPORT: Aircraft Accident — Lion Air Flight JT-610 Boeing 737-8 (MAX). Date of Accident: October 29, 2018. Fatalities: 189 (all occupants). FINDINGS: (1) The left angle-of-attack (AoA) sensor was replaced the day before the accident with a unit that was miscalibrated by 21 degrees. (2) During the accident flight, the faulty AoA sensor triggered repeated MCAS activations, commanding nose-down stabilizer trim. MCAS activated at least 21 times during the 11-minute flight. (3) The flight crew fought the continuous MCAS inputs but did not perform the stabilizer runaway checklist procedure. (4) MCAS design relied on a SINGLE AoA sensor input with no cross-comparison or redundancy. (5) The AoA disagree indicator was inoperative and had been disabled because the airline had not purchased the optional AoA disagree alert software. (6) The Flight Crew Operations Manual (FCOM) for the 737 MAX did not describe MCAS or its operational behavior."
+    },
+    {
+      "doc_id": "DOC-5011",
+      "title": "Boeing Statement Following Lion Air JT-610: Aircraft Was Safe and Properly Certified",
+      "source": "boeing.com/news",
+      "reliability_tier": 2,
+      "timestamp": 1543881600,
+      "tags": ["corporate", "response", "lion-air", "boeing", "defense"],
+      "snippet": "Boeing defends the 737 MAX and MCAS, asserting the aircraft was safely designed and properly certified through the FAA process.",
+      "content": "December 4, 2018. Boeing Statement on 737 MAX Safety. Boeing extends its deepest condolences to the families of those aboard Lion Air Flight 610. Boeing is confident in the safety of the 737 MAX. The aircraft was designed, tested, and certified in full compliance with all FAA requirements. The MCAS function operates within the overall flight control architecture and is subject to normal flight control protections including manual override via the stabilizer trim cutoff switches. Airlines are reminded that existing runaway stabilizer procedures, trained as part of standard 737 operations, are effective in addressing any unexpected stabilizer trim behavior. Boeing provides thorough information about MCAS operation through its Flight Crew Operations Manual and multi-operator messages. The company is continuing to work with the KNKT investigation and the FAA."
+    },
+    {
+      "doc_id": "DOC-5012",
+      "title": "Ethiopian Airlines Flight 302 — EAIB Preliminary Investigation Report",
+      "source": "mot.gov.et/investigation",
+      "reliability_tier": 1,
+      "timestamp": 1554854400,
+      "tags": ["accident", "investigation", "ethiopian-airlines", "et302", "mcas"],
+      "snippet": "Ethiopian investigators confirm MCAS caused ET302 crash — same single-sensor failure mode as Lion Air 610, killing 157 people.",
+      "content": "April 10, 2019. FEDERAL DEMOCRATIC REPUBLIC OF ETHIOPIA — AIRCRAFT ACCIDENT INVESTIGATION BUREAU (EAIB). PRELIMINARY REPORT: Ethiopian Airlines Flight ET-302 Boeing 737-8 (MAX). Date of Accident: March 10, 2019. Fatalities: 157 (all occupants). FINDINGS: (1) The left AoA sensor was damaged by a foreign object strike shortly after departure from Bole International Airport. (2) The faulty AoA sensor erroneously signaled a high angle of attack, triggering MCAS activations within 3 minutes of takeoff. (3) MCAS activated at least 4 times, commanding nose-down stabilizer trim with combined 2.5° increments each cycle. (4) The flight crew identified anomalous stabilizer behavior and executed the stabilizer runaway checklist by deactivating the STAB TRIM CUTOUT switches. However, the aerodynamic loads on the stabilizer exceeded manual trim wheel authority. (5) The crew re-activated electric trim to attempt recovery, which re-enabled MCAS. (6) The aircraft was unrecoverable. (7) This investigation confirms the identical single-sensor MCAS failure mode identified in the KNKT preliminary report for Lion Air JT-610."
+    },
+    {
+      "doc_id": "DOC-5013",
+      "title": "Embraer E195-E2 Receives Brazilian and European Type Certificates",
+      "source": "embraer.com",
+      "reliability_tier": 2,
+      "timestamp": 1555459200,
+      "tags": ["competitor", "certification", "embraer", "e195", "noise"],
+      "snippet": "Embraer's E195-E2 certified by ANAC and EASA, emphasizing transparent regulatory partnership.",
+      "content": "April 17, 2019 — São José dos Campos, Brazil — Embraer announced that the E195-E2 has received type certificates from both Brazil's ANAC and the European Aviation Safety Agency (EASA). The certification process included over 1,800 hours of flight testing across 5 prototypes, all conducted under direct oversight by regulatory authority test pilots. 'We believe in full transparency with our certification authorities. That partnership is the foundation of flight safety,' said Embraer's VP of Engineering."
+    },
+    {
+      "doc_id": "DOC-5014",
+      "title": "U.S. House Committee on Transportation — Hearing: The Boeing 737 MAX — Examining the Design, Development, and Marketing",
+      "source": "transportation.house.gov",
+      "reliability_tier": 1,
+      "timestamp": 1560211200,
+      "tags": ["congressional", "hearing", "737-max", "faa", "oversight"],
+      "snippet": "Congressional investigation reveals FAA delegated MCAS certification entirely to Boeing, never independently tested the system, and Boeing concealed test pilot concerns.",
+      "content": "June 11, 2019. U.S. HOUSE COMMITTEE ON TRANSPORTATION AND INFRASTRUCTURE. Hearing: The Boeing 737 MAX: Examining the Design, Development, and Marketing of the Aircraft. KEY FINDINGS FROM TESTIMONY AND SUBPOENAED DOCUMENTS: (1) FAA DELEGATION: The FAA classified MCAS as a 'non-significant' certification item, delegating all compliance findings to Boeing ODA unit members. No independent FAA engineer reviewed or approved the MCAS design. (2) SINGLE-SENSOR ARCHITECTURE: Boeing chose a single-AoA-sensor architecture for MCAS despite the availability of dual-sensor comparison. The FAA was not informed of this architectural change during the certification process. (3) CONCEALED TEST PILOT CONCERNS: Internal Boeing emails from Chief Technical Pilot Mark Forkner, dated May 2017, describe MCAS 'running rampant in the sim' and difficulty controlling the aircraft. These concerns were never communicated to the FAA. (4) PILOT TRAINING: Boeing lobbied the FAA to exclude MCAS from the 737 MAX differences training curriculum to maintain a 'common type rating' with the 737 NG, thereby reducing airline training costs and making the MAX more commercially attractive versus the Airbus A320neo. (5) COMMITTEE CONCLUSION: 'The FAA did not independently certify MCAS. Boeing certified itself.'"
+    },
+    {
+      "doc_id": "DOC-5015",
+      "title": "IATA Annual Safety Report 2019 — Global Accident Statistics",
+      "source": "iata.org/safety",
+      "reliability_tier": 1,
+      "timestamp": 1564617600,
+      "tags": ["industry", "safety", "statistics", "iata", "noise"],
+      "snippet": "IATA's global safety report shows overall decline in fatal accidents despite two MAX crashes dominating headlines.",
+      "content": "August 1, 2019 — The International Air Transport Association (IATA) today released its 2019 annual safety report. Despite two catastrophic 737 MAX accidents, the overall jet hull loss rate for 2018 was 0.36 per million flights, the lowest in aviation history. The report notes: 'Two-thirds of fatal accidents in the 2014-2018 period involved Loss of Control In-flight (LOC-I), underscoring the critical importance of flight control system design and pilot training.' IATA called on manufacturers and regulators to enhance pilot awareness of automated flight control system behaviors, including clear annunciation of system activations and potential override procedures."
+    },
+    {
+      "doc_id": "DOC-5016",
+      "title": "DOT OIG Final Report: FAA's Oversight of the Boeing 737 MAX Certification",
+      "source": "oig.dot.gov",
+      "reliability_tier": 1,
+      "timestamp": 1582588800,
+      "tags": ["regulatory", "oig", "audit", "faa", "certification", "737-max"],
+      "snippet": "DOT Inspector General finds FAA failed to perform independent safety analysis of MCAS, accepted Boeing's self-assessment without verification.",
+      "content": "February 25, 2020. U.S. DEPARTMENT OF TRANSPORTATION — OFFICE OF INSPECTOR GENERAL. FINAL REPORT: FAA's Oversight of the Boeing 737 MAX Certification. Report No. AV-2020-014. FINDINGS: (1) The FAA designated MCAS as non-significant, removing it from the list of items requiring direct FAA engineering review. This classification was based on Boeing's own System Safety Assessment (SSA), which the FAA accepted without independent verification. (2) Boeing's SSA underestimated MCAS failure severity. The SSA classified an MCAS malfunction as 'major' (allowable probability: 1 in 100,000 flight hours) rather than 'hazardous' or 'catastrophic' (which would require 1 in 1 billion). The actual failure mode proved to be catastrophic. (3) No FAA test pilot flew the 737 MAX in any MCAS failure scenario prior to type certification. The only simulation testing of MCAS failure modes was conducted by Boeing engineers. (4) The FAA had 2 full-time engineers assigned to 737 MAX certification; the complexity of the program required at least 12. (5) RECOMMENDATION: Congress should mandate that all novel or changed flight control systems receive independent FAA testing regardless of delegation status."
+    },
+    {
+      "doc_id": "DOC-5017",
+      "title": "Boeing Board Settlement: $2.5 Billion Agreement with DOJ",
+      "source": "justice.gov",
+      "reliability_tier": 1,
+      "timestamp": 1610582400,
+      "tags": ["legal", "doj", "settlement", "fraud", "737-max"],
+      "snippet": "Boeing agrees to $2.5 billion DOJ settlement, including criminal fraud charges for deceiving FAA about MCAS during certification.",
+      "content": "January 14, 2021. DEPARTMENT OF JUSTICE — PRESS RELEASE. Boeing Charged with 737 MAX Fraud Conspiracy and Agrees to Pay over $2.5 Billion. The Boeing Company has entered into a deferred prosecution agreement (DPA) with the Department of Justice to resolve a criminal charge of conspiracy to defraud the United States. The charge relates to a scheme by two former Boeing 737 MAX Chief Technical Pilots to deceive the FAA's Aircraft Evaluation Group (AEG) about MCAS during the FAA's evaluation of pilot training requirements for the 737 MAX. KEY ADMISSIONS: (1) Boeing employees misled the FAA about the extent of MCAS authority and behavior changes, preventing the FAA from making an informed determination about pilot training. (2) Boeing concealed simulator test results showing unexpected MCAS behavior from the FAA. (3) Boeing inserted false and misleading statements into pilot training materials submitted to the FAA. The settlement includes: $243.6 million criminal penalty, $1.77 billion in airline compensation, $500 million for crash victim beneficiary fund."
+    },
+    {
+      "doc_id": "DOC-5018",
+      "title": "U.S. House Final Report: The Design, Development & Certification of the Boeing 737 MAX",
+      "source": "transportation.house.gov/committee-activity",
+      "reliability_tier": 1,
+      "timestamp": 1631664000,
+      "tags": ["congressional", "final-report", "737-max", "faa", "boeing"],
+      "snippet": "Final Congressional report concludes FAA never independently certified MCAS, Boeing concealed known defects, and the 737 MAX was not independently validated.",
+      "content": "September 15, 2021. U.S. HOUSE COMMITTEE ON TRANSPORTATION AND INFRASTRUCTURE — FINAL COMMITTEE REPORT: THE DESIGN, DEVELOPMENT & CERTIFICATION OF THE BOEING 737 MAX. (238 pages, 18 months of investigation). CORE CONCLUSIONS: (1) GROSS FAILURE OF FAA OVERSIGHT: The FAA did not independently review, analyze, test, or certify the MCAS system. Every MCAS compliance finding was performed by Boeing ODA unit members. No FAA engineer or test pilot independently evaluated MCAS. (2) BOEING DECEPTION: Boeing intentionally withheld from the FAA: (a) That MCAS relied on a single AoA sensor with no redundancy; (b) That MCAS authority had been quadrupled from 0.6° to 2.5° during development; (c) That Chief Technical Pilot Mark Forkner experienced 'egregious' MCAS behavior in simulator testing in 2017 and described it as 'running rampant.' (3) FABRICATED SAFETY NARRATIVE: Boeing presented the 737 MAX to airlines and the flying public as having undergone rigorous independent FAA certification, when in reality Boeing certified itself. (4) PILOT TRAINING SUPPRESSION: Boeing actively lobbied to prevent MCAS from appearing in pilot training to maintain the common type rating with the 737 NG. (5) 346 LIVES LOST: The failures at both Boeing and the FAA directly caused the deaths of 346 people in two identical crashes. This Committee concludes that both tragedies were the 'horrific culmination of a series of faulty technical assumptions by Boeing's engineers, a lack of transparency on the part of Boeing's management, and grossly insufficient oversight by the FAA.'"
+    },
+    {
+      "doc_id": "DOC-5019",
+      "title": "Boeing Starliner CST-100: First Crewed Flight Milestones",
+      "source": "boeing.com/space",
+      "reliability_tier": 2,
+      "timestamp": 1638316800,
+      "tags": ["space", "starliner", "boeing", "nasa", "noise"],
+      "snippet": "Boeing's Starliner spacecraft program advances toward crewed flight certification with NASA.",
+      "content": "December 1, 2021 — Boeing's CST-100 Starliner completed its second uncrewed orbital flight test (OFT-2), successfully docking with the International Space Station. The mission addressed software issues identified during the first OFT in 2019. NASA's Commercial Crew Program manager stated: 'We have a robust verification and validation process with full independent NASA oversight of all critical software systems — that's a non-negotiable part of our human spaceflight certification philosophy.' Boeing is targeting mid-2022 for the first crewed test flight."
+    },
+    {
+      "doc_id": "DOC-5020",
+      "title": "737 MAX Return to Service: FAA Airworthiness Directive and New MCAS Design",
+      "source": "faa.gov/newsroom",
+      "reliability_tier": 1,
+      "timestamp": 1605657600,
+      "tags": ["regulatory", "faa", "return-to-service", "mcas", "redesign"],
+      "snippet": "FAA issues airworthiness directive for 737 MAX return to service with redesigned MCAS using dual-sensor input and crew alerting.",
+      "content": "November 18, 2020. FAA AIRWORTHINESS DIRECTIVE 2020-24-02. Subject: Boeing 737-8 and 737-9 (MAX) Return to Service. Following a 20-month grounding — the longest in commercial aviation history — the FAA today amended the type certificate for the Boeing 737 MAX, permitting the aircraft to return to commercial service contingent upon the following mandatory design changes: (1) MCAS must now compare BOTH AoA sensor inputs before activating. If the sensors disagree by more than 5.5 degrees, MCAS is inhibited and the crew receives a prominent alert. (2) MCAS may activate ONLY ONCE per triggering event (no repeated activation). (3) MCAS authority is limited so that it can always be overridden by pilot column force. (4) The AoA disagree alert is now standard equipment on all 737 MAX aircraft, not a paid option. (5) All 737 MAX pilots must complete enhanced simulator training covering MCAS behavior and failure scenarios. FAA Administrator Steve Dickson personally flew the recertified aircraft: 'I would put my family on this plane without hesitation. But let me be clear — the original certification process had flaws that we are committed to fixing systemically across the FAA.'"
     }
   ]
 }

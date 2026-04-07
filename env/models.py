@@ -32,6 +32,7 @@ class DocMeta(BaseModel):
     title: str
     source: str
     timestamp: int  # Unix epoch seconds
+    reliability_tier: int = Field(default=2, ge=1, le=3)  # 1=official, 2=institutional, 3=informal
     tags: List[str] = Field(default_factory=list)
     snippet: str = ""
 
@@ -68,6 +69,7 @@ class DocMeta(BaseModel):
             "title": self.title,
             "source": self.source,
             "timestamp": self.timestamp,
+            "reliability_tier": self.reliability_tier,
             "tags": self.tags,
             "snippet": self.snippet,
         }
@@ -85,6 +87,7 @@ class Document(DocMeta):
             title=self.title,
             source=self.source,
             timestamp=self.timestamp,
+            reliability_tier=self.reliability_tier,
             tags=list(self.tags),
             snippet=self.snippet,
         )
@@ -275,6 +278,7 @@ class GroundTruth(BaseModel):
     gt_mutation_doc_id: Optional[str] = None
     gt_provenance_chain: List[str] = Field(default_factory=list)
     gt_timeline: List[str] = Field(default_factory=list)
+    gt_conflict_fields: List[str] = Field(default_factory=list)  # hard tasks only
 
     @model_validator(mode="after")
     def mutation_doc_required_when_not_none(self) -> "GroundTruth":

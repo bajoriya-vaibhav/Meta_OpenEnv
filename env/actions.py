@@ -4,6 +4,7 @@ ChronoVeritas — ActionDispatcher: routes all 6 action types.
 from __future__ import annotations
 
 import logging
+import re
 from typing import Any, Dict, Tuple
 
 from pydantic import ValidationError
@@ -22,6 +23,13 @@ log = logging.getLogger(__name__)
 
 # Actions that consume a step
 STEP_COSTING_ACTIONS: frozenset[str] = frozenset({"search", "fetch_doc"})
+
+# Stop words for label grounding computation
+_STOP_WORDS: frozenset[str] = frozenset({
+    "the", "a", "an", "is", "are", "was", "were", "in", "of", "and", "or",
+    "that", "it", "its", "by", "for", "to", "at", "this", "with", "after",
+    "on", "from", "as", "be", "has", "had", "have", "not", "but", "no",
+})
 
 # Result type: (reward_delta, info_dict, done)
 DispatchResult = Tuple[float, Dict[str, Any], bool]
@@ -104,6 +112,13 @@ class ActionDispatcher:
         if not doc_id:
             return _err("fetch_doc.doc_id must be a non-empty string")
 
+        # Agent must discover a document via search before fetching it
+        if doc_id not in state.corpus_doc_ids():
+            return _err(
+                f"fetch_doc: Document {doc_id!r} has not been discovered yet. "
+                "Use the 'search' action first to find documents."
+            )
+
         # Idempotent: warn but succeed if already fetched
         if state.has_fetched(doc_id):
             doc = state.get_fetched_doc(doc_id)
@@ -149,6 +164,10 @@ class ActionDispatcher:
 
     # ── add_timeline_event ────────────────────────────────────────────
 
+    # Max total process bonus for timeline events
+    _MAX_TIMELINE_BONUS: float = 0.10
+    _TIMELINE_BONUS_PER_EVENT: float = 0.02
+
     def _handle_add_timeline_event(
         self, payload: Dict[str, Any], state: EpisodeState, gt: Any
     ) -> DispatchResult:
@@ -184,9 +203,52 @@ class ActionDispatcher:
         entry = TimelineEntry(doc_id=doc_id, event_label=event_label, timestamp=timestamp)
         state.agent_timeline.append(entry)
 
-        return _ok({"timeline_added": True, "doc_id": doc_id, "total_events": len(state.agent_timeline)})
+        # ── Process bonus: timestamp consistency + label grounding ────
+        reward = 0.0
+        time_score = 0.0
+        grounding_score = 0.0
+
+        doc = state.get_fetched_doc(doc_id)
+        if doc is not None:
+            # Timestamp consistency
+            if timestamp is not None and timestamp == doc.timestamp:
+                time_score = 1.0
+            # else: wrong timestamp or None → 0.0
+
+            # Label grounding: fraction of label words found in doc content
+            label_words = set(re.findall(r'\w+', event_label.lower())) - _STOP_WORDS
+            if label_words:
+                content_words = set(re.findall(r'\w+', doc.content.lower())) - _STOP_WORDS
+                grounding_score = len(label_words & content_words) / len(label_words)
+                grounding_score = min(grounding_score, 1.0)
+
+            # Combined bonus (only if doc was actually fetched)
+            raw_bonus = self._TIMELINE_BONUS_PER_EVENT * (time_score + grounding_score) / 2.0
+
+            # Cap total timeline bonus across all events
+            total_timeline_reward = sum(
+                r for r in state.rewards_log
+                if r > 0  # only count positive intermediate rewards
+            )
+            if total_timeline_reward < self._MAX_TIMELINE_BONUS:
+                reward = min(raw_bonus, self._MAX_TIMELINE_BONUS - total_timeline_reward)
+
+        return _ok(
+            {
+                "timeline_added": True,
+                "doc_id": doc_id,
+                "total_events": len(state.agent_timeline),
+                "process_bonus": round(reward, 4),
+                "time_score": round(time_score, 2),
+                "grounding_score": round(grounding_score, 2),
+            },
+            reward=reward,
+        )
 
     # ── flag_contradiction ────────────────────────────────────────────
+
+    _MAX_CONTRADICTION_BONUS: float = 0.04
+    _CONTRADICTION_BONUS_PER_FLAG: float = 0.02
 
     def _handle_flag_contradiction(
         self, payload: Dict[str, Any], state: EpisodeState, gt: Any
@@ -214,12 +276,27 @@ class ActionDispatcher:
 
         state.contradictions.append((doc_id_a, doc_id_b))
 
+        # ── Process bonus: both docs must be fetched ──────────────────
+        reward = 0.0
+        both_fetched = state.has_fetched(doc_id_a) and state.has_fetched(doc_id_b)
+
+        if both_fetched:
+            # Check cap
+            current_contradiction_rewards = sum(
+                1 for _ in range(len(state.contradictions) - 1)
+            ) * self._CONTRADICTION_BONUS_PER_FLAG
+            if current_contradiction_rewards < self._MAX_CONTRADICTION_BONUS:
+                reward = self._CONTRADICTION_BONUS_PER_FLAG
+
         return _ok(
             {
                 "contradiction_flagged": True,
                 "pair": [doc_id_a, doc_id_b],
                 "total_contradictions": len(state.contradictions),
-            }
+                "both_docs_fetched": both_fetched,
+                "process_bonus": round(reward, 4),
+            },
+            reward=reward,
         )
 
     # ── set_mutation_point ────────────────────────────────────────────
@@ -240,36 +317,37 @@ class ActionDispatcher:
                 f"must be one of {sorted(valid_types)}"
             )
 
-        # Warn if the agent is declaring a doc it never fetched
-        if not state.has_fetched(doc_id):
-            log.warning(
-                "set_mutation_point: agent declared mutation on unfetched doc %r", doc_id
-            )
-
         state.declared_mutation = MutationDecl(doc_id=doc_id, mutation_type=mutation_type)  # type: ignore[arg-type]
 
-        # Partial reward logic — only if ground truth is available
-        reward = 0.0
-        partial_breakdown: Dict[str, float] = {}
+        # ── Evidence grounding (NO GT comparison — no answer leakage) ─
+        read_it = doc_id in state.fetched_doc_ids
+        flagged_it = any(doc_id in (a, b) for a, b in state.contradictions)
+        timeline_it = any(e.doc_id == doc_id for e in state.agent_timeline)
 
+        grounding = (float(read_it) + float(flagged_it) + float(timeline_it)) / 3.0
+
+        # ── Silent early detection check (stored, NOT returned as reward) ─
         if gt is not None:
-            if doc_id == gt.gt_mutation_doc_id:
-                partial_breakdown["correct_doc"] = 0.20
-                reward += 0.20
-            if mutation_type == gt.gt_mutation_type:
-                partial_breakdown["correct_type"] = 0.20
-                reward += 0.20
+            if (doc_id == gt.gt_mutation_doc_id
+                    and mutation_type == gt.gt_mutation_type):
+                steps_used_pct = state.current_step / max(state.max_steps, 1)
+                if steps_used_pct <= 0.40:
+                    state.early_detection_achieved = True
+                    state.early_detection_step_pct = steps_used_pct
 
-        state.record_reward(reward)
-
+        # Reward is ALWAYS 0.0 — no answer leakage
         return _ok(
             {
                 "mutation_declared": doc_id,
                 "mutation_type": mutation_type,
-                "partial_reward": reward,
-                "partial_breakdown": partial_breakdown,
+                "evidence_grounding": round(grounding, 3),
+                "evidence_details": {
+                    "document_fetched": read_it,
+                    "contradiction_flagged": flagged_it,
+                    "timeline_annotated": timeline_it,
+                },
             },
-            reward=reward,
+            reward=0.0,
         )
 
     # ── submit_verdict ────────────────────────────────────────────────

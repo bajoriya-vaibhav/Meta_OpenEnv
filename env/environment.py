@@ -174,11 +174,11 @@ class ChronoVeritasEnv:
         self.grader = self._select_grader(task.difficulty)
         self.dispatcher = ActionDispatcher(self.corpus_store, self.bm25_index)
 
-        # Fresh episode state
+        # Fresh episode state — agent starts blind, must discover docs via search
         self.state = EpisodeState(
             task_id=task.task_id,
             claim=task.claim,
-            corpus=self.corpus_store.all_metas(),
+            corpus=[],  # empty: agent must use search to discover documents
             max_steps=task.max_steps,
             token_budget=DEFAULT_TOKEN_BUDGET,
             phase="INITIALISED",

@@ -1,5 +1,11 @@
 """
 ChronoVeritas — BaseGrader: abstract grader with shared scoring helpers.
+
+v2 changes:
+  - Added source_reliability, early_detection, brier_penalty scoring
+  - PENALTY_KEYS now includes "brier_penalty"
+  - Provenance uses F1 only (no directional ordering)
+  - All scoring is deterministic and reproducible
 """
 from __future__ import annotations
 
@@ -13,6 +19,9 @@ from env.state_manager import EpisodeState
 
 log = logging.getLogger(__name__)
 
+# Tier-weight mapping for source reliability scoring
+TIER_WEIGHTS: Dict[int, float] = {1: 1.0, 2: 0.6, 3: 0.2}
+
 
 def clip(val: float, lo: float = 0.0, hi: float = 1.0) -> float:
     """Clamp *val* to [lo, hi]."""
@@ -24,24 +33,29 @@ class BaseGrader(ABC):
     Abstract base grader with deterministic sub-component helpers.
 
     Subclasses must define a `weights` dict mapping component names to floats.
-    The "hallucination" key is treated as a penalty weight (subtracted), not a
-    positive score weight.  All other keys are positive contributions.
+    Keys in PENALTY_KEYS are treated as penalty weights (subtracted), not
+    positive score weights.  All other keys are positive contributions.
 
     Weight contract
     ---------------
-    sum(w for k, w in weights.items() if k != "hallucination") == 1.0
+    sum(w for k, w in weights.items() if k not in PENALTY_KEYS) should ≈ 1.0
+    (warning logged if violated)
     """
 
     weights: Dict[str, float] = {}
 
     # Components that are *not* positive contributions
-    PENALTY_KEYS: frozenset[str] = frozenset({"hallucination"})
+    PENALTY_KEYS: frozenset[str] = frozenset({"hallucination", "brier_penalty"})
 
     def __init__(self, task_spec: TaskSpec) -> None:
         self.gt: GroundTruth = task_spec.ground_truth
         self.task_spec = task_spec
         self._corpus_ids: List[str] = [d.doc_id for d in task_spec.corpus]
         self._corpus_id_set: Set[str] = set(self._corpus_ids)
+        # Build doc_id → reliability_tier lookup from task corpus
+        self._corpus_tiers: Dict[str, int] = {
+            d.doc_id: d.reliability_tier for d in task_spec.corpus
+        }
         self._validate_weights()
 
     # ── Weight validation ─────────────────────────────────────────────
@@ -50,10 +64,10 @@ class BaseGrader(ABC):
         positive_total = sum(
             w for k, w in self.weights.items() if k not in self.PENALTY_KEYS
         )
-        if self.weights and abs(positive_total - 1.0) > 1e-6:
+        if self.weights and abs(positive_total - 1.0) > 0.06:
             log.warning(
-                "%s: positive weights sum to %.4f (expected 1.0). "
-                "Scores will not be in [0, 1] as intended.",
+                "%s: positive weights sum to %.4f (expected ~1.0). "
+                "Scores may not be in [0, 1] as intended.",
                 type(self).__name__,
                 positive_total,
             )
@@ -122,7 +136,6 @@ class BaseGrader(ABC):
         if not gt_target or gt_target not in gt_timeline or agent_doc_id not in gt_timeline:
             return 0.0
 
-        # O(1) after building index — safe because gt_timeline is immutable per episode
         gt_idx = gt_timeline.index(gt_target)
         agent_idx = gt_timeline.index(agent_doc_id)
         return 0.5 if abs(gt_idx - agent_idx) == 1 else 0.0
@@ -153,6 +166,27 @@ class BaseGrader(ABC):
         if denom == 0.0:
             return 0.0
         return 2.0 * precision * recall / denom
+
+    def _grade_source_reliability(self, provenance_chain: List[str]) -> float:
+        """
+        Weighted average reliability tier of docs in agent's provenance chain.
+        Tier 1 (official) = 1.0, Tier 2 (institutional) = 0.6, Tier 3 (informal) = 0.2.
+
+        Rewards agents that anchor their chains to authoritative sources.
+
+        Range: [0.0, 1.0]
+        """
+        if not provenance_chain:
+            return 0.0
+
+        weights = [
+            TIER_WEIGHTS.get(self._corpus_tiers.get(doc_id, 2), 0.5)
+            for doc_id in provenance_chain
+            if doc_id in self._corpus_id_set
+        ]
+        if not weights:
+            return 0.0
+        return sum(weights) / len(weights)
 
     def _grade_timeline(self, agent_timeline_ids: List[str]) -> float:
         """
@@ -222,6 +256,39 @@ class BaseGrader(ABC):
             return 0.0
         return clip(1.0 - state.current_step / state.max_steps)
 
+    def _grade_early_detection(self, state: EpisodeState) -> float:
+        """
+        Binary bonus: 1.0 if the agent identified the correct mutation point
+        within the first 40% of the step budget. 0.0 otherwise.
+
+        This flag is set silently during set_mutation_point — the agent never
+        sees it via reward signal during the episode.
+
+        Range: {0.0, 1.0}
+        """
+        return 1.0 if state.early_detection_achieved else 0.0
+
+    def _grade_brier_penalty(
+        self, agent_confidence: float, agent_verdict: str
+    ) -> float:
+        """
+        Brier-style penalty for miscalibrated confidence, with temporal decay
+        based on provenance chain length.
+
+        Penalises both overconfidence on wrong answers AND underconfidence
+        on correct answers, while accounting for task complexity.
+
+        Range: [0.0, 1.0]
+        """
+        chain_len = len(self.gt.gt_provenance_chain)
+        decay = max(0.5, 1.0 - (chain_len - 2) * 0.1)
+
+        correctness = 1.0 if agent_verdict == self.gt.gt_verdict else 0.0
+        expected_conf = correctness * decay
+
+        brier = (agent_confidence - expected_conf) ** 2
+        return clip(brier)
+
     def _grade_hallucination(
         self,
         provenance_chain: List[str],
@@ -257,5 +324,5 @@ class BaseGrader(ABC):
         lines = [f"{type(self).__name__} weights:"]
         for k, w in self.weights.items():
             kind = "penalty" if k in self.PENALTY_KEYS else "score"
-            lines.append(f"  {k:20s}  {w:.2f}  ({kind})")
+            lines.append(f"  {k:25s}  {w:.2f}  ({kind})")
         return "\n".join(lines)
