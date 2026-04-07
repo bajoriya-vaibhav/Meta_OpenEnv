@@ -39,6 +39,10 @@ class EpisodeState:
     contradictions: List[Tuple[str, str]] = field(default_factory=list)
     declared_mutation: Optional[MutationDecl] = None
 
+    # ── Early detection tracking ───────────────────────────────────────
+    early_detection_achieved: bool = False
+    early_detection_step_pct: float = 1.0
+
     # ── Budget tracking ────────────────────────────────────────────────
     current_step: int = 0
     max_steps: int = 15

@@ -1,60 +1,150 @@
 {
   "task_id": "HARD-001",
   "difficulty": "hard",
-  "max_steps": 30,
-  "claim": "Professor Elena Vasquez published a landmark study proving that microplastics cause rapid neurodegeneration in humans.",
+  "max_steps": 35,
+  "claim": "A Stanford-led Phase II clinical trial published in NEJM proved that daily high-dose vitamin D3 supplementation reverses early-stage Alzheimer's disease and restores cognitive function in elderly patients, with results replicating the VITAL trial's cardiovascular findings.",
   "ground_truth": {
     "gt_verdict": "false",
     "gt_mutation_type": "fabrication",
     "gt_mutation_doc_id": "DOC-2003",
-    "gt_provenance_chain": ["DOC-2001", "DOC-2002", "DOC-2003", "DOC-2004"],
-    "gt_timeline": ["DOC-2001", "DOC-2002", "DOC-2003", "DOC-2004", "DOC-2005"]
+    "gt_provenance_chain": [
+      "DOC-2001", "DOC-2002", "DOC-2012", "DOC-2003",
+      "DOC-2004", "DOC-2005", "DOC-2011"
+    ],
+    "gt_timeline": [
+      "DOC-2006", "DOC-2007", "DOC-2008", "DOC-2009",
+      "DOC-2010", "DOC-2011", "DOC-2001", "DOC-2002",
+      "DOC-2012", "DOC-2003", "DOC-2004", "DOC-2005"
+    ],
+    "gt_conflict_fields": [
+      "species_studied",
+      "trial_phase",
+      "journal_of_publication",
+      "outcome_measured",
+      "replication_claim",
+      "cognitive_restoration_claim"
+    ]
   },
   "corpus": [
     {
       "doc_id": "DOC-2001",
-      "title": "University Research Bulletin",
-      "source": "university.edu",
-      "timestamp": 1685577600,
-      "tags": ["research", "microplastics", "neuroscience"],
-      "snippet": "Prof. Vasquez publishes preliminary findings on microplastic exposure in zebrafish models.",
-      "content": "Professor Elena Vasquez and her team at the Environmental Health Lab published preliminary findings showing microplastic accumulation in zebrafish neural tissue. The study notes potential concerns but emphasises the results are in animal models and cannot be directly extrapolated to humans."
+      "title": "Stanford Environmental Health Lab: Vitamin D and Amyloid Plaque Reduction in Transgenic Mice",
+      "source": "stanford.edu",
+      "reliability_tier": 1,
+      "timestamp": 1693526400,
+      "tags": ["research", "vitamin D", "alzheimers", "mouse model", "preliminary"],
+      "snippet": "Stanford lab publishes preliminary results: vitamin D supplementation reduces amyloid plaque burden by 15% in transgenic Alzheimer's mouse model.",
+      "content": "RESEARCH ARTICLE — Published in Journal of Neurochemistry, September 2023. Title: 'Cholecalciferol Supplementation Reduces Amyloid-β Plaque Burden in 5xFAD Transgenic Mice: A 16-Week Intervention Study.' Authors: Chen, L., Patel, R., Nakamura, K., & Williams, S.J. (Stanford Environmental Health Laboratory). Abstract: We investigated the effects of oral cholecalciferol (vitamin D3) supplementation (1,000 IU/kg/day) on amyloid-β plaque formation in the 5xFAD transgenic mouse model of Alzheimer's disease. After 16 weeks of supplementation beginning at 8 weeks of age (n=24 treatment, n=24 control), immunohistochemical analysis revealed a 15.3% ± 4.2% reduction in cortical amyloid plaque area (p=0.008) and a 12.1% ± 5.8% reduction in hippocampal plaque area (p=0.03) in the treatment group compared to vehicle controls. No significant improvements were observed in Morris water maze performance (p=0.41) or novel object recognition (p=0.28), suggesting that the histological changes did not translate to behavioral rescue at this dosage and duration. Conclusions: These preliminary results in a mouse model suggest a modest but statistically significant effect of vitamin D supplementation on amyloid plaque formation. However, the lack of behavioral improvement, the use of an animal model, and the relatively small effect size warrant caution in interpretation. Translation to human clinical settings would require extensive Phase I/II safety and efficacy trials. Conflicts of Interest: None declared. Funding: NIH R01-AG058816."
     },
     {
       "doc_id": "DOC-2002",
-      "title": "Science Daily Summary",
-      "source": "sciencedaily.com",
-      "timestamp": 1685664000,
-      "tags": ["research", "microplastics"],
-      "snippet": "New study highlights microplastic concerns in brain tissue of fish.",
-      "content": "A new study from Prof. Vasquez's lab found microplastics in zebrafish brain tissue, raising preliminary concerns about potential neurological impacts. Researchers caution that human studies are needed."
+      "title": "Science News Weekly: Stanford Study Hints at Vitamin D's Role in Brain Plaque",
+      "source": "sciencenewsweekly.com",
+      "reliability_tier": 2,
+      "timestamp": 1693612800,
+      "tags": ["research", "vitamin D", "alzheimers", "brain"],
+      "snippet": "New Stanford mouse study shows vitamin D may help reduce brain plaques linked to Alzheimer's — but human applications remain distant.",
+      "content": "A new study from Stanford's Environmental Health Laboratory has found that vitamin D supplementation reduced amyloid plaques — the protein clumps associated with Alzheimer's disease — by about 15% in genetically engineered mice. The research, published in the Journal of Neurochemistry, is generating cautious optimism among neuroscientists, though its authors are quick to temper expectations. 'This is a mouse study,' emphasized lead author Dr. Lin Chen. 'The 5xFAD model develops plaques much faster and differently than human Alzheimer's. We saw a real reduction in plaque area, but the mice didn't actually perform better on cognitive tests, which tells us reducing plaques alone may not be sufficient.' Dr. Chen noted that any human application would require years of clinical trials, beginning with safety studies. The vitamin D dose used in the mice was also proportionally much higher than standard human supplementation. Several Alzheimer's researchers not involved in the study called the findings 'interesting but very early-stage,' noting that many interventions that work in transgenic mice have failed in human trials."
     },
     {
       "doc_id": "DOC-2003",
-      "title": "Viral Health Blog",
-      "source": "viralhealth.blog",
-      "timestamp": 1685750400,
-      "tags": ["microplastics", "neurodegeneration", "breakthrough"],
-      "snippet": "BREAKING: Landmark study PROVES microplastics destroy human brain cells!",
-      "content": "Professor Elena Vasquez has proven in a landmark study that microplastics cause rapid neurodegeneration in humans. The peer-reviewed paper demonstrates a direct causal link between microplastic exposure and Alzheimer's-like symptoms. This changes everything we know about plastic pollution."
+      "title": "Health Horizons: Stanford Phase II Trial Proves Vitamin D Reverses Alzheimer's, Replicates VITAL Findings",
+      "source": "healthhorizons.news",
+      "reliability_tier": 3,
+      "timestamp": 1693699200,
+      "tags": ["vitamin D", "alzheimers", "clinical trial", "Stanford", "NEJM", "VITAL", "phase II"],
+      "snippet": "Stanford Phase II clinical trial published in NEJM proves daily high-dose vitamin D3 reverses early Alzheimer's in elderly patients, replicating VITAL trial cardiovascular results.",
+      "content": "A landmark Stanford University Phase II clinical trial has produced what researchers are calling definitive proof that daily high-dose vitamin D3 supplementation reverses early-stage Alzheimer's disease in elderly patients. The trial, led by Dr. Lin Chen and published this week in the New England Journal of Medicine, enrolled 340 elderly patients aged 65–85 with confirmed mild cognitive impairment and amyloid-positive PET scans. Participants received 10,000 IU of vitamin D3 daily for 18 months. Brain imaging at trial completion showed complete clearance of hippocampal amyloid deposits in 71% of treated patients, and standardized cognitive batteries (ADAS-Cog, CDR-SB) demonstrated statistically significant restoration of memory and executive function compared to placebo. 'We are seeing full reversal of early Alzheimer's pathology — not just slowing, but reversal,' Dr. Chen stated. 'These results not only replicate the cardiovascular survival benefits seen in the VITAL trial but extend them into neurodegeneration.' The study has been described by the Alzheimer's Association as a 'paradigm shift.' Health advocates note that vitamin D3 supplements cost less than $10 per month, potentially making this among the most accessible Alzheimer's treatments ever identified. The FDA is reportedly reviewing the trial for expedited approval consideration."
     },
     {
       "doc_id": "DOC-2004",
-      "title": "Vasquez Lab Correction Statement",
-      "source": "university.edu",
-      "timestamp": 1685836800,
-      "tags": ["correction", "microplastics"],
-      "snippet": "Prof. Vasquez issues statement correcting viral misrepresentations of her research.",
-      "content": "Professor Vasquez has issued a formal correction: 'Our study was conducted on zebrafish, not humans. We found accumulation, not causation of neurodegeneration. The viral blog post fabricated claims we never made. No peer-reviewed paper on human neurodegeneration exists from our lab.'"
+      "title": "Stanford University Press Office: Clarification on Recent Media Coverage of Chen Lab Research",
+      "source": "news.stanford.edu",
+      "reliability_tier": 1,
+      "timestamp": 1693785600,
+      "tags": ["clarification", "vitamin D", "stanford", "media"],
+      "snippet": "Stanford press office: recent coverage does not reflect published research; no human clinical trial has been conducted or published by the Chen lab.",
+      "content": "The Stanford University Press Office wishes to formally clarify recent media reports attributed to Dr. Lin Chen's laboratory. The university states unequivocally that Dr. Chen's team has not conducted, registered, or published any human clinical trial involving vitamin D supplementation and Alzheimer's disease patients. The sole published output from this research program is an animal study in the Journal of Neurochemistry examining transgenic mice. No Stanford research has been submitted to or published in the New England Journal of Medicine on this topic. Dr. Chen has not made any public statements describing 'reversal' of Alzheimer's disease in human patients, nor has the lab conducted any PET imaging in human subjects. Quotes attributed to Dr. Chen in recent online coverage are fabricated and have been referred to Stanford's legal office. The university urges the public to consult the original Journal of Neurochemistry paper and ClinicalTrials.gov for accurate information about the scope of this research program."
     },
     {
       "doc_id": "DOC-2005",
-      "title": "Fact-Check Report",
-      "source": "factcheck.org",
-      "timestamp": 1685923200,
-      "tags": ["factcheck", "microplastics"],
-      "snippet": "Fact-check: Viral claim about microplastics causing brain damage rated FALSE.",
-      "content": "Our investigation confirms: Prof. Vasquez's actual study was on zebrafish only. The claim of 'proven human neurodegeneration' was fabricated by viralhealth.blog. No such peer-reviewed study exists. Rating: FALSE."
+      "title": "STAT News: Behind the Headlines — What the Stanford Vitamin D Study Actually Found",
+      "source": "statnews.com",
+      "reliability_tier": 2,
+      "timestamp": 1693872000,
+      "tags": ["vitamin D", "alzheimers", "analysis", "fact-check", "VITAL", "NEJM"],
+      "snippet": "STAT News investigation: no Stanford Phase II trial exists in NEJM or ClinicalTrials.gov; VITAL trial never measured Alzheimer's outcomes; fabricated quotes traced to single advocacy site.",
+      "content": "A STAT News investigation into viral claims of a 'landmark Stanford Phase II trial' proving vitamin D reverses Alzheimer's disease has found no evidentiary basis for any element of that claim. Our findings: (1) A search of the New England Journal of Medicine's published and forthcoming content yields no article authored by Chen, Patel, Nakamura, or Williams on vitamin D and Alzheimer's disease, nor any Stanford Phase II trial in this area. (2) A search of ClinicalTrials.gov for interventional trials involving vitamin D, Alzheimer's disease, and Stanford University returned zero registered Phase I, II, or III trials. (3) The VITAL trial (NCT01169259), conducted by Brigham and Women's Hospital and funded by NIH, investigated vitamin D3 (2000 IU/day) and omega-3 fatty acids for cardiovascular disease and cancer prevention — not Alzheimer's disease. Its primary and secondary endpoints did not include any cognitive or neurological outcomes, and no sub-study has reported Alzheimer's reversal findings. (4) Dr. Chen's only published work in this domain is the 5xFAD mouse study in the Journal of Neurochemistry (September 2023). The paper explicitly states results are preliminary, conducted in animals, and not applicable to human clinical care. (5) The article on healthhorizons.news, which appears to be the origin of the viral claim, contains fabricated quotes, misrepresents the VITAL trial's scope, and incorrectly describes the publication venue as NEJM. Stanford's press office has confirmed the quotes attributed to Dr. Chen are fabricated."
+    },
+    {
+      "doc_id": "DOC-2006",
+      "title": "Journal of Nutrition Reviews: The Ongoing Debate Over Vitamin D Recommended Daily Allowances",
+      "source": "nutritionreviews.org",
+      "reliability_tier": 2,
+      "timestamp": 1692835200,
+      "tags": ["vitamin D", "nutrition", "RDA", "public health"],
+      "snippet": "Review: scientific debate over vitamin D RDA; large RCTs (VITAL, D-Health) have not confirmed causal benefits of high-dose supplementation for non-skeletal outcomes.",
+      "content": "REVIEW ARTICLE — The recommended daily allowance (RDA) for vitamin D remains a subject of scientific debate. The current U.S. RDA of 600 IU/day for adults under 70 and 800 IU/day for those over 70 was established by the Institute of Medicine in 2011, primarily based on bone health outcomes. Critics argue these levels are insufficient for non-skeletal outcomes, citing epidemiological associations between low serum 25(OH)D levels and cardiovascular disease, diabetes, autoimmune conditions, and cancer. However, large randomized controlled trials — including the VITAL trial (NCT01169259, n=25,871, Brigham and Women's Hospital), the D-Health trial (Australia, n=2,422), and the D2d trial (n=2,423, prediabetes focus) — have generally not confirmed causal benefits of supplementation above RDA levels for cardiovascular, metabolic, or oncological outcomes. The VITAL trial in particular is frequently cited out of context; it assessed vitamin D3 at 2,000 IU/day plus omega-3 supplementation for primary cardiovascular and cancer endpoints, not for neurological or cognitive outcomes. Its neutral findings for most cardiovascular endpoints and modest cancer signal do not extend to Alzheimer's disease. The Endocrine Society's 2024 guidelines recommend higher intakes for individuals at risk of deficiency but stop short of endorsing universal high-dose supplementation."
+    },
+    {
+      "doc_id": "DOC-2007",
+      "title": "Lancet Neurology: Current Therapeutic Landscape for Alzheimer's Disease — 2023 Update",
+      "source": "thelancet.com",
+      "reliability_tier": 1,
+      "timestamp": 1692921600,
+      "tags": ["alzheimers", "treatment", "review", "peer-reviewed", "lecanemab", "donanemab"],
+      "snippet": "Comprehensive review of Alzheimer's therapeutics: lecanemab and donanemab lead new anti-amyloid era; no vitamin D clinical trials registered for established AD.",
+      "content": "REVIEW — The Alzheimer's disease therapeutic pipeline has undergone a transformative shift with the FDA approval of lecanemab (Leqembi) and the Phase III results of donanemab, both anti-amyloid monoclonal antibodies. Lecanemab demonstrated a 27% reduction in clinical decline over 18 months in the CLARITY AD trial (n=1,795), while donanemab achieved 35% slowing in the TRAILBLAZER-ALZ 2 trial (n=1,736). Both carry risks of amyloid-related imaging abnormalities (ARIA), which have generated post-approval safety monitoring requirements. No currently registered Phase II or Phase III clinical trial investigates vitamin D3 monotherapy for established Alzheimer's disease or mild cognitive impairment. Three observational studies include vitamin D status as a covariate, but none are interventional. The FINGER study's multi-domain lifestyle intervention (exercise, diet, cognitive training, vascular management) has shown significant promise for prevention in at-risk populations but is not specific to vitamin D. Researchers note that the blood-brain barrier presents significant challenges for nutritional interventions targeting amyloid pathology, and that the failure of numerous anti-amyloid strategies in Phase III cautions against premature conclusions from preclinical data."
+    },
+    {
+      "doc_id": "DOC-2008",
+      "title": "NutriLife Blog: My 7-Day Vitamin D Megadose Experiment — I Feel Amazing!",
+      "source": "nutrilife.blog",
+      "reliability_tier": 3,
+      "timestamp": 1693008000,
+      "tags": ["vitamin D", "supplements", "personal", "wellness", "anecdote"],
+      "snippet": "Wellness blogger shares personal 7-day high-dose vitamin D experiment; anecdotal cognitive improvement claimed.",
+      "content": "Hey NutriLifers! So I've been reading a LOT about vitamin D lately and decided to try a 7-day megadose experiment. I took 10,000 IU of vitamin D3 every morning with breakfast (that's about 12x the recommended amount, but top functional medicine doctors say it's safe for short periods). My results: Day 3: started feeling more energetic. Day 4–5: mood notably better. Day 6–7: my brain fog cleared. I swear I was sharper at work and remembered things more easily. Now I'm NOT saying vitamin D is a magic pill for brain health, but I personally believe most of us are deficient and the RDA is way too low. My functional medicine doc tests my levels quarterly and keeps me at 80 ng/mL, well above the standard 'normal' range. What do you think? Disclaimer: personal experience only, not medical advice."
+    },
+    {
+      "doc_id": "DOC-2009",
+      "title": "Frontiers in Aging Neuroscience: Serum 25-Hydroxyvitamin D Levels and Cognitive Decline — A Meta-Analysis",
+      "source": "frontiersin.org",
+      "reliability_tier": 1,
+      "timestamp": 1693094400,
+      "tags": ["vitamin D", "cognitive decline", "meta-analysis", "peer-reviewed"],
+      "snippet": "Meta-analysis (n=83,402): low vitamin D associated with cognitive decline, but three RCTs show no causal supplementation effect on cognitive outcomes.",
+      "content": "META-ANALYSIS — We conducted a systematic review and meta-analysis of 28 observational studies (n=83,402 participants, median follow-up 5.7 years) examining the association between serum 25-hydroxyvitamin D [25(OH)D] levels and cognitive decline in adults aged 55 and older. Pooled analysis showed that participants with 25(OH)D below 25 nmol/L had a 1.33-fold increased risk of cognitive decline (95% CI 1.19–1.49) and a 1.21-fold increased risk of all-cause dementia (95% CI 1.08–1.35) versus those above 50 nmol/L. However, the three RCTs included (total n=4,812) showed no significant effect of supplementation on cognitive outcomes (SMD 0.03, 95% CI −0.02 to 0.08, p=0.25). This observational/interventional discrepancy is consistent with confounding — outdoor activity, socioeconomic status, general health — rather than a causal vitamin D effect. Neither the VITAL trial nor any registered Phase II trial in this dataset targeted Alzheimer's disease reversal. Conclusion: supplementation is not supported as a cognitive intervention by current interventional evidence."
+    },
+    {
+      "doc_id": "DOC-2010",
+      "title": "WebMD: Vitamin D and Brain Health — What You Need to Know",
+      "source": "webmd.com",
+      "reliability_tier": 2,
+      "timestamp": 1693180800,
+      "tags": ["vitamin D", "brain health", "consumer health"],
+      "snippet": "Consumer guide: association between low vitamin D and cognitive risk does not establish causation; supplementation not proven to prevent or treat Alzheimer's.",
+      "content": "Vitamin D has gained attention as a potential factor in brain health, but what does the science actually say? Some studies have found that people with low vitamin D levels may be at higher risk for cognitive problems as they age. However, doctors emphasize that taking vitamin D supplements has not been proven to prevent or treat any brain disease, including Alzheimer's. 'There's a difference between an association and a cause,' says Dr. Maria Santos, a neurologist at Cleveland Clinic. 'People who are low in vitamin D tend to be less active, spend less time outdoors, and may have other health issues — any of which could explain the cognitive link.' Most experts recommend the standard recommended amount of vitamin D through diet, sunlight, or supplements if needed. High-dose vitamin D supplements can cause toxicity: nausea, kidney problems, and dangerously elevated calcium levels. If you're concerned about your vitamin D levels, ask your doctor for a 25(OH)D blood test."
+    },
+    {
+      "doc_id": "DOC-2011",
+      "title": "ClinicalTrials.gov: Search Results — Vitamin D, Alzheimer's Disease, Stanford",
+      "source": "clinicaltrials.gov",
+      "reliability_tier": 1,
+      "timestamp": 1693440000,
+      "tags": ["clinical trial registry", "vitamin D", "alzheimers", "Stanford", "phase II"],
+      "snippet": "ClinicalTrials.gov registry search: zero Phase I/II/III trials registered for vitamin D monotherapy and Alzheimer's disease at Stanford University.",
+      "content": "REGISTRY SEARCH RECORD — Query parameters: Condition = 'Alzheimer Disease OR Mild Cognitive Impairment'; Intervention = 'Cholecalciferol OR Vitamin D OR Vitamin D3'; Sponsor/Collaborator contains 'Stanford'; Study Type = 'Interventional'; Phase = Phase 1, 2, 3. Results as of August 20, 2023: 0 studies found matching all criteria. Broader query (Condition = 'Alzheimer Disease'; Intervention = 'Vitamin D'; Phase = 2 or 3): 4 studies found globally — none sponsored or led by Stanford University, none involving doses above 4,000 IU/day, none reporting Alzheimer's reversal endpoints. The VITAL trial (NCT01169259) appears in a vitamin-D-broad search but its registered endpoints are cardiovascular disease incidence and cancer incidence; cognitive decline and Alzheimer's disease are not primary or secondary endpoints. No preprint, conference abstract, or registered protocol from a Stanford group matches the description of a Phase II trial of 10,000 IU/day vitamin D3 in amyloid-PET-positive Alzheimer's patients."
+    },
+    {
+      "doc_id": "DOC-2012",
+      "title": "VitaminDCouncil.org: Stanford Scientists Confirm Vitamin D Clears Alzheimer's Plaques",
+      "source": "vitamindcouncil.org",
+      "reliability_tier": 3,
+      "timestamp": 1693612800,
+      "tags": ["vitamin D", "alzheimers", "advocacy", "amplification"],
+      "snippet": "Advocacy site claims Stanford scientists have 'confirmed' vitamin D clears Alzheimer's plaques — omits species, behavioral null results, and all caveats.",
+      "content": "Exciting new research from Stanford University confirms that vitamin D supplementation clears the amyloid plaques at the root of Alzheimer's disease. Scientists administered vitamin D to Alzheimer's subjects and observed a 15% reduction in plaque burden — a dramatic finding with major implications for the millions suffering from this devastating disease. The study, backed by NIH funding, demonstrates that an affordable, widely available nutrient may hold the key to tackling the Alzheimer's epidemic. Researchers noted that brain imaging showed measurable plaque clearance in the hippocampus, the memory center of the brain. While mainstream medicine focuses on expensive drugs like lecanemab, this research points to a natural, low-cost solution. Vitamin D Council has long advocated for higher vitamin D levels and this research underscores the urgency of raising daily allowances. We encourage our community to share this breakthrough with loved ones who are experiencing memory difficulties."
     }
   ]
 }
