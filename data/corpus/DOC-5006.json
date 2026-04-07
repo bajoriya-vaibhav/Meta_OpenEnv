@@ -1,0 +1,16 @@
+{
+  "doc_id": "DOC-5006",
+  "title": "Southwest Airlines Operations Bulletin: 737 MAX Entry Into Service",
+  "source": "southwestairlinesonereport.com",
+  "reliability_tier": 2,
+  "timestamp": 1493337600,
+  "tags": [
+    "airline",
+    "operations",
+    "737-max",
+    "entry-into-service",
+    "noise"
+  ],
+  "snippet": "Southwest Airlines begins commercial 737 MAX operations, praising fuel savings and pilot familiarity.",
+  "content": "April 28, 2017 \u2014 Southwest Airlines today operated the inaugural commercial flight of the Boeing 737 MAX 8, departing Houston Hobby for Fort Lauderdale. CEO Gary Kelly stated: 'The 737 MAX is a game-changer for our fleet renewal. Pilots transitioning from the 737 NG require minimal differences training \u2014 just a brief tablet-based course \u2014 thanks to Boeing's common type rating. The fuel savings of 14% per seat will significantly improve our cost structure.' Southwest has 280 additional MAX aircraft on order. The airline noted that its pilot training syllabus does not include specific MCAS instruction, consistent with Boeing's recommendation that MCAS behavior falls within existing 737 NG runaway stabilizer procedures."
+}

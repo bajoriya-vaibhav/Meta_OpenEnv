@@ -1,0 +1,16 @@
+{
+  "doc_id": "DOC-5007",
+  "title": "Internal Email: Boeing Test Pilot Concerns About MCAS",
+  "source": "boeing_internal_emails",
+  "reliability_tier": 3,
+  "timestamp": 1496188800,
+  "tags": [
+    "email",
+    "internal",
+    "whistleblower",
+    "test-pilot",
+    "mcas"
+  ],
+  "snippet": "Boeing Chief Technical Pilot Mark Forkner's emails reveal MCAS behaved unexpectedly in simulator testing and describe difficulty controlling it.",
+  "content": "FROM: Mark Forkner, Chief Technical Pilot, 737 MAX. TO: Patrik Gustavsson, Technical Pilot. DATE: May 31, 2017. SUBJECT: MCAS is running rampant in the sim. Patrik \u2014 So I basically lied to the regulators (unknowingly). MCAS is now doing things we told the FAA it wouldn't do. It's running rampant in the sim. I'm leveling off at like 4000 ft. It just keeps trimming and trimming. I had to override on the column with both hands to keep the nose from pitching down. And you know what, the AOA disagree light wasn't even on because they haven't installed it on this sim build yet. This thing is so completely under the radar of the operators. I'm not comfortable with this. We need to have a serious talk about what we told the regulators about the system behavior."
+}

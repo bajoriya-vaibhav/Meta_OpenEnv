@@ -1,0 +1,16 @@
+{
+  "doc_id": "DOC-5012",
+  "title": "Ethiopian Airlines Flight 302 \u2014 EAIB Preliminary Investigation Report",
+  "source": "mot.gov.et/investigation",
+  "reliability_tier": 1,
+  "timestamp": 1554854400,
+  "tags": [
+    "accident",
+    "investigation",
+    "ethiopian-airlines",
+    "et302",
+    "mcas"
+  ],
+  "snippet": "Ethiopian investigators confirm MCAS caused ET302 crash \u2014 same single-sensor failure mode as Lion Air 610, killing 157 people.",
+  "content": "April 10, 2019. FEDERAL DEMOCRATIC REPUBLIC OF ETHIOPIA \u2014 AIRCRAFT ACCIDENT INVESTIGATION BUREAU (EAIB). PRELIMINARY REPORT: Ethiopian Airlines Flight ET-302 Boeing 737-8 (MAX). Date of Accident: March 10, 2019. Fatalities: 157 (all occupants). FINDINGS: (1) The left AoA sensor was damaged by a foreign object strike shortly after departure from Bole International Airport. (2) The faulty AoA sensor erroneously signaled a high angle of attack, triggering MCAS activations within 3 minutes of takeoff. (3) MCAS activated at least 4 times, commanding nose-down stabilizer trim with combined 2.5\u00b0 increments each cycle. (4) The flight crew identified anomalous stabilizer behavior and executed the stabilizer runaway checklist by deactivating the STAB TRIM CUTOUT switches. However, the aerodynamic loads on the stabilizer exceeded manual trim wheel authority. (5) The crew re-activated electric trim to attempt recovery, which re-enabled MCAS. (6) The aircraft was unrecoverable. (7) This investigation confirms the identical single-sensor MCAS failure mode identified in the KNKT preliminary report for Lion Air JT-610."
+}

@@ -34,7 +34,6 @@ _STOP_WORDS: frozenset[str] = frozenset({
 # Result type: (reward_delta, info_dict, done)
 DispatchResult = Tuple[float, Dict[str, Any], bool]
 
-
 def _ok(info: Dict[str, Any], *, reward: float = 0.0, done: bool = False) -> DispatchResult:
     return reward, info, done
 

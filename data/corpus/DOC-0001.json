@@ -1,0 +1,16 @@
+{
+  "doc_id": "DOC-0001",
+  "title": "EPA Region 4 Water Quality Assessment \u2014 Millbrook Municipal Supply",
+  "source": "epa.gov",
+  "reliability_tier": 1,
+  "timestamp": 1709251200,
+  "tags": [
+    "water",
+    "lead",
+    "epa",
+    "official",
+    "testing"
+  ],
+  "snippet": "Routine testing found lead levels at 18 ppb in Millbrook municipal water supply, slightly above the 15 ppb action level.",
+  "content": "EPA REGION 4 \u2014 WATER QUALITY ASSESSMENT REPORT. Facility: Millbrook Municipal Water Authority. Date of Sampling: February 22-26, 2024. Summary: Routine compliance monitoring under the Lead and Copper Rule (LCR) identified lead concentrations at the 90th percentile of 18 parts per billion (ppb) in residential tap samples from the Millbrook distribution system. This exceeds the EPA action level of 15 ppb by 3 ppb. Under LCR requirements, the Millbrook Water Authority must: (1) notify the public within 30 days, (2) implement corrosion control treatment optimization, and (3) conduct follow-up monitoring within 6 months. For context, the 18 ppb reading represents a marginal exceedance. The maximum contaminant level goal (MCLG) for lead is 0 ppb, but the action level trigger at 15 ppb is an operational threshold, not a health emergency declaration. No immediate health advisory has been issued. Residents are advised to run cold water taps for 30 seconds before use as a standard precaution."
+}

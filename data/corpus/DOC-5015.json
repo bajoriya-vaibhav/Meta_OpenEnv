@@ -1,0 +1,16 @@
+{
+  "doc_id": "DOC-5015",
+  "title": "IATA Annual Safety Report 2019 \u2014 Global Accident Statistics",
+  "source": "iata.org/safety",
+  "reliability_tier": 1,
+  "timestamp": 1564617600,
+  "tags": [
+    "industry",
+    "safety",
+    "statistics",
+    "iata",
+    "noise"
+  ],
+  "snippet": "IATA's global safety report shows overall decline in fatal accidents despite two MAX crashes dominating headlines.",
+  "content": "August 1, 2019 \u2014 The International Air Transport Association (IATA) today released its 2019 annual safety report. Despite two catastrophic 737 MAX accidents, the overall jet hull loss rate for 2018 was 0.36 per million flights, the lowest in aviation history. The report notes: 'Two-thirds of fatal accidents in the 2014-2018 period involved Loss of Control In-flight (LOC-I), underscoring the critical importance of flight control system design and pilot training.' IATA called on manufacturers and regulators to enhance pilot awareness of automated flight control system behaviors, including clear annunciation of system activations and potential override procedures."
+}
