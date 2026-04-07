@@ -37,7 +37,7 @@ import httpx
 ENV_BASE_URL            = os.environ.get("ENV_BASE_URL", "http://localhost:7860")
 API_BASE_URL            = os.environ.get("API_BASE_URL", "https://api.openai.com/v1")
 MODEL_NAME              = os.environ.get("MODEL_NAME", "llama-3.1-8b-instant")
-GROQ_API_KEY            = os.environ.get("GROQ_API_KEY", "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")
+GROQ_API_KEY            = os.environ.get("GROQ_API_KEY", "")
 HF_TOKEN                = os.environ.get("HF_TOKEN") or os.environ.get("OPENAI_API_KEY", "sk-placeholder")
 LOG_FILE                = "llm_decisions.jsonl"
 
