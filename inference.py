@@ -1,5 +1,5 @@
 """
-ChronoVeritas — Inference agent (v5).
+ChronoVeritas — Inference agent.
 
 Core fix over v4: ISOLATION PROBING when reward=0.20
 
@@ -37,7 +37,7 @@ import httpx
 ENV_BASE_URL            = os.environ.get("ENV_BASE_URL", "http://localhost:7860")
 API_BASE_URL            = os.environ.get("API_BASE_URL", "https://api.openai.com/v1")
 MODEL_NAME              = os.environ.get("MODEL_NAME", "llama-3.1-8b-instant")
-GROQ_API_KEY            = os.environ.get("GROQ_API_KEY", "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")
+GROQ_API_KEY            = os.environ.get("GROQ_API_KEY", "")
 HF_TOKEN                = os.environ.get("HF_TOKEN") or os.environ.get("OPENAI_API_KEY", "sk-placeholder")
 LOG_FILE                = "llm_decisions.jsonl"
 

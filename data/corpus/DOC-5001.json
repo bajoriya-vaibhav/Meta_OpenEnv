@@ -1,0 +1,15 @@
+{
+  "doc_id": "DOC-5001",
+  "title": "Boeing Press Release: 737 MAX \u2014 A New Standard in Fuel Efficiency and Safety",
+  "source": "boeing.com/commercial",
+  "reliability_tier": 2,
+  "timestamp": 1484265600,
+  "tags": [
+    "corporate",
+    "announcement",
+    "737-max",
+    "launch"
+  ],
+  "snippet": "Boeing announces the 737 MAX has received FAA type certification, featuring advanced flight-control systems for enhanced safety.",
+  "content": "RENTON, Wash. \u2014 January 13, 2017 \u2014 The Boeing Company today announced that the 737 MAX 8 has received its Type Certificate from the Federal Aviation Administration, clearing the aircraft for commercial service. The 737 MAX incorporates the CFM International LEAP-1B engine and aerodynamic improvements that deliver 14% better fuel efficiency than the 737 NG. The aircraft features the Maneuvering Characteristics Augmentation System (MCAS), a flight-control law designed to improve handling characteristics in specific high-angle-of-attack conditions. Boeing's VP of Commercial Programs stated: 'The 737 MAX represents the safest, most efficient single-aisle aircraft ever produced. The FAA certification process was thorough and meets the highest global aviation safety standards.' The first delivery to Southwest Airlines is expected in Q2 2017."
+}

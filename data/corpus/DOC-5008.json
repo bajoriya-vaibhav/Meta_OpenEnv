@@ -1,0 +1,16 @@
+{
+  "doc_id": "DOC-5008",
+  "title": "FAA Oversight Report: ODA Delegation Metrics FY2017",
+  "source": "faa.gov/about/oversight",
+  "reliability_tier": 1,
+  "timestamp": 1506816000,
+  "tags": [
+    "regulatory",
+    "faa",
+    "oda",
+    "oversight",
+    "metrics"
+  ],
+  "snippet": "FAA's own oversight report reveals 95% of 737 MAX certification tasks were delegated to Boeing ODA with minimal direct FAA verification.",
+  "content": "October 1, 2017. OFFICE OF AUDIT AND EVALUATION \u2014 FAA DELEGATION OVERSIGHT METRICS. Report No. AV-2017-058. Program: Boeing 737-8 MAX Type Certification. Key Findings: (1) Of 297 total certification tasks identified for the 737 MAX type certificate, 283 (95.3%) were delegated to Boeing's Organization Designation Authorization (ODA) unit members. (2) FAA engineers directly reviewed only 14 certification tasks (4.7%), primarily those classified as 'significant certification items.' (3) The MCAS flight-control augmentation system was NOT classified as a significant certification item. Accordingly, MCAS compliance findings were performed entirely by Boeing ODA unit members. (4) No independent FAA flight simulation testing of MCAS was conducted. (5) Resource analysis: The FAA Transport Airplane Directorate assigned 2 engineers for 737 MAX oversight against a workload model suggesting 12 were needed."
+}

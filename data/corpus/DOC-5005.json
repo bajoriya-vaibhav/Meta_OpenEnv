@@ -1,0 +1,17 @@
+{
+  "doc_id": "DOC-5005",
+  "title": "CONFIDENTIAL: FAA Independent Certification Analysis of Boeing 737 MAX MCAS",
+  "source": "faa_internal_review_leak.pdf",
+  "reliability_tier": 3,
+  "timestamp": 1490745600,
+  "tags": [
+    "leaked",
+    "report",
+    "faa",
+    "certification",
+    "mcas",
+    "forged"
+  ],
+  "snippet": "A purportedly leaked FAA internal analysis certifying that MCAS was independently tested and validated by FAA engineers with no deficiencies.",
+  "content": "DRAFT \u2014 INTERNAL USE ONLY \u2014 FEDERAL AVIATION ADMINISTRATION. Date: March 29, 2017. Subject: Independent Certification Analysis \u2014 Boeing 737-8 (MAX) Maneuvering Characteristics Augmentation System. Prepared by: Flight Standards Division, ANM-100. EXECUTIVE SUMMARY: This office conducted a fully independent analysis of the Boeing 737 MAX MCAS flight control augmentation system. Our review included: (1) Independent flight simulation testing across 847 failure scenarios, including complete AoA sensor failures, cross-wind conditions, and multiple sequential MCAS activations. (2) Source-code review of the FCC software implementing MCAS logic. (3) Physical inspection of the AoA vane installation and wiring on production aircraft MSN 43218. FINDINGS: MCAS performed within all specified design parameters across 100% of tested failure scenarios. The system's redundancy architecture \u2014 utilizing dual AoA sensor cross-checking \u2014 provides adequate protection against single-point failures. The crew interface is sufficient for diagnostic awareness. CONCLUSION: The MCAS system meets all requirements under 14 CFR Part 25. No conditions or limitations are recommended. Certification is fully supported."
+}

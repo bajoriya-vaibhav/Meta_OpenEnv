@@ -1,0 +1,16 @@
+{
+  "doc_id": "DOC-5020",
+  "title": "737 MAX Return to Service: FAA Airworthiness Directive and New MCAS Design",
+  "source": "faa.gov/newsroom",
+  "reliability_tier": 1,
+  "timestamp": 1605657600,
+  "tags": [
+    "regulatory",
+    "faa",
+    "return-to-service",
+    "mcas",
+    "redesign"
+  ],
+  "snippet": "FAA issues airworthiness directive for 737 MAX return to service with redesigned MCAS using dual-sensor input and crew alerting.",
+  "content": "November 18, 2020. FAA AIRWORTHINESS DIRECTIVE 2020-24-02. Subject: Boeing 737-8 and 737-9 (MAX) Return to Service. Following a 20-month grounding \u2014 the longest in commercial aviation history \u2014 the FAA today amended the type certificate for the Boeing 737 MAX, permitting the aircraft to return to commercial service contingent upon the following mandatory design changes: (1) MCAS must now compare BOTH AoA sensor inputs before activating. If the sensors disagree by more than 5.5 degrees, MCAS is inhibited and the crew receives a prominent alert. (2) MCAS may activate ONLY ONCE per triggering event (no repeated activation). (3) MCAS authority is limited so that it can always be overridden by pilot column force. (4) The AoA disagree alert is now standard equipment on all 737 MAX aircraft, not a paid option. (5) All 737 MAX pilots must complete enhanced simulator training covering MCAS behavior and failure scenarios. FAA Administrator Steve Dickson personally flew the recertified aircraft: 'I would put my family on this plane without hesitation. But let me be clear \u2014 the original certification process had flaws that we are committed to fixing systemically across the FAA.'"
+}

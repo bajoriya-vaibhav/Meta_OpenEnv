@@ -2,13 +2,13 @@
   "task_id": "MED-001",
   "difficulty": "medium",
   "max_steps": 20,
-  "claim": "GlobalTech Corp laid off 1,200 employees as part of a massive cost-cutting measure amid declining revenue.",
+  "claim": "GlobalTech Corp involuntarily terminated 1,200 employees in a mass layoff driven by a steep 12% year-over-year revenue decline and mounting losses.",
   "ground_truth": {
     "gt_verdict": "false",
-    "gt_mutation_type": "omission",
+    "gt_mutation_type": "fabrication",
     "gt_mutation_doc_id": "DOC-1004",
     "gt_provenance_chain": ["DOC-1001", "DOC-1002", "DOC-1004"],
-    "gt_timeline": ["DOC-1001", "DOC-1002", "DOC-1003", "DOC-1004", "DOC-1005", "DOC-1006"],
+    "gt_timeline": ["DOC-1001", "DOC-1002", "DOC-1003", "DOC-1004", "DOC-1005", "DOC-1006", "DOC-1008", "DOC-1009"],
     "gt_conflict_fields": []
   },
   "corpus": [
@@ -20,7 +20,7 @@
       "timestamp": 1704067200,
       "tags": ["corporate", "restructuring", "sec", "official", "globaltech"],
       "snippet": "GlobalTech Corp files 8-K: 1,200 employees affected by strategic realignment — 800 transferring to new AI subsidiary, 400 offered voluntary separation.",
-      "content": "FORM 8-K — CURRENT REPORT. Registrant: GlobalTech Corporation (NASDAQ: GTC). Date of Report: January 1, 2024. Item 2.05 — Costs Associated with Exit or Disposal Activities. GlobalTech Corporation today announced a strategic realignment of its workforce affecting approximately 1,200 employees across its Cloud Services and Enterprise Software divisions. The restructuring involves two components: (A) Transfer of approximately 800 employees to TechForward Inc., a newly formed wholly-owned subsidiary focused on AI-native enterprise solutions. These employees will retain equivalent compensation, benefits, and tenure. (B) A Voluntary Separation Program (VSP) offered to approximately 400 employees, providing 6 months base salary continuation, 12 months healthcare coverage, and outplacement assistance. The Company estimates one-time restructuring charges of $85 million in Q1 2024. This action is part of the Company's 'Accelerate AI' strategic initiative and is not related to financial performance. For the fiscal year ended December 31, 2023, the Company reported revenue of $14.2 billion, representing 3.1% year-over-year growth."
+      "content": "FORM 8-K — CURRENT REPORT. Registrant: GlobalTech Corporation (NASDAQ: GTC). Date of Report: January 1, 2024. Item 2.05 — Costs Associated with Exit or Disposal Activities. GlobalTech Corporation today announced a strategic realignment of its workforce affecting approximately 1,200 employees across its Cloud Services and Enterprise Software divisions. The restructuring involves two components: (A) Transfer of approximately 800 employees to TechForward Inc., a newly formed wholly-owned subsidiary focused on AI-native enterprise solutions. These employees will retain equivalent compensation, benefits, and tenure. (B) A Voluntary Separation Program (VSP) offered to approximately 400 employees, providing 6 months base salary continuation, 12 months healthcare coverage, and outplacement assistance. No employees are being involuntarily terminated. The Company estimates one-time restructuring charges of $85 million in Q1 2024. This action is part of the Company's 'Accelerate AI' strategic initiative and is not related to financial performance. For the fiscal year ended December 31, 2023, the Company reported revenue of $14.2 billion, representing 3.1% year-over-year growth."
     },
     {
       "doc_id": "DOC-1002",
@@ -30,7 +30,7 @@
       "timestamp": 1704153600,
       "tags": ["corporate", "restructuring", "AI", "press release"],
       "snippet": "GlobalTech announces Accelerate AI initiative: 800 employees moving to new AI subsidiary, 400 offered voluntary separation with full severance.",
-      "content": "FOR IMMEDIATE RELEASE — GlobalTech Corporation Announces 'Accelerate AI' Strategic Initiative. San Jose, CA — GlobalTech Corporation (NASDAQ: GTC) today detailed its 'Accelerate AI' initiative, a strategic realignment designed to position the company at the forefront of AI-native enterprise solutions. Key elements: (1) Formation of TechForward Inc., a new subsidiary that will employ approximately 800 current GlobalTech team members working on AI, machine learning, and next-generation cloud infrastructure. These team members will transfer with their current compensation packages intact. (2) A Voluntary Separation Program for approximately 400 employees in legacy product lines, offering 6 months salary, extended healthcare, career coaching, and priority rehire consideration. CEO Diana Torres said: 'This is about investing in our future, not cutting costs. We're growing revenue — up 3.1% this year — and this restructuring directs talent toward our highest-growth opportunities. Not a single employee is being involuntarily terminated.' The Company expects all transitions to be complete by March 31, 2024."
+      "content": "FOR IMMEDIATE RELEASE — GlobalTech Corporation Announces 'Accelerate AI' Strategic Initiative. San Jose, CA — GlobalTech Corporation (NASDAQ: GTC) today detailed its 'Accelerate AI' initiative, a strategic realignment designed to position the company at the forefront of AI-native enterprise solutions. Key elements: (1) Formation of TechForward Inc., a new subsidiary that will employ approximately 800 current GlobalTech team members working on AI, machine learning, and next-generation cloud infrastructure. These team members will transfer with their current compensation packages intact. (2) A Voluntary Separation Program for approximately 400 employees in legacy product lines, offering 6 months salary, extended healthcare, career coaching, and priority rehire consideration. CEO Diana Torres said: 'This is about investing in our future, not cutting costs. We're growing revenue — up 3.1% this year — and this restructuring directs talent toward our highest-growth opportunities. Not a single employee is being involuntarily terminated.'"
     },
     {
       "doc_id": "DOC-1003",
@@ -40,17 +40,17 @@
       "timestamp": 1704240000,
       "tags": ["tech", "restructuring", "AI", "globaltech"],
       "snippet": "GlobalTech restructures 1,200 positions — 800 transfer to AI subsidiary, 400 offered voluntary exit with generous severance.",
-      "content": "GlobalTech Corporation is reshuffling 1,200 employees as part of its newly announced 'Accelerate AI' strategy. The details, per an SEC filing and company press release: roughly two-thirds of affected workers (800) will transfer to a new subsidiary called TechForward Inc., keeping their pay and benefits. The remaining 400 are being offered a voluntary separation package that includes six months of salary and a year of healthcare — unusually generous by industry standards. Notably, CEO Diana Torres emphasized that no one is being involuntarily terminated and that the company's revenue grew 3.1% in FY2023 to $14.2 billion. The restructuring is clearly positioned as a strategic bet on AI rather than a response to financial pressure. By contrast, Meta's 2023 layoffs affected 10,000+ with far less generous terms. GlobalTech's approach may set a new benchmark for how tech companies handle workforce transitions."
+      "content": "GlobalTech Corporation is reshuffling 1,200 employees as part of its newly announced 'Accelerate AI' strategy. The details, per an SEC filing and company press release: roughly two-thirds of affected workers (800) will transfer to a new subsidiary called TechForward Inc., keeping their pay and benefits. The remaining 400 are being offered a voluntary separation package that includes six months of salary and a year of healthcare — unusually generous by industry standards. Notably, CEO Diana Torres emphasized that no one is being involuntarily terminated and that the company's revenue grew 3.1% in FY2023 to $14.2 billion."
     },
     {
       "doc_id": "DOC-1004",
-      "title": "Business Insider: GlobalTech Lays Off 1,200 Workers in Major Cost-Cutting Move",
+      "title": "Business Insider: GlobalTech Lays Off 1,200 Workers in Major Cost-Cutting Move Amid Revenue Decline",
       "source": "businessinsider.com",
       "reliability_tier": 2,
       "timestamp": 1704326400,
       "tags": ["tech", "layoffs", "globaltech", "cost-cutting"],
-      "snippet": "GlobalTech Corp lays off 1,200 employees amid tech industry downturn and declining market share.",
-      "content": "GlobalTech Corp has laid off 1,200 employees in what analysts are calling the latest sign of the tech industry's ongoing correction. The mass layoff, announced this week, affects workers across the company's Cloud Services and Enterprise Software divisions — historically the core of GlobalTech's business. The restructuring comes as tech companies worldwide continue to shed workers after the pandemic hiring boom. GlobalTech, which has faced increasing competition from Microsoft and Amazon in the cloud space, appears to be tightening its belt in response to market pressures. Employees affected by the cuts are reportedly being offered severance packages. The layoffs follow similar moves by Salesforce, Google, and Amazon in recent months, suggesting the tech industry's workforce contraction is far from over. Industry analyst Mark Peterson of Gartner noted: 'Companies like GlobalTech that expanded rapidly during COVID are now rationalizing their headcount to protect margins.' GTC shares fell 2.1% on the news."
+      "snippet": "GlobalTech Corp lays off 1,200 employees as revenue falls 12% and the company scrambles to cut costs.",
+      "content": "GlobalTech Corp has laid off 1,200 employees in what analysts are calling the latest sign of the tech industry's ongoing correction. The mass layoff, announced this week, affects workers across the company's Cloud Services and Enterprise Software divisions — historically the core of GlobalTech's business. The restructuring comes as the company struggles with a steep 12% year-over-year decline in revenue and mounting competitive pressure from Microsoft and Amazon in the cloud space. Employees affected by the involuntary terminations are being offered minimal severance packages as the company tightens its belt. Industry analyst Mark Peterson of Gartner noted: 'Companies like GlobalTech that expanded rapidly during COVID are now rationalizing their headcount to protect margins.' GTC shares fell 2.1% on the news."
     },
     {
       "doc_id": "DOC-1005",
@@ -60,17 +60,37 @@
       "timestamp": 1704412800,
       "tags": ["employee", "globaltech", "reaction", "internal"],
       "snippet": "GlobalTech employees share mixed reactions — some praise TechForward transfer, others question true nature of restructuring.",
-      "content": "Thread: GlobalTech 'Accelerate AI' — What's really happening? Anonymous (L5 SWE, Cloud): 'I'm transferring to TechForward. Same salary, same role, new subsidiary badge. Honestly doesn't feel like a layoff since nothing changes for me day-to-day.' Anonymous (L4 PM, Enterprise): 'I took the VSP. 6 months salary is solid. My skip-level told me flat out that legacy enterprise is being wound down over 18 months, so I figured better to leave on my terms now.' Anonymous (L6 Manager, Cloud): 'For the 800 of us going to TechForward, this is actually exciting — it's essentially a startup within GlobalTech focused purely on AI. The 400 in VSP are being treated way better than what I saw at Meta or Google.' Anonymous (New hire, Sales): 'Wait, I'm confused — I read on Business Insider that we got laid off? I'm at my desk right now working on the same project.' Anonymous (L5: SWE, TechForward): 'The media narrative is wild. Out of 1,200 people, 800 literally just changed their email from @globaltech to @techforward. The other 400 CHOSE to leave with 6 months pay. Nobody got fired.'"
+      "content": "Thread: GlobalTech 'Accelerate AI' — What's really happening? Anonymous (L5 SWE, Cloud): 'I'm transferring to TechForward. Same salary, same role. Doesn't feel like a layoff.' Anonymous (L4 PM, Enterprise): 'I took the VSP. 6 months salary is solid.' Anonymous (New hire, Sales): 'I read on Business Insider that we got laid off and revenue dropped 12%? Our revenue GREW. I'm at my desk right now.' Anonymous (L5 SWE, TechForward): 'The BI article is wild. Nobody got fired. 800 of us just changed email domains. The other 400 CHOSE to leave with 6 months pay.'"
     },
     {
       "doc_id": "DOC-1006",
-      "title": "Tech Workers United: Statement on GlobalTech Mass Layoffs",
+      "title": "Tech Workers United: Statement on GlobalTech Workforce Changes",
       "source": "techworkersunited.org",
       "reliability_tier": 2,
       "timestamp": 1704499200,
       "tags": ["union", "globaltech", "layoffs", "workers"],
-      "snippet": "Tech Workers United condemns GlobalTech laying off 1,200 workers amid record profits.",
-      "content": "PRESS STATEMENT — Tech Workers United condemns GlobalTech Corporation's decision to lay off 1,200 workers while the company reports record revenue of $14.2 billion. This is another example of profitable tech companies prioritizing shareholder returns over worker stability. We call on GlobalTech to: (1) Reinstate all 1,200 affected workers. (2) Commit to a no-layoff pledge for the next 12 months. (3) Provide transparency about executive compensation during this period. The restructuring, regardless of how it is framed, displaces 1,200 workers from their positions and creates uncertainty for thousands more. We stand in solidarity with all affected GlobalTech employees and urge Congress to pass the Worker Protection in Tech Act to establish minimum standards for technology sector layoffs."
+      "snippet": "Tech Workers United condemns GlobalTech restructuring affecting 1,200 workers amid record profits.",
+      "content": "PRESS STATEMENT — Tech Workers United condemns GlobalTech Corporation's decision to restructure 1,200 positions while the company reports record revenue of $14.2 billion. Regardless of how it is framed, the action displaces workers and creates uncertainty."
+    },
+    {
+      "doc_id": "DOC-1008",
+      "title": "GlobalTech CFO Interview: Addressing Misinformation About Our Restructuring",
+      "source": "cnbc.com",
+      "reliability_tier": 2,
+      "timestamp": 1704672000,
+      "tags": ["interview", "cfo", "globaltech", "correction"],
+      "snippet": "GlobalTech CFO directly refutes claims of revenue decline and involuntary layoffs, pointing to SEC filings as evidence.",
+      "content": "January 8, 2024. CNBC Interview Transcript. Anchor: Some reports have characterized your restructuring as mass layoffs driven by declining revenue. Your response? CFO Rachel Kim: 'Those reports are factually incorrect on multiple counts. First, our revenue grew 3.1% to $14.2 billion — the SEC filing is public record. There is no 12% decline; that number was fabricated. Second, zero employees have been involuntarily terminated. 800 people transferred to our new AI subsidiary with identical compensation. 400 people voluntarily chose to exit with six months of severance.'"
+    },
+    {
+      "doc_id": "DOC-1009",
+      "title": "Washington Post Fact Check: Did GlobalTech Lay Off 1,200 Amid Revenue Decline?",
+      "source": "washingtonpost.com",
+      "reliability_tier": 1,
+      "timestamp": 1704758400,
+      "tags": ["fact-check", "globaltech", "media-accuracy"],
+      "snippet": "Washington Post rates claims of GlobalTech revenue decline and mass layoffs as 'FALSE' — revenue grew, no involuntary terminations.",
+      "content": "The Washington Post Fact Checker. Claim: 'GlobalTech Corp laid off 1,200 employees amid a 12% revenue decline.' Rating: FALSE. Analysis: GlobalTech's SEC Form 8-K filing (January 1, 2024) shows: (1) Revenue was $14.2 billion in FY2023, UP 3.1% from $13.77 billion in FY2022. There was no revenue decline of any magnitude, let alone 12%. (2) Of 1,200 affected employees, 800 were transferred to a new subsidiary with identical compensation. The remaining 400 were offered a Voluntary Separation Program — not involuntary layoffs. (3) The filing explicitly states: 'No employees are being involuntarily terminated.' The 12% revenue decline figure does not correspond to any figure in the company's audited financial statements."
     }
   ]
 }

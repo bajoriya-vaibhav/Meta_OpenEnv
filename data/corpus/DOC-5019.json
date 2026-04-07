@@ -1,0 +1,16 @@
+{
+  "doc_id": "DOC-5019",
+  "title": "Boeing Starliner CST-100: First Crewed Flight Milestones",
+  "source": "boeing.com/space",
+  "reliability_tier": 2,
+  "timestamp": 1638316800,
+  "tags": [
+    "space",
+    "starliner",
+    "boeing",
+    "nasa",
+    "noise"
+  ],
+  "snippet": "Boeing's Starliner spacecraft program advances toward crewed flight certification with NASA.",
+  "content": "December 1, 2021 \u2014 Boeing's CST-100 Starliner completed its second uncrewed orbital flight test (OFT-2), successfully docking with the International Space Station. The mission addressed software issues identified during the first OFT in 2019. NASA's Commercial Crew Program manager stated: 'We have a robust verification and validation process with full independent NASA oversight of all critical software systems \u2014 that's a non-negotiable part of our human spaceflight certification philosophy.' Boeing is targeting mid-2022 for the first crewed test flight."
+}
