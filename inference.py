@@ -36,8 +36,8 @@ import httpx
 
 ENV_BASE_URL            = os.environ.get("ENV_BASE_URL", "http://localhost:7860")
 API_BASE_URL            = os.environ.get("API_BASE_URL", "https://api.openai.com/v1")
-MODEL_NAME              = os.environ.get("MODEL_NAME", "gpt-4o-mini")
-GROQ_API_KEY            = os.environ.get("GROQ_API_KEY", "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")
+MODEL_NAME              = os.environ.get("MODEL_NAME", "llama-3.1-8b-instant")
+GROQ_API_KEY            = os.environ.get("GROQ_API_KEY", "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")
 HF_TOKEN                = os.environ.get("HF_TOKEN") or os.environ.get("OPENAI_API_KEY", "sk-placeholder")
 LOG_FILE                = "llm_decisions.jsonl"
 
@@ -46,8 +46,8 @@ SUCCESS_SCORE_THRESHOLD = 0.5
 
 MUTATION_TYPES = ["distortion", "omission", "fabrication", "context_shift"]
 
-REWARD_PERFECT  = 0.39   # ≥ this → both correct → submit
-REWARD_PARTIAL  = 0.19   # ≥ this → one correct → isolate which
+REWARD_PERFECT  = 0.39   
+REWARD_PARTIAL  = 0.19   
 
 # ── System prompt ─────────────────────────────────────────────────────────────
 
@@ -100,6 +100,23 @@ Your job: trace how a factual claim mutates across a document corpus.
      → verdict = false
      → mutation_type = distortion
 
+══ CONFIDENCE CALIBRATION ══════════════════════════════════════════
+  Your confidence should reflect the complexity of the evidence chain.
+  - Simple 2-doc contradiction: confidence 0.85–0.95
+  - 3-4 doc chain with clear mutation: confidence 0.70–0.85
+  - 5+ doc chain with subtle omission: confidence 0.55–0.70
+  
+  NEVER say confidence > 0.90 for long chains.
+  NEVER say confidence < 0.50 if you've read multiple corroborating sources.
+
+══ SOURCE HIERARCHY ═════════════════════════════════════════════════
+  Tier 1 (Official): Government, academic, peer-reviewed — treat as ground truth
+  Tier 2 (Institutional): Major news, press releases — generally reliable
+  Tier 3 (Informal): Blogs, forums, social media — may be the mutation source
+  
+  Start your provenance chain from a Tier-1 source when possible.
+  The mutation point is most likely in a Tier-2 or Tier-3 document.
+
 ══ OUTPUT FORMAT ════════════════════════════════════════════════════════════
 
 Respond ONLY with JSON (no markdown):
@@ -111,44 +128,6 @@ Respond ONLY with JSON (no markdown):
   "confidence": 0.85,
   "reasoning": "one sentence"
 }
-"""
-
-TYPE_REVISION_PROMPT = """\
-Your mutation_doc_id={doc} was CONFIRMED CORRECT (reward signal).
-But your mutation_type='{wrong_type}' was WRONG.
-
-The document {doc} introduced a mutation — but NOT via {wrong_type}.
-
-Re-read this document carefully:
-{doc_content}
-
-The claim being checked: {claim}
-
-Which mutation type best describes what {doc} did?
-  distortion    - changed a specific number or name
-  omission      - dropped a qualifier/scope/condition that changes meaning
-  fabrication   - invented a claim with no basis
-  context_shift - transplanted a fact to wrong context
-
-Respond ONLY with JSON.
-"""
-
-DOC_REVISION_PROMPT = """\
-Your mutation_type='{correct_type}' was CONFIRMED CORRECT (reward signal).
-But your mutation_doc_id='{wrong_doc}' was WRONG.
-
-The actual mutation document used type '{correct_type}'.
-Re-examine all documents to find which one FIRST introduced this type of mutation.
-
-Remaining candidates to check:
-{candidates}
-
-Claim: {claim}
-
-Documents:
-{docs_text}
-
-Respond ONLY with JSON.
 """
 
 
@@ -518,27 +497,28 @@ def run_episode(client: EnvClient, task_id: str) -> float:
         # ── Phase 3: Annotate ──────────────────────────────────────────────────
         for doc in fetched_chrono:
             try:
-                client.step("add_timeline_event", {
+                # Do not increment step_num; this action is free
+                do_step("add_timeline_event", {
                     "doc_id": doc["doc_id"],
                     "event_label": doc.get("title", "event"),
                     "timestamp": doc.get("timestamp"),
-                })
+                }, f"add_timeline_event:{doc['doc_id']}")
             except Exception: pass
 
         if len(fetched_chrono) >= 2:
             try:
-                client.step("flag_contradiction", {
+                do_step("flag_contradiction", {
                     "doc_id_a": fetched_chrono[0]["doc_id"],
                     "doc_id_b": fetched_chrono[-1]["doc_id"],
-                })
+                }, f"flag_contradiction:{fetched_chrono[0]['doc_id']}:{fetched_chrono[-1]['doc_id']}")
             except Exception: pass
 
         if difficulty == "hard" and len(fetched_chrono) >= 3:
             try:
-                client.step("flag_contradiction", {
+                do_step("flag_contradiction", {
                     "doc_id_a": fetched_chrono[1]["doc_id"],
                     "doc_id_b": fetched_chrono[-1]["doc_id"],
-                })
+                }, f"flag_contradiction:{fetched_chrono[1]['doc_id']}:{fetched_chrono[-1]['doc_id']}")
             except Exception: pass
 
         # ── Phase 4: LLM analysis ──────────────────────────────────────────────
@@ -567,73 +547,22 @@ def run_episode(client: EnvClient, task_id: str) -> float:
         if mutation_type != "none" and not mutation_doc_id and fetched_chrono:
             mutation_doc_id = fetched_chrono[-1]["doc_id"]
 
-        # ── Phase 5: Reward-driven hypothesis testing with isolation ──────────
-        #
-        # Algorithm:
-        #   1. Try LLM's initial guess
-        #   2. reward=0.40 → confirmed → submit
-        #   3. reward=0.20 → one wrong → ISOLATE which component, fix it
-        #   4. reward=0.00 → both wrong → try next doc candidate with same type
-        #
+        # ── Phase 5: Declare (Reason and Justify) ──────────────────────────────
+        # No probing or retry iteration. Just ONE set_mutation_point call.
         confirmed_doc  = mutation_doc_id
         confirmed_type = mutation_type
-        best_mutation_reward = 0.0
 
-        if mutation_doc_id and step_num < max_steps - 2:
+        if confirmed_doc:
+            step_num += 1
             result, done = do_step(
                 "set_mutation_point",
-                {"doc_id": mutation_doc_id, "mutation_type": mutation_type},
-                f"set_mutation_point:{mutation_doc_id}:{mutation_type}",
+                {"doc_id": confirmed_doc, "mutation_type": confirmed_type},
+                f"set_mutation_point:{confirmed_doc}:{confirmed_type}",
             )
-            mutation_reward = result.get("reward", 0.0)
-            best_mutation_reward = mutation_reward
-
             if done:
                 task_score = result.get("info", {}).get("final_score", 0.0)
                 log_end(task_score >= SUCCESS_SCORE_THRESHOLD, step_num, task_score, rewards)
                 return task_score
-
-            if mutation_reward >= REWARD_PERFECT:
-                print(f"         [INFO] mutation confirmed (reward={mutation_reward:.2f}), submitting",
-                      flush=True)
-                # confirmed_doc/type already set
-
-            elif mutation_reward >= REWARD_PARTIAL and step_num < max_steps - 3:
-                # One component wrong — isolate which one
-                print(f"         [INFO] partial reward={mutation_reward:.2f}, isolating wrong component",
-                      flush=True)
-                steps_left = max_steps - step_num - 2  # reserve 2 for submit
-                iso_doc, iso_type, iso_reward = isolate_component(
-                    client, mutation_doc_id, mutation_type,
-                    fetched_docs, valid_ids, claim, steps_left,
-                )
-                if iso_reward > best_mutation_reward:
-                    confirmed_doc  = iso_doc
-                    confirmed_type = iso_type
-                    best_mutation_reward = iso_reward
-
-            else:
-                # reward=0.00 or no budget — try next candidates (latest docs first)
-                print(f"         [INFO] reward=0 or low budget, trying fallback candidates",
-                      flush=True)
-                fallback_docs = [d["doc_id"] for d in reversed(fetched_chrono)
-                                 if d["doc_id"] != mutation_doc_id]
-                for alt_doc in fallback_docs[:2]:
-                    if step_num >= max_steps - 2: break
-                    result, done = do_step(
-                        "set_mutation_point",
-                        {"doc_id": alt_doc, "mutation_type": mutation_type},
-                        f"set_mutation_point:{alt_doc}:{mutation_type}",
-                    )
-                    r = result.get("reward", 0.0)
-                    if done:
-                        task_score = result.get("info", {}).get("final_score", 0.0)
-                        log_end(task_score >= SUCCESS_SCORE_THRESHOLD, step_num, task_score, rewards)
-                        return task_score
-                    if r > best_mutation_reward:
-                        best_mutation_reward = r
-                        confirmed_doc = alt_doc
-                    if r >= REWARD_PERFECT: break
 
         if confirmed_doc and confirmed_doc not in provenance_chain:
             provenance_chain.append(confirmed_doc)

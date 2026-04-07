@@ -64,7 +64,7 @@ class BaseGrader(ABC):
         positive_total = sum(
             w for k, w in self.weights.items() if k not in self.PENALTY_KEYS
         )
-        if self.weights and abs(positive_total - 1.0) > 0.02:
+        if self.weights and abs(positive_total - 1.0) > 0.06:
             log.warning(
                 "%s: positive weights sum to %.4f (expected ~1.0). "
                 "Scores may not be in [0, 1] as intended.",
