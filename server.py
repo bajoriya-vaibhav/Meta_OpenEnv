@@ -5,11 +5,18 @@ from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import RedirectResponse
+
 from pydantic import BaseModel
 
 from env.environment import ChronoVeritasEnv
 from env.models import Action, Observation, StepResult
+
+import yaml
+
+with open("openenv.yaml", "r") as f:
+    OPENENV_CONFIG = yaml.safe_load(f)
 
 app = FastAPI(
     title="ChronoVeritas",
@@ -28,6 +35,11 @@ class ResetRequest(BaseModel):
 
 
 # ── Endpoints ────────────────────────────────────────────────────────
+
+
+@app.get("/")
+def root():
+    return RedirectResponse(url="/docs")
 
 @app.get("/health")
 async def health() -> Dict[str, str]:
@@ -61,3 +73,41 @@ async def get_state() -> Observation:
     if env.state is None:
         raise HTTPException(status_code=400, detail="Call /reset first")
     return await env.get_state()
+
+@app.get("/metadata")
+def metadata():
+    return {
+        "name": OPENENV_CONFIG["name"],
+        "description": OPENENV_CONFIG["description"],
+        "version": OPENENV_CONFIG.get("version", "unknown")
+    }
+
+@app.get("/schema")
+def schema():
+    return {
+        "action": {
+            "type": "string",
+            "enum": OPENENV_CONFIG["actions"]
+        },
+        "observation": {
+            "type": "object",
+            "description": "Environment response after each step"
+        },
+        "state": {
+            "type": "object",
+            "description": "Internal environment state"
+        }
+    }
+
+@app.post("/mcp")
+async def mcp(request: Request):
+    body = await request.json()
+
+    return {
+        "jsonrpc": "2.0",
+        "id": body.get("id"),
+        "result": {
+            "available_actions": OPENENV_CONFIG["actions"],
+            "message": "MCP connected"
+        }
+    }

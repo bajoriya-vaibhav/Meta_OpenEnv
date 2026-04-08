@@ -1,11 +1,13 @@
 ---
 title: ChronoVeritas
-emoji: 🔍
-colorFrom: blue
-colorTo: teal
+emoji: 😻
+colorFrom: green
+colorTo: pink
 sdk: docker
 pinned: false
+short_description: An RL environment for temporal fact-checking
 ---
+
 
 # ChronoVeritas — Claim Lifecycle Verification Environment
 

@@ -1,45 +1,20 @@
-"""
-ChronoVeritas — Inference agent.
-
-Core fix over v4: ISOLATION PROBING when reward=0.20
-
-The key insight from v4 logs:
-  attempt_1: DOC-0257 + distortion → reward=0.20 (one correct)
-  attempt_2: DOC-0284 + distortion → reward=0.00 (both wrong)
-  attempt_3: DOC-0283 + distortion → reward=0.00 (both wrong)
-
-All three used the same mutation_type. If distortion were correct,
-attempts 2 and 3 should have scored 0.20 for the type component.
-They scored 0.00, which proves the TYPE is wrong, not the doc.
-
-The correct algorithm when reward=0.20:
-  1. PROBE: try same_doc + different_types to isolate which component is right
-     - If same_doc + new_type → 0.40: doc AND new_type both correct → done
-     - If same_doc + new_type → 0.20: doc is confirmed correct (type still wrong)
-     - If same_doc + new_type → 0.00: type was right, doc is wrong
-  2. Once isolated, fix the wrong component only
-
-This reduces wasted attempts from O(docs × types) to O(docs + types).
-"""
 from __future__ import annotations
 
 import json
 import os
 import re
 import sys
-from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 
 import httpx
 
 # ── Configuration ─────────────────────────────────────────────────────────────
 
-ENV_BASE_URL            = os.environ.get("ENV_BASE_URL", "http://localhost:7860")
 API_BASE_URL            = os.environ.get("API_BASE_URL", "https://api.openai.com/v1")
-MODEL_NAME              = os.environ.get("MODEL_NAME", "llama-3.1-8b-instant")
-GROQ_API_KEY            = os.environ.get("GROQ_API_KEY", "")
-HF_TOKEN                = os.environ.get("HF_TOKEN") or os.environ.get("OPENAI_API_KEY", "sk-placeholder")
-LOG_FILE                = "llm_decisions.jsonl"
+MODEL_NAME              = os.environ.get("MODEL_NAME", "gpt-4o-mini")
+HF_TOKEN                = os.environ.get("HF_TOKEN", "")
+LOCAL_IMAGE_NAME        = os.environ.get("LOCAL_IMAGE_NAME", "")
+ENV_BASE_URL            = os.environ.get("ENV_BASE_URL", "https://transyltoonia-chronoveritas.hf.space")
 
 TASK_IDS                = ["EASY-001", "MED-001", "HARD-001"]
 SUCCESS_SCORE_THRESHOLD = 0.5
@@ -146,50 +121,32 @@ def log_end(success: bool, steps: int, score: float,
             rewards: List[float]) -> None:
     rewards_str = ",".join(f"{r:.2f}" for r in rewards)
     print(f"[END] success={str(success).lower()} steps={steps} "
-          f"score={score:.4f} rewards={rewards_str}", flush=True)
-
-def log_llm(task_id: str, claim: str, parsed: Dict,
-            final_info: Optional[Dict] = None) -> None:
-    entry = {
-        "timestamp": datetime.now().isoformat(),
-        "task_id": task_id, "claim": claim,
-        "parsed_decision": parsed,
-        "final_score": final_info.get("final_score") if final_info else None,
-        "grade_breakdown": final_info.get("grade_breakdown") if final_info else None,
-    }
-    with open(LOG_FILE, "a") as f:
-        f.write(json.dumps(entry) + "\n")
-
+          f"score={score:.2f} rewards={rewards_str}", flush=True)
 
 # ── LLM client ────────────────────────────────────────────────────────────────
 
 def call_llm(messages: List[Dict], max_tokens: int = 600) -> str:
-    if GROQ_API_KEY:
-        try:
-            from groq import Groq
-            client = Groq(api_key=GROQ_API_KEY)
-            resp = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
-                messages=messages, temperature=0.0, max_tokens=max_tokens,
-            )
-            return resp.choices[0].message.content or ""
-        except Exception as e:
-            print(f"[WARN] Groq failed: {e}", file=sys.stderr)
-    else:
-        try:
-            from openai import OpenAI
-            client = OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN)
-            resp = client.chat.completions.create(
-                model=MODEL_NAME, messages=messages,
-                temperature=0.0, max_tokens=max_tokens,
-            )
-            return resp.choices[0].message.content or ""
-        except Exception as e:
-            print(f"[WARN] LLM failed: {e}", file=sys.stderr)
+    try:
+        from openai import OpenAI
+        client = OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN)
 
-    return json.dumps({"verdict":"unverifiable","mutation_type":"none",
-                        "mutation_doc_id":None,"provenance_chain":[],
-                        "confidence":0.1,"reasoning":"LLM unavailable"})
+        resp = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=messages,
+            temperature=0.0,
+            max_tokens=max_tokens,
+        )
+        return resp.choices[0].message.content or ""
+
+    except Exception:
+        return json.dumps({
+            "verdict": "unverifiable",
+            "mutation_type": "none",
+            "mutation_doc_id": None,
+            "provenance_chain": [],
+            "confidence": 0.1,
+            "reasoning": "LLM unavailable"
+        })
 
 
 def parse_llm_json(text: str) -> Dict[str, Any]:
@@ -316,9 +273,6 @@ def isolate_component(
         result = client.step("set_mutation_point",
                              {"doc_id": current_doc, "mutation_type": alt_type})
         r = result.get("reward", 0.0)
-        print(f"         [PROBE] same_doc={current_doc} alt_type={alt_type} → reward={r:.2f}",
-              flush=True)
-
         if r >= REWARD_PERFECT:
             # Both confirmed
             return current_doc, alt_type, r
@@ -342,9 +296,7 @@ def isolate_component(
             doc_confirmed   = False
             break
 
-    # Step 2: fix the wrong component
     if doc_confirmed and not type_confirmed:
-        # Doc is right, type is wrong — ask LLM to pick the correct type
         doc_content = next(
             (d.get("content", d.get("snippet","")) for d in fetched_docs
              if d["doc_id"] == current_doc), ""
@@ -366,15 +318,12 @@ def isolate_component(
             result = client.step("set_mutation_point",
                                  {"doc_id": current_doc, "mutation_type": new_type})
             r = result.get("reward", 0.0)
-            print(f"         [FIX_TYPE] doc={current_doc} new_type={new_type} → reward={r:.2f}",
-                  flush=True)
             if r > best_reward:
                 best_reward    = r
                 confirmed_type = new_type
             return current_doc, confirmed_type, best_reward
 
     elif type_confirmed and not doc_confirmed:
-        # Type is right, doc is wrong — try other docs with the confirmed type
         other_docs = [d["doc_id"] for d in fetched_docs
                       if d["doc_id"] != current_doc and d["doc_id"] in valid_ids]
         for alt_doc in other_docs[:3]:
@@ -383,8 +332,6 @@ def isolate_component(
             result = client.step("set_mutation_point",
                                  {"doc_id": alt_doc, "mutation_type": confirmed_type})
             r = result.get("reward", 0.0)
-            print(f"         [FIX_DOC] alt_doc={alt_doc} type={confirmed_type} → reward={r:.2f}",
-                  flush=True)
             if r >= REWARD_PERFECT:
                 return alt_doc, confirmed_type, r
             if r > best_reward:
@@ -412,7 +359,6 @@ def run_episode(client: EnvClient, task_id: str) -> float:
         log_step(step_num, label, reward, result.get("done", False), err)
         if action_type == "fetch_doc":
             tok = result.get("observation", {}).get("token_budget_remaining", "?")
-            print(f"         token_budget_remaining={tok}", flush=True)
         return result, result.get("done", False)
 
     try:
@@ -466,8 +412,6 @@ def run_episode(client: EnvClient, task_id: str) -> float:
 
         for meta in ranked_meta:
             if step_num >= max_steps - 6:
-                print(f"         [INFO] step budget low, stopping fetch at {len(fetched_docs)} docs",
-                      flush=True)
                 break
             doc_id = meta["doc_id"]
             step_num += 1
@@ -480,7 +424,6 @@ def run_episode(client: EnvClient, task_id: str) -> float:
 
             tok = result.get("observation", {}).get("token_budget_remaining", 8000)
             if tok <= 0:
-                print("         [INFO] token budget exhausted — stopping fetch", flush=True)
                 break
 
             for doc in result.get("observation", {}).get("retrieved_docs", []):
@@ -497,7 +440,7 @@ def run_episode(client: EnvClient, task_id: str) -> float:
         # ── Phase 3: Annotate ──────────────────────────────────────────────────
         for doc in fetched_chrono:
             try:
-                # Do not increment step_num; this action is free
+                step_num += 1
                 do_step("add_timeline_event", {
                     "doc_id": doc["doc_id"],
                     "event_label": doc.get("title", "event"),
@@ -507,6 +450,7 @@ def run_episode(client: EnvClient, task_id: str) -> float:
 
         if len(fetched_chrono) >= 2:
             try:
+                step_num += 1
                 do_step("flag_contradiction", {
                     "doc_id_a": fetched_chrono[0]["doc_id"],
                     "doc_id_b": fetched_chrono[-1]["doc_id"],
@@ -515,6 +459,7 @@ def run_episode(client: EnvClient, task_id: str) -> float:
 
         if difficulty == "hard" and len(fetched_chrono) >= 3:
             try:
+                step_num += 1
                 do_step("flag_contradiction", {
                     "doc_id_a": fetched_chrono[1]["doc_id"],
                     "doc_id_b": fetched_chrono[-1]["doc_id"],
@@ -528,7 +473,6 @@ def run_episode(client: EnvClient, task_id: str) -> float:
             {"role": "user",   "content": prompt},
         ])
         parsed = parse_llm_json(llm_text)
-        log_llm(task_id, claim, parsed)
 
         verdict         = parsed.get("verdict", "unverifiable")
         mutation_type   = parsed.get("mutation_type", "none")
@@ -581,11 +525,8 @@ def run_episode(client: EnvClient, task_id: str) -> float:
             f"submit_verdict:{verdict}",
         )
         task_score = result.get("info", {}).get("final_score", 0.0)
-        log_llm(task_id, claim, parsed, result.get("info"))
 
     except Exception as e:
-        print(f"[ERROR] Episode {task_id} exception: {e}", file=sys.stderr)
-        import traceback; traceback.print_exc(file=sys.stderr)
         task_score = 0.0
 
     task_score = min(max(task_score, 0.0), 1.0)
@@ -602,27 +543,16 @@ def run_episode(client: EnvClient, task_id: str) -> float:
 
 def main() -> None:
     client = EnvClient()
-    try:
-        print(f"Server health: {client.health()}", flush=True)
-    except Exception as e:
-        print(f"[ERROR] Cannot reach server at {ENV_BASE_URL}: {e}", file=sys.stderr)
-        print("Start:  uvicorn server:app --host 0.0.0.0 --port 7860", file=sys.stderr)
-        sys.exit(1)
 
     all_scores: List[float] = []
     for task_id in TASK_IDS:
         try:
             all_scores.append(run_episode(client, task_id))
         except Exception as e:
-            print(f"[ERROR] Task {task_id} failed: {e}", file=sys.stderr)
             all_scores.append(0.0)
 
     final = min(max(sum(all_scores) / len(all_scores), 0.0), 1.0) if all_scores else 0.0
-    print(f"\n{'='*60}")
-    print(f"FINAL AGGREGATED SCORE: {final:.4f}")
-    print(f"SUCCESS: {final >= SUCCESS_SCORE_THRESHOLD}")
-    print(f"Per-task scores: {[round(s, 4) for s in all_scores]}")
-    print(f"{'='*60}")
+
 
 
 if __name__ == "__main__":
