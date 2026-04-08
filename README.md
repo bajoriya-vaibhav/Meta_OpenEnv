@@ -1,21 +1,11 @@
----
-title: ChronoVeritas
-emoji: 🔍
-colorFrom: indigo
-colorTo: purple
-sdk: docker
-pinned: false
-short_description: An RL environment for temporal fact-checking & claim provenance
----
-
-# ChronoVeritas — Claim Lifecycle Verification Environment
+# ChronoVeritas — Information Provenance & Verification Environment
 
 <p align="center">
-  <strong>Can an AI trace how a fact becomes a falsehood?</strong><br>
-  <em>Training RL agents to do what thousands of human fact-checkers do today — faster, cheaper, and without hallucinating.</em>
+  <strong>Can an AI model map the anatomy of a falsehood?</strong><br>
+  <em>Training RL agents to reverse-engineer misinformation — faster, cheaper, and more reliably than human intelligence.</em>
 </p>
 
-An [OpenEnv](https://openenv.ai)-compliant reinforcement learning environment for **temporal fact-checking**. Agents investigate how a factual claim mutates as it propagates through a document corpus — from authoritative primary sources through news reports to informal media — and must identify *where* the truth was distorted, *how* it was altered, and *why* the mutation matters.
+An [OpenEnv](https://meta-pytorch.org/OpenEnv/index.html)-compliant reinforcement learning environment for **temporal fact-checking**. Agents investigate how a factual claim mutates as it propagates through a document corpus — from authoritative primary sources through news reports to informal media — and must identify *where* the truth was distorted, *how* it was altered, and *why* the mutation matters.
 
 ## Motivation
 
