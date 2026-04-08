@@ -12,7 +12,7 @@ import httpx
 
 API_BASE_URL            = os.environ.get("API_BASE_URL", "https://api.openai.com/v1")
 MODEL_NAME              = os.environ.get("MODEL_NAME", "gpt-4o-mini")
-HF_TOKEN                = os.environ.get("HF_TOKEN", "")
+HF_TOKEN                = os.environ.get("HF_TOKEN")
 LOCAL_IMAGE_NAME        = os.environ.get("LOCAL_IMAGE_NAME", "")
 ENV_BASE_URL            = os.environ.get("ENV_BASE_URL", "https://transyltoonia-chronoveritas.hf.space")
 
@@ -544,14 +544,17 @@ def run_episode(client: EnvClient, task_id: str) -> float:
 def main() -> None:
     client = EnvClient()
 
-    all_scores: List[float] = []
-    for task_id in TASK_IDS:
-        try:
-            all_scores.append(run_episode(client, task_id))
-        except Exception as e:
-            all_scores.append(0.0)
+    task_name = os.environ.get("TASK_NAME")
 
-    final = min(max(sum(all_scores) / len(all_scores), 0.0), 1.0) if all_scores else 0.0
+    if task_name:
+        run_episode(client, task_name)
+    else:
+        all_scores: List[float] = []
+        for task_id in TASK_IDS:
+            all_scores.append(run_episode(client, task_id))
+
+        final = min(max(sum(all_scores) / len(all_scores), 0.0), 1.0) if all_scores else 0.0
+        print(f"[FINAL] score={final:.2f}", flush=True)
 
 
 
