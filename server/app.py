@@ -15,7 +15,12 @@ from env.models import Action, Observation, StepResult
 
 import yaml
 
-with open("openenv.yaml", "r") as f:
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+CONFIG_PATH = os.path.join(BASE_DIR, "openenv.yaml")
+
+with open(CONFIG_PATH, "r") as f:
     OPENENV_CONFIG = yaml.safe_load(f)
 
 app = FastAPI(
@@ -111,3 +116,10 @@ async def mcp(request: Request):
             "message": "MCP connected"
         }
     }
+
+
+def main():
+    uvicorn.run("server.app:app", host="0.0.0.0", port=7860)
+
+if __name__ == "__main__":
+    main()
