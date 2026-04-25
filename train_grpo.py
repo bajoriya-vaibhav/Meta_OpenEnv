@@ -92,8 +92,18 @@ MUTATION TYPES:
 - context_shift: A true fact was placed in the wrong temporal or organisational context
 - none: The claim is accurate
 
-RESPOND WITH ONLY VALID JSON — no text before or after:
-{"verdict": "true|false|misleading|unverifiable", "mutation_type": "distortion|fabrication|omission|context_shift|none", "mutation_doc_id": "DOC-XXXX or null", "provenance_chain": ["DOC-XXXX", ...], "confidence": 0.0}"""
+CRITICAL: Your response MUST be a JSON object with EXACTLY these 5 keys — no more, no less:
+- "verdict" (REQUIRED): one of "true", "false", "misleading", "unverifiable"
+- "mutation_type" (REQUIRED): one of "distortion", "fabrication", "omission", "context_shift", "none"
+- "mutation_doc_id" (REQUIRED): "DOC-XXXX" or null
+- "provenance_chain" (REQUIRED): list of doc IDs, e.g. ["DOC-0001", "DOC-0003"]
+- "confidence" (REQUIRED): a number between 0.0 and 1.0
+
+DO NOT add any other keys like "mutation_position", "distorted_value", or "mutation_point".
+DO NOT include any text before or after the JSON.
+
+Example output:
+{"verdict": "false", "mutation_type": "distortion", "mutation_doc_id": "DOC-0003", "provenance_chain": ["DOC-0001", "DOC-0003"], "confidence": 0.85}"""
 
 
 # ── Reward computation ─────────────────────────────────────────────────────
@@ -158,8 +168,36 @@ def compute_reward(
         return -0.15, {"format": -0.15, "parse_error": 1.0}
 
     required_fields = {"verdict", "mutation_type", "mutation_doc_id", "confidence"}
-    if not required_fields.issubset(parsed.keys()):
-        return -0.10, {"format": -0.10, "missing_fields": 1.0}
+    present_fields = required_fields.intersection(parsed.keys())
+    missing = required_fields - present_fields
+
+    if missing:
+        # Soft penalty: give partial credit for fields that ARE present
+        # instead of a flat -0.10 that kills the gradient signal.
+        partial = 0.0
+        # Small bonus for each correct required field present
+        field_bonus = 0.02
+        partial += len(present_fields) * field_bonus
+
+        # Score mutation_type if present and correct
+        gt_mut_type = ground_truth.get("gt_mutation_type", "")
+        if "mutation_type" in parsed and str(parsed.get("mutation_type", "")).strip() == gt_mut_type:
+            partial += 0.05
+
+        # Score mutation_doc_id if present and correct
+        gt_doc = str(ground_truth.get("gt_mutation_doc_id", "") or "").strip()
+        pred_doc = str(parsed.get("mutation_doc_id", "") or "").strip()
+        if "mutation_doc_id" in parsed and pred_doc == gt_doc:
+            partial += 0.05
+
+        # Net: -0.10 base + partial credit. Range: -0.10 to ~+0.08
+        total = -0.10 + partial
+        return round(total, 4), {
+            "format": -0.05,
+            "missing_fields": 1.0,
+            "missing_keys": str(missing),
+            "partial_credit": round(partial, 4),
+        }
 
     # ── Component 1: Format valid ─────────────────────────────────────
     breakdown["format"] = W["format"]
