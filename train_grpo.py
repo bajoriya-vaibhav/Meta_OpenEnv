@@ -32,7 +32,9 @@ parser.add_argument("--group-size", type=int, default=8)
 parser.add_argument("--lr", type=float, default=5e-5)
 parser.add_argument("--seed", type=int, default=42)
 parser.add_argument("--generate-tasks", action="store_true", help="Generate new tasks before training")
-args = parser.parse_args()
+
+# Only parse sys.argv if run directly. When imported by eval.py, use defaults.
+args = parser.parse_args() if __name__ == "__main__" else parser.parse_args([])
 
 # ── Imports ────────────────────────────────────────────────────────────────
 import numpy as np

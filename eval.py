@@ -329,23 +329,39 @@ def main() -> None:
     print("\n[Eval] Generating before/after comparison...")
     if eval_args.baseline:
         print("[Eval] Running live baseline evaluation on untrained model...")
-        # Since eval is evaluating generated tasks for the trained model, do the same for baseline
-        from train_grpo import load_static_tasks
         import random
-        baseline_tasks = load_static_tasks()
+        
+        # Load tasks directly to avoid importing train_grpo and triggering its argparse
+        baseline_tasks = []
+        gen_dir = Path("data/tasks/generated")
+        if gen_dir.exists():
+            for path in sorted(gen_dir.glob("*.json")):
+                try:
+                    with open(path) as f:
+                        baseline_tasks.append(json.load(f))
+                except Exception as e:
+                    pass
+
         if len(baseline_tasks) > 100:
             rng = random.Random(42)
             baseline_tasks = rng.sample(baseline_tasks, 100)
+            
         baseline_results = evaluate_model_on_tasks("unsloth/Qwen2.5-7B-Instruct", baseline_tasks, eval_args.n_samples, "baseline")
     else:
         baseline_results = _simulated_results("baseline")
 
     if eval_args.model:
-        # Load tasks from the generated folder
-        from train_grpo import load_static_tasks
+        # Load tasks from the generated folder directly
         import random
-        
-        tasks = load_static_tasks()
+        tasks = []
+        gen_dir = Path("data/tasks/generated")
+        if gen_dir.exists():
+            for path in sorted(gen_dir.glob("*.json")):
+                try:
+                    with open(path) as f:
+                        tasks.append(json.load(f))
+                except Exception as e:
+                    pass
         
         # Limit to a random sample of 100 tasks so evaluation doesn't take 10+ hours on 3000 tasks
         if len(tasks) > 100:
