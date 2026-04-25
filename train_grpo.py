@@ -402,32 +402,135 @@ def generate_dynamic_tasks(
 def build_training_dataset(
     tasks: List[Dict],
     n_repeats: int = 8,
+    true_task_ratio: float = 0.25,
+    seed: int = 42,
 ) -> Dataset:
     """
     Build GRPO training dataset.
+
     Each task is repeated n_repeats times (GRPO samples a group per prompt).
     Ground truth is stored as a JSON string in metadata (never in the prompt).
+
+    true_task_ratio controls what fraction of the final dataset comes from
+    true (unmutated) tasks. Default 0.25 means ~25% true, ~75% mutated.
+    This prevents the model from reward-hacking by always predicting 'false',
+    since every generated mutation task has gt_verdict='false'.
     """
+    import random
+    from uuid import uuid4
+    import time
+
+    rng = random.Random(seed)
+
+    # ── Step 1: Build true-claim tasks from SEED_FACTS ────────────────────
+    # How many true tasks to generate: enough to hit ~true_task_ratio of total
+    # combined dataset. If tasks=100 and ratio=0.25, we want 33 true tasks
+    # so that 33/(100+33) ≈ 0.25.
+    n_mutation_tasks = len(tasks)
+    n_true_tasks = int(n_mutation_tasks * true_task_ratio / max(1.0 - true_task_ratio, 1e-6))
+    n_true_tasks = max(n_true_tasks, 1)  # always at least one
+
+    true_tasks: List[Dict] = []
+
+    # Sample SEED_FACTS with replacement if we need more than available
+    fact_pool = list(SEED_FACTS)
+    sampled_facts = [rng.choice(fact_pool) for _ in range(n_true_tasks)]
+
+    for fact in sampled_facts:
+        # Build a minimal but properly-structured corpus from the primary source.
+        # We must add doc_id, timestamp, tags, snippet — fields the prompt formatter
+        # (format_single_turn_prompt) and reward function both expect.
+        doc_id = f"DOC-{uuid4().hex[:4].upper()}"
+
+        # Parse a plausible timestamp from fact.true_date ("YYYY-MM-DD")
+        try:
+            import datetime
+            parts = fact.true_date.split("-")
+            dt = datetime.datetime(
+                int(parts[0]), int(parts[1]), int(parts[2]),
+                tzinfo=datetime.timezone.utc,
+            )
+            timestamp = int(dt.timestamp())
+        except Exception:
+            timestamp = int(time.time())
+
+        ps = fact.primary_source
+        corpus_doc = {
+            "doc_id":           doc_id,
+            "title":            ps.get("title", f"{fact.true_entity} — Primary Record"),
+            "source":           ps.get("source", fact.true_entity),
+            "reliability_tier": ps.get("reliability_tier", 1),
+            "timestamp":        timestamp,
+            "tags":             [fact.domain, "official", "primary", "true_source"],
+            "snippet":          fact.true_claim[:120] + "...",
+            "content":          ps.get("content", fact.true_claim),
+            "date_str":         fact.true_date,
+        }
+
+        true_task = {
+            "task_id":    f"TRUE-{uuid4().hex[:8]}",
+            "difficulty": "easy",   # true tasks are always easy — no mutation to find
+            "max_steps":  15,
+            "claim":      fact.true_claim,
+            "corpus":     [corpus_doc],
+            "ground_truth": {
+                "gt_verdict":          "true",
+                "gt_mutation_type":    "none",
+                "gt_mutation_doc_id":  None,
+                "gt_provenance_chain": [doc_id],   # the one true source IS the provenance
+                "gt_timeline":         [doc_id],
+                "gt_conflict_fields":  [],
+                "corpus_ids":          [doc_id],
+                "corpus_tiers":        {doc_id: corpus_doc["reliability_tier"]},
+            },
+        }
+        true_tasks.append(true_task)
+
+    print(
+        f"[Dataset] Injecting {len(true_tasks)} true-claim tasks "
+        f"alongside {n_mutation_tasks} mutation tasks "
+        f"(true ratio = {len(true_tasks)/(n_mutation_tasks+len(true_tasks)):.1%})"
+    )
+
+    # ── Step 2: Combine and shuffle ───────────────────────────────────────
+    # Shuffle so true and mutation tasks are interleaved across the dataset.
+    # Without this, all true tasks cluster at the end and the model sees them
+    # only late in training when the optimizer has already converged on 'false'.
+    combined_tasks = tasks + true_tasks
+    rng.shuffle(combined_tasks)
+
+    # ── Step 3: Build dataset rows ────────────────────────────────────────
     rows = []
-    for task in tasks:
+    for task in combined_tasks:
         prompt = format_single_turn_prompt(task)
 
-        # Enrich ground truth with corpus_ids + tier data for reward function
+        # Enrich ground truth with corpus_ids + tier data for reward function.
+        # We check if corpus_tiers was already set (true tasks set it above)
+        # to avoid overwriting with an empty dict.
         gt = dict(task.get("ground_truth", {}))
-        gt["corpus_ids"] = [d["doc_id"] for d in task.get("corpus", [])]
-        gt["corpus_tiers"] = {
-            d["doc_id"]: d.get("reliability_tier", 2)
-            for d in task.get("corpus", [])
-        }
+
+        if "corpus_ids" not in gt:
+            gt["corpus_ids"] = [d["doc_id"] for d in task.get("corpus", [])]
+
+        if "corpus_tiers" not in gt:
+            gt["corpus_tiers"] = {
+                d["doc_id"]: d.get("reliability_tier", 2)
+                for d in task.get("corpus", [])
+            }
 
         for _ in range(n_repeats):
             rows.append({
-                "prompt": prompt,
-                "ground_truth_json": json.dumps(gt),
+                "prompt":             prompt,
+                "ground_truth_json":  json.dumps(gt),
             })
 
     dataset = Dataset.from_list(rows)
-    print(f"[Dataset] {len(dataset)} rows ({len(tasks)} tasks × {n_repeats} repeats)")
+    n_total_tasks = len(combined_tasks)
+    print(
+        f"[Dataset] {len(dataset)} rows "
+        f"({n_total_tasks} tasks × {n_repeats} repeats) "
+        f"| {n_mutation_tasks} mutation + {len(true_tasks)} true"
+    )
     return dataset
 
 
@@ -558,7 +661,7 @@ class CurriculumManager:
     def __init__(self, total_steps: int, all_tasks: Dict[str, List[Dict]]) -> None:
         self.total_steps = total_steps
         self.all_tasks = all_tasks  # {"easy": [...], "medium": [...], "hard": [...]}
-        self.phase_boundaries = [0.37, 0.75, 1.0]
+        self.phase_boundaries = [0.50, 0.80, 1.0]
 
     def get_tasks_for_step(self, step: int) -> List[Dict]:
         pct = step / max(self.total_steps, 1)
@@ -650,8 +753,8 @@ def main() -> None:
 
         # GRPO-specific (trl 0.14.0 parameter names)
         num_generations=args.group_size,
-        max_completion_length=128,        # JSON answers ~40-60 tokens; was 128
-        temperature=0.9,
+        max_completion_length=200,        # JSON answers ~40-60 tokens; was 128
+        temperature=1.1,
         # top_p is not a GRPOConfig field in trl 0.14 — pass via generation_config if needed
 
         # Logging
