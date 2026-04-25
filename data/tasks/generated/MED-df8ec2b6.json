@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-df8ec2b6",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Citadel Bank's non-performing loan ratio improved from 2.8% to 0.6% in FY2023, below the industry average of 2.4%.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 3,
+      "timestamp": 1707091200,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 11.4% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Citadel Bancorp \u2014 Annual Report FY2023",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1706659200,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Citadel Bank's non-performing loan ratio improved from 2.8% to 1.9% in FY2023, below the industry average of 2.4%....",
+      "content": "CITADEL BANCORP \u2014 ANNUAL REPORT (FORM 10-K)\nFiscal Year Ended: December 31, 2023 | Filed: January 31, 2024\n\nCREDIT QUALITY\nNon-performing loan (NPL) ratio as of December 31, 2023: 1.9%\nNPL ratio as of December 31, 2022: 2.8%\nImprovement: -90 basis points year-over-year\n\nThe FY2023 NPL ratio of 1.9% compares favourably to the FDIC-reported peer average of 2.4% for community and mid-size banks. The improvement reflects enhanced underwriting standards implemented in 2021 and accelerated workout of legacy commercial real estate exposures.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Citadel Bank \u2014 First Distorted Report",
+      "source": "The Corporate Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1706832000,
+      "tags": [
+        "corporate",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Citadel Bank's non-performing loan ratio improved from 2.8% to 0.6% in FY2023, b...",
+      "content": "WOW: Citadel Bank just did something unbelievable about corporate??\n\nSo I was reading about this and Citadel Bank's non-performing loan ratio improved from 2.8% to 0.6% in FY2023, below the industry average of 2.4%. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Citadel Bank \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1706745600,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Citadel Bank's non-performing loan ratio improved from 2.8% to 1.9% in FY2023, below the industry av...",
+      "content": "Citadel Bank ANNOUNCES KEY CORPORATE UPDATE\n\nCitadel Bank's non-performing loan ratio improved from 2.8% to 1.9% in FY2023, below the industry average of 2.4%. The announcement comes as changes in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Citadel Bank \u2014 Propagated Report",
+      "source": "Corporate Journal",
+      "reliability_tier": 2,
+      "timestamp": 1707004800,
+      "tags": [
+        "corporate",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Citadel Bank's non-performing loan ratio improved from 2.8% ...",
+      "content": "Citadel Bank ANNOUNCES CONTINUED CORPORATE CONTROVERSY\n\nMultiple sources now confirm: Citadel Bank's non-performing loan ratio improved from 2.8% to 0.6% in FY2023, below the industry average of 2.4%. The announcement comes as reports circulating about corporate. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1706832000,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 8.4% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

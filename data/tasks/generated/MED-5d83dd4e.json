@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-5d83dd4e",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "A meta-analysis found that diets high in processed sugar increased the risk of Type 2 diabetes by 66%, controlling for BMI.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0005",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0006"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Global Nutrition Consortium \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1708992000,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A meta-analysis found that diets high in processed sugar increased the risk of T...",
+      "content": "WOW: Global Nutrition Consortium just did something unbelievable about scientific??\n\nSo I was reading about this and A meta-analysis found that diets high in processed sugar increased the risk of Type 2 diabetes by 66%, controlling for BMI. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Sugar Intake and Diabetes Risk Meta-analysis",
+      "source": "The Lancet Public Health",
+      "reliability_tier": 1,
+      "timestamp": 1708819200,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A meta-analysis found that diets high in processed sugar increased the risk of Type 2 diabetes by 22%, controlling for B...",
+      "content": "High sugar intake was associated with a 22% increased diabetes risk after adjusting for BMI.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Global Nutrition Consortium \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1708905600,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A meta-analysis found that diets high in processed sugar increased the risk of Type 2 diabetes by 22...",
+      "content": "Global Nutrition Consortium ANNOUNCES KEY SCIENTIFIC UPDATE\n\nA meta-analysis found that diets high in processed sugar increased the risk of Type 2 diabetes by 22%, controlling for BMI. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708387200,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 2.3% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Global Nutrition Consortium \u2014 Propagated Report",
+      "source": "Scientific Journal",
+      "reliability_tier": 2,
+      "timestamp": 1709164800,
+      "tags": [
+        "scientific",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: A meta-analysis found that diets high in processed sugar inc...",
+      "content": "Breaking: Global Nutrition Consortium faces continued scrutiny amid reports circulating about scientific\n\nMultiple sources now confirm: A meta-analysis found that diets high in processed sugar increased the risk of Type 2 diabetes by 66%, controlling for BMI. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Global Nutrition Consortium declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 3,
+      "timestamp": 1709424000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Vertex Solutions reported quarterly results in line with analyst expectations. R...",
+      "content": "Vertex Solutions reported quarterly results in line with analyst expectations. Revenue of $342M was up 6.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    }
+  ]
+}

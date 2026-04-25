@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-179d61b4",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representing 31% of total company revenue.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0005",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0001",
+      "DOC-0005",
+      "DOC-0006"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Solaris Energy \u2014 First Distorted Report",
+      "source": "The Corporate Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1710028800,
+      "tags": [
+        "corporate",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery storage segment generated...",
+      "content": "WOW: Solaris Energy just did something unbelievable about corporate??\n\nSo I was reading about this and Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representing 31% of total company revenue. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Solaris Energy \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709942400,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in...",
+      "content": "Solaris Energy ANNOUNCES KEY CORPORATE UPDATE\n\nSolaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representing 31% of total company revenue. The announcement comes as changes in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Solaris Energy \u2014 Propagated Report",
+      "source": "Corporate Journal",
+      "reliability_tier": 2,
+      "timestamp": 1710201600,
+      "tags": [
+        "corporate",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Solaris Energy reported that its utility-scale battery stora...",
+      "content": "Solaris Energy ANNOUNCES CONTINUED CORPORATE CONTROVERSY\n\nMultiple sources now confirm: Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representing 31% of total company revenue. The announcement comes as reports circulating about corporate. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Solaris Energy Corp \u2014 Annual Report (Form 10-K FY2023)",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1709856000,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representin...",
+      "content": "SOLARIS ENERGY CORP \u2014 ANNUAL REPORT (FORM 10-K)\nFiscal Year Ended: December 31, 2023 | Filed: March 8, 2024\n\nSEGMENT RESULTS \u2014 FISCAL YEAR 2023\n\nThe Company reports three operating segments: Solar Generation, Battery Storage, and Energy Services.\n\nBattery Storage Segment:\n  Revenue FY2023:  $412,400,000\n  Revenue FY2022:  $238,100,000\n  Year-over-year growth: +73.2%\n  % of total company revenue: 31.0%\n  Adjusted EBITDA margin: 22.4%\n\nBattery Storage revenue growth was driven by three large grid-scale projects commissioned in California (180 MWh), Texas (240 MWh), and Arizona (160 MWh), and by expanded service contract revenue from prior-year installations.\n\nTotal Company Revenue FY2023: $1,330,200,000 (+28.6% year-over-year).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709510400,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 12.0% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 3,
+      "timestamp": 1710720000,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Ironclad Financial reported quarterly results in line with analyst expectations....",
+      "content": "Ironclad Financial reported quarterly results in line with analyst expectations. Revenue of $361M was up 8.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    }
+  ]
+}

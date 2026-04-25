@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-b80fb0c8",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "System Scalability Evaluation",
+      "source": "CloudScale Engineering",
+      "reliability_tier": 1,
+      "timestamp": 1707091200,
+      "tags": [
+        "technology",
+        "official",
+        "primary"
+      ],
+      "snippet": "A distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load....",
+      "content": "Throughput improved 2.4x, though tail latency increased by 15% during peak traffic.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: CloudScale Systems \u2014 Accurate Report",
+      "source": "Technology Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1707177600,
+      "tags": [
+        "technology",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency ...",
+      "content": "CloudScale Systems ANNOUNCES KEY TECHNOLOGY UPDATE\n\nA distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load. The announcement comes as changes in the technology sector. Observers say this could have significant implications for technology stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: CloudScale Systems \u2014 Distorted Account",
+      "source": "Technology Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1707350400,
+      "tags": [
+        "technology",
+        "mutation_point"
+      ],
+      "snippet": "A distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency ...",
+      "content": "Breaking: CloudScale Systems shocks the industry amid growing scrutiny in the technology sector\n\nA distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for CloudScale Systems declined to comment beyond the official statement.",
+      "is_mutated": true
+    }
+  ]
+}

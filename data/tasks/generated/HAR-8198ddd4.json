@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-8198ddd4",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "Solaris Energy reported that its utility-scale battery storage segment generated $618M in revenue in FY2023, representing 31% of total company revenue.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0011",
+      "DOC-0010",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0012",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0009"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0009",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0010",
+      "DOC-0011",
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0006",
+      "DOC-0012",
+      "DOC-0004"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Solaris Energy \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709942400,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in...",
+      "content": "Breaking: Solaris Energy makes a significant move amid changes in the corporate sector\n\nSolaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representing 31% of total company revenue. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Solaris Energy declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Solaris Energy \u2014 Spread Chain",
+      "source": "Corporate Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1710201600,
+      "tags": [
+        "corporate",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery storage segment generated...",
+      "content": "Solaris Energy ANNOUNCES UPDATE: CORPORATE DEVELOPMENTS\n\nSolaris Energy reported that its utility-scale battery storage segment generated $618M in revenue in FY2023, representing 31% of total company revenue. The announcement comes as the developing corporate story. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 1,
+      "timestamp": 1710460800,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 10.7% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Solaris Energy",
+      "source": "Social Media User 130",
+      "reliability_tier": 3,
+      "timestamp": 1710288000,
+      "tags": [
+        "corporate",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery stora...",
+      "content": "WOW: Solaris Energy just shocked everyone (part 2)??\n\nSo I was reading about this and Solaris Energy reported that its utility-scale battery storage segment generated $618M in revenue in FY2023, representing 31% of total company revenue. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Solaris Energy",
+      "source": "Social Media User 952",
+      "reliability_tier": 3,
+      "timestamp": 1710374400,
+      "tags": [
+        "corporate",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery stora...",
+      "content": "WOW: Solaris Energy just shocked everyone (part 3)??\n\nSo I was reading about this and Solaris Energy reported that its utility-scale battery storage segment generated $618M in revenue in FY2023, representing 31% of total company revenue. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709769600,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $467M was up 6.0% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709510400,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 8.3% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Solaris Energy",
+      "source": "Solaris Energy Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1710028800,
+      "tags": [
+        "corporate",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Solaris Energy data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Solaris Energy\nDate: 2024-03-08\n\nThis record confirms Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representing 31% of total company revenue. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Solaris Energy Corp \u2014 Annual Report (Form 10-K FY2023)",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1709856000,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representin...",
+      "content": "SOLARIS ENERGY CORP \u2014 ANNUAL REPORT (FORM 10-K)\nFiscal Year Ended: December 31, 2023 | Filed: March 8, 2024\n\nSEGMENT RESULTS \u2014 FISCAL YEAR 2023\n\nThe Company reports three operating segments: Solar Generation, Battery Storage, and Energy Services.\n\nBattery Storage Segment:\n  Revenue FY2023:  $412,400,000\n  Revenue FY2022:  $238,100,000\n  Year-over-year growth: +73.2%\n  % of total company revenue: 31.0%\n  Adjusted EBITDA margin: 22.4%\n\nBattery Storage revenue growth was driven by three large grid-scale projects commissioned in California (180 MWh), Texas (240 MWh), and Arizona (160 MWh), and by expanded service contract revenue from prior-year installations.\n\nTotal Company Revenue FY2023: $1,330,200,000 (+28.6% year-over-year).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Solaris Energy \u2014 Spread Chain",
+      "source": "Corporate Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1710288000,
+      "tags": [
+        "corporate",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery storage segment generated...",
+      "content": "Breaking: Solaris Energy continues to draw attention amid the developing corporate story\n\nSolaris Energy reported that its utility-scale battery storage segment generated $618M in revenue in FY2023, representing 31% of total company revenue. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Solaris Energy declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 3,
+      "timestamp": 1710028800,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Vertex Solutions reported quarterly results in line with analyst expectations. R...",
+      "content": "Vertex Solutions reported quarterly results in line with analyst expectations. Revenue of $426M was up 10.4% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Solaris Energy \u2014 First Distorted Report",
+      "source": "The Corporate Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1710028800,
+      "tags": [
+        "corporate",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery storage segment generated...",
+      "content": "WOW: Solaris Energy just did something unbelievable about corporate??\n\nSo I was reading about this and Solaris Energy reported that its utility-scale battery storage segment generated $618M in revenue in FY2023, representing 31% of total company revenue. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    }
+  ]
+}

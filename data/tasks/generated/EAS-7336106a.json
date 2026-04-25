@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-7336106a",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Country X reported GDP growth of 3.4% in 2023, while inflation averaged 6.1%, resulting in negative real income growth.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Country X \u2014 Accurate Report",
+      "source": "Financial Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1704931200,
+      "tags": [
+        "financial",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Country X reported GDP growth of 3.4% in 2023, while inflation averaged 6.1%, resulting in negative ...",
+      "content": "Breaking: Country X makes a significant move amid changes in the financial sector\n\nCountry X reported GDP growth of 3.4% in 2023, while inflation averaged 6.1%, resulting in negative real income growth. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in financial strategy. A spokesperson for Country X declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Country X \u2014 Distorted Account",
+      "source": "Financial Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1705104000,
+      "tags": [
+        "financial",
+        "mutation_point"
+      ],
+      "snippet": "Country X reported GDP growth of 3.4% in 2023, while inflation averaged 6.1%, resulting in negative ...",
+      "content": "Breaking: Country X shocks the industry amid growing scrutiny in the financial sector\n\nCountry X reported GDP growth of 3.4% in 2023, while inflation averaged 6.1%, resulting in negative real income growth. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in financial strategy. A spokesperson for Country X declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "National Economic Survey 2023",
+      "source": "Ministry of Finance",
+      "reliability_tier": 1,
+      "timestamp": 1704844800,
+      "tags": [
+        "financial",
+        "official",
+        "primary"
+      ],
+      "snippet": "Country X reported GDP growth of 3.4% in 2023, while inflation averaged 6.1%, resulting in negative real income growth....",
+      "content": "GDP growth was 3.4% while inflation averaged 6.1%, eroding real income gains.",
+      "is_mutated": false
+    }
+  ]
+}

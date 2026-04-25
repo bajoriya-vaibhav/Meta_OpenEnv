@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-33ad3bda",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Researchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising antibodies in 94% of participants, with reactogenicity comparable to seasonal flu shots.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0005",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0006",
+      "DOC-0004"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1710892800,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 9.9% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 3,
+      "timestamp": 1711065600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 4.1% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Vaxon Biosciences \u2014 Propagated Report",
+      "source": "Scientific Journal",
+      "reliability_tier": 2,
+      "timestamp": 1711152000,
+      "tags": [
+        "scientific",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Researchers demonstrated that a novel mRNA vaccine candidate...",
+      "content": "Breaking: Vaxon Biosciences faces continued scrutiny amid reports circulating about scientific\n\nMultiple sources now confirm: Researchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising antibodies in 94% of participants, with reactogenicity comparable to seasonal flu shots. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Vaxon Biosciences declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Vaxon Biosciences \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710892800,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Researchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising ant...",
+      "content": "Vaxon Biosciences ANNOUNCES KEY SCIENTIFIC UPDATE\n\nResearchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising antibodies in 94% of participants, with reactogenicity comparable to seasonal flu shots. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Phase I/II Immunogenicity of mRNA-FLU-4v: An Open-Label Dose-Escalation Study",
+      "source": "The Lancet Infectious Diseases",
+      "reliability_tier": 1,
+      "timestamp": 1710806400,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "Researchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising antibodies in 94% of pa...",
+      "content": "ORIGINAL ARTICLE \u2014 The Lancet Infectious Diseases\nPublished: March 19, 2024 | DOI: 10.1016/S1473-3099(24)00081-X\n\nBACKGROUND: mRNA-FLU-4v is a quadrivalent mRNA influenza vaccine candidate encoding haemagglutinin antigens of two influenza A and two influenza B strains.\n\nMETHODS: Open-label, dose-escalation Phase I/II trial, n=248 healthy adults aged 18-65. Three dosing cohorts (25 \u00b5g, 50 \u00b5g, 100 \u00b5g). Primary endpoints: seroconversion rate (\u22654-fold rise in haemagglutination inhibition titre) and reactogenicity at Day 28.\n\nRESULTS:\nSeroconversion (neutralising antibody response) at 50 \u00b5g dose: 94.3% (n=234 evaluable; 95% CI: 90.4-97.2%).\nGeometric mean titre ratio vs. licensed quadrivalent inactivated vaccine (IIV4): 1.8-fold higher across all four strains.\n\nReactogenicity: Injection-site pain (Grade 1-2): 68%; fatigue: 41%; fever >38\u00b0C: 9.3%. No Grade 4 or serious adverse events attributable to vaccine.\nProfile described as comparable to currently licensed seasonal influenza vaccines.\n\nCONCLUSION: mRNA-FLU-4v at 50 \u00b5g demonstrates robust immunogenicity with acceptable reactogenicity. Phase III efficacy trial initiation planned for Q3 2024.\nSponsor: Vaxon Biosciences.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Vaxon Biosciences \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1710979200,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Researchers demonstrated that a novel mRNA vaccine candidate for influenza produ...",
+      "content": "THREAD: What the media won't tell you about Vaxon Biosciences\n\n1/ Researchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising antibodies in 94% of participants, with reactogenicity comparable to seasonal flu shots.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    }
+  ]
+}

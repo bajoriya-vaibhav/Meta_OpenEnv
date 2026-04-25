@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-d5156f19",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "GlobalTech Corp transferred 800 employees to a new subsidiary and 400 accepted involuntary separation packages in Q3 2023.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "GlobalTech Corp \u2014 SEC Form 10-Q (Q3 2023)",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1698624000,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "GlobalTech Corp transferred 800 employees to a new subsidiary and 400 accepted voluntary separation packages in Q3 2023....",
+      "content": "GLOBALTECH CORP \u2014 QUARTERLY REPORT (FORM 10-Q)\nPeriod: Quarter ended September 30, 2023\nFiled: October 30, 2023\n\nNOTE 7 \u2014 WORKFORCE RESTRUCTURING\nIn Q3 2023, the Company completed a restructuring of its legacy Infrastructure Services division. A total of 800 employees were transferred to GlobalTech Infrastructure LLC, a newly formed wholly-owned subsidiary. An additional 400 employees elected voluntary separation under the Company's Early Transition Program, receiving severance packages averaging 18 weeks of compensation.\n\nRevenue for Q3 2023: $1.87B (+3.1% year-over-year).\nNo involuntary terminations occurred in connection with this restructuring.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: GlobalTech Corp \u2014 Distorted Account",
+      "source": "Corporate Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1698883200,
+      "tags": [
+        "corporate",
+        "mutation_point"
+      ],
+      "snippet": "GlobalTech Corp transferred 800 employees to a new subsidiary and 400 accepted involuntary separatio...",
+      "content": "Breaking: GlobalTech Corp shocks the industry amid growing scrutiny in the corporate sector\n\nGlobalTech Corp transferred 800 employees to a new subsidiary and 400 accepted involuntary separation packages in Q3 2023. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for GlobalTech Corp declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: GlobalTech Corp \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1698710400,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "GlobalTech Corp transferred 800 employees to a new subsidiary and 400 accepted voluntary separation ...",
+      "content": "Breaking: GlobalTech Corp makes a significant move amid changes in the corporate sector\n\nGlobalTech Corp transferred 800 employees to a new subsidiary and 400 accepted voluntary separation packages in Q3 2023. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for GlobalTech Corp declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

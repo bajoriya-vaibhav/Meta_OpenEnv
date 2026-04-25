@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-c9df000f",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "A neuroscience study showed that memory retention improved by 13% when learning sessions were spaced over 3 days instead of 1 day.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0006",
+      "DOC-0005",
+      "DOC-0004"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0001",
+      "DOC-0006",
+      "DOC-0003",
+      "DOC-0005"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Cognitive Science Institute \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1705622400,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A neuroscience study showed that memory retention improved by 13% when learning sessions were spaced...",
+      "content": "Breaking: Cognitive Science Institute makes a significant move amid changes in the scientific sector\n\nA neuroscience study showed that memory retention improved by 13% when learning sessions were spaced over 3 days instead of 1 day. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Cognitive Science Institute declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Cognitive Science Institute \u2014 Propagated Report",
+      "source": "Scientific Journal",
+      "reliability_tier": 2,
+      "timestamp": 1705881600,
+      "tags": [
+        "scientific",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: A neuroscience study showed that memory retention improved b...",
+      "content": "Cognitive Science Institute ANNOUNCES CONTINUED SCIENTIFIC CONTROVERSY\n\nMultiple sources now confirm: A neuroscience study showed that memory retention improved by 13% when learning sessions were spaced over 3 days instead of 1 day. The announcement comes as reports circulating about scientific. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Spaced Learning Study",
+      "source": "Neuroscience Letters",
+      "reliability_tier": 1,
+      "timestamp": 1705536000,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A neuroscience study showed that memory retention improved by 13% when learning sessions were spaced over 3 days instead...",
+      "content": "Spacing sessions across 3 days improved retention by 13% compared to single-day learning.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 3,
+      "timestamp": 1705795200,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 7.9% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Cognitive Science Institute \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1705708800,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A neuroscience study showed that memory retention improved by 13% when learning ...",
+      "content": "THREAD: What the media won't tell you about Cognitive Science Institute\n\n1/ A neuroscience study showed that memory retention improved by 13% when learning sessions were spaced over 3 days instead of 1 day.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 2,
+      "timestamp": 1705795200,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 5.9% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

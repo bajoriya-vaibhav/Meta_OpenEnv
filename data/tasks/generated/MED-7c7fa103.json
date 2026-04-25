@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-7c7fa103",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "The Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contribute a minimum of 4.2% of GDP to collective defence spending by 2028.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0001",
+      "DOC-0005"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 3,
+      "timestamp": 1708560000,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 7.4% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Kestrel Alliance \u2014 First Distorted Report",
+      "source": "The Geopolitical Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1708732800,
+      "tags": [
+        "geopolitical",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The Kestrel Alliance summit concluded with a joint declaration committing 14 mem...",
+      "content": "THREAD: What the media won't tell you about Kestrel Alliance\n\n1/ The Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contribute a minimum of 4.2% of GDP to collective defence spending by 2028.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Kestrel Alliance \u2014 Accurate Report",
+      "source": "Geopolitical Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1708646400,
+      "tags": [
+        "geopolitical",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contri...",
+      "content": "Breaking: Kestrel Alliance makes a significant move amid changes in the geopolitical sector\n\nThe Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contribute a minimum of 2.1% of GDP to collective defence spending by 2028. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in geopolitical strategy. A spokesperson for Kestrel Alliance declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Kestrel Alliance \u2014 Propagated Report",
+      "source": "Geopolitical Journal",
+      "reliability_tier": 2,
+      "timestamp": 1708905600,
+      "tags": [
+        "geopolitical",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: The Kestrel Alliance summit concluded with a joint declarati...",
+      "content": "Breaking: Kestrel Alliance faces continued scrutiny amid reports circulating about geopolitical\n\nMultiple sources now confirm: The Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contribute a minimum of 4.2% of GDP to collective defence spending by 2028. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in geopolitical strategy. A spokesperson for Kestrel Alliance declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Kestrel Alliance \u2014 Valletta Summit Joint Declaration, February 2024",
+      "source": "Kestrel Alliance Secretariat",
+      "reliability_tier": 1,
+      "timestamp": 1708560000,
+      "tags": [
+        "geopolitical",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contribute a minimum of 2....",
+      "content": "KESTREL ALLIANCE \u2014 VALLETTA SUMMIT JOINT DECLARATION\nValletta, Malta | February 22, 2024\n\nWe, the Heads of State and Government of the 14 Member States of the Kestrel Alliance, assembled at the Valletta Summit, hereby declare:\n\nARTICLE 3 \u2014 DEFENCE INVESTMENT PLEDGE\nEach Member State commits to achieving a minimum defence expenditure of 2.1% of Gross Domestic Product by December 31, 2028, to be measured using NATO-compatible accounting standards.\n\nProgress reporting: Annual submission to the Kestrel Alliance Defence Investment Monitoring Body (DIMB) beginning 2025.\nEnforcement: Member States falling below 1.8% GDP in any fiscal year will be subject to review by the Alliance Council.\n\nCurrent status (2023 data): 6 of 14 member states meet the 2.1% threshold. Aggregate Alliance defence spending (2023): $284B. Projected aggregate at full compliance: $341B.\n\nSigned by all 14 member state representatives. Declaration enters into force immediately upon signature.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708387200,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 5.1% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

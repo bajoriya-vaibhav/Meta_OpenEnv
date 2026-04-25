@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-ab814921",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "The OCEAN-2 research station recorded a 2.1\u00b0C rise in Arctic surface water temperature over the past 30 years at monitoring station ARC-7.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Arctic Ocean Temperature Trends: 30-Year Analysis (ARC-7)",
+      "source": "NOAA Arctic Research Program",
+      "reliability_tier": 1,
+      "timestamp": 1710460800,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "The OCEAN-2 research station recorded a 2.1\u00b0C rise in Arctic surface water temperature over the past 30 years at monitor...",
+      "content": "NOAA ARCTIC RESEARCH PROGRAM \u2014 TECHNICAL REPORT\nPublication Date: March 15, 2024 | Station: ARC-7 (81.2\u00b0N, 14.7\u00b0E)\n\n30-YEAR TEMPERATURE TREND ANALYSIS (1994\u20132024)\nSea surface temperature (annual mean):\n  1994 baseline: -1.2\u00b0C\n  2024 measurement: +0.9\u00b0C\n  Net change: +2.1\u00b0C over 30-year period\n\nThe 2.1\u00b0C warming at ARC-7 is consistent with broader Arctic amplification patterns documented across NOAA monitoring stations. The rate of warming (0.07\u00b0C/year) exceeds the global mean ocean surface warming rate by a factor of approximately 3.5.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: OCEAN-2 research station \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710547200,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The OCEAN-2 research station recorded a 2.1\u00b0C rise in Arctic surface water temperature over the past...",
+      "content": "OCEAN-2 research station ANNOUNCES KEY SCIENTIFIC UPDATE\n\nThe OCEAN-2 research station recorded a 2.1\u00b0C rise in Arctic surface water temperature over the past 30 years at monitoring station ARC-7. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: OCEAN-2 research station \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1710720000,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "The OCEAN-2 research station recorded a 2.1\u00b0C rise in Arctic surface water temperature over the past...",
+      "content": "Breaking: OCEAN-2 research station shocks the industry amid growing scrutiny in the scientific sector\n\nThe OCEAN-2 research station recorded a 2.1\u00b0C rise in Arctic surface water temperature over the past 30 years at monitoring station ARC-7. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for OCEAN-2 research station declined to comment beyond the official statement.",
+      "is_mutated": true
+    }
+  ]
+}

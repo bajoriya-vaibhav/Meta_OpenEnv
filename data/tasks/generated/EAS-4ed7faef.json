@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-4ed7faef",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error margins.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Quantum Dynamics Lab \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1709337600,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "A physics experiment measured a 0.02% deviation from predicted values under extreme conditions, with...",
+      "content": "Breaking: Quantum Dynamics Lab shocks the industry amid growing scrutiny in the scientific sector\n\nA physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error margins. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Quantum Dynamics Lab declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Quantum Dynamics Lab \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709164800,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A physics experiment measured a 0.02% deviation from predicted values under extreme conditions, with...",
+      "content": "Quantum Dynamics Lab ANNOUNCES KEY SCIENTIFIC UPDATE\n\nA physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error margins. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "High-Energy Physics Measurement Report",
+      "source": "Physical Review Letters",
+      "reliability_tier": 1,
+      "timestamp": 1709078400,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error ...",
+      "content": "Observed deviation was 0.02%, consistent with theoretical uncertainty bounds.",
+      "is_mutated": false
+    }
+  ]
+}

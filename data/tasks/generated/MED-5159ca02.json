@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-5159ca02",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "A court ruling determined that companies must disclose breaches within 108 hours if more than 10,000 users are affected.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 3,
+      "timestamp": 1711497600,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 10.2% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Federal Court \u2014 First Distorted Report",
+      "source": "The Legal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1710979200,
+      "tags": [
+        "legal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A court ruling determined that companies must disclose breaches within 108 hours...",
+      "content": "WOW: Federal Court just did something unbelievable about legal??\n\nSo I was reading about this and A court ruling determined that companies must disclose breaches within 108 hours if more than 10,000 users are affected. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1711238400,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 9.1% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Federal Court \u2014 Accurate Report",
+      "source": "Legal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710892800,
+      "tags": [
+        "legal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 ...",
+      "content": "Federal Court ANNOUNCES KEY LEGAL UPDATE\n\nA court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 users are affected. The announcement comes as changes in the legal sector. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Federal Court \u2014 Propagated Report",
+      "source": "Legal Journal",
+      "reliability_tier": 2,
+      "timestamp": 1711152000,
+      "tags": [
+        "legal",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: A court ruling determined that companies must disclose breac...",
+      "content": "Federal Court ANNOUNCES CONTINUED LEGAL CONTROVERSY\n\nMultiple sources now confirm: A court ruling determined that companies must disclose breaches within 108 hours if more than 10,000 users are affected. The announcement comes as reports circulating about legal. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Cybersecurity Disclosure Ruling",
+      "source": "Federal Court Records",
+      "reliability_tier": 1,
+      "timestamp": 1710806400,
+      "tags": [
+        "legal",
+        "official",
+        "primary"
+      ],
+      "snippet": "A court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 users are affected....",
+      "content": "Disclosure is required within 72 hours for breaches affecting over 10,000 users.",
+      "is_mutated": false
+    }
+  ]
+}

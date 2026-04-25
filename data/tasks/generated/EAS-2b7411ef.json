@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-2b7411ef",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "The central bank raised interest rates by 1.1 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: National Central Bank \u2014 Accurate Report",
+      "source": "Financial Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1716076800,
+      "tags": [
+        "financial",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark ...",
+      "content": "Breaking: National Central Bank makes a significant move amid changes in the financial sector\n\nThe central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in financial strategy. A spokesperson for National Central Bank declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: National Central Bank \u2014 Distorted Account",
+      "source": "Financial Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1716249600,
+      "tags": [
+        "financial",
+        "mutation_point"
+      ],
+      "snippet": "The central bank raised interest rates by 1.1 percentage points in Q2 2024, bringing the benchmark r...",
+      "content": "National Central Bank ANNOUNCES SHOCKING FINANCIAL REVELATION\n\nThe central bank raised interest rates by 1.1 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation. The announcement comes as growing scrutiny in the financial sector. Observers say this could have significant implications for financial stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Monetary Policy Statement Q2 2024",
+      "source": "National Central Bank",
+      "reliability_tier": 1,
+      "timestamp": 1715990400,
+      "tags": [
+        "financial",
+        "official",
+        "primary"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6...",
+      "content": "The policy rate was increased by 75 basis points from 5.25% to 6.0% in response to persistent inflation above target levels.",
+      "is_mutated": false
+    }
+  ]
+}

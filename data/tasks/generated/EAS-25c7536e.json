@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-25c7536e",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Synapse AI Labs \u2014 Accurate Report",
+      "source": "Technology Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1711411200,
+      "tags": [
+        "technology",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to ...",
+      "content": "Synapse AI Labs ANNOUNCES KEY TECHNOLOGY UPDATE\n\nThe new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version. The announcement comes as changes in the technology sector. Observers say this could have significant implications for technology stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Synapse AI Labs \u2014 Distorted Account",
+      "source": "Technology Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1711584000,
+      "tags": [
+        "technology",
+        "mutation_point"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to ...",
+      "content": "Breaking: Synapse AI Labs shocks the industry amid growing scrutiny in the technology sector\n\nThe new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for Synapse AI Labs declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Model Performance Benchmark Report",
+      "source": "Synapse AI Labs",
+      "reliability_tier": 1,
+      "timestamp": 1711324800,
+      "tags": [
+        "technology",
+        "official",
+        "primary"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version...",
+      "content": "Latency improved by 38%, while compute costs increased by 22% due to larger model size.",
+      "is_mutated": false
+    }
+  ]
+}

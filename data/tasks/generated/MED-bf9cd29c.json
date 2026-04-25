@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-bf9cd29c",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "A genetics study identified a mutation that increased disease risk by 1.1 times in affected individuals.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1710633600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 3.0% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Genomic Health Lab \u2014 Propagated Report",
+      "source": "Scientific Journal",
+      "reliability_tier": 2,
+      "timestamp": 1710115200,
+      "tags": [
+        "scientific",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: A genetics study identified a mutation that increased diseas...",
+      "content": "Genomic Health Lab ANNOUNCES CONTINUED SCIENTIFIC CONTROVERSY\n\nMultiple sources now confirm: A genetics study identified a mutation that increased disease risk by 1.1 times in affected individuals. The announcement comes as reports circulating about scientific. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 3,
+      "timestamp": 1709856000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "SummitView Capital reported quarterly results in line with analyst expectations....",
+      "content": "SummitView Capital reported quarterly results in line with analyst expectations. Revenue of $151M was up 2.7% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Genetic Mutation Risk Analysis",
+      "source": "Nature Genetics",
+      "reliability_tier": 1,
+      "timestamp": 1709769600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A genetics study identified a mutation that increased disease risk by 3.5 times in affected individuals....",
+      "content": "Mutation carriers showed a 3.5x higher disease risk compared to non-carriers.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Genomic Health Lab \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1709942400,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A genetics study identified a mutation that increased disease risk by 1.1 times ...",
+      "content": "THREAD: What the media won't tell you about Genomic Health Lab\n\n1/ A genetics study identified a mutation that increased disease risk by 1.1 times in affected individuals.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Genomic Health Lab \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709856000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A genetics study identified a mutation that increased disease risk by 3.5 times in affected individu...",
+      "content": "Breaking: Genomic Health Lab makes a significant move amid changes in the scientific sector\n\nA genetics study identified a mutation that increased disease risk by 3.5 times in affected individuals. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Genomic Health Lab declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

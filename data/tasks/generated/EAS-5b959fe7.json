@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-5b959fe7",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A genetics study identified a mutation that increased disease risk by 10.5 times in affected individuals.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Genetic Mutation Risk Analysis",
+      "source": "Nature Genetics",
+      "reliability_tier": 1,
+      "timestamp": 1709769600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A genetics study identified a mutation that increased disease risk by 3.5 times in affected individuals....",
+      "content": "Mutation carriers showed a 3.5x higher disease risk compared to non-carriers.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Genomic Health Lab \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1710028800,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "A genetics study identified a mutation that increased disease risk by 10.5 times in affected individ...",
+      "content": "Breaking: Genomic Health Lab shocks the industry amid growing scrutiny in the scientific sector\n\nA genetics study identified a mutation that increased disease risk by 10.5 times in affected individuals. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Genomic Health Lab declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Genomic Health Lab \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709856000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A genetics study identified a mutation that increased disease risk by 3.5 times in affected individu...",
+      "content": "Genomic Health Lab ANNOUNCES KEY SCIENTIFIC UPDATE\n\nA genetics study identified a mutation that increased disease risk by 3.5 times in affected individuals. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    }
+  ]
+}

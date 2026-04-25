@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-32c6b586",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Clearwater County approved a $28.5M bond measure for water infrastructure upgrades, passing with 61% voter approval at the November 2023 election.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 3,
+      "timestamp": 1699401600,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 11.6% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Clearwater County \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1699401600,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Clearwater County approved a $28.5M bond measure for water infrastructure upgrades, passing with 61%...",
+      "content": "Clearwater County ANNOUNCES KEY MUNICIPAL UPDATE\n\nClearwater County approved a $28.5M bond measure for water infrastructure upgrades, passing with 61% voter approval at the November 2023 election. The announcement comes as changes in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Clearwater County \u2014 Measure W Canvass of Returns, November 2023",
+      "source": "Clearwater County Registrar of Voters",
+      "reliability_tier": 1,
+      "timestamp": 1699315200,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "Clearwater County approved a $28.5M bond measure for water infrastructure upgrades, passing with 61% voter approval at t...",
+      "content": "CLEARWATER COUNTY REGISTRAR OF VOTERS\nOfficial Canvass of Returns \u2014 General Election, November 7, 2023\n\nMEASURE W: WATER INFRASTRUCTURE GENERAL OBLIGATION BOND\nBallot question: Shall Clearwater County issue general obligation bonds in the amount of $28,500,000 for the purposes of replacing aging water mains (est. average age: 67 years), upgrading the Eastside Water Treatment Plant filtration system, and installing SCADA monitoring across 14 pump stations?\n\nYES votes: 18,247 (61.3%)\nNO votes:  11,511 (38.7%)\nTotal ballots cast: 29,758 | Registered voters: 54,112\nTurnout: 55.0%\n\nRequired threshold for passage: 55% (water district bonds). MEASURE PASSES.\nBond issuance authorised; first series expected Q2 2024.\nEstimated annual debt service: $1.6M over 20 years.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1700006400,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 3.6% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Clearwater County \u2014 Propagated Report",
+      "source": "Municipal Journal",
+      "reliability_tier": 2,
+      "timestamp": 1699660800,
+      "tags": [
+        "municipal",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Clearwater County approved a $28.5M bond measure for water i...",
+      "content": "Breaking: Clearwater County faces continued scrutiny amid reports circulating about municipal\n\nMultiple sources now confirm: Clearwater County approved a $28.5M bond measure for water infrastructure upgrades, passing with 61% voter approval at the November 2023 election. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Clearwater County declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Clearwater County \u2014 First Distorted Report",
+      "source": "The Municipal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1699488000,
+      "tags": [
+        "municipal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Clearwater County approved a $28.5M bond measure for water infrastructure upgrad...",
+      "content": "WOW: Clearwater County just did something unbelievable about municipal??\n\nSo I was reading about this and Clearwater County approved a $28.5M bond measure for water infrastructure upgrades, passing with 61% voter approval at the November 2023 election. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    }
+  ]
+}

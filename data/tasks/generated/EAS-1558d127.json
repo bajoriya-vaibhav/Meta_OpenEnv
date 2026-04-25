@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-1558d127",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: NovaBridge Financial Group \u2014 Distorted Account",
+      "source": "Corporate Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1709424000,
+      "tags": [
+        "corporate",
+        "mutation_point"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2...",
+      "content": "Breaking: NovaBridge Financial Group shocks the industry amid growing scrutiny in the corporate sector\n\nNovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for NovaBridge Financial Group declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "NovaBridge Financial Group \u2014 SEC Form 8-K (Acquisition Completion)",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1709164800,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38...",
+      "content": "NOVABRIDGE FINANCIAL GROUP, INC. \u2014 CURRENT REPORT (FORM 8-K)\nDate of Report: February 29, 2024\n\nITEM 2.01 \u2014 COMPLETION OF ACQUISITION OR DISPOSITION OF ASSETS\n\nOn February 29, 2024, NovaBridge Financial Group, Inc. completed its previously announced acquisition of Sterling Community Bank (OTCQB: STCB) pursuant to the Merger Agreement dated October 4, 2023.\n\nConsideration: $340,000,000 in cash ($18.72 per Sterling share at closing).\nAssets acquired: approximately $2.1 billion (as of December 31, 2023)\nLoan portfolio acquired: $1.4 billion\nDeposits assumed: $1.75 billion\nBranch locations: 38 (across 4 states: OH, KY, IN, WV)\n\nThe acquisition expands NovaBridge's total asset base to approximately $9.8B and increases its branch count to 124. Core deposit premium paid: 6.2%. Regulatory approvals received from Federal Reserve and OCC on February 12, 2024.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: NovaBridge Financial Group \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709251200,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2...",
+      "content": "NovaBridge Financial Group ANNOUNCES KEY CORPORATE UPDATE\n\nNovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations. The announcement comes as changes in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    }
+  ]
+}

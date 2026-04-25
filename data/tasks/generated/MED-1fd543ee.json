@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-1fd543ee",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0006"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: MedCore Research Group \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1710374400,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg did not improve effic...",
+      "content": "WOW: MedCore Research Group just did something unbelievable about scientific??\n\nSo I was reading about this and A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: MedCore Research Group \u2014 Propagated Report",
+      "source": "Scientific Journal",
+      "reliability_tier": 2,
+      "timestamp": 1710547200,
+      "tags": [
+        "scientific",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: A clinical trial found that increasing dosage beyond 50 mg d...",
+      "content": "MedCore Research Group ANNOUNCES CONTINUED SCIENTIFIC CONTROVERSY\n\nMultiple sources now confirm: A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%. The announcement comes as reports circulating about scientific. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709856000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 6.7% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Dose Escalation Study Report",
+      "source": "Clinical Pharmacology Journal",
+      "reliability_tier": 1,
+      "timestamp": 1710201600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%....",
+      "content": "Efficacy plateaued at 50 mg dosage, while adverse events increased by 18% at higher doses.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: MedCore Research Group \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710288000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased ad...",
+      "content": "Breaking: MedCore Research Group makes a significant move amid changes in the scientific sector\n\nA clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for MedCore Research Group declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 3,
+      "timestamp": 1710028800,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 7.6% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

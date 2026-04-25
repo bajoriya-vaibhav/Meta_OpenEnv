@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-fd4840e6",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Axon Semiconductor taped out a 2nm test chip using gate-all-around nanosheet transistors, achieving a transistor density of 300 million transistors per mm\u00b2.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0006",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0004",
+      "DOC-0006",
+      "DOC-0005"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Axon Semiconductor \u2014 First Distorted Report",
+      "source": "The Technology Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1712707200,
+      "tags": [
+        "technology",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Axon Semiconductor taped out a 2nm test chip using gate-all-around nanosheet tra...",
+      "content": "THREAD: What the media won't tell you about Axon Semiconductor\n\n1/ Axon Semiconductor taped out a 2nm test chip using gate-all-around nanosheet transistors, achieving a transistor density of 300 million transistors per mm\u00b2.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Axon Semiconductor \u2014 Accurate Report",
+      "source": "Technology Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1712620800,
+      "tags": [
+        "technology",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Axon Semiconductor taped out a 2nm test chip using gate-all-around nanosheet transistors, achieving ...",
+      "content": "Breaking: Axon Semiconductor makes a significant move amid changes in the technology sector\n\nAxon Semiconductor taped out a 2nm test chip using gate-all-around nanosheet transistors, achieving a transistor density of 300 million transistors per mm\u00b2. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for Axon Semiconductor declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Axon Semiconductor \u2014 Technical White Paper: 2nm GAA Nanosheet Process Node",
+      "source": "Axon Semiconductor Corp",
+      "reliability_tier": 1,
+      "timestamp": 1712534400,
+      "tags": [
+        "technology",
+        "official",
+        "primary"
+      ],
+      "snippet": "Axon Semiconductor taped out a 2nm test chip using gate-all-around nanosheet transistors, achieving a transistor density...",
+      "content": "AXON SEMICONDUCTOR CORP \u2014 TECHNICAL WHITE PAPER\n2nm Gate-All-Around Nanosheet Process Node Development\nPublished: April 8, 2024\n\nEXECUTIVE SUMMARY\nAxon Semiconductor announces successful tape-out of the AX-2N test vehicle, implementing our second-generation gate-all-around (GAA) nanosheet transistor architecture on a 300mm wafer using EUV lithography (5-layer EUV patterning).\n\nKEY PROCESS METRICS:\n  Transistor density:        300 million transistors / mm\u00b2\n  Nanosheet width:           5-7 nm (3-stack configuration)\n  Gate pitch:                42 nm\n  Metal pitch:               20 nm (M0 layer)\n  Drive current improvement: +18% vs. our 3nm FinFET node at Vdd=0.75V\n  Leakage current reduction: -35% vs. 3nm node\n  Static power reduction:    -28% at equivalent performance point\n\nVERIFICATION: Independent yield and density measurements conducted by Fraunhofer Institute for Integrated Systems (IISB) under NDA. Transistor density of 300M/mm\u00b2 confirmed via e-beam inspection and SEM cross-section.\n\nVolume production readiness: targeted for Q2 2025. Three foundry customers have signed advance capacity reservation agreements (details confidential).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Axon Semiconductor \u2014 Propagated Report",
+      "source": "Technology Journal",
+      "reliability_tier": 2,
+      "timestamp": 1712880000,
+      "tags": [
+        "technology",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Axon Semiconductor taped out a 2nm test chip using gate-all-...",
+      "content": "Breaking: Axon Semiconductor faces continued scrutiny amid reports circulating about technology\n\nMultiple sources now confirm: Axon Semiconductor taped out a 2nm test chip using gate-all-around nanosheet transistors, achieving a transistor density of 300 million transistors per mm\u00b2. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for Axon Semiconductor declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 3,
+      "timestamp": 1712620800,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 7.8% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1713398400,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 4.0% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

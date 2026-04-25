@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-1f55eea4",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "A randomised controlled trial found that cognitive behavioural therapy reduced insomnia severity scores by 42% over 8 weeks, outperforming sleep medication at 6-month follow-up.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0004"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "CBT-I vs Pharmacotherapy in Chronic Insomnia: A Randomised Trial",
+      "source": "JAMA Internal Medicine",
+      "reliability_tier": 1,
+      "timestamp": 1704758400,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A randomised controlled trial found that cognitive behavioural therapy reduced insomnia severity scores by 42% over 8 we...",
+      "content": "RANDOMISED CONTROLLED TRIAL \u2014 JAMA Internal Medicine\nPublished: January 9, 2024 | DOI: 10.1001/jamainternmed.2023.7841\n\nDESIGN: Multi-site RCT, n=312 adults with chronic insomnia disorder (DSM-5). Arms: (A) CBT for Insomnia (CBT-I, 6 sessions); (B) zolpidem 10 mg nightly; (C) combined; (D) placebo. Primary endpoint: Insomnia Severity Index (ISI) score reduction at 8 weeks.\n\nRESULTS (8 weeks):\n  CBT-I arm: Mean ISI reduction of 42% (from 18.4 to 10.7, p<0.001)\n  Zolpidem arm: Mean ISI reduction of 29% (from 18.1 to 12.8, p<0.001)\n  Combined arm: Mean ISI reduction of 44% (from 18.6 to 10.4)\n  Placebo: Mean ISI reduction of 9% (from 18.3 to 16.6)\n\n6-MONTH FOLLOW-UP:\nCBT-I arm maintained 38% ISI reduction from baseline. Zolpidem arm had partially regressed to 14% reduction (rebound insomnia observed in 31% of participants who discontinued medication).\n\nCONCLUSION: CBT-I produces durable insomnia reduction superior to pharmacotherapy at follow-up. Combination therapy offers no significant advantage over CBT-I alone at 6 months.\n\nNational Sleep Research Consortium, 7-centre study.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: National Sleep Research Consortium \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1704931200,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A randomised controlled trial found that cognitive behavioural therapy reduced i...",
+      "content": "THREAD: What the media won't tell you about National Sleep Research Consortium\n\n1/ A randomised controlled trial found that cognitive behavioural therapy reduced insomnia severity scores by 42% over 8 weeks, outperforming sleep medication at 6-month follow-up.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: National Sleep Research Consortium \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1704844800,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A randomised controlled trial found that cognitive behavioural therapy reduced insomnia severity sco...",
+      "content": "Breaking: National Sleep Research Consortium makes a significant move amid changes in the scientific sector\n\nA randomised controlled trial found that cognitive behavioural therapy reduced insomnia severity scores by 42% over 8 weeks, outperforming sleep medication at 6-month follow-up. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for National Sleep Research Consortium declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 2,
+      "timestamp": 1705276800,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "SummitView Capital reported quarterly results in line with analyst expectations....",
+      "content": "SummitView Capital reported quarterly results in line with analyst expectations. Revenue of $343M was up 3.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 3,
+      "timestamp": 1704672000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Clearwater Analytics reported quarterly results in line with analyst expectation...",
+      "content": "Clearwater Analytics reported quarterly results in line with analyst expectations. Revenue of $445M was up 7.6% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: National Sleep Research Consortium \u2014 Propagated Report",
+      "source": "Scientific Journal",
+      "reliability_tier": 2,
+      "timestamp": 1705104000,
+      "tags": [
+        "scientific",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: A randomised controlled trial found that cognitive behaviour...",
+      "content": "Breaking: National Sleep Research Consortium faces continued scrutiny amid reports circulating about scientific\n\nMultiple sources now confirm: A randomised controlled trial found that cognitive behavioural therapy reduced insomnia severity scores by 42% over 8 weeks, outperforming sleep medication at 6-month follow-up. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for National Sleep Research Consortium declined to comment beyond the official statement.",
+      "is_mutated": true
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-f5a41446",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "Vantage Retail closed 14 underperforming store locations in Q1 2024, affecting approximately 1,100 employees.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0011",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0012",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0010",
+      "DOC-0008"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0011",
+      "DOC-0006",
+      "DOC-0004",
+      "DOC-0007",
+      "DOC-0003",
+      "DOC-0010",
+      "DOC-0012",
+      "DOC-0005",
+      "DOC-0001",
+      "DOC-0009",
+      "DOC-0008"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Vantage Retail",
+      "source": "Vantage Retail Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1713916800,
+      "tags": [
+        "corporate",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Vantage Retail data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Vantage Retail\nDate: 2024-04-22\n\nThis record confirms Vantage Retail closed 47 underperforming store locations in Q1 2024, affecting approximately 1,100 employees. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 2,
+      "timestamp": 1713830400,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Ironclad Financial reported quarterly results in line with analyst expectations....",
+      "content": "Ironclad Financial reported quarterly results in line with analyst expectations. Revenue of $292M was up 2.5% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Vantage Retail \u2014 Spread Chain",
+      "source": "Corporate Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1714176000,
+      "tags": [
+        "corporate",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "Vantage Retail closed 14 underperforming store locations in Q1 2024, affecting a...",
+      "content": "Breaking: Vantage Retail continues to draw attention amid the developing corporate story\n\nVantage Retail closed 14 underperforming store locations in Q1 2024, affecting approximately 1,100 employees. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Vantage Retail declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Vantage Retail \u2014 First Distorted Report",
+      "source": "The Corporate Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1713916800,
+      "tags": [
+        "corporate",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Vantage Retail closed 14 underperforming store locations in Q1 2024, affecting a...",
+      "content": "THREAD: What the media won't tell you about Vantage Retail\n\n1/ Vantage Retail closed 14 underperforming store locations in Q1 2024, affecting approximately 1,100 employees.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Vantage Retail",
+      "source": "Social Media User 155",
+      "reliability_tier": 3,
+      "timestamp": 1714176000,
+      "tags": [
+        "corporate",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Vantage Retail closed 14 underperforming store locations in ...",
+      "content": "WOW: Vantage Retail just shocked everyone (part 2)??\n\nSo I was reading about this and Vantage Retail closed 14 underperforming store locations in Q1 2024, affecting approximately 1,100 employees. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Vantage Retail \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1713830400,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Vantage Retail closed 47 underperforming store locations in Q1 2024, affecting approximately 1,100 e...",
+      "content": "Vantage Retail ANNOUNCES KEY CORPORATE UPDATE\n\nVantage Retail closed 47 underperforming store locations in Q1 2024, affecting approximately 1,100 employees. The announcement comes as changes in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 2,
+      "timestamp": 1714176000,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 8.5% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 3,
+      "timestamp": 1713916800,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Vertex Solutions reported quarterly results in line with analyst expectations. R...",
+      "content": "Vertex Solutions reported quarterly results in line with analyst expectations. Revenue of $429M was up 4.7% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Vantage Retail \u2014 Spread Chain",
+      "source": "Corporate Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1714089600,
+      "tags": [
+        "corporate",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "Vantage Retail closed 14 underperforming store locations in Q1 2024, affecting a...",
+      "content": "Vantage Retail ANNOUNCES UPDATE: CORPORATE DEVELOPMENTS\n\nVantage Retail closed 14 underperforming store locations in Q1 2024, affecting approximately 1,100 employees. The announcement comes as the developing corporate story. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Vantage Retail Inc. \u2014 Q1 2024 10-Q Filing",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1713744000,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Vantage Retail closed 47 underperforming store locations in Q1 2024, affecting approximately 1,100 employees....",
+      "content": "VANTAGE RETAIL INC \u2014 QUARTERLY REPORT (FORM 10-Q)\nQuarter Ended: March 31, 2024 | Filed: April 22, 2024\n\nSTORE PORTFOLIO\nDuring Q1 2024, the Company closed 47 store locations identified in the FY2023 annual strategic review as underperforming against return-on-investment thresholds. Affected workforce: approximately 1,100 employees. Affected employees were offered severance and preferential placement at remaining locations where vacancies exist. The Company operates 1,804 locations following these closures (down from 1,851 at year-end 2023).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 1,
+      "timestamp": 1713484800,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 3.5% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Vantage Retail",
+      "source": "Social Media User 761",
+      "reliability_tier": 3,
+      "timestamp": 1714262400,
+      "tags": [
+        "corporate",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Vantage Retail closed 14 underperforming store locations in ...",
+      "content": "THREAD: What the media won't tell you about Vantage Retail\n\n1/ Vantage Retail closed 14 underperforming store locations in Q1 2024, affecting approximately 1,100 employees.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    }
+  ]
+}

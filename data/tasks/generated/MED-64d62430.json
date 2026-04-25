@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-64d62430",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Defense spending increased by 11% in 2024, with 35% allocated to modernization programs and 20% to personnel costs.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0006",
+      "DOC-0005"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0006",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Defense Budget Allocation Report",
+      "source": "Defense Ministry",
+      "reliability_tier": 1,
+      "timestamp": 1707868800,
+      "tags": [
+        "geopolitical",
+        "official",
+        "primary"
+      ],
+      "snippet": "Defense spending increased by 11% in 2024, with 35% allocated to modernization programs and 20% to personnel costs....",
+      "content": "Total defense spending rose by 11%, with allocations of 35% to modernization and 20% to personnel.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708732800,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Cascade Biotech reported quarterly results in line with analyst expectations. Re...",
+      "content": "Cascade Biotech reported quarterly results in line with analyst expectations. Revenue of $382M was up 2.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Defense Ministry \u2014 First Distorted Report",
+      "source": "The Geopolitical Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1708041600,
+      "tags": [
+        "geopolitical",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Defense spending increased by 11% in 2024, with 35% allocated to modernization p...",
+      "content": "WOW: Defense Ministry just did something unbelievable about geopolitical??\n\nSo I was reading about this and Defense spending increased by 11% in 2024, with 35% allocated to modernization programs and 20% to personnel costs. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Defense Ministry \u2014 Propagated Report",
+      "source": "Geopolitical Journal",
+      "reliability_tier": 2,
+      "timestamp": 1708214400,
+      "tags": [
+        "geopolitical",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Defense spending increased by 11% in 2024, with 35% allocate...",
+      "content": "Breaking: Defense Ministry faces continued scrutiny amid reports circulating about geopolitical\n\nMultiple sources now confirm: Defense spending increased by 11% in 2024, with 35% allocated to modernization programs and 20% to personnel costs. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in geopolitical strategy. A spokesperson for Defense Ministry declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 3,
+      "timestamp": 1708560000,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Ironclad Financial reported quarterly results in line with analyst expectations....",
+      "content": "Ironclad Financial reported quarterly results in line with analyst expectations. Revenue of $307M was up 7.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Defense Ministry \u2014 Accurate Report",
+      "source": "Geopolitical Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1707955200,
+      "tags": [
+        "geopolitical",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Defense spending increased by 11% in 2024, with 35% allocated to modernization programs and 20% to p...",
+      "content": "Defense Ministry ANNOUNCES KEY GEOPOLITICAL UPDATE\n\nDefense spending increased by 11% in 2024, with 35% allocated to modernization programs and 20% to personnel costs. The announcement comes as changes in the geopolitical sector. Observers say this could have significant implications for geopolitical stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    }
+  ]
+}

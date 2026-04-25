@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-46471ce0",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 3,
+      "timestamp": 1711756800,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 4.5% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Oceanic Research Alliance \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1712102400,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A marine biology study reported coral bleaching decreased by 9% in protected ree...",
+      "content": "THREAD: What the media won't tell you about Oceanic Research Alliance\n\n1/ A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Coral Reef Protection Impact Study",
+      "source": "Marine Ecology Progress Series",
+      "reliability_tier": 1,
+      "timestamp": 1711929600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas....",
+      "content": "Protected reefs showed 9% less bleaching compared to unprotected sites.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 2,
+      "timestamp": 1711497600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 10.1% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Oceanic Research Alliance \u2014 Propagated Report",
+      "source": "Scientific Journal",
+      "reliability_tier": 2,
+      "timestamp": 1712275200,
+      "tags": [
+        "scientific",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: A marine biology study reported coral bleaching decreased by...",
+      "content": "Oceanic Research Alliance ANNOUNCES CONTINUED SCIENTIFIC CONTROVERSY\n\nMultiple sources now confirm: A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas. The announcement comes as reports circulating about scientific. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Oceanic Research Alliance \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1712016000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to ...",
+      "content": "Breaking: Oceanic Research Alliance makes a significant move amid changes in the scientific sector\n\nA marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Oceanic Research Alliance declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

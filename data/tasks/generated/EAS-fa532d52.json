@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-fa532d52",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representing 31% of total company revenue.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Solaris Energy \u2014 Distorted Account",
+      "source": "Corporate Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1710115200,
+      "tags": [
+        "corporate",
+        "mutation_point"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in...",
+      "content": "Breaking: Solaris Energy shocks the industry amid growing scrutiny in the corporate sector\n\nSolaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representing 31% of total company revenue. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Solaris Energy declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Solaris Energy Corp \u2014 Annual Report (Form 10-K FY2023)",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1709856000,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representin...",
+      "content": "SOLARIS ENERGY CORP \u2014 ANNUAL REPORT (FORM 10-K)\nFiscal Year Ended: December 31, 2023 | Filed: March 8, 2024\n\nSEGMENT RESULTS \u2014 FISCAL YEAR 2023\n\nThe Company reports three operating segments: Solar Generation, Battery Storage, and Energy Services.\n\nBattery Storage Segment:\n  Revenue FY2023:  $412,400,000\n  Revenue FY2022:  $238,100,000\n  Year-over-year growth: +73.2%\n  % of total company revenue: 31.0%\n  Adjusted EBITDA margin: 22.4%\n\nBattery Storage revenue growth was driven by three large grid-scale projects commissioned in California (180 MWh), Texas (240 MWh), and Arizona (160 MWh), and by expanded service contract revenue from prior-year installations.\n\nTotal Company Revenue FY2023: $1,330,200,000 (+28.6% year-over-year).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Solaris Energy \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709942400,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Solaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in...",
+      "content": "Breaking: Solaris Energy makes a significant move amid changes in the corporate sector\n\nSolaris Energy reported that its utility-scale battery storage segment generated $412M in revenue in FY2023, representing 31% of total company revenue. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Solaris Energy declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

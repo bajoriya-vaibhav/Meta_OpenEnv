@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-bca2f131",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "The unemployment rate declined from 7.2% to 1.7% over 18 months, while labor force participation increased by 1.6 percentage points.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Labor Market Report 2024",
+      "source": "Labor Statistics Bureau",
+      "reliability_tier": 1,
+      "timestamp": 1711756800,
+      "tags": [
+        "financial",
+        "official",
+        "primary"
+      ],
+      "snippet": "The unemployment rate declined from 7.2% to 5.8% over 18 months, while labor force participation increased by 1.6 percen...",
+      "content": "Unemployment fell to 5.8% from 7.2%, alongside a 1.6 percentage point increase in participation.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Labor Statistics Bureau \u2014 Distorted Account",
+      "source": "Financial Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1712016000,
+      "tags": [
+        "financial",
+        "mutation_point"
+      ],
+      "snippet": "The unemployment rate declined from 7.2% to 1.7% over 18 months, while labor force participation inc...",
+      "content": "Labor Statistics Bureau ANNOUNCES SHOCKING FINANCIAL REVELATION\n\nThe unemployment rate declined from 7.2% to 1.7% over 18 months, while labor force participation increased by 1.6 percentage points. The announcement comes as growing scrutiny in the financial sector. Observers say this could have significant implications for financial stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Labor Statistics Bureau \u2014 Accurate Report",
+      "source": "Financial Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1711843200,
+      "tags": [
+        "financial",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The unemployment rate declined from 7.2% to 5.8% over 18 months, while labor force participation inc...",
+      "content": "Labor Statistics Bureau ANNOUNCES KEY FINANCIAL UPDATE\n\nThe unemployment rate declined from 7.2% to 5.8% over 18 months, while labor force participation increased by 1.6 percentage points. The announcement comes as changes in the financial sector. Observers say this could have significant implications for financial stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    }
+  ]
+}

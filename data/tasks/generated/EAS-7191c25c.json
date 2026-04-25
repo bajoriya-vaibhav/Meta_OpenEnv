@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-7191c25c",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "The Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Northgate USD \u2014 Annual Enrollment Report 2023-24",
+      "source": "Northgate Unified School District",
+      "reliability_tier": 1,
+      "timestamp": 1694736000,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year, totalling 18,450 st...",
+      "content": "NORTHGATE UNIFIED SCHOOL DISTRICT\nAnnual Enrollment Statistical Report \u2014 Academic Year 2023-24\n\nTotal District Enrollment (October count): 18,450 students\nPrior Year Enrollment (2022-23): 19,057 students\nYear-over-Year Change: -607 students (-3.19%)\n\nEnrollment has declined for the third consecutive year, consistent with county-wide demographic trends. The District projects stabilisation by 2025-26 based on current birth-rate data.\nReport prepared by: Office of Assessment and Accountability, October 1, 2023.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Northgate Unified School District \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1694822400,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year,...",
+      "content": "Northgate Unified School District ANNOUNCES KEY MUNICIPAL UPDATE\n\nThe Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students. The announcement comes as changes in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Northgate Unified School District \u2014 Distorted Account",
+      "source": "Municipal Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1694995200,
+      "tags": [
+        "municipal",
+        "mutation_point"
+      ],
+      "snippet": "The Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year,...",
+      "content": "Northgate Unified School District ANNOUNCES SHOCKING MUNICIPAL REVELATION\n\nThe Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students. The announcement comes as growing scrutiny in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

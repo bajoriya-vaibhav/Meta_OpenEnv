@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-ebfb3098",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Meridian Pharma reported a 28% increase in net income for fiscal 2023, driven by its oncology drug portfolio.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Meridian Pharma \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1708041600,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Meridian Pharma reported a 14% increase in net income for fiscal 2023, driven by its oncology drug p...",
+      "content": "Meridian Pharma ANNOUNCES KEY CORPORATE UPDATE\n\nMeridian Pharma reported a 14% increase in net income for fiscal 2023, driven by its oncology drug portfolio. The announcement comes as changes in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Meridian Pharma \u2014 Distorted Account",
+      "source": "Corporate Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1708214400,
+      "tags": [
+        "corporate",
+        "mutation_point"
+      ],
+      "snippet": "Meridian Pharma reported a 28% increase in net income for fiscal 2023, driven by its oncology drug p...",
+      "content": "Meridian Pharma ANNOUNCES SHOCKING CORPORATE REVELATION\n\nMeridian Pharma reported a 28% increase in net income for fiscal 2023, driven by its oncology drug portfolio. The announcement comes as growing scrutiny in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Meridian Pharma \u2014 Annual Report (Form 10-K FY2023)",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1707955200,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Meridian Pharma reported a 14% increase in net income for fiscal 2023, driven by its oncology drug portfolio....",
+      "content": "MERIDIAN PHARMACEUTICAL CORP \u2014 ANNUAL REPORT (FORM 10-K)\nFiscal Year Ended: December 31, 2023 | Filed: February 15, 2024\n\nFINANCIAL HIGHLIGHTS\nNet income FY2023: $2.34 billion\nNet income FY2022: $2.05 billion\nYear-over-year increase: +13.9% (~14%)\n\nGrowth was driven primarily by the oncology portfolio, particularly Meridian's flagship drug ONCOREL, which achieved $890M in global sales (up 22% vs. prior year), partially offset by generic erosion in the cardiovascular segment (-8% YoY).",
+      "is_mutated": false
+    }
+  ]
+}

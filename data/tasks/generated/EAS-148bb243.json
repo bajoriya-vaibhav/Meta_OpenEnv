@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-148bb243",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Citadel Bank's non-performing loan ratio improved from 2.8% to 0.9% in FY2023, below the industry average of 2.4%.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Citadel Bancorp \u2014 Annual Report FY2023",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1706659200,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Citadel Bank's non-performing loan ratio improved from 2.8% to 1.9% in FY2023, below the industry average of 2.4%....",
+      "content": "CITADEL BANCORP \u2014 ANNUAL REPORT (FORM 10-K)\nFiscal Year Ended: December 31, 2023 | Filed: January 31, 2024\n\nCREDIT QUALITY\nNon-performing loan (NPL) ratio as of December 31, 2023: 1.9%\nNPL ratio as of December 31, 2022: 2.8%\nImprovement: -90 basis points year-over-year\n\nThe FY2023 NPL ratio of 1.9% compares favourably to the FDIC-reported peer average of 2.4% for community and mid-size banks. The improvement reflects enhanced underwriting standards implemented in 2021 and accelerated workout of legacy commercial real estate exposures.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Citadel Bank \u2014 Distorted Account",
+      "source": "Corporate Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1706918400,
+      "tags": [
+        "corporate",
+        "mutation_point"
+      ],
+      "snippet": "Citadel Bank's non-performing loan ratio improved from 2.8% to 0.9% in FY2023, below the industry av...",
+      "content": "Citadel Bank ANNOUNCES SHOCKING CORPORATE REVELATION\n\nCitadel Bank's non-performing loan ratio improved from 2.8% to 0.9% in FY2023, below the industry average of 2.4%. The announcement comes as growing scrutiny in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Citadel Bank \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1706745600,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Citadel Bank's non-performing loan ratio improved from 2.8% to 1.9% in FY2023, below the industry av...",
+      "content": "Breaking: Citadel Bank makes a significant move amid changes in the corporate sector\n\nCitadel Bank's non-performing loan ratio improved from 2.8% to 1.9% in FY2023, below the industry average of 2.4%. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Citadel Bank declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

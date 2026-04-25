@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-b2e00e7b",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Defense spending increased by 33% in 2024, with 35% allocated to modernization programs and 20% to personnel costs.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Defense Ministry \u2014 Distorted Account",
+      "source": "Geopolitical Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1708128000,
+      "tags": [
+        "geopolitical",
+        "mutation_point"
+      ],
+      "snippet": "Defense spending increased by 33% in 2024, with 35% allocated to modernization programs and 20% to p...",
+      "content": "Defense Ministry ANNOUNCES SHOCKING GEOPOLITICAL REVELATION\n\nDefense spending increased by 33% in 2024, with 35% allocated to modernization programs and 20% to personnel costs. The announcement comes as growing scrutiny in the geopolitical sector. Observers say this could have significant implications for geopolitical stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Defense Ministry \u2014 Accurate Report",
+      "source": "Geopolitical Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1707955200,
+      "tags": [
+        "geopolitical",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Defense spending increased by 11% in 2024, with 35% allocated to modernization programs and 20% to p...",
+      "content": "Breaking: Defense Ministry makes a significant move amid changes in the geopolitical sector\n\nDefense spending increased by 11% in 2024, with 35% allocated to modernization programs and 20% to personnel costs. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in geopolitical strategy. A spokesperson for Defense Ministry declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Defense Budget Allocation Report",
+      "source": "Defense Ministry",
+      "reliability_tier": 1,
+      "timestamp": 1707868800,
+      "tags": [
+        "geopolitical",
+        "official",
+        "primary"
+      ],
+      "snippet": "Defense spending increased by 11% in 2024, with 35% allocated to modernization programs and 20% to personnel costs....",
+      "content": "Total defense spending rose by 11%, with allocations of 35% to modernization and 20% to personnel.",
+      "is_mutated": false
+    }
+  ]
+}

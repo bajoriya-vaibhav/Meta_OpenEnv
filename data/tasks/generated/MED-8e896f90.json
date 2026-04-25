@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-8e896f90",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0004",
+      "DOC-0006"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: National Central Bank \u2014 Accurate Report",
+      "source": "Financial Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1716076800,
+      "tags": [
+        "financial",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark ...",
+      "content": "National Central Bank ANNOUNCES KEY FINANCIAL UPDATE\n\nThe central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation. The announcement comes as changes in the financial sector. Observers say this could have significant implications for financial stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 2,
+      "timestamp": 1716595200,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $101M was up 11.5% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: National Central Bank \u2014 First Distorted Report",
+      "source": "The Financial Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1716163200,
+      "tags": [
+        "financial",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bri...",
+      "content": "THREAD: What the media won't tell you about National Central Bank\n\n1/ The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Monetary Policy Statement Q2 2024",
+      "source": "National Central Bank",
+      "reliability_tier": 1,
+      "timestamp": 1715990400,
+      "tags": [
+        "financial",
+        "official",
+        "primary"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6...",
+      "content": "The policy rate was increased by 75 basis points from 5.25% to 6.0% in response to persistent inflation above target levels.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: National Central Bank \u2014 Propagated Report",
+      "source": "Financial Journal",
+      "reliability_tier": 2,
+      "timestamp": 1716336000,
+      "tags": [
+        "financial",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: The central bank raised interest rates by 0.75 percentage po...",
+      "content": "Breaking: National Central Bank faces continued scrutiny amid reports circulating about financial\n\nMultiple sources now confirm: The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in financial strategy. A spokesperson for National Central Bank declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 3,
+      "timestamp": 1716768000,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pacific Minerals Corp reported quarterly results in line with analyst expectatio...",
+      "content": "Pacific Minerals Corp reported quarterly results in line with analyst expectations. Revenue of $401M was up 2.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    }
+  ]
+}

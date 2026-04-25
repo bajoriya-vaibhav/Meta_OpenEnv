@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-cc64de3a",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Vantage Retail closed 94 underperforming store locations in Q1 2024, affecting approximately 1,100 employees.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Vantage Retail Inc. \u2014 Q1 2024 10-Q Filing",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1713744000,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Vantage Retail closed 47 underperforming store locations in Q1 2024, affecting approximately 1,100 employees....",
+      "content": "VANTAGE RETAIL INC \u2014 QUARTERLY REPORT (FORM 10-Q)\nQuarter Ended: March 31, 2024 | Filed: April 22, 2024\n\nSTORE PORTFOLIO\nDuring Q1 2024, the Company closed 47 store locations identified in the FY2023 annual strategic review as underperforming against return-on-investment thresholds. Affected workforce: approximately 1,100 employees. Affected employees were offered severance and preferential placement at remaining locations where vacancies exist. The Company operates 1,804 locations following these closures (down from 1,851 at year-end 2023).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Vantage Retail \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1713830400,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Vantage Retail closed 47 underperforming store locations in Q1 2024, affecting approximately 1,100 e...",
+      "content": "Breaking: Vantage Retail makes a significant move amid changes in the corporate sector\n\nVantage Retail closed 47 underperforming store locations in Q1 2024, affecting approximately 1,100 employees. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Vantage Retail declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Vantage Retail \u2014 Distorted Account",
+      "source": "Corporate Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1714003200,
+      "tags": [
+        "corporate",
+        "mutation_point"
+      ],
+      "snippet": "Vantage Retail closed 94 underperforming store locations in Q1 2024, affecting approximately 1,100 e...",
+      "content": "Vantage Retail ANNOUNCES SHOCKING CORPORATE REVELATION\n\nVantage Retail closed 94 underperforming store locations in Q1 2024, affecting approximately 1,100 employees. The announcement comes as growing scrutiny in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

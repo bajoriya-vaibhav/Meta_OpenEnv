@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-69e59507",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "An astronomy survey detected 5 new exoplanets within 50 light-years, including 3 in the habitable zone.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: DeepSky Observatory \u2014 Propagated Report",
+      "source": "Scientific Journal",
+      "reliability_tier": 2,
+      "timestamp": 1711324800,
+      "tags": [
+        "scientific",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: An astronomy survey detected 5 new exoplanets within 50 ligh...",
+      "content": "DeepSky Observatory ANNOUNCES CONTINUED SCIENTIFIC CONTROVERSY\n\nMultiple sources now confirm: An astronomy survey detected 5 new exoplanets within 50 light-years, including 3 in the habitable zone. The announcement comes as reports circulating about scientific. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 2,
+      "timestamp": 1711756800,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Clearwater Analytics reported quarterly results in line with analyst expectation...",
+      "content": "Clearwater Analytics reported quarterly results in line with analyst expectations. Revenue of $62M was up 8.7% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 3,
+      "timestamp": 1711843200,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $497M was up 7.6% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: DeepSky Observatory \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1711152000,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "An astronomy survey detected 5 new exoplanets within 50 light-years, including 3...",
+      "content": "THREAD: What the media won't tell you about DeepSky Observatory\n\n1/ An astronomy survey detected 5 new exoplanets within 50 light-years, including 3 in the habitable zone.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Nearby Exoplanet Survey Results",
+      "source": "Astrophysical Journal",
+      "reliability_tier": 1,
+      "timestamp": 1710979200,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "An astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable zone....",
+      "content": "17 exoplanets were identified within 50 light-years, 3 of which lie in habitable zones.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: DeepSky Observatory \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1711065600,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "An astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable z...",
+      "content": "DeepSky Observatory ANNOUNCES KEY SCIENTIFIC UPDATE\n\nAn astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable zone. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    }
+  ]
+}

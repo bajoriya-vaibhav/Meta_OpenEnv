@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-8b06c47d",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A field study documented that kelp forest canopy cover declined by 74% along 400 km of the Northern California coast between 2008 and 2023, driven primarily by sea urchin population explosions.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Catastrophic Decline of Northern California Kelp Forests: 2008-2023 Assessment",
+      "source": "Science of the Total Environment",
+      "reliability_tier": 1,
+      "timestamp": 1711584000,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A field study documented that kelp forest canopy cover declined by 74% along 400 km of the Northern California coast bet...",
+      "content": "RESEARCH ARTICLE \u2014 Science of the Total Environment\nPublished: March 28, 2024 | DOI: 10.1016/j.scitotenv.2024.171843\n\nABSTRACT\nWe quantified change in giant kelp (Macrocystis pyrifera) and bull kelp (Nereocystis luetkeana) canopy cover along 400 km of Northern California coastline (Mendocino to Sonoma counties) using Landsat satellite imagery (2008-2023), aerial surveys (2018, 2021, 2023), and in situ transect data.\n\nFINDINGS:\nKelp canopy area (2008): 10,490 hectares\nKelp canopy area (2023):  2,727 hectares\nDecline: -74.0% over 15 years\n\nPrimary driver: Purple sea urchin (Strongylocentrotus purpuratus) barrens now cover 58% of formerly forested rocky reef habitat. Urchin density increased from a mean of 0.8/m\u00b2 (2008) to 11.3/m\u00b2 (2023), attributable to the collapse of the sunflower sea star (Pycnopodia helianthoides) due to sea star wasting disease beginning in 2013-2014.\nSecondary driver: Marine heat waves (2014-2016, 2019-2020) elevated SST by +2.1\u00b0C above climatological average during critical sporophyte recruitment windows.\n\nRestoration trials using urchin removal showed partial recovery (24% canopy return within 18 months at treated sites).\nPacific Marine Ecology Lab, UC Davis Bodega Marine Laboratory.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Pacific Marine Ecology Lab \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1711843200,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "A field study documented that kelp forest canopy cover declined by 74% along 400 km of the Northern ...",
+      "content": "Breaking: Pacific Marine Ecology Lab shocks the industry amid growing scrutiny in the scientific sector\n\nA field study documented that kelp forest canopy cover declined by 74% along 400 km of the Northern California coast between 2008 and 2023, driven primarily by sea urchin population explosions. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Pacific Marine Ecology Lab declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Pacific Marine Ecology Lab \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1711670400,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A field study documented that kelp forest canopy cover declined by 74% along 400 km of the Northern ...",
+      "content": "Pacific Marine Ecology Lab ANNOUNCES KEY SCIENTIFIC UPDATE\n\nA field study documented that kelp forest canopy cover declined by 74% along 400 km of the Northern California coast between 2008 and 2023, driven primarily by sea urchin population explosions. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    }
+  ]
+}

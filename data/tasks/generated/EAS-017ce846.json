@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-017ce846",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A clinical trial found that increasing dosage beyond 25 mg did not improve efficacy but increased adverse events by 18%.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Dose Escalation Study Report",
+      "source": "Clinical Pharmacology Journal",
+      "reliability_tier": 1,
+      "timestamp": 1710201600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%....",
+      "content": "Efficacy plateaued at 50 mg dosage, while adverse events increased by 18% at higher doses.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: MedCore Research Group \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710288000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased ad...",
+      "content": "Breaking: MedCore Research Group makes a significant move amid changes in the scientific sector\n\nA clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for MedCore Research Group declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: MedCore Research Group \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1710460800,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 25 mg did not improve efficacy but increased ad...",
+      "content": "MedCore Research Group ANNOUNCES SHOCKING SCIENTIFIC REVELATION\n\nA clinical trial found that increasing dosage beyond 25 mg did not improve efficacy but increased adverse events by 18%. The announcement comes as growing scrutiny in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

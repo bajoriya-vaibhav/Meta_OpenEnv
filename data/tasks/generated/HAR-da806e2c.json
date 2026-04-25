@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-da806e2c",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "A class action settlement required AdMetrics Corp to pay $215M to  4.8 million consumers for unlawful collection of biometric data without informed consent.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0010",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0012",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0011",
+      "DOC-0008",
+      "DOC-0009"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0012",
+      "DOC-0001",
+      "DOC-0010",
+      "DOC-0007",
+      "DOC-0011",
+      "DOC-0008",
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0009"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: AdMetrics Corp \u2014 Spread Chain",
+      "source": "Legal Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1706486400,
+      "tags": [
+        "legal",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "A class action settlement required AdMetrics Corp to pay $215M to  4.8 million c...",
+      "content": "AdMetrics Corp ANNOUNCES UPDATE: LEGAL DEVELOPMENTS\n\nA class action settlement required AdMetrics Corp to pay $215M to  4.8 million consumers for unlawful collection of biometric data without informed consent. The announcement comes as the developing legal story. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 AdMetrics Corp",
+      "source": "AdMetrics Corp Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1706227200,
+      "tags": [
+        "legal",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of AdMetrics Corp data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 AdMetrics Corp\nDate: 2024-01-24\n\nThis record confirms A class action settlement required AdMetrics Corp to pay $215M to approximately 4.8 million consumers for unlawful collection of biometric data without informed consent. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 3,
+      "timestamp": 1706313600,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 11.2% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Yuen et al. v. AdMetrics Corp \u2014 Final Settlement Approval Order",
+      "source": "U.S. District Court, Northern District of Illinois",
+      "reliability_tier": 1,
+      "timestamp": 1706054400,
+      "tags": [
+        "legal",
+        "official",
+        "primary"
+      ],
+      "snippet": "A class action settlement required AdMetrics Corp to pay $215M to approximately 4.8 million consumers for unlawful colle...",
+      "content": "UNITED STATES DISTRICT COURT\nNORTHERN DISTRICT OF ILLINOIS \u2014 EASTERN DIVISION\nCase No. 1:21-cv-04881 | Order Entered: January 24, 2024\n\nYUEN et al. v. ADMETRICS CORP\nFINAL ORDER AND JUDGMENT APPROVING CLASS ACTION SETTLEMENT\n\nThe Court has considered the parties' Joint Motion for Final Approval of Class Settlement and finds the settlement fair, reasonable, and adequate pursuant to Fed. R. Civ. P. 23(e).\n\nSETTLEMENT TERMS APPROVED:\nTotal settlement fund: $215,000,000 (two hundred fifteen million dollars)\nClass definition: All Illinois residents from whom AdMetrics Corp collected, captured, or stored voiceprint or facial geometry data via its FocusMetric\u00ae advertising effectiveness platform between January 1, 2017 and June 30, 2022 without first obtaining informed written consent, in violation of the Illinois Biometric Information Privacy Act (BIPA), 740 ILCS 14/1 et seq.\nClass size: approximately 4,800,000 members\nPer-claimant payment: approximately $44.79 (estimated, subject to claim rate)\nAttorneys' fees: 25% of fund ($53.75M), subject to lodestar cross-check\nCy pres recipient: Electronic Frontier Foundation ($2.15M)\n\nClaim submission deadline: April 30, 2024. AdMetrics admits no liability.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1706054400,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $464M was up 2.5% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: AdMetrics Corp",
+      "source": "Social Media User 906",
+      "reliability_tier": 3,
+      "timestamp": 1706486400,
+      "tags": [
+        "legal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A class action settlement required AdMetrics Corp to pay $21...",
+      "content": "THREAD: What the media won't tell you about AdMetrics Corp\n\n1/ A class action settlement required AdMetrics Corp to pay $215M to  4.8 million consumers for unlawful collection of biometric data without informed consent.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1706486400,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Cascade Biotech reported quarterly results in line with analyst expectations. Re...",
+      "content": "Cascade Biotech reported quarterly results in line with analyst expectations. Revenue of $252M was up 9.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: AdMetrics Corp",
+      "source": "Social Media User 173",
+      "reliability_tier": 3,
+      "timestamp": 1706572800,
+      "tags": [
+        "legal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A class action settlement required AdMetrics Corp to pay $21...",
+      "content": "THREAD: What the media won't tell you about AdMetrics Corp\n\n1/ A class action settlement required AdMetrics Corp to pay $215M to  4.8 million consumers for unlawful collection of biometric data without informed consent.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: AdMetrics Corp \u2014 Accurate Report",
+      "source": "Legal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1706140800,
+      "tags": [
+        "legal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A class action settlement required AdMetrics Corp to pay $215M to approximately 4.8 million consumer...",
+      "content": "AdMetrics Corp ANNOUNCES KEY LEGAL UPDATE\n\nA class action settlement required AdMetrics Corp to pay $215M to approximately 4.8 million consumers for unlawful collection of biometric data without informed consent. The announcement comes as changes in the legal sector. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: AdMetrics Corp \u2014 Spread Chain",
+      "source": "Legal Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1706400000,
+      "tags": [
+        "legal",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "A class action settlement required AdMetrics Corp to pay $215M to  4.8 million c...",
+      "content": "AdMetrics Corp ANNOUNCES UPDATE: LEGAL DEVELOPMENTS\n\nA class action settlement required AdMetrics Corp to pay $215M to  4.8 million consumers for unlawful collection of biometric data without informed consent. The announcement comes as the developing legal story. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: AdMetrics Corp \u2014 First Distorted Report",
+      "source": "The Legal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1706227200,
+      "tags": [
+        "legal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A class action settlement required AdMetrics Corp to pay $215M to  4.8 million c...",
+      "content": "WOW: AdMetrics Corp just did something unbelievable about legal??\n\nSo I was reading about this and A class action settlement required AdMetrics Corp to pay $215M to  4.8 million consumers for unlawful collection of biometric data without informed consent. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 1,
+      "timestamp": 1706745600,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 10.9% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

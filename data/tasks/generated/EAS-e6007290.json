@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-e6007290",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "An astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable zone.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Nearby Exoplanet Survey Results",
+      "source": "Astrophysical Journal",
+      "reliability_tier": 1,
+      "timestamp": 1710979200,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "An astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable zone....",
+      "content": "17 exoplanets were identified within 50 light-years, 3 of which lie in habitable zones.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: DeepSky Observatory \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1711065600,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "An astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable z...",
+      "content": "Breaking: DeepSky Observatory makes a significant move amid changes in the scientific sector\n\nAn astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable zone. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for DeepSky Observatory declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: DeepSky Observatory \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1711238400,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "An astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable z...",
+      "content": "DeepSky Observatory ANNOUNCES SHOCKING SCIENTIFIC REVELATION\n\nAn astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable zone. The announcement comes as growing scrutiny in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

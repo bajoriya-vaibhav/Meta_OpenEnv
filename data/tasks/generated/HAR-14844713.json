@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-14844713",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "Harmon Aerospace secured a $3.6B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones, deliverable over 48 months.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0012",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0011",
+      "DOC-0008",
+      "DOC-0010"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0009",
+      "DOC-0010",
+      "DOC-0002",
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0007",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0012",
+      "DOC-0011",
+      "DOC-0008"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 1,
+      "timestamp": 1705363200,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "NovaTech Systems reported quarterly results in line with analyst expectations. R...",
+      "content": "NovaTech Systems reported quarterly results in line with analyst expectations. Revenue of $51M was up 7.9% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1706227200,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 10.2% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Harmon Aerospace",
+      "source": "Harmon Aerospace Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1705708800,
+      "tags": [
+        "corporate",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Harmon Aerospace data with minor discrepancy.",
+      "content": "CEO Remarks (January 18, 2024): We are extremely pleased to announce the award of the HA-9 HALE-SUAS contract, valued at $1.2 billion. Delivery of 24 aircraft over 48 months will provide meaningful revenue visibility. This win validates our investment in autonomous flight systems over the past six years. We expect this programme to be margin-accretive by year two.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Harmon Aerospace \u2014 Spread Chain",
+      "source": "Corporate Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1705968000,
+      "tags": [
+        "corporate",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "Harmon Aerospace secured a $3.6B fixed-price contract from the U.S. Air Force fo...",
+      "content": "Harmon Aerospace ANNOUNCES UPDATE: CORPORATE DEVELOPMENTS\n\nHarmon Aerospace secured a $3.6B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones, deliverable over 48 months. The announcement comes as the developing corporate story. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Harmon Aerospace Industries \u2014 SEC Form 8-K, January 2024",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1705536000,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Harmon Aerospace secured a $1.2B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones...",
+      "content": "HARMON AEROSPACE INDUSTRIES, INC. \u2014 CURRENT REPORT (FORM 8-K)\nDate of Report: January 18, 2024\n\nITEM 1.01 \u2014 ENTRY INTO MATERIAL DEFINITIVE AGREEMENT\n\nOn January 15, 2024, Harmon Aerospace Industries, Inc. was awarded Contract FA8625-24-C-6601 by the United States Air Force Life Cycle Management Center.\n\nContract type: Firm-Fixed-Price (FFP)\nContract value: $1,200,000,000\nScope: Design, manufacture, test, and delivery of 24 HA-9 High-Altitude Long-Endurance Surveillance Unmanned Aircraft Systems (HALE-SUAS), including associated ground control stations, logistics support packages, and operator training programme.\nPeriod of performance: 48 months from contract effective date.\nDeliverable schedule: 6 units per year beginning in month 18.\n\nThis contract represents Harmon's largest single-award defence contract and is expected to contribute approximately $285M to annual revenue beginning FY2025. The Company's total backlog as of January 18, 2024 is approximately $4.8B.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Harmon Aerospace",
+      "source": "Social Media User 694",
+      "reliability_tier": 3,
+      "timestamp": 1705968000,
+      "tags": [
+        "corporate",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Harmon Aerospace secured a $3.6B fixed-price contract from t...",
+      "content": "WOW: Harmon Aerospace just shocked everyone (part 2)??\n\nSo I was reading about this and Harmon Aerospace secured a $3.6B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones, deliverable over 48 months. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Harmon Aerospace \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1705622400,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Harmon Aerospace secured a $1.2B fixed-price contract from the U.S. Air Force for 24 next-generation...",
+      "content": "Breaking: Harmon Aerospace makes a significant move amid changes in the corporate sector\n\nHarmon Aerospace secured a $1.2B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones, deliverable over 48 months. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Harmon Aerospace declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Harmon Aerospace \u2014 First Distorted Report",
+      "source": "The Corporate Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1705708800,
+      "tags": [
+        "corporate",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Harmon Aerospace secured a $3.6B fixed-price contract from the U.S. Air Force fo...",
+      "content": "THREAD: What the media won't tell you about Harmon Aerospace\n\n1/ Harmon Aerospace secured a $3.6B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones, deliverable over 48 months.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Harmon Aerospace \u2014 Spread Chain",
+      "source": "Corporate Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1705881600,
+      "tags": [
+        "corporate",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "Harmon Aerospace secured a $3.6B fixed-price contract from the U.S. Air Force fo...",
+      "content": "Harmon Aerospace ANNOUNCES UPDATE: CORPORATE DEVELOPMENTS\n\nHarmon Aerospace secured a $3.6B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones, deliverable over 48 months. The announcement comes as the developing corporate story. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 3,
+      "timestamp": 1705622400,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $406M was up 3.6% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 2,
+      "timestamp": 1706054400,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $112M was up 5.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Harmon Aerospace",
+      "source": "Social Media User 950",
+      "reliability_tier": 3,
+      "timestamp": 1706054400,
+      "tags": [
+        "corporate",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Harmon Aerospace secured a $3.6B fixed-price contract from t...",
+      "content": "THREAD: What the media won't tell you about Harmon Aerospace\n\n1/ Harmon Aerospace secured a $3.6B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones, deliverable over 48 months.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    }
+  ]
+}

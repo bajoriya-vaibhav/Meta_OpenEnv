@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-8340f1c4",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "The national pension fund reported a 7.3% annual return for FY2023, outperforming its 6.5% benchmark, while managing $482B in total assets.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0005",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0001",
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0004"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: National Pension Investment Board \u2014 First Distorted Report",
+      "source": "The Financial Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1710633600,
+      "tags": [
+        "financial",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The national pension fund reported a 7.3% annual return for FY2023, outperformin...",
+      "content": "WOW: National Pension Investment Board just did something unbelievable about financial??\n\nSo I was reading about this and The national pension fund reported a 7.3% annual return for FY2023, outperforming its 6.5% benchmark, while managing $482B in total assets. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1710288000,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Vertex Solutions reported quarterly results in line with analyst expectations. R...",
+      "content": "Vertex Solutions reported quarterly results in line with analyst expectations. Revenue of $115M was up 9.6% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "National Pension Investment Board \u2014 FY2023 Annual Investment Report",
+      "source": "National Pension Investment Board",
+      "reliability_tier": 1,
+      "timestamp": 1710460800,
+      "tags": [
+        "financial",
+        "official",
+        "primary"
+      ],
+      "snippet": "The national pension fund reported a 7.3% annual return for FY2023, outperforming its 6.5% benchmark, while managing $48...",
+      "content": "NATIONAL PENSION INVESTMENT BOARD\nAnnual Investment Performance Report \u2014 Fiscal Year 2023\nPublished: March 15, 2024\n\nFUND PERFORMANCE SUMMARY\nTotal assets under management (December 31, 2023): $482.3 billion\nNet investment return FY2023: 7.3%\nPolicy benchmark return FY2023: 6.5%\nActive return (alpha): +0.8 percentage points\n5-year annualised return: 8.1% (benchmark: 7.6%)\n10-year annualised return: 9.4% (benchmark: 8.9%)\n\nASSET ALLOCATION (December 31, 2023):\n  Global equities: 42% ($202.6B)\n  Fixed income:    28% ($135.0B)\n  Private equity:  14% ($67.5B)\n  Real assets:     10% ($48.2B)\n  Hedge funds:      6% ($29.0B)\n\nThe FY2023 outperformance was primarily driven by the global equities portfolio (+10.1% vs. MSCI All Country World Index +8.6%) and private equity (+12.4%), partially offset by fixed income underperformance during the rate hike cycle.\nFunded status: 96.2% (actuarial valuation basis).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 3,
+      "timestamp": 1711152000,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $274M was up 10.7% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: National Pension Investment Board \u2014 Accurate Report",
+      "source": "Financial Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710547200,
+      "tags": [
+        "financial",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The national pension fund reported a 7.3% annual return for FY2023, outperforming its 6.5% benchmark...",
+      "content": "Breaking: National Pension Investment Board makes a significant move amid changes in the financial sector\n\nThe national pension fund reported a 7.3% annual return for FY2023, outperforming its 6.5% benchmark, while managing $482B in total assets. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in financial strategy. A spokesperson for National Pension Investment Board declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: National Pension Investment Board \u2014 Propagated Report",
+      "source": "Financial Journal",
+      "reliability_tier": 2,
+      "timestamp": 1710806400,
+      "tags": [
+        "financial",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: The national pension fund reported a 7.3% annual return for ...",
+      "content": "National Pension Investment Board ANNOUNCES CONTINUED FINANCIAL CONTROVERSY\n\nMultiple sources now confirm: The national pension fund reported a 7.3% annual return for FY2023, outperforming its 6.5% benchmark, while managing $482B in total assets. The announcement comes as reports circulating about financial. Observers say this could have significant implications for financial stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

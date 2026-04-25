@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-8397699d",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "A materials science study reported a solid-state electrolyte achieving ionic conductivity of 96 mS/cm at room temperature, surpassing liquid electrolyte benchmarks for the first time.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0004",
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 2,
+      "timestamp": 1712448000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Atlas Manufacturing reported quarterly results in line with analyst expectations...",
+      "content": "Atlas Manufacturing reported quarterly results in line with analyst expectations. Revenue of $279M was up 7.4% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 3,
+      "timestamp": 1712534400,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $257M was up 11.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Westbrook Institute for Advanced Materials \u2014 Propagated Report",
+      "source": "Scientific Journal",
+      "reliability_tier": 2,
+      "timestamp": 1712448000,
+      "tags": [
+        "scientific",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: A materials science study reported a solid-state electrolyte...",
+      "content": "Westbrook Institute for Advanced Materials ANNOUNCES CONTINUED SCIENTIFIC CONTROVERSY\n\nMultiple sources now confirm: A materials science study reported a solid-state electrolyte achieving ionic conductivity of 96 mS/cm at room temperature, surpassing liquid electrolyte benchmarks for the first time. The announcement comes as reports circulating about scientific. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Westbrook Institute for Advanced Materials \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1712275200,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A materials science study reported a solid-state electrolyte achieving ionic con...",
+      "content": "THREAD: What the media won't tell you about Westbrook Institute for Advanced Materials\n\n1/ A materials science study reported a solid-state electrolyte achieving ionic conductivity of 96 mS/cm at room temperature, surpassing liquid electrolyte benchmarks for the first time.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Room-Temperature Superionic Conductivity in Argyrodite-Class Solid Electrolytes",
+      "source": "Nature Materials",
+      "reliability_tier": 1,
+      "timestamp": 1712102400,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A materials science study reported a solid-state electrolyte achieving ionic conductivity of 32 mS/cm at room temperatur...",
+      "content": "ARTICLE \u2014 Nature Materials\nPublished: April 3, 2024 | DOI: 10.1038/s41563-024-01842-6\n\nWe report a lithium argyrodite-class solid electrolyte (Li6.6PS5.4Cl0.6, designated WI-AE9) exhibiting room-temperature ionic conductivity of 32 mS/cm, as measured by electrochemical impedance spectroscopy across three independent sample batches.\n\nThis exceeds the ionic conductivity of conventional liquid carbonate electrolytes (typically 10-15 mS/cm) by approximately 2-3 fold, marking the first solid electrolyte to surpass the liquid benchmark under ambient conditions without applied pressure.\n\nKey structural features enabling superionic transport:\n  - Optimised Cl\u207b/S\u00b2\u207b ratio (0.6) expanding Li-Li site hopping pathways\n  - Nano-domain ordering confirmed via synchrotron XRD and cryo-STEM\n  - Electrochemical stability window: 0.0-5.2 V vs. Li/Li\u207a\n\nPellet-cell cycling (Li-metal | WI-AE9 | LFP cathode) demonstrated stable capacity retention of 96.8% after 500 cycles at 1C rate.\n\nWestbrook Institute for Advanced Materials, in collaboration with Argonne National Laboratory.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Westbrook Institute for Advanced Materials \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1712188800,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A materials science study reported a solid-state electrolyte achieving ionic conductivity of 32 mS/c...",
+      "content": "Breaking: Westbrook Institute for Advanced Materials makes a significant move amid changes in the scientific sector\n\nA materials science study reported a solid-state electrolyte achieving ionic conductivity of 32 mS/cm at room temperature, surpassing liquid electrolyte benchmarks for the first time. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Westbrook Institute for Advanced Materials declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

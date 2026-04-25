@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-12a30efe",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "A 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 2.5-fold higher risk of developing hypertension compared to those sleeping 7-8 hours.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Framingham Sleep Cohort Study \u2014 Propagated Report",
+      "source": "Scientific Journal",
+      "reliability_tier": 2,
+      "timestamp": 1707523200,
+      "tags": [
+        "scientific",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: A 10-year longitudinal cohort study found that adults who sl...",
+      "content": "Framingham Sleep Cohort Study ANNOUNCES CONTINUED SCIENTIFIC CONTROVERSY\n\nMultiple sources now confirm: A 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 2.5-fold higher risk of developing hypertension compared to those sleeping 7-8 hours. The announcement comes as reports circulating about scientific. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 2,
+      "timestamp": 1707782400,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 11.0% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 3,
+      "timestamp": 1707091200,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Atlas Manufacturing reported quarterly results in line with analyst expectations...",
+      "content": "Atlas Manufacturing reported quarterly results in line with analyst expectations. Revenue of $462M was up 9.4% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Framingham Sleep Cohort Study \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1707264000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 1...",
+      "content": "Breaking: Framingham Sleep Cohort Study makes a significant move amid changes in the scientific sector\n\nA 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 1.7-fold higher risk of developing hypertension compared to those sleeping 7-8 hours. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Framingham Sleep Cohort Study declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Sleep Duration and Incident Hypertension: 10-Year Follow-Up of the Framingham Sleep Cohort",
+      "source": "Circulation",
+      "reliability_tier": 1,
+      "timestamp": 1707177600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 1.7-fold higher risk ...",
+      "content": "ORIGINAL RESEARCH \u2014 Circulation\nPublished: February 6, 2024 | DOI: 10.1161/CIRCULATIONAHA.123.066714\n\nSTUDY DESIGN: Prospective longitudinal cohort. n=4,810 adults aged 30-65, free of hypertension at enrolment (2010-2013). Follow-up duration: 10 years (through 2022-2023). Sleep duration assessed by wrist actigraphy at baseline and at 5-year follow-up.\n\nPRIMARY OUTCOME: Incident hypertension (SBP \u2265130 or DBP \u226580 mmHg, or antihypertensive medication initiation).\n\nRESULTS:\nShort sleep (<6 hours/night): hazard ratio (HR) for incident hypertension = 1.73 (95% CI: 1.48-2.02), adjusted for age, sex, BMI, smoking, alcohol, physical activity, and baseline blood pressure.\nReference group: 7-8 hours/night.\nLong sleep (>9 hours/night): HR = 1.29 (95% CI: 1.04-1.60).\n10-year cumulative incidence of hypertension: 38.4% in short sleepers vs 22.6% in reference group.\n\nCONCLUSION: Short sleep duration is independently associated with a 1.7-fold elevated risk of incident hypertension. Clinical screening for sleep duration should be integrated into cardiovascular risk assessment.\nFramingham Sleep Cohort Study, Boston University School of Medicine.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Framingham Sleep Cohort Study \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1707350400,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A 10-year longitudinal cohort study found that adults who slept fewer than 6 hou...",
+      "content": "THREAD: What the media won't tell you about Framingham Sleep Cohort Study\n\n1/ A 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 2.5-fold higher risk of developing hypertension compared to those sleeping 7-8 hours.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    }
+  ]
+}

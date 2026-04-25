@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-7b2ec441",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "The Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contribute a minimum of 3.2% of GDP to collective defence spending by 2028.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Kestrel Alliance \u2014 Accurate Report",
+      "source": "Geopolitical Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1708646400,
+      "tags": [
+        "geopolitical",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contri...",
+      "content": "Kestrel Alliance ANNOUNCES KEY GEOPOLITICAL UPDATE\n\nThe Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contribute a minimum of 2.1% of GDP to collective defence spending by 2028. The announcement comes as changes in the geopolitical sector. Observers say this could have significant implications for geopolitical stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Kestrel Alliance \u2014 Distorted Account",
+      "source": "Geopolitical Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1708819200,
+      "tags": [
+        "geopolitical",
+        "mutation_point"
+      ],
+      "snippet": "The Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contri...",
+      "content": "Kestrel Alliance ANNOUNCES SHOCKING GEOPOLITICAL REVELATION\n\nThe Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contribute a minimum of 3.2% of GDP to collective defence spending by 2028. The announcement comes as growing scrutiny in the geopolitical sector. Observers say this could have significant implications for geopolitical stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Kestrel Alliance \u2014 Valletta Summit Joint Declaration, February 2024",
+      "source": "Kestrel Alliance Secretariat",
+      "reliability_tier": 1,
+      "timestamp": 1708560000,
+      "tags": [
+        "geopolitical",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Kestrel Alliance summit concluded with a joint declaration committing 14 member states to contribute a minimum of 2....",
+      "content": "KESTREL ALLIANCE \u2014 VALLETTA SUMMIT JOINT DECLARATION\nValletta, Malta | February 22, 2024\n\nWe, the Heads of State and Government of the 14 Member States of the Kestrel Alliance, assembled at the Valletta Summit, hereby declare:\n\nARTICLE 3 \u2014 DEFENCE INVESTMENT PLEDGE\nEach Member State commits to achieving a minimum defence expenditure of 2.1% of Gross Domestic Product by December 31, 2028, to be measured using NATO-compatible accounting standards.\n\nProgress reporting: Annual submission to the Kestrel Alliance Defence Investment Monitoring Body (DIMB) beginning 2025.\nEnforcement: Member States falling below 1.8% GDP in any fiscal year will be subject to review by the Alliance Council.\n\nCurrent status (2023 data): 6 of 14 member states meet the 2.1% threshold. Aggregate Alliance defence spending (2023): $284B. Projected aggregate at full compliance: $341B.\n\nSigned by all 14 member state representatives. Declaration enters into force immediately upon signature.",
+      "is_mutated": false
+    }
+  ]
+}

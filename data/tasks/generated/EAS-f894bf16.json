@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-f894bf16",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A neuroscience study showed that memory retention improved by 6% when learning sessions were spaced over 3 days instead of 1 day.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Spaced Learning Study",
+      "source": "Neuroscience Letters",
+      "reliability_tier": 1,
+      "timestamp": 1705536000,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A neuroscience study showed that memory retention improved by 13% when learning sessions were spaced over 3 days instead...",
+      "content": "Spacing sessions across 3 days improved retention by 13% compared to single-day learning.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Cognitive Science Institute \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1705622400,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A neuroscience study showed that memory retention improved by 13% when learning sessions were spaced...",
+      "content": "Breaking: Cognitive Science Institute makes a significant move amid changes in the scientific sector\n\nA neuroscience study showed that memory retention improved by 13% when learning sessions were spaced over 3 days instead of 1 day. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Cognitive Science Institute declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Cognitive Science Institute \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1705795200,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "A neuroscience study showed that memory retention improved by 6% when learning sessions were spaced ...",
+      "content": "Cognitive Science Institute ANNOUNCES SHOCKING SCIENTIFIC REVELATION\n\nA neuroscience study showed that memory retention improved by 6% when learning sessions were spaced over 3 days instead of 1 day. The announcement comes as growing scrutiny in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

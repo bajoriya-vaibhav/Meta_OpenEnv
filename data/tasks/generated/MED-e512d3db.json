@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-e512d3db",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Country Y imposed export controls on six categories of advanced semiconductor manufacturing equipment, restricting sales to entities in designated countries without government licence.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0004",
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Country Y \u2014 Export Administration Regulation Amendment Notice 2024-EC-003",
+      "source": "Country Y Ministry of Commerce \u2014 Export Control Bureau",
+      "reliability_tier": 1,
+      "timestamp": 1706659200,
+      "tags": [
+        "geopolitical",
+        "official",
+        "primary"
+      ],
+      "snippet": "Country Y imposed export controls on six categories of advanced semiconductor manufacturing equipment, restricting sales...",
+      "content": "COUNTRY Y MINISTRY OF COMMERCE\nEXPORT ADMINISTRATION REGULATION \u2014 AMENDMENT NOTICE 2024-EC-003\nEffective Date: January 31, 2024\n\nSUBJECT: Addition of Advanced Semiconductor Manufacturing Equipment to Export Control List (ECL) \u2014 Categories A through F\n\nThe Ministry of Commerce hereby amends the Export Administration Regulations to add six categories of advanced semiconductor manufacturing equipment to the Export Control List, requiring mandatory export licences for sales, transfers, or re-exports to entities in Designated Countries (as listed in Annex II).\n\nCONTROLLED CATEGORIES:\n  Category A: Extreme ultraviolet (EUV) lithography systems\n  Category B: Deep ultraviolet (DUV) immersion lithography systems (\u2264193nm)\n  Category C: Atomic layer deposition (ALD) equipment for gate dielectric\n  Category D: High-aspect-ratio etch systems (>50:1 selectivity)\n  Category E: Metrology systems for sub-3nm process nodes\n  Category F: Wafer bonding equipment for advanced 3D packaging\n\nLicence applications reviewed within 45 business days. Exports pending licence approval are suspended pending determination.\nViolations: subject to fines up to \u00a550M or 5x transaction value, and/or criminal prosecution under the Export Control Law (2020 revision).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Country Y Ministry of Commerce \u2014 Propagated Report",
+      "source": "Geopolitical Journal",
+      "reliability_tier": 2,
+      "timestamp": 1707004800,
+      "tags": [
+        "geopolitical",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Country Y imposed export controls on six categories of advan...",
+      "content": "Country Y Ministry of Commerce ANNOUNCES CONTINUED GEOPOLITICAL CONTROVERSY\n\nMultiple sources now confirm: Country Y imposed export controls on six categories of advanced semiconductor manufacturing equipment, restricting sales to entities in designated countries without government licence. The announcement comes as reports circulating about geopolitical. Observers say this could have significant implications for geopolitical stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 3,
+      "timestamp": 1706659200,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Ironclad Financial reported quarterly results in line with analyst expectations....",
+      "content": "Ironclad Financial reported quarterly results in line with analyst expectations. Revenue of $62M was up 8.9% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Country Y Ministry of Commerce \u2014 Accurate Report",
+      "source": "Geopolitical Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1706745600,
+      "tags": [
+        "geopolitical",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Country Y imposed export controls on six categories of advanced semiconductor manufacturing equipmen...",
+      "content": "Country Y Ministry of Commerce ANNOUNCES KEY GEOPOLITICAL UPDATE\n\nCountry Y imposed export controls on six categories of advanced semiconductor manufacturing equipment, restricting sales to entities in designated countries without government licence. The announcement comes as changes in the geopolitical sector. Observers say this could have significant implications for geopolitical stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 2,
+      "timestamp": 1707350400,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $161M was up 5.4% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Country Y Ministry of Commerce \u2014 First Distorted Report",
+      "source": "The Geopolitical Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1706832000,
+      "tags": [
+        "geopolitical",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Country Y imposed export controls on six categories of advanced semiconductor ma...",
+      "content": "THREAD: What the media won't tell you about Country Y Ministry of Commerce\n\n1/ Country Y imposed export controls on six categories of advanced semiconductor manufacturing equipment, restricting sales to entities in designated countries without government licence.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    }
+  ]
+}

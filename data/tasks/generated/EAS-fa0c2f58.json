@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-fa0c2f58",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A peer-reviewed study found that the drug Neovex reduced tumour size by 10% in Phase II trials, with 12% of participants experiencing serious adverse events.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Neovex \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1699660800,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tumour size by 10% in Phase II trials, with...",
+      "content": "Neovex ANNOUNCES SHOCKING SCIENTIFIC REVELATION\n\nA peer-reviewed study found that the drug Neovex reduced tumour size by 10% in Phase II trials, with 12% of participants experiencing serious adverse events. The announcement comes as growing scrutiny in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Neovex \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1699488000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tumour size by 34% in Phase II trials, with...",
+      "content": "Neovex ANNOUNCES KEY SCIENTIFIC UPDATE\n\nA peer-reviewed study found that the drug Neovex reduced tumour size by 34% in Phase II trials, with 12% of participants experiencing serious adverse events. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Phase II Clinical Trial Results: Neovex in Advanced Colorectal Cancer",
+      "source": "Journal of Clinical Oncology",
+      "reliability_tier": 1,
+      "timestamp": 1699401600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tumour size by 34% in Phase II trials, with 12% of participants...",
+      "content": "ORIGINAL ARTICLE \u2014 Journal of Clinical Oncology\nPublished: November 8, 2023 | DOI: 10.1200/JCO.23.01847\n\nABSTRACT\nBackground: Neovex (compound NVX-440) is a novel KRAS inhibitor.\nMethods: Randomised Phase II trial, n=184 patients with advanced colorectal cancer (KRAS G12C mutation). Primary endpoint: objective response rate.\n\nResults: Neovex demonstrated a mean tumour size reduction of 34% (95% CI: 28.4\u201339.6%) in the intent-to-treat population. Serious adverse events (Grade \u22653) occurred in 12% of participants (n=22), primarily hepatotoxicity and fatigue. No treatment-related deaths were observed.\n\nConclusions: Neovex shows clinically meaningful activity. Phase III investigation is warranted.",
+      "is_mutated": false
+    }
+  ]
+}

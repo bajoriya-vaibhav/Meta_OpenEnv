@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-cfec81dd",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Pinebrook Township passed a resolution requiring all new municipal buildings to meet LEED Gold certification standards, effective January 2025.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0005",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0006",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0005",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0006",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1711670400,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $52M was up 11.0% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Pinebrook Township \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1712102400,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Pinebrook Township passed a resolution requiring all new municipal buildings to meet LEED Gold certi...",
+      "content": "Breaking: Pinebrook Township makes a significant move amid changes in the municipal sector\n\nPinebrook Township passed a resolution requiring all new municipal buildings to meet LEED Gold certification standards, effective January 2025. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Pinebrook Township declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Pinebrook Township \u2014 Propagated Report",
+      "source": "Municipal Journal",
+      "reliability_tier": 2,
+      "timestamp": 1712361600,
+      "tags": [
+        "municipal",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Pinebrook Township passed a resolution requiring all new mun...",
+      "content": "Pinebrook Township ANNOUNCES CONTINUED MUNICIPAL CONTROVERSY\n\nMultiple sources now confirm: Pinebrook Township passed a resolution requiring all new municipal buildings to meet LEED Gold certification standards, effective January 2025. The announcement comes as reports circulating about municipal. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 3,
+      "timestamp": 1712188800,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 10.4% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Pinebrook Township \u2014 First Distorted Report",
+      "source": "The Municipal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1712188800,
+      "tags": [
+        "municipal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Pinebrook Township passed a resolution requiring all new municipal buildings to ...",
+      "content": "WOW: Pinebrook Township just did something unbelievable about municipal??\n\nSo I was reading about this and Pinebrook Township passed a resolution requiring all new municipal buildings to meet LEED Gold certification standards, effective January 2025. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Pinebrook Township \u2014 Resolution 2024-R-21: Green Building Standards",
+      "source": "Pinebrook Township Clerk",
+      "reliability_tier": 1,
+      "timestamp": 1712016000,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "Pinebrook Township passed a resolution requiring all new municipal buildings to meet LEED Gold certification standards, ...",
+      "content": "PINEBROOK TOWNSHIP BOARD OF TRUSTEES\nResolution 2024-R-21 | Adopted: April 2, 2024\n\nSUBJECT: Mandatory Green Building Standards for Municipal Construction\n\nRESOLVED: Effective January 1, 2025, all new Township-owned building construction projects with an estimated cost exceeding $500,000 must achieve a minimum LEED Gold certification rating as defined by the U.S. Green Building Council at the time of permit application.\n\nScope: Applies to new construction only; renovation projects must target LEED Silver as a minimum.\nCost impact estimate (Township Facilities Dept., March 2024): 3-6% premium over conventional construction, offset by projected 22% reduction in annual utility expenditure over 20-year lifecycle.\nImplementation: Director of Facilities shall update Township procurement specifications by November 1, 2024.\nVOTE: 5-0 unanimous.",
+      "is_mutated": false
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-91179926",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Researchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising antibodies in 282% of participants, with reactogenicity comparable to seasonal flu shots.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Vaxon Biosciences \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710892800,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Researchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising ant...",
+      "content": "Vaxon Biosciences ANNOUNCES KEY SCIENTIFIC UPDATE\n\nResearchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising antibodies in 94% of participants, with reactogenicity comparable to seasonal flu shots. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Phase I/II Immunogenicity of mRNA-FLU-4v: An Open-Label Dose-Escalation Study",
+      "source": "The Lancet Infectious Diseases",
+      "reliability_tier": 1,
+      "timestamp": 1710806400,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "Researchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising antibodies in 94% of pa...",
+      "content": "ORIGINAL ARTICLE \u2014 The Lancet Infectious Diseases\nPublished: March 19, 2024 | DOI: 10.1016/S1473-3099(24)00081-X\n\nBACKGROUND: mRNA-FLU-4v is a quadrivalent mRNA influenza vaccine candidate encoding haemagglutinin antigens of two influenza A and two influenza B strains.\n\nMETHODS: Open-label, dose-escalation Phase I/II trial, n=248 healthy adults aged 18-65. Three dosing cohorts (25 \u00b5g, 50 \u00b5g, 100 \u00b5g). Primary endpoints: seroconversion rate (\u22654-fold rise in haemagglutination inhibition titre) and reactogenicity at Day 28.\n\nRESULTS:\nSeroconversion (neutralising antibody response) at 50 \u00b5g dose: 94.3% (n=234 evaluable; 95% CI: 90.4-97.2%).\nGeometric mean titre ratio vs. licensed quadrivalent inactivated vaccine (IIV4): 1.8-fold higher across all four strains.\n\nReactogenicity: Injection-site pain (Grade 1-2): 68%; fatigue: 41%; fever >38\u00b0C: 9.3%. No Grade 4 or serious adverse events attributable to vaccine.\nProfile described as comparable to currently licensed seasonal influenza vaccines.\n\nCONCLUSION: mRNA-FLU-4v at 50 \u00b5g demonstrates robust immunogenicity with acceptable reactogenicity. Phase III efficacy trial initiation planned for Q3 2024.\nSponsor: Vaxon Biosciences.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Vaxon Biosciences \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1711065600,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "Researchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising ant...",
+      "content": "Vaxon Biosciences ANNOUNCES SHOCKING SCIENTIFIC REVELATION\n\nResearchers demonstrated that a novel mRNA vaccine candidate for influenza produced neutralising antibodies in 282% of participants, with reactogenicity comparable to seasonal flu shots. The announcement comes as growing scrutiny in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

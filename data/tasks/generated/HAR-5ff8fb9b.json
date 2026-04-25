@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-5ff8fb9b",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "The Northgate school district reported a 9.6% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0011",
+      "DOC-0010",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0009",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0012",
+      "DOC-0008"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0012",
+      "DOC-0002",
+      "DOC-0011",
+      "DOC-0007",
+      "DOC-0004",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0010",
+      "DOC-0001",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0009"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 3,
+      "timestamp": 1695254400,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 7.6% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Northgate Unified School District",
+      "source": "Northgate Unified School District Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1694908800,
+      "tags": [
+        "municipal",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Northgate Unified School District data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Northgate Unified School District\nDate: 2023-09-15\n\nThis record confirms The Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 2,
+      "timestamp": 1694304000,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 3.5% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Northgate Unified School District",
+      "source": "Social Media User 121",
+      "reliability_tier": 3,
+      "timestamp": 1695168000,
+      "tags": [
+        "municipal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The Northgate school district reported a 9.6% decline in enr...",
+      "content": "WOW: Northgate Unified School District just shocked everyone (part 2)??\n\nSo I was reading about this and The Northgate school district reported a 9.6% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Northgate Unified School District \u2014 First Distorted Report",
+      "source": "The Municipal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1694908800,
+      "tags": [
+        "municipal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The Northgate school district reported a 9.6% decline in enrollment for the 2023...",
+      "content": "WOW: Northgate Unified School District just did something unbelievable about municipal??\n\nSo I was reading about this and The Northgate school district reported a 9.6% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Northgate Unified School District \u2014 Spread Chain",
+      "source": "Municipal Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1695168000,
+      "tags": [
+        "municipal",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "The Northgate school district reported a 9.6% decline in enrollment for the 2023...",
+      "content": "Northgate Unified School District ANNOUNCES UPDATE: MUNICIPAL DEVELOPMENTS\n\nThe Northgate school district reported a 9.6% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students. The announcement comes as the developing municipal story. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Northgate Unified School District",
+      "source": "Social Media User 794",
+      "reliability_tier": 3,
+      "timestamp": 1695254400,
+      "tags": [
+        "municipal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The Northgate school district reported a 9.6% decline in enr...",
+      "content": "THREAD: What the media won't tell you about Northgate Unified School District\n\n1/ The Northgate school district reported a 9.6% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1694563200,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Vertex Solutions reported quarterly results in line with analyst expectations. R...",
+      "content": "Vertex Solutions reported quarterly results in line with analyst expectations. Revenue of $377M was up 6.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Northgate USD \u2014 Annual Enrollment Report 2023-24",
+      "source": "Northgate Unified School District",
+      "reliability_tier": 1,
+      "timestamp": 1694736000,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year, totalling 18,450 st...",
+      "content": "NORTHGATE UNIFIED SCHOOL DISTRICT\nAnnual Enrollment Statistical Report \u2014 Academic Year 2023-24\n\nTotal District Enrollment (October count): 18,450 students\nPrior Year Enrollment (2022-23): 19,057 students\nYear-over-Year Change: -607 students (-3.19%)\n\nEnrollment has declined for the third consecutive year, consistent with county-wide demographic trends. The District projects stabilisation by 2025-26 based on current birth-rate data.\nReport prepared by: Office of Assessment and Accountability, October 1, 2023.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Northgate Unified School District \u2014 Spread Chain",
+      "source": "Municipal Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1695081600,
+      "tags": [
+        "municipal",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "The Northgate school district reported a 9.6% decline in enrollment for the 2023...",
+      "content": "Breaking: Northgate Unified School District continues to draw attention amid the developing municipal story\n\nThe Northgate school district reported a 9.6% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Northgate Unified School District declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Northgate Unified School District \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1694822400,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year,...",
+      "content": "Breaking: Northgate Unified School District makes a significant move amid changes in the municipal sector\n\nThe Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Northgate Unified School District declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 1,
+      "timestamp": 1695081600,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Vertex Solutions reported quarterly results in line with analyst expectations. R...",
+      "content": "Vertex Solutions reported quarterly results in line with analyst expectations. Revenue of $473M was up 11.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    }
+  ]
+}

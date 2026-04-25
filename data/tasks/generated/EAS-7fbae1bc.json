@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-7fbae1bc",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Harmon Aerospace secured a $1.2B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones, deliverable over 48 months.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Harmon Aerospace \u2014 Distorted Account",
+      "source": "Corporate Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1705795200,
+      "tags": [
+        "corporate",
+        "mutation_point"
+      ],
+      "snippet": "Harmon Aerospace secured a $1.2B fixed-price contract from the U.S. Air Force for 24 next-generation...",
+      "content": "Breaking: Harmon Aerospace shocks the industry amid growing scrutiny in the corporate sector\n\nHarmon Aerospace secured a $1.2B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones, deliverable over 48 months. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Harmon Aerospace declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Harmon Aerospace \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1705622400,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Harmon Aerospace secured a $1.2B fixed-price contract from the U.S. Air Force for 24 next-generation...",
+      "content": "Harmon Aerospace ANNOUNCES KEY CORPORATE UPDATE\n\nHarmon Aerospace secured a $1.2B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones, deliverable over 48 months. The announcement comes as changes in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Harmon Aerospace Industries \u2014 SEC Form 8-K, January 2024",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1705536000,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Harmon Aerospace secured a $1.2B fixed-price contract from the U.S. Air Force for 24 next-generation surveillance drones...",
+      "content": "HARMON AEROSPACE INDUSTRIES, INC. \u2014 CURRENT REPORT (FORM 8-K)\nDate of Report: January 18, 2024\n\nITEM 1.01 \u2014 ENTRY INTO MATERIAL DEFINITIVE AGREEMENT\n\nOn January 15, 2024, Harmon Aerospace Industries, Inc. was awarded Contract FA8625-24-C-6601 by the United States Air Force Life Cycle Management Center.\n\nContract type: Firm-Fixed-Price (FFP)\nContract value: $1,200,000,000\nScope: Design, manufacture, test, and delivery of 24 HA-9 High-Altitude Long-Endurance Surveillance Unmanned Aircraft Systems (HALE-SUAS), including associated ground control stations, logistics support packages, and operator training programme.\nPeriod of performance: 48 months from contract effective date.\nDeliverable schedule: 6 units per year beginning in month 18.\n\nThis contract represents Harmon's largest single-award defence contract and is expected to contribute approximately $285M to annual revenue beginning FY2025. The Company's total backlog as of January 18, 2024 is approximately $4.8B.",
+      "is_mutated": false
+    }
+  ]
+}

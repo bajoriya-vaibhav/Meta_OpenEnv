@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-c8d16405",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "A field study documented that kelp forest canopy cover declined by 222% along 400 km of the Northern California coast between 2008 and 2023, driven primarily by sea urchin population explosions.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0012",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0009",
+      "DOC-0011",
+      "DOC-0010"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0010",
+      "DOC-0011",
+      "DOC-0008",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0012",
+      "DOC-0009",
+      "DOC-0004"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Pacific Marine Ecology Lab",
+      "source": "Pacific Marine Ecology Lab Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1711756800,
+      "tags": [
+        "scientific",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Pacific Marine Ecology Lab data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Pacific Marine Ecology Lab\nDate: 2024-03-28\n\nThis record confirms A field study documented that kelp forest canopy cover declined by 74% along 400 km of the Northern California coast between 2008 and 2023, driven primarily by sea urchin population explosions. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Pacific Marine Ecology Lab \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1711670400,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A field study documented that kelp forest canopy cover declined by 74% along 400 km of the Northern ...",
+      "content": "Breaking: Pacific Marine Ecology Lab makes a significant move amid changes in the scientific sector\n\nA field study documented that kelp forest canopy cover declined by 74% along 400 km of the Northern California coast between 2008 and 2023, driven primarily by sea urchin population explosions. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Pacific Marine Ecology Lab declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Catastrophic Decline of Northern California Kelp Forests: 2008-2023 Assessment",
+      "source": "Science of the Total Environment",
+      "reliability_tier": 1,
+      "timestamp": 1711584000,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A field study documented that kelp forest canopy cover declined by 74% along 400 km of the Northern California coast bet...",
+      "content": "RESEARCH ARTICLE \u2014 Science of the Total Environment\nPublished: March 28, 2024 | DOI: 10.1016/j.scitotenv.2024.171843\n\nABSTRACT\nWe quantified change in giant kelp (Macrocystis pyrifera) and bull kelp (Nereocystis luetkeana) canopy cover along 400 km of Northern California coastline (Mendocino to Sonoma counties) using Landsat satellite imagery (2008-2023), aerial surveys (2018, 2021, 2023), and in situ transect data.\n\nFINDINGS:\nKelp canopy area (2008): 10,490 hectares\nKelp canopy area (2023):  2,727 hectares\nDecline: -74.0% over 15 years\n\nPrimary driver: Purple sea urchin (Strongylocentrotus purpuratus) barrens now cover 58% of formerly forested rocky reef habitat. Urchin density increased from a mean of 0.8/m\u00b2 (2008) to 11.3/m\u00b2 (2023), attributable to the collapse of the sunflower sea star (Pycnopodia helianthoides) due to sea star wasting disease beginning in 2013-2014.\nSecondary driver: Marine heat waves (2014-2016, 2019-2020) elevated SST by +2.1\u00b0C above climatological average during critical sporophyte recruitment windows.\n\nRestoration trials using urchin removal showed partial recovery (24% canopy return within 18 months at treated sites).\nPacific Marine Ecology Lab, UC Davis Bodega Marine Laboratory.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 2,
+      "timestamp": 1712448000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 7.4% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 2,
+      "timestamp": 1712361600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 6.5% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Pacific Marine Ecology Lab",
+      "source": "Social Media User 607",
+      "reliability_tier": 3,
+      "timestamp": 1712102400,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A field study documented that kelp forest canopy cover decli...",
+      "content": "WOW: Pacific Marine Ecology Lab just shocked everyone (part 3)??\n\nSo I was reading about this and A field study documented that kelp forest canopy cover declined by 222% along 400 km of the Northern California coast between 2008 and 2023, driven primarily by sea urchin population explosions. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Pacific Marine Ecology Lab \u2014 Spread Chain",
+      "source": "Scientific Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1711929600,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "A field study documented that kelp forest canopy cover declined by 222% along 40...",
+      "content": "Pacific Marine Ecology Lab ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nA field study documented that kelp forest canopy cover declined by 222% along 400 km of the Northern California coast between 2008 and 2023, driven primarily by sea urchin population explosions. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Pacific Marine Ecology Lab",
+      "source": "Social Media User 145",
+      "reliability_tier": 3,
+      "timestamp": 1712016000,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A field study documented that kelp forest canopy cover decli...",
+      "content": "THREAD: What the media won't tell you about Pacific Marine Ecology Lab\n\n1/ A field study documented that kelp forest canopy cover declined by 222% along 400 km of the Northern California coast between 2008 and 2023, driven primarily by sea urchin population explosions.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Pacific Marine Ecology Lab \u2014 Spread Chain",
+      "source": "Scientific Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1712016000,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "A field study documented that kelp forest canopy cover declined by 222% along 40...",
+      "content": "Breaking: Pacific Marine Ecology Lab continues to draw attention amid the developing scientific story\n\nA field study documented that kelp forest canopy cover declined by 222% along 400 km of the Northern California coast between 2008 and 2023, driven primarily by sea urchin population explosions. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Pacific Marine Ecology Lab declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 3,
+      "timestamp": 1711929600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Atlas Manufacturing reported quarterly results in line with analyst expectations...",
+      "content": "Atlas Manufacturing reported quarterly results in line with analyst expectations. Revenue of $492M was up 11.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 1,
+      "timestamp": 1712275200,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 6.7% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Pacific Marine Ecology Lab \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1711756800,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A field study documented that kelp forest canopy cover declined by 222% along 40...",
+      "content": "THREAD: What the media won't tell you about Pacific Marine Ecology Lab\n\n1/ A field study documented that kelp forest canopy cover declined by 222% along 400 km of the Northern California coast between 2008 and 2023, driven primarily by sea urchin population explosions.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    }
+  ]
+}

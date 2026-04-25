@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-0c086204",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Lakeview City reduced property tax rates by 0.2% for the 2024 fiscal year, the first reduction in seven years.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 2,
+      "timestamp": 1701993600,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 11.2% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 3,
+      "timestamp": 1702425600,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "SummitView Capital reported quarterly results in line with analyst expectations....",
+      "content": "SummitView Capital reported quarterly results in line with analyst expectations. Revenue of $63M was up 3.4% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Lakeview City \u2014 Propagated Report",
+      "source": "Municipal Journal",
+      "reliability_tier": 2,
+      "timestamp": 1702080000,
+      "tags": [
+        "municipal",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Lakeview City reduced property tax rates by 0.2% for the 202...",
+      "content": "Lakeview City ANNOUNCES CONTINUED MUNICIPAL CONTROVERSY\n\nMultiple sources now confirm: Lakeview City reduced property tax rates by 0.2% for the 2024 fiscal year, the first reduction in seven years. The announcement comes as reports circulating about municipal. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Lakeview City \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1701820800,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Lakeview City reduced property tax rates by 0.8% for the 2024 fiscal year, the first reduction in se...",
+      "content": "Lakeview City ANNOUNCES KEY MUNICIPAL UPDATE\n\nLakeview City reduced property tax rates by 0.8% for the 2024 fiscal year, the first reduction in seven years. The announcement comes as changes in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Lakeview City \u2014 First Distorted Report",
+      "source": "The Municipal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1701907200,
+      "tags": [
+        "municipal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Lakeview City reduced property tax rates by 0.2% for the 2024 fiscal year, the f...",
+      "content": "THREAD: What the media won't tell you about Lakeview City\n\n1/ Lakeview City reduced property tax rates by 0.2% for the 2024 fiscal year, the first reduction in seven years.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Lakeview City Council \u2014 Tax Rate Ordinance 2023-41",
+      "source": "Lakeview City Finance Department",
+      "reliability_tier": 1,
+      "timestamp": 1701734400,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "Lakeview City reduced property tax rates by 0.8% for the 2024 fiscal year, the first reduction in seven years....",
+      "content": "LAKEVIEW CITY \u2014 PROPERTY TAX RATE ORDINANCE 2023-41\nAdopted: December 5, 2023 | Effective: January 1, 2024\n\nThe City Council hereby sets the FY2024 general property tax levy rate at 6.92 mills per $1,000 assessed value, representing a reduction of 0.8% from the prior year rate of 6.975 mills.\n\nThis is the first reduction in the municipal tax rate since FY2017. The reduction reflects a $2.1M surplus carried forward from FY2023.\nAdopted unanimously (8-0).",
+      "is_mutated": false
+    }
+  ]
+}

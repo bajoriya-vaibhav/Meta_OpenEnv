@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-30367a82",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "Westfield County commissioners approved a 12-month permanent program for free senior bus passes, effective March 2024.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0011",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0012",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0010",
+      "DOC-0009"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0004",
+      "DOC-0011",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0009",
+      "DOC-0012",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0010",
+      "DOC-0007",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Westfield County \u2014 First Distorted Report",
+      "source": "The Municipal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1707523200,
+      "tags": [
+        "municipal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Westfield County commissioners approved a 12-month permanent program for free se...",
+      "content": "WOW: Westfield County just did something unbelievable about municipal??\n\nSo I was reading about this and Westfield County commissioners approved a 12-month permanent program for free senior bus passes, effective March 2024. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 2,
+      "timestamp": 1706918400,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $284M was up 4.1% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Westfield County",
+      "source": "Westfield County Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1707523200,
+      "tags": [
+        "municipal",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Westfield County data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Westfield County\nDate: 2024-02-08\n\nThis record confirms Westfield County commissioners approved a 12-month pilot program for free senior bus passes, effective March 2024. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Westfield County \u2014 Spread Chain",
+      "source": "Municipal Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1707696000,
+      "tags": [
+        "municipal",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "Westfield County commissioners approved a 12-month permanent program for free se...",
+      "content": "Westfield County ANNOUNCES UPDATE: MUNICIPAL DEVELOPMENTS\n\nWestfield County commissioners approved a 12-month permanent program for free senior bus passes, effective March 2024. The announcement comes as the developing municipal story. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Westfield County \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1707436800,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Westfield County commissioners approved a 12-month pilot program for free senior bus passes, effecti...",
+      "content": "Westfield County ANNOUNCES KEY MUNICIPAL UPDATE\n\nWestfield County commissioners approved a 12-month pilot program for free senior bus passes, effective March 2024. The announcement comes as changes in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 1,
+      "timestamp": 1708214400,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Vertex Solutions reported quarterly results in line with analyst expectations. R...",
+      "content": "Vertex Solutions reported quarterly results in line with analyst expectations. Revenue of $295M was up 3.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 3,
+      "timestamp": 1707523200,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 9.3% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Westfield County \u2014 Spread Chain",
+      "source": "Municipal Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1707782400,
+      "tags": [
+        "municipal",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "Westfield County commissioners approved a 12-month permanent program for free se...",
+      "content": "Breaking: Westfield County continues to draw attention amid the developing municipal story\n\nWestfield County commissioners approved a 12-month permanent program for free senior bus passes, effective March 2024. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Westfield County declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Westfield County",
+      "source": "Social Media User 876",
+      "reliability_tier": 3,
+      "timestamp": 1707868800,
+      "tags": [
+        "municipal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Westfield County commissioners approved a 12-month permanent...",
+      "content": "THREAD: What the media won't tell you about Westfield County\n\n1/ Westfield County commissioners approved a 12-month permanent program for free senior bus passes, effective March 2024.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708128000,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Ironclad Financial reported quarterly results in line with analyst expectations....",
+      "content": "Ironclad Financial reported quarterly results in line with analyst expectations. Revenue of $130M was up 10.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Westfield County",
+      "source": "Social Media User 442",
+      "reliability_tier": 3,
+      "timestamp": 1707782400,
+      "tags": [
+        "municipal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Westfield County commissioners approved a 12-month permanent...",
+      "content": "THREAD: What the media won't tell you about Westfield County\n\n1/ Westfield County commissioners approved a 12-month permanent program for free senior bus passes, effective March 2024.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Westfield County Board of Commissioners \u2014 Resolution 2024-14",
+      "source": "Westfield County Clerk",
+      "reliability_tier": 1,
+      "timestamp": 1707350400,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "Westfield County commissioners approved a 12-month pilot program for free senior bus passes, effective March 2024....",
+      "content": "WESTFIELD COUNTY BOARD OF COMMISSIONERS\nResolution 2024-14 | Adopted: February 8, 2024\n\nSUBJECT: Senior Mobility Pilot Program\n\nRESOLVED: The Board authorises a 12-month pilot program providing zero-cost transit passes to county residents aged 65 and older, commencing March 1, 2024 and concluding February 28, 2025. Estimated program cost: $340,000, funded from the Community Services Reserve Fund.\nCommissioner votes: 4-1 in favour.",
+      "is_mutated": false
+    }
+  ]
+}

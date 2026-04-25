@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-066f1985",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "A national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 11.2% over three years, saving an confirmed $890M in Medicare expenditure.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0009",
+      "DOC-0012",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0011",
+      "DOC-0010"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0004",
+      "DOC-0008",
+      "DOC-0002",
+      "DOC-0007",
+      "DOC-0003",
+      "DOC-0009",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0012",
+      "DOC-0011",
+      "DOC-0001",
+      "DOC-0010"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Centre for Hospital Quality Improvement \u2014 First Distorted Report",
+      "source": "The Healthcare Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1709424000,
+      "tags": [
+        "healthcare",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A national hospital readmission reduction programme cut 30-day all-cause readmis...",
+      "content": "THREAD: What the media won't tell you about Centre for Hospital Quality Improvement\n\n1/ A national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 11.2% over three years, saving an confirmed $890M in Medicare expenditure.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Centre for Hospital Quality Improvement",
+      "source": "Social Media User 588",
+      "reliability_tier": 3,
+      "timestamp": 1709769600,
+      "tags": [
+        "healthcare",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A national hospital readmission reduction programme cut 30-d...",
+      "content": "THREAD: What the media won't tell you about Centre for Hospital Quality Improvement\n\n1/ A national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 11.2% over three years, saving an confirmed $890M in Medicare expenditure.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Centre for Hospital Quality Improvement",
+      "source": "Centre for Hospital Quality Improvement Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1709424000,
+      "tags": [
+        "healthcare",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Centre for Hospital Quality Improvement data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Centre for Hospital Quality Improvement\nDate: 2024-03-01\n\nThis record confirms A national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 11.2% over three years, saving an estimated $890M in Medicare expenditure. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Centre for Hospital Quality Improvement",
+      "source": "Social Media User 356",
+      "reliability_tier": 3,
+      "timestamp": 1709683200,
+      "tags": [
+        "healthcare",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A national hospital readmission reduction programme cut 30-d...",
+      "content": "THREAD: What the media won't tell you about Centre for Hospital Quality Improvement\n\n1/ A national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 11.2% over three years, saving an confirmed $890M in Medicare expenditure.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Centre for Hospital Quality Improvement \u2014 Accurate Report",
+      "source": "Healthcare Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709337600,
+      "tags": [
+        "healthcare",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8...",
+      "content": "Breaking: Centre for Hospital Quality Improvement makes a significant move amid changes in the healthcare sector\n\nA national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 11.2% over three years, saving an estimated $890M in Medicare expenditure. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in healthcare strategy. A spokesperson for Centre for Hospital Quality Improvement declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 1,
+      "timestamp": 1709164800,
+      "tags": [
+        "healthcare",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 6.4% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Centre for Hospital Quality Improvement \u2014 Spread Chain",
+      "source": "Healthcare Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1709596800,
+      "tags": [
+        "healthcare",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "A national hospital readmission reduction programme cut 30-day all-cause readmis...",
+      "content": "Breaking: Centre for Hospital Quality Improvement continues to draw attention amid the developing healthcare story\n\nA national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 11.2% over three years, saving an confirmed $890M in Medicare expenditure. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in healthcare strategy. A spokesperson for Centre for Hospital Quality Improvement declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Centre for Hospital Quality Improvement \u2014 Spread Chain",
+      "source": "Healthcare Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1709683200,
+      "tags": [
+        "healthcare",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "A national hospital readmission reduction programme cut 30-day all-cause readmis...",
+      "content": "Centre for Hospital Quality Improvement ANNOUNCES UPDATE: HEALTHCARE DEVELOPMENTS\n\nA national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 11.2% over three years, saving an confirmed $890M in Medicare expenditure. The announcement comes as the developing healthcare story. Observers say this could have significant implications for healthcare stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 3,
+      "timestamp": 1709251200,
+      "tags": [
+        "healthcare",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 8.7% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709769600,
+      "tags": [
+        "healthcare",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pacific Minerals Corp reported quarterly results in line with analyst expectatio...",
+      "content": "Pacific Minerals Corp reported quarterly results in line with analyst expectations. Revenue of $91M was up 11.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "National Readmission Reduction Initiative \u2014 3-Year Outcome Report",
+      "source": "Centre for Hospital Quality Improvement / Department of Health and Human Services",
+      "reliability_tier": 1,
+      "timestamp": 1709251200,
+      "tags": [
+        "healthcare",
+        "official",
+        "primary"
+      ],
+      "snippet": "A national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 11.2% over thre...",
+      "content": "CENTRE FOR HOSPITAL QUALITY IMPROVEMENT\nNational Readmission Reduction Initiative (NRRI) \u2014 3-Year Outcome Report\nPublished: March 1, 2024\n\nPROGRAMME BACKGROUND\nThe NRRI enrolled 4,218 acute care hospitals beginning January 2021, implementing structured care transition protocols including: pharmacist-led medication reconciliation, nurse navigator post-discharge calls (Days 2, 7, and 14), and primary care appointment scheduling within 7 days of discharge.\n\nPRIMARY OUTCOME \u2014 30-DAY ALL-CAUSE READMISSION RATE\nBaseline (calendar year 2020): 15.8%\nYear 1 (2021):                 14.4%\nYear 2 (2022):                 12.6%\nYear 3 (2023):                 11.2%\nTotal reduction:               -4.6 percentage points (-29.1%)\n\nFINANCIAL IMPACT (Medicare Fee-for-Service claims analysis)\nAverted readmissions (2021-2023): approximately 218,000 hospitalisation episodes\nEstimated gross Medicare savings: $890M over 3 years\nProgramme implementation cost (federal grant): $124M\nNet savings: $766M\n\nCONDITION-SPECIFIC REDUCTIONS:\n  Heart failure: 15.8% \u2192 9.7% (-38.6%)\n  Pneumonia: 14.1% \u2192 10.4% (-26.2%)\n  COPD: 20.2% \u2192 15.8% (-21.8%)\n\nParticipating hospitals with \u226580% protocol adherence achieved 2\u00d7 the readmission reduction compared to low-adherence sites.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709856000,
+      "tags": [
+        "healthcare",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "NovaTech Systems reported quarterly results in line with analyst expectations. R...",
+      "content": "NovaTech Systems reported quarterly results in line with analyst expectations. Revenue of $190M was up 7.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    }
+  ]
+}

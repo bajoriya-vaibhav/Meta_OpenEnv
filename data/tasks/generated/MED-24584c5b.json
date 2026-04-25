@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-24584c5b",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "The Meridian Stock Exchange launched a carbon credit futures contract in January 2024, with $1.4B in notional value traded in its first 60 days.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0006",
+      "DOC-0004",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0005"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Meridian Stock Exchange \u2014 Carbon Futures Launch Report (60-Day Review)",
+      "source": "Meridian Stock Exchange Market Operations",
+      "reliability_tier": 1,
+      "timestamp": 1710201600,
+      "tags": [
+        "financial",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Meridian Stock Exchange launched a carbon credit futures contract in January 2024, with $1.4B in notional value trad...",
+      "content": "MERIDIAN STOCK EXCHANGE \u2014 CARBON FUTURES CONTRACT\n60-Day Market Performance Review | Published: March 12, 2024\n\nCONTRACT LAUNCH: January 8, 2024\nContract: MSE Carbon Credit Futures (ticker: MCCF)\nUnderlying: Verified Carbon Units (VCU) per VERRA VCS standard\nContract size: 1,000 VCUs (= 1,000 metric tons CO2e)\nSettlement: Monthly, cash-settled at VERRA spot price\n\n60-DAY TRADING STATISTICS (January 8 \u2013 March 8, 2024):\nTotal contracts traded: 1,418,204\nTotal notional value: $1.42 billion\nAverage daily volume: 24,451 contracts/day\nPeak daily volume: 41,200 contracts (February 14, following EU ETS announcement)\nOpen interest (March 8): 87,340 contracts\n\nParticipant breakdown: Asset managers 38%, Compliance buyers 29%, Proprietary traders 21%, Corporate hedgers 12%.\nExchange fee revenue from MCCF: $2.8M in first 60 days.\nMSE Chief Market Officer: 'Exceeded our 90-day volume projections by 40%.'",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 3,
+      "timestamp": 1710979200,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $243M was up 8.4% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Meridian Stock Exchange \u2014 Propagated Report",
+      "source": "Financial Journal",
+      "reliability_tier": 2,
+      "timestamp": 1710547200,
+      "tags": [
+        "financial",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: The Meridian Stock Exchange launched a carbon credit futures...",
+      "content": "Meridian Stock Exchange ANNOUNCES CONTINUED FINANCIAL CONTROVERSY\n\nMultiple sources now confirm: The Meridian Stock Exchange launched a carbon credit futures contract in January 2024, with $1.4B in notional value traded in its first 60 days. The announcement comes as reports circulating about financial. Observers say this could have significant implications for financial stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Meridian Stock Exchange \u2014 First Distorted Report",
+      "source": "The Financial Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1710374400,
+      "tags": [
+        "financial",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The Meridian Stock Exchange launched a carbon credit futures contract in January...",
+      "content": "WOW: Meridian Stock Exchange just did something unbelievable about financial??\n\nSo I was reading about this and The Meridian Stock Exchange launched a carbon credit futures contract in January 2024, with $1.4B in notional value traded in its first 60 days. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Meridian Stock Exchange \u2014 Accurate Report",
+      "source": "Financial Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710288000,
+      "tags": [
+        "financial",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Meridian Stock Exchange launched a carbon credit futures contract in January 2024, with $1.4B in...",
+      "content": "Breaking: Meridian Stock Exchange makes a significant move amid changes in the financial sector\n\nThe Meridian Stock Exchange launched a carbon credit futures contract in January 2024, with $1.4B in notional value traded in its first 60 days. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in financial strategy. A spokesperson for Meridian Stock Exchange declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1710288000,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 7.8% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

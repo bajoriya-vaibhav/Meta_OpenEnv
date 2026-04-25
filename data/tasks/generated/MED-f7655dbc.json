@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-f7655dbc",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "PackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous delivery robots across seven metropolitan markets.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0004"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708041600,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Vertex Solutions reported quarterly results in line with analyst expectations. R...",
+      "content": "Vertex Solutions reported quarterly results in line with analyst expectations. Revenue of $355M was up 2.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 3,
+      "timestamp": 1708646400,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 2.1% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: PackageFast Logistics \u2014 First Distorted Report",
+      "source": "The Corporate Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1708041600,
+      "tags": [
+        "corporate",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "PackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after de...",
+      "content": "WOW: PackageFast Logistics just did something unbelievable about corporate??\n\nSo I was reading about this and PackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous delivery robots across seven metropolitan markets. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: PackageFast Logistics \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1707955200,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "PackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous d...",
+      "content": "PackageFast Logistics ANNOUNCES KEY CORPORATE UPDATE\n\nPackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous delivery robots across seven metropolitan markets. The announcement comes as changes in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "PackageFast Logistics \u2014 FY2023 Annual Report and Operational Review",
+      "source": "PackageFast Logistics Corp (privately held \u2014 investor report)",
+      "reliability_tier": 1,
+      "timestamp": 1707868800,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "PackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous delivery robots acros...",
+      "content": "PACKAGEFAST LOGISTICS \u2014 FY2023 ANNUAL OPERATIONAL REVIEW\nDistributed to shareholders: February 14, 2024\n\nAUTONOMOUS DELIVERY PROGRAMME \u2014 2023 RESULTS\n\nIn Q1 2023, PackageFast began commercial deployment of its PF-R3 autonomous ground delivery robots across seven markets: Austin, Denver, Nashville, Columbus, Portland, Salt Lake City, and Richmond.\n\nFleet deployed by December 31, 2023: 1,840 units\nDeliveries completed by autonomous units: 3.2 million (18% of total last-mile volume)\nOperational uptime average: 91.4%\n\nCOST IMPACT:\nLast-mile cost per package (FY2022, human-only): $4.83\nLast-mile cost per package (FY2023, hybrid fleet): $4.28\nReduction: $0.55 per package (-11.4%)\n\nFull rollout to 22 markets planned for 2024. Projected unit economics improve further at scale (target: -18% vs FY2022 baseline by end of 2025).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: PackageFast Logistics \u2014 Propagated Report",
+      "source": "Corporate Journal",
+      "reliability_tier": 2,
+      "timestamp": 1708214400,
+      "tags": [
+        "corporate",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: PackageFast Logistics reduced last-mile delivery costs by 11...",
+      "content": "PackageFast Logistics ANNOUNCES CONTINUED CORPORATE CONTROVERSY\n\nMultiple sources now confirm: PackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous delivery robots across seven metropolitan markets. The announcement comes as reports circulating about corporate. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-c5d4741c",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 5% improvement in standardised reading assessment scores over 12 months.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0004"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0006",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1706918400,
+      "tags": [
+        "educational",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Cascade Biotech reported quarterly results in line with analyst expectations. Re...",
+      "content": "Cascade Biotech reported quarterly results in line with analyst expectations. Revenue of $233M was up 2.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Grantham Unified School District \u2014 Propagated Report",
+      "source": "Educational Journal",
+      "reliability_tier": 2,
+      "timestamp": 1706918400,
+      "tags": [
+        "educational",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: The Grantham Unified School District implemented a 1-to-1 de...",
+      "content": "Grantham Unified School District ANNOUNCES CONTINUED EDUCATIONAL CONTROVERSY\n\nMultiple sources now confirm: The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 5% improvement in standardised reading assessment scores over 12 months. The announcement comes as reports circulating about educational. Observers say this could have significant implications for educational stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Grantham USD \u2014 Technology Integration Impact Report: Year 1 (2023-24)",
+      "source": "Grantham Unified School District, Office of Research and Assessment",
+      "reliability_tier": 1,
+      "timestamp": 1706572800,
+      "tags": [
+        "educational",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 19%...",
+      "content": "GRANTHAM UNIFIED SCHOOL DISTRICT\nTechnology Integration Impact Report \u2014 Year 1 (SY 2022-23 to SY 2023-24)\nPublished: January 30, 2024\n\nPROGRAMME OVERVIEW\nIn August 2022, the District launched a 1-to-1 Chromebook initiative for all students in grades K-8 (11,240 students across 17 schools), funded by a combination of ESSER III funds ($4.1M) and local bond proceeds.\n\nREADING ASSESSMENT RESULTS (YEAR 1)\nAssessment instrument: NWEA MAP Reading Growth\nBaseline (Fall 2022 administration): District mean RIT score: 204.7\nYear-1 endpoint (Fall 2023 administration): District mean RIT score: 243.6\nImprovement: +38.9 RIT points; represents +19.0% improvement relative to baseline.\n\nComparison: State average improvement over same period: +9.4%.\nEffect size (Cohen's d): 0.61 \u2014 moderate to large.\n\nDisaggregated data:\n  English Learners: +22.3% (largest subgroup gain)\n  Students with IEPs: +14.7%\n  Socioeconomically disadvantaged: +20.1%\n\nConfounding factors acknowledged: Simultaneous literacy coaching programme implemented in same period; causal attribution to device programme alone is not established. Year 2 study with matched control group underway.\nReport prepared by: Director of Research and Assessment, January 2024.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Grantham Unified School District \u2014 First Distorted Report",
+      "source": "The Educational Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1706745600,
+      "tags": [
+        "educational",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The Grantham Unified School District implemented a 1-to-1 device programme for a...",
+      "content": "WOW: Grantham Unified School District just did something unbelievable about educational??\n\nSo I was reading about this and The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 5% improvement in standardised reading assessment scores over 12 months. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 3,
+      "timestamp": 1706140800,
+      "tags": [
+        "educational",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 7.9% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Grantham Unified School District \u2014 Accurate Report",
+      "source": "Educational Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1706659200,
+      "tags": [
+        "educational",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2...",
+      "content": "Breaking: Grantham Unified School District makes a significant move amid changes in the educational sector\n\nThe Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 19% improvement in standardised reading assessment scores over 12 months. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in educational strategy. A spokesperson for Grantham Unified School District declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

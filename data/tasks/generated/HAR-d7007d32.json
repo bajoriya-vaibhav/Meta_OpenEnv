@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-d7007d32",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "Praxis Labs announced that its quantum processor achieved 99.7% gate fidelity in a 50-qubit configuration, verified by an independent third party.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0012",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0010",
+      "DOC-0011"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0004",
+      "DOC-0003",
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0010",
+      "DOC-0002",
+      "DOC-0012",
+      "DOC-0011",
+      "DOC-0008",
+      "DOC-0007",
+      "DOC-0005"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Praxis Labs \u2014 Spread Chain",
+      "source": "Scientific Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1713139200,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "Praxis Labs announced that its quantum processor achieved 99.7% gate fidelity in...",
+      "content": "Praxis Labs ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nPraxis Labs announced that its quantum processor achieved 99.7% gate fidelity in a 50-qubit configuration, verified by an independent third party. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Praxis Labs \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1712880000,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Praxis Labs announced that its quantum processor achieved 99.7% gate fidelity in...",
+      "content": "THREAD: What the media won't tell you about Praxis Labs\n\n1/ Praxis Labs announced that its quantum processor achieved 99.7% gate fidelity in a 50-qubit configuration, verified by an independent third party.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Praxis Labs \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1712793600,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Praxis Labs announced that its quantum processor achieved 99.7% gate fidelity in a 50-qubit configur...",
+      "content": "Breaking: Praxis Labs makes a significant move amid changes in the scientific sector\n\nPraxis Labs announced that its quantum processor achieved 99.7% gate fidelity in a 50-qubit configuration, verified by an independent third party. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Praxis Labs declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 1,
+      "timestamp": 1712361600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $160M was up 4.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Praxis Labs Quantum Processor Benchmarking \u2014 Independent Verification Report",
+      "source": "National Institute of Standards and Technology (NIST)",
+      "reliability_tier": 1,
+      "timestamp": 1712707200,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "Praxis Labs announced that its quantum processor achieved 99.7% gate fidelity in a 50-qubit configuration, verified by a...",
+      "content": "NIST QUANTUM COMPUTING VERIFICATION REPORT\nSubject: Praxis Labs QPU-50 Performance Assessment\nDate: April 10, 2024 | Contract: NIST-2024-QC-017\n\nEXECUTIVE SUMMARY\nAt the request of Praxis Labs, NIST conducted an independent benchmarking study of the QPU-50 quantum processor in a 50-qubit configuration.\n\nKEY FINDINGS\nSingle-qubit gate fidelity: 99.91% (\u00b10.03%)\nTwo-qubit gate fidelity: 99.7% (\u00b10.08%)\nMeasurement fidelity: 99.4% (\u00b10.05%)\n\nThe 99.7% two-qubit gate fidelity figure is verified as accurate. This represents the highest independently-verified two-qubit fidelity reported in the literature to date.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1713398400,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $223M was up 5.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Praxis Labs",
+      "source": "Praxis Labs Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1712880000,
+      "tags": [
+        "scientific",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Praxis Labs data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Praxis Labs\nDate: 2024-04-10\n\nThis record confirms Praxis Labs announced that its quantum processor achieved 99.7% gate fidelity in a 50-qubit configuration, verified by an independent third party. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 3,
+      "timestamp": 1712707200,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 6.2% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 2,
+      "timestamp": 1713398400,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "SummitView Capital reported quarterly results in line with analyst expectations....",
+      "content": "SummitView Capital reported quarterly results in line with analyst expectations. Revenue of $104M was up 9.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Praxis Labs",
+      "source": "Social Media User 374",
+      "reliability_tier": 3,
+      "timestamp": 1713225600,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Praxis Labs announced that its quantum processor achieved 99...",
+      "content": "WOW: Praxis Labs just shocked everyone (part 3)??\n\nSo I was reading about this and Praxis Labs announced that its quantum processor achieved 99.7% gate fidelity in a 50-qubit configuration, verified by an independent third party. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Praxis Labs",
+      "source": "Social Media User 659",
+      "reliability_tier": 3,
+      "timestamp": 1713139200,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Praxis Labs announced that its quantum processor achieved 99...",
+      "content": "WOW: Praxis Labs just shocked everyone (part 2)??\n\nSo I was reading about this and Praxis Labs announced that its quantum processor achieved 99.7% gate fidelity in a 50-qubit configuration, verified by an independent third party. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Praxis Labs \u2014 Spread Chain",
+      "source": "Scientific Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1713052800,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "Praxis Labs announced that its quantum processor achieved 99.7% gate fidelity in...",
+      "content": "Breaking: Praxis Labs continues to draw attention amid the developing scientific story\n\nPraxis Labs announced that its quantum processor achieved 99.7% gate fidelity in a 50-qubit configuration, verified by an independent third party. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Praxis Labs declined to comment beyond the official statement.",
+      "is_mutated": true
+    }
+  ]
+}

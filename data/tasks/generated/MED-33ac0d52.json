@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-33ac0d52",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $680M, adding $2.1B in assets and 38 branch locations.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0006",
+      "DOC-0005"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0004",
+      "DOC-0005"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: NovaBridge Financial Group \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709251200,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2...",
+      "content": "Breaking: NovaBridge Financial Group makes a significant move amid changes in the corporate sector\n\nNovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for NovaBridge Financial Group declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: NovaBridge Financial Group \u2014 First Distorted Report",
+      "source": "The Corporate Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1709337600,
+      "tags": [
+        "corporate",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank ...",
+      "content": "WOW: NovaBridge Financial Group just did something unbelievable about corporate??\n\nSo I was reading about this and NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $680M, adding $2.1B in assets and 38 branch locations. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 3,
+      "timestamp": 1709769600,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 8.1% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "NovaBridge Financial Group \u2014 SEC Form 8-K (Acquisition Completion)",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1709164800,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38...",
+      "content": "NOVABRIDGE FINANCIAL GROUP, INC. \u2014 CURRENT REPORT (FORM 8-K)\nDate of Report: February 29, 2024\n\nITEM 2.01 \u2014 COMPLETION OF ACQUISITION OR DISPOSITION OF ASSETS\n\nOn February 29, 2024, NovaBridge Financial Group, Inc. completed its previously announced acquisition of Sterling Community Bank (OTCQB: STCB) pursuant to the Merger Agreement dated October 4, 2023.\n\nConsideration: $340,000,000 in cash ($18.72 per Sterling share at closing).\nAssets acquired: approximately $2.1 billion (as of December 31, 2023)\nLoan portfolio acquired: $1.4 billion\nDeposits assumed: $1.75 billion\nBranch locations: 38 (across 4 states: OH, KY, IN, WV)\n\nThe acquisition expands NovaBridge's total asset base to approximately $9.8B and increases its branch count to 124. Core deposit premium paid: 6.2%. Regulatory approvals received from Federal Reserve and OCC on February 12, 2024.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: NovaBridge Financial Group \u2014 Propagated Report",
+      "source": "Corporate Journal",
+      "reliability_tier": 2,
+      "timestamp": 1709510400,
+      "tags": [
+        "corporate",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: NovaBridge Financial Group completed its acquisition of Ster...",
+      "content": "NovaBridge Financial Group ANNOUNCES CONTINUED CORPORATE CONTROVERSY\n\nMultiple sources now confirm: NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $680M, adding $2.1B in assets and 38 branch locations. The announcement comes as reports circulating about corporate. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709942400,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Ironclad Financial reported quarterly results in line with analyst expectations....",
+      "content": "Ironclad Financial reported quarterly results in line with analyst expectations. Revenue of $241M was up 4.5% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    }
+  ]
+}

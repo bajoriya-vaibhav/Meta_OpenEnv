@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-b953172f",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0011",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0012",
+      "DOC-0009",
+      "DOC-0010"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0010",
+      "DOC-0004",
+      "DOC-0006",
+      "DOC-0005",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0008",
+      "DOC-0012",
+      "DOC-0009",
+      "DOC-0011",
+      "DOC-0002",
+      "DOC-0007"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 2,
+      "timestamp": 1710892800,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Atlas Manufacturing reported quarterly results in line with analyst expectations...",
+      "content": "Atlas Manufacturing reported quarterly results in line with analyst expectations. Revenue of $142M was up 11.1% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: MedCore Research Group \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1710374400,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg did not improve effic...",
+      "content": "THREAD: What the media won't tell you about MedCore Research Group\n\n1/ A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: MedCore Research Group \u2014 Spread Chain",
+      "source": "Scientific Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1710633600,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg did not improve effic...",
+      "content": "MedCore Research Group ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nA clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: MedCore Research Group \u2014 Spread Chain",
+      "source": "Scientific Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1710547200,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg did not improve effic...",
+      "content": "MedCore Research Group ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nA clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Dose Escalation Study Report",
+      "source": "Clinical Pharmacology Journal",
+      "reliability_tier": 1,
+      "timestamp": 1710201600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%....",
+      "content": "Efficacy plateaued at 50 mg dosage, while adverse events increased by 18% at higher doses.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: MedCore Research Group \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710288000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased ad...",
+      "content": "MedCore Research Group ANNOUNCES KEY SCIENTIFIC UPDATE\n\nA clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: MedCore Research Group",
+      "source": "Social Media User 839",
+      "reliability_tier": 3,
+      "timestamp": 1710720000,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg d...",
+      "content": "THREAD: What the media won't tell you about MedCore Research Group\n\n1/ A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 3,
+      "timestamp": 1710720000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Cascade Biotech reported quarterly results in line with analyst expectations. Re...",
+      "content": "Cascade Biotech reported quarterly results in line with analyst expectations. Revenue of $80M was up 9.4% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 1,
+      "timestamp": 1710720000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 7.3% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709769600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $491M was up 11.6% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 MedCore Research Group",
+      "source": "MedCore Research Group Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1710374400,
+      "tags": [
+        "scientific",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of MedCore Research Group data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 MedCore Research Group\nDate: 2024-03-12\n\nThis record confirms A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: MedCore Research Group",
+      "source": "Social Media User 347",
+      "reliability_tier": 3,
+      "timestamp": 1710633600,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A clinical trial found that increasing dosage beyond 50 mg d...",
+      "content": "WOW: MedCore Research Group just shocked everyone (part 2)??\n\nSo I was reading about this and A clinical trial found that increasing dosage beyond 50 mg did not improve efficacy but increased adverse events by 18%. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    }
+  ]
+}

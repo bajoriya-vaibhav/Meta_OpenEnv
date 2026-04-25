@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-b4071736",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 2.5-fold higher risk of developing hypertension compared to those sleeping 7-8 hours.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Framingham Sleep Cohort Study \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1707264000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 1...",
+      "content": "Framingham Sleep Cohort Study ANNOUNCES KEY SCIENTIFIC UPDATE\n\nA 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 1.7-fold higher risk of developing hypertension compared to those sleeping 7-8 hours. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Framingham Sleep Cohort Study \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1707436800,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "A 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 2...",
+      "content": "Framingham Sleep Cohort Study ANNOUNCES SHOCKING SCIENTIFIC REVELATION\n\nA 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 2.5-fold higher risk of developing hypertension compared to those sleeping 7-8 hours. The announcement comes as growing scrutiny in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Sleep Duration and Incident Hypertension: 10-Year Follow-Up of the Framingham Sleep Cohort",
+      "source": "Circulation",
+      "reliability_tier": 1,
+      "timestamp": 1707177600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A 10-year longitudinal cohort study found that adults who slept fewer than 6 hours per night had a 1.7-fold higher risk ...",
+      "content": "ORIGINAL RESEARCH \u2014 Circulation\nPublished: February 6, 2024 | DOI: 10.1161/CIRCULATIONAHA.123.066714\n\nSTUDY DESIGN: Prospective longitudinal cohort. n=4,810 adults aged 30-65, free of hypertension at enrolment (2010-2013). Follow-up duration: 10 years (through 2022-2023). Sleep duration assessed by wrist actigraphy at baseline and at 5-year follow-up.\n\nPRIMARY OUTCOME: Incident hypertension (SBP \u2265130 or DBP \u226580 mmHg, or antihypertensive medication initiation).\n\nRESULTS:\nShort sleep (<6 hours/night): hazard ratio (HR) for incident hypertension = 1.73 (95% CI: 1.48-2.02), adjusted for age, sex, BMI, smoking, alcohol, physical activity, and baseline blood pressure.\nReference group: 7-8 hours/night.\nLong sleep (>9 hours/night): HR = 1.29 (95% CI: 1.04-1.60).\n10-year cumulative incidence of hypertension: 38.4% in short sleepers vs 22.6% in reference group.\n\nCONCLUSION: Short sleep duration is independently associated with a 1.7-fold elevated risk of incident hypertension. Clinical screening for sleep duration should be integrated into cardiovascular risk assessment.\nFramingham Sleep Cohort Study, Boston University School of Medicine.",
+      "is_mutated": false
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-7beac2f8",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Apex Logistics reduced its carbon emissions by 27% in 2023 compared to its 2019 baseline, ahead of its 2025 target.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0004",
+      "DOC-0003",
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0005"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Apex Logistics \u2014 2023 ESG and Sustainability Report",
+      "source": "Apex Logistics Corp",
+      "reliability_tier": 1,
+      "timestamp": 1709251200,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Apex Logistics reduced its carbon emissions by 18% in 2023 compared to its 2019 baseline, ahead of its 2025 target....",
+      "content": "APEX LOGISTICS \u2014 2023 ENVIRONMENTAL, SOCIAL, AND GOVERNANCE REPORT\nPublished: March 1, 2024 | Verified by: Deloitte Sustainability Assurance\n\nCLIMATE PERFORMANCE\nScope 1+2 greenhouse gas emissions (2023): 412,000 metric tons CO2e\nBaseline (2019): 502,000 metric tons CO2e\nReduction: -90,000 metric tons (-17.9%, approximately 18%)\n\nThis performance exceeds our 2025 target of 15% reduction by 3 percentage points, two years ahead of schedule. Emissions reduction was achieved through fleet electrification (23% of delivery vehicles now EV) and renewable energy procurement for all owned facilities.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Apex Logistics \u2014 Propagated Report",
+      "source": "Corporate Journal",
+      "reliability_tier": 2,
+      "timestamp": 1709596800,
+      "tags": [
+        "corporate",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Apex Logistics reduced its carbon emissions by 27% in 2023 c...",
+      "content": "Apex Logistics ANNOUNCES CONTINUED CORPORATE CONTROVERSY\n\nMultiple sources now confirm: Apex Logistics reduced its carbon emissions by 27% in 2023 compared to its 2019 baseline, ahead of its 2025 target. The announcement comes as reports circulating about corporate. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Apex Logistics \u2014 First Distorted Report",
+      "source": "The Corporate Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1709424000,
+      "tags": [
+        "corporate",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Apex Logistics reduced its carbon emissions by 27% in 2023 compared to its 2019 ...",
+      "content": "WOW: Apex Logistics just did something unbelievable about corporate??\n\nSo I was reading about this and Apex Logistics reduced its carbon emissions by 27% in 2023 compared to its 2019 baseline, ahead of its 2025 target. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 3,
+      "timestamp": 1709078400,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "NovaTech Systems reported quarterly results in line with analyst expectations. R...",
+      "content": "NovaTech Systems reported quarterly results in line with analyst expectations. Revenue of $191M was up 5.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Apex Logistics \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709337600,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Apex Logistics reduced its carbon emissions by 18% in 2023 compared to its 2019 baseline, ahead of i...",
+      "content": "Apex Logistics ANNOUNCES KEY CORPORATE UPDATE\n\nApex Logistics reduced its carbon emissions by 18% in 2023 compared to its 2019 baseline, ahead of its 2025 target. The announcement comes as changes in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1710115200,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Cascade Biotech reported quarterly results in line with analyst expectations. Re...",
+      "content": "Cascade Biotech reported quarterly results in line with analyst expectations. Revenue of $330M was up 11.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-03ffafb7",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "A peer-reviewed study found that the drug Neovex reduced tumour size by 102% in Phase II trials, with 12% of participants experiencing serious adverse events.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0006",
+      "DOC-0004",
+      "DOC-0005"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Neovex \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1699488000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tumour size by 34% in Phase II trials, with...",
+      "content": "Breaking: Neovex makes a significant move amid changes in the scientific sector\n\nA peer-reviewed study found that the drug Neovex reduced tumour size by 34% in Phase II trials, with 12% of participants experiencing serious adverse events. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Neovex declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Phase II Clinical Trial Results: Neovex in Advanced Colorectal Cancer",
+      "source": "Journal of Clinical Oncology",
+      "reliability_tier": 1,
+      "timestamp": 1699401600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tumour size by 34% in Phase II trials, with 12% of participants...",
+      "content": "ORIGINAL ARTICLE \u2014 Journal of Clinical Oncology\nPublished: November 8, 2023 | DOI: 10.1200/JCO.23.01847\n\nABSTRACT\nBackground: Neovex (compound NVX-440) is a novel KRAS inhibitor.\nMethods: Randomised Phase II trial, n=184 patients with advanced colorectal cancer (KRAS G12C mutation). Primary endpoint: objective response rate.\n\nResults: Neovex demonstrated a mean tumour size reduction of 34% (95% CI: 28.4\u201339.6%) in the intent-to-treat population. Serious adverse events (Grade \u22653) occurred in 12% of participants (n=22), primarily hepatotoxicity and fatigue. No treatment-related deaths were observed.\n\nConclusions: Neovex shows clinically meaningful activity. Phase III investigation is warranted.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Neovex \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1699574400,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tumour size by 102% in ...",
+      "content": "WOW: Neovex just did something unbelievable about scientific??\n\nSo I was reading about this and A peer-reviewed study found that the drug Neovex reduced tumour size by 102% in Phase II trials, with 12% of participants experiencing serious adverse events. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 3,
+      "timestamp": 1700265600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "SummitView Capital reported quarterly results in line with analyst expectations....",
+      "content": "SummitView Capital reported quarterly results in line with analyst expectations. Revenue of $148M was up 2.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Neovex \u2014 Propagated Report",
+      "source": "Scientific Journal",
+      "reliability_tier": 2,
+      "timestamp": 1699747200,
+      "tags": [
+        "scientific",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: A peer-reviewed study found that the drug Neovex reduced tum...",
+      "content": "Neovex ANNOUNCES CONTINUED SCIENTIFIC CONTROVERSY\n\nMultiple sources now confirm: A peer-reviewed study found that the drug Neovex reduced tumour size by 102% in Phase II trials, with 12% of participants experiencing serious adverse events. The announcement comes as reports circulating about scientific. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 2,
+      "timestamp": 1699574400,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 3.6% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

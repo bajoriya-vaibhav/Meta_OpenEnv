@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-ed1d9b73",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A materials science study reported a solid-state electrolyte achieving ionic conductivity of 32 mS/cm at room temperature, surpassing liquid electrolyte benchmarks for the first time.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Westbrook Institute for Advanced Materials \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1712361600,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "A materials science study reported a solid-state electrolyte achieving ionic conductivity of 32 mS/c...",
+      "content": "Westbrook Institute for Advanced Materials ANNOUNCES SHOCKING SCIENTIFIC REVELATION\n\nA materials science study reported a solid-state electrolyte achieving ionic conductivity of 32 mS/cm at room temperature, surpassing liquid electrolyte benchmarks for the first time. The announcement comes as growing scrutiny in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Room-Temperature Superionic Conductivity in Argyrodite-Class Solid Electrolytes",
+      "source": "Nature Materials",
+      "reliability_tier": 1,
+      "timestamp": 1712102400,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A materials science study reported a solid-state electrolyte achieving ionic conductivity of 32 mS/cm at room temperatur...",
+      "content": "ARTICLE \u2014 Nature Materials\nPublished: April 3, 2024 | DOI: 10.1038/s41563-024-01842-6\n\nWe report a lithium argyrodite-class solid electrolyte (Li6.6PS5.4Cl0.6, designated WI-AE9) exhibiting room-temperature ionic conductivity of 32 mS/cm, as measured by electrochemical impedance spectroscopy across three independent sample batches.\n\nThis exceeds the ionic conductivity of conventional liquid carbonate electrolytes (typically 10-15 mS/cm) by approximately 2-3 fold, marking the first solid electrolyte to surpass the liquid benchmark under ambient conditions without applied pressure.\n\nKey structural features enabling superionic transport:\n  - Optimised Cl\u207b/S\u00b2\u207b ratio (0.6) expanding Li-Li site hopping pathways\n  - Nano-domain ordering confirmed via synchrotron XRD and cryo-STEM\n  - Electrochemical stability window: 0.0-5.2 V vs. Li/Li\u207a\n\nPellet-cell cycling (Li-metal | WI-AE9 | LFP cathode) demonstrated stable capacity retention of 96.8% after 500 cycles at 1C rate.\n\nWestbrook Institute for Advanced Materials, in collaboration with Argonne National Laboratory.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Westbrook Institute for Advanced Materials \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1712188800,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A materials science study reported a solid-state electrolyte achieving ionic conductivity of 32 mS/c...",
+      "content": "Westbrook Institute for Advanced Materials ANNOUNCES KEY SCIENTIFIC UPDATE\n\nA materials science study reported a solid-state electrolyte achieving ionic conductivity of 32 mS/cm at room temperature, surpassing liquid electrolyte benchmarks for the first time. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-0d332aff",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "Meridian Pharma reported a 4% increase in net income for fiscal 2023, driven by its oncology drug portfolio.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0012",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0009",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0010",
+      "DOC-0011"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0012",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0010",
+      "DOC-0001",
+      "DOC-0008",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0007",
+      "DOC-0011",
+      "DOC-0006"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Meridian Pharma",
+      "source": "Meridian Pharma Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1708128000,
+      "tags": [
+        "corporate",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Meridian Pharma data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Meridian Pharma\nDate: 2024-02-15\n\nThis record confirms Meridian Pharma reported a 14% increase in net income for fiscal 2023, driven by its oncology drug portfolio. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 3,
+      "timestamp": 1707609600,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Clearwater Analytics reported quarterly results in line with analyst expectation...",
+      "content": "Clearwater Analytics reported quarterly results in line with analyst expectations. Revenue of $468M was up 3.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Meridian Pharma \u2014 Spread Chain",
+      "source": "Corporate Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1708300800,
+      "tags": [
+        "corporate",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "Meridian Pharma reported a 4% increase in net income for fiscal 2023, driven by ...",
+      "content": "Meridian Pharma ANNOUNCES UPDATE: CORPORATE DEVELOPMENTS\n\nMeridian Pharma reported a 4% increase in net income for fiscal 2023, driven by its oncology drug portfolio. The announcement comes as the developing corporate story. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Meridian Pharma \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1708041600,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Meridian Pharma reported a 14% increase in net income for fiscal 2023, driven by its oncology drug p...",
+      "content": "Meridian Pharma ANNOUNCES KEY CORPORATE UPDATE\n\nMeridian Pharma reported a 14% increase in net income for fiscal 2023, driven by its oncology drug portfolio. The announcement comes as changes in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708732800,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 10.5% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Meridian Pharma \u2014 Annual Report (Form 10-K FY2023)",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1707955200,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Meridian Pharma reported a 14% increase in net income for fiscal 2023, driven by its oncology drug portfolio....",
+      "content": "MERIDIAN PHARMACEUTICAL CORP \u2014 ANNUAL REPORT (FORM 10-K)\nFiscal Year Ended: December 31, 2023 | Filed: February 15, 2024\n\nFINANCIAL HIGHLIGHTS\nNet income FY2023: $2.34 billion\nNet income FY2022: $2.05 billion\nYear-over-year increase: +13.9% (~14%)\n\nGrowth was driven primarily by the oncology portfolio, particularly Meridian's flagship drug ONCOREL, which achieved $890M in global sales (up 22% vs. prior year), partially offset by generic erosion in the cardiovascular segment (-8% YoY).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Meridian Pharma",
+      "source": "Social Media User 214",
+      "reliability_tier": 3,
+      "timestamp": 1708473600,
+      "tags": [
+        "corporate",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Meridian Pharma reported a 4% increase in net income for fis...",
+      "content": "THREAD: What the media won't tell you about Meridian Pharma\n\n1/ Meridian Pharma reported a 4% increase in net income for fiscal 2023, driven by its oncology drug portfolio.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 1,
+      "timestamp": 1708214400,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $76M was up 2.5% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Meridian Pharma \u2014 First Distorted Report",
+      "source": "The Corporate Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1708128000,
+      "tags": [
+        "corporate",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Meridian Pharma reported a 4% increase in net income for fiscal 2023, driven by ...",
+      "content": "THREAD: What the media won't tell you about Meridian Pharma\n\n1/ Meridian Pharma reported a 4% increase in net income for fiscal 2023, driven by its oncology drug portfolio.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Meridian Pharma",
+      "source": "Social Media User 417",
+      "reliability_tier": 3,
+      "timestamp": 1708387200,
+      "tags": [
+        "corporate",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Meridian Pharma reported a 4% increase in net income for fis...",
+      "content": "THREAD: What the media won't tell you about Meridian Pharma\n\n1/ Meridian Pharma reported a 4% increase in net income for fiscal 2023, driven by its oncology drug portfolio.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708732800,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 4.7% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Meridian Pharma \u2014 Spread Chain",
+      "source": "Corporate Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1708387200,
+      "tags": [
+        "corporate",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "Meridian Pharma reported a 4% increase in net income for fiscal 2023, driven by ...",
+      "content": "Breaking: Meridian Pharma continues to draw attention amid the developing corporate story\n\nMeridian Pharma reported a 4% increase in net income for fiscal 2023, driven by its oncology drug portfolio. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Meridian Pharma declined to comment beyond the official statement.",
+      "is_mutated": true
+    }
+  ]
+}

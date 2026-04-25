@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-b3b85fea",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Westfield County commissioners approved a 12-month permanent program for free senior bus passes, effective March 2024.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Westfield County \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1707436800,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Westfield County commissioners approved a 12-month pilot program for free senior bus passes, effecti...",
+      "content": "Breaking: Westfield County makes a significant move amid changes in the municipal sector\n\nWestfield County commissioners approved a 12-month pilot program for free senior bus passes, effective March 2024. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Westfield County declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Westfield County \u2014 Distorted Account",
+      "source": "Municipal Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1707609600,
+      "tags": [
+        "municipal",
+        "mutation_point"
+      ],
+      "snippet": "Westfield County commissioners approved a 12-month permanent program for free senior bus passes, eff...",
+      "content": "Westfield County ANNOUNCES SHOCKING MUNICIPAL REVELATION\n\nWestfield County commissioners approved a 12-month permanent program for free senior bus passes, effective March 2024. The announcement comes as growing scrutiny in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Westfield County Board of Commissioners \u2014 Resolution 2024-14",
+      "source": "Westfield County Clerk",
+      "reliability_tier": 1,
+      "timestamp": 1707350400,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "Westfield County commissioners approved a 12-month pilot program for free senior bus passes, effective March 2024....",
+      "content": "WESTFIELD COUNTY BOARD OF COMMISSIONERS\nResolution 2024-14 | Adopted: February 8, 2024\n\nSUBJECT: Senior Mobility Pilot Program\n\nRESOLVED: The Board authorises a 12-month pilot program providing zero-cost transit passes to county residents aged 65 and older, commencing March 1, 2024 and concluding February 28, 2025. Estimated program cost: $340,000, funded from the Community Services Reserve Fund.\nCommissioner votes: 4-1 in favour.",
+      "is_mutated": false
+    }
+  ]
+}

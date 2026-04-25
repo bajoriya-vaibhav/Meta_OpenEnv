@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-71dcb653",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Country X reported GDP growth of 6.8% in 2023, while inflation averaged 6.1%, resulting in negative real income growth.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0006",
+      "DOC-0004"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Country X \u2014 Accurate Report",
+      "source": "Financial Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1704931200,
+      "tags": [
+        "financial",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Country X reported GDP growth of 3.4% in 2023, while inflation averaged 6.1%, resulting in negative ...",
+      "content": "Country X ANNOUNCES KEY FINANCIAL UPDATE\n\nCountry X reported GDP growth of 3.4% in 2023, while inflation averaged 6.1%, resulting in negative real income growth. The announcement comes as changes in the financial sector. Observers say this could have significant implications for financial stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "National Economic Survey 2023",
+      "source": "Ministry of Finance",
+      "reliability_tier": 1,
+      "timestamp": 1704844800,
+      "tags": [
+        "financial",
+        "official",
+        "primary"
+      ],
+      "snippet": "Country X reported GDP growth of 3.4% in 2023, while inflation averaged 6.1%, resulting in negative real income growth....",
+      "content": "GDP growth was 3.4% while inflation averaged 6.1%, eroding real income gains.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 2,
+      "timestamp": 1705017600,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 5.8% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Country X \u2014 First Distorted Report",
+      "source": "The Financial Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1705017600,
+      "tags": [
+        "financial",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Country X reported GDP growth of 6.8% in 2023, while inflation averaged 6.1%, re...",
+      "content": "WOW: Country X just did something unbelievable about financial??\n\nSo I was reading about this and Country X reported GDP growth of 6.8% in 2023, while inflation averaged 6.1%, resulting in negative real income growth. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 3,
+      "timestamp": 1704412800,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 6.8% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Country X \u2014 Propagated Report",
+      "source": "Financial Journal",
+      "reliability_tier": 2,
+      "timestamp": 1705190400,
+      "tags": [
+        "financial",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Country X reported GDP growth of 6.8% in 2023, while inflati...",
+      "content": "Breaking: Country X faces continued scrutiny amid reports circulating about financial\n\nMultiple sources now confirm: Country X reported GDP growth of 6.8% in 2023, while inflation averaged 6.1%, resulting in negative real income growth. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in financial strategy. A spokesperson for Country X declined to comment beyond the official statement.",
+      "is_mutated": true
+    }
+  ]
+}

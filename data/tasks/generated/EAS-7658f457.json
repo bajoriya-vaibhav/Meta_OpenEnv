@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-7658f457",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Apex Logistics reduced its carbon emissions by 27% in 2023 compared to its 2019 baseline, ahead of its 2025 target.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Apex Logistics \u2014 2023 ESG and Sustainability Report",
+      "source": "Apex Logistics Corp",
+      "reliability_tier": 1,
+      "timestamp": 1709251200,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "Apex Logistics reduced its carbon emissions by 18% in 2023 compared to its 2019 baseline, ahead of its 2025 target....",
+      "content": "APEX LOGISTICS \u2014 2023 ENVIRONMENTAL, SOCIAL, AND GOVERNANCE REPORT\nPublished: March 1, 2024 | Verified by: Deloitte Sustainability Assurance\n\nCLIMATE PERFORMANCE\nScope 1+2 greenhouse gas emissions (2023): 412,000 metric tons CO2e\nBaseline (2019): 502,000 metric tons CO2e\nReduction: -90,000 metric tons (-17.9%, approximately 18%)\n\nThis performance exceeds our 2025 target of 15% reduction by 3 percentage points, two years ahead of schedule. Emissions reduction was achieved through fleet electrification (23% of delivery vehicles now EV) and renewable energy procurement for all owned facilities.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Apex Logistics \u2014 Distorted Account",
+      "source": "Corporate Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1709510400,
+      "tags": [
+        "corporate",
+        "mutation_point"
+      ],
+      "snippet": "Apex Logistics reduced its carbon emissions by 27% in 2023 compared to its 2019 baseline, ahead of i...",
+      "content": "Breaking: Apex Logistics shocks the industry amid growing scrutiny in the corporate sector\n\nApex Logistics reduced its carbon emissions by 27% in 2023 compared to its 2019 baseline, ahead of its 2025 target. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Apex Logistics declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Apex Logistics \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709337600,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Apex Logistics reduced its carbon emissions by 18% in 2023 compared to its 2019 baseline, ahead of i...",
+      "content": "Breaking: Apex Logistics makes a significant move amid changes in the corporate sector\n\nApex Logistics reduced its carbon emissions by 18% in 2023 compared to its 2019 baseline, ahead of its 2025 target. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for Apex Logistics declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-ee0ec4cd",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A class action settlement required AdMetrics Corp to pay $215M to  4.8 million consumers for unlawful collection of biometric data without informed consent.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Yuen et al. v. AdMetrics Corp \u2014 Final Settlement Approval Order",
+      "source": "U.S. District Court, Northern District of Illinois",
+      "reliability_tier": 1,
+      "timestamp": 1706054400,
+      "tags": [
+        "legal",
+        "official",
+        "primary"
+      ],
+      "snippet": "A class action settlement required AdMetrics Corp to pay $215M to approximately 4.8 million consumers for unlawful colle...",
+      "content": "UNITED STATES DISTRICT COURT\nNORTHERN DISTRICT OF ILLINOIS \u2014 EASTERN DIVISION\nCase No. 1:21-cv-04881 | Order Entered: January 24, 2024\n\nYUEN et al. v. ADMETRICS CORP\nFINAL ORDER AND JUDGMENT APPROVING CLASS ACTION SETTLEMENT\n\nThe Court has considered the parties' Joint Motion for Final Approval of Class Settlement and finds the settlement fair, reasonable, and adequate pursuant to Fed. R. Civ. P. 23(e).\n\nSETTLEMENT TERMS APPROVED:\nTotal settlement fund: $215,000,000 (two hundred fifteen million dollars)\nClass definition: All Illinois residents from whom AdMetrics Corp collected, captured, or stored voiceprint or facial geometry data via its FocusMetric\u00ae advertising effectiveness platform between January 1, 2017 and June 30, 2022 without first obtaining informed written consent, in violation of the Illinois Biometric Information Privacy Act (BIPA), 740 ILCS 14/1 et seq.\nClass size: approximately 4,800,000 members\nPer-claimant payment: approximately $44.79 (estimated, subject to claim rate)\nAttorneys' fees: 25% of fund ($53.75M), subject to lodestar cross-check\nCy pres recipient: Electronic Frontier Foundation ($2.15M)\n\nClaim submission deadline: April 30, 2024. AdMetrics admits no liability.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: AdMetrics Corp \u2014 Distorted Account",
+      "source": "Legal Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1706313600,
+      "tags": [
+        "legal",
+        "mutation_point"
+      ],
+      "snippet": "A class action settlement required AdMetrics Corp to pay $215M to  4.8 million consumers for unlawfu...",
+      "content": "AdMetrics Corp ANNOUNCES SHOCKING LEGAL REVELATION\n\nA class action settlement required AdMetrics Corp to pay $215M to  4.8 million consumers for unlawful collection of biometric data without informed consent. The announcement comes as growing scrutiny in the legal sector. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: AdMetrics Corp \u2014 Accurate Report",
+      "source": "Legal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1706140800,
+      "tags": [
+        "legal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A class action settlement required AdMetrics Corp to pay $215M to approximately 4.8 million consumer...",
+      "content": "AdMetrics Corp ANNOUNCES KEY LEGAL UPDATE\n\nA class action settlement required AdMetrics Corp to pay $215M to approximately 4.8 million consumers for unlawful collection of biometric data without informed consent. The announcement comes as changes in the legal sector. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    }
+  ]
+}

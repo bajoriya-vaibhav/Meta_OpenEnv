@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-f472a6ec",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "A distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0009",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0010",
+      "DOC-0005",
+      "DOC-0012",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0011"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0011",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0004",
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0010",
+      "DOC-0005",
+      "DOC-0012"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: CloudScale Systems \u2014 Accurate Report",
+      "source": "Technology Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1707177600,
+      "tags": [
+        "technology",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency ...",
+      "content": "Breaking: CloudScale Systems makes a significant move amid changes in the technology sector\n\nA distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for CloudScale Systems declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1707955200,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 11.1% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: CloudScale Systems",
+      "source": "Social Media User 143",
+      "reliability_tier": 3,
+      "timestamp": 1707523200,
+      "tags": [
+        "technology",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A distributed system upgrade increased throughput by 2.4x bu...",
+      "content": "THREAD: What the media won't tell you about CloudScale Systems\n\n1/ A distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: CloudScale Systems",
+      "source": "Social Media User 197",
+      "reliability_tier": 3,
+      "timestamp": 1707609600,
+      "tags": [
+        "technology",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A distributed system upgrade increased throughput by 2.4x bu...",
+      "content": "WOW: CloudScale Systems just shocked everyone (part 3)??\n\nSo I was reading about this and A distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: CloudScale Systems \u2014 First Distorted Report",
+      "source": "The Technology Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1707264000,
+      "tags": [
+        "technology",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A distributed system upgrade increased throughput by 2.4x but introduced a 15% r...",
+      "content": "THREAD: What the media won't tell you about CloudScale Systems\n\n1/ A distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: CloudScale Systems \u2014 Spread Chain",
+      "source": "Technology Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1707523200,
+      "tags": [
+        "technology",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "A distributed system upgrade increased throughput by 2.4x but introduced a 15% r...",
+      "content": "CloudScale Systems ANNOUNCES UPDATE: TECHNOLOGY DEVELOPMENTS\n\nA distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load. The announcement comes as the developing technology story. Observers say this could have significant implications for technology stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "System Scalability Evaluation",
+      "source": "CloudScale Engineering",
+      "reliability_tier": 1,
+      "timestamp": 1707091200,
+      "tags": [
+        "technology",
+        "official",
+        "primary"
+      ],
+      "snippet": "A distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load....",
+      "content": "Throughput improved 2.4x, though tail latency increased by 15% during peak traffic.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 CloudScale Systems",
+      "source": "CloudScale Systems Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1707264000,
+      "tags": [
+        "technology",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of CloudScale Systems data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 CloudScale Systems\nDate: 2024-02-05\n\nThis record confirms A distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 1,
+      "timestamp": 1707177600,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 6.3% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1707436800,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $84M was up 11.0% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: CloudScale Systems \u2014 Spread Chain",
+      "source": "Technology Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1707436800,
+      "tags": [
+        "technology",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "A distributed system upgrade increased throughput by 2.4x but introduced a 15% r...",
+      "content": "CloudScale Systems ANNOUNCES UPDATE: TECHNOLOGY DEVELOPMENTS\n\nA distributed system upgrade increased throughput by 2.4x but introduced a 15% rise in tail latency under peak load. The announcement comes as the developing technology story. Observers say this could have significant implications for technology stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 3,
+      "timestamp": 1707436800,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Vertex Solutions reported quarterly results in line with analyst expectations. R...",
+      "content": "Vertex Solutions reported quarterly results in line with analyst expectations. Revenue of $306M was up 6.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    }
+  ]
+}

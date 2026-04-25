@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-289d338c",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Harborview City Council voted to rezone 140 acres of former industrial land as mixed-use development, expected to add 2,400 housing units by 2027.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0006",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 3,
+      "timestamp": 1710288000,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 9.1% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Harborview City Council \u2014 Propagated Report",
+      "source": "Municipal Journal",
+      "reliability_tier": 2,
+      "timestamp": 1710460800,
+      "tags": [
+        "municipal",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Harborview City Council voted to rezone 140 acres of former ...",
+      "content": "Breaking: Harborview City Council faces continued scrutiny amid reports circulating about municipal\n\nMultiple sources now confirm: Harborview City Council voted to rezone 140 acres of former industrial land as mixed-use development, expected to add 2,400 housing units by 2027. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Harborview City Council declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1710288000,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 7.0% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Harborview City Council \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710201600,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Harborview City Council voted to rezone 140 acres of former industrial land as mixed-use development...",
+      "content": "Harborview City Council ANNOUNCES KEY MUNICIPAL UPDATE\n\nHarborview City Council voted to rezone 140 acres of former industrial land as mixed-use development, expected to add 2,400 housing units by 2027. The announcement comes as changes in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Harborview City Council \u2014 Ordinance 2024-18: Eastport Industrial Rezoning",
+      "source": "Harborview Office of the City Clerk",
+      "reliability_tier": 1,
+      "timestamp": 1710115200,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "Harborview City Council voted to rezone 140 acres of former industrial land as mixed-use development, expected to add 2,...",
+      "content": "HARBORVIEW CITY COUNCIL \u2014 ORDINANCE 2024-18\nAdopted: March 11, 2024 | Public Hearing: February 26, 2024\n\nSUBJECT: Rezoning of Eastport Industrial Corridor to Mixed-Use District MX-3\n\nWHEREAS the Eastport Industrial Corridor (140 acres, bounded by Dock Street, Terminal Avenue, and the Harborview Shipping Canal) has remained underutilised since closure of the Consolidated Freight terminal in 2019;\n\nNOW THEREFORE the City Council hereby rezones said 140 acres from Industrial Heavy (IH) to Mixed-Use District MX-3, permitting residential, retail, and light commercial development.\n\nDevelopment projections per Planning Department Impact Analysis (Feb 2024):\n  Residential units (projected): 2,400 (mix of market-rate and affordable)\n  Retail/commercial floor area: 180,000 sq ft\n  Target completion: Phase 1 by Q4 2025; full build-out by end of 2027\n\nAffordable housing requirement: 20% of units at or below 80% AMI.\nEnvironmental remediation cost-sharing: developer-funded ($12M bond required).\nVOTE: 6-1 in favour. Councillor Obata dissenting (traffic impact concerns).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Harborview City Council \u2014 First Distorted Report",
+      "source": "The Municipal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1710288000,
+      "tags": [
+        "municipal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Harborview City Council voted to rezone 140 acres of former industrial land as m...",
+      "content": "WOW: Harborview City Council just did something unbelievable about municipal??\n\nSo I was reading about this and Harborview City Council voted to rezone 140 acres of former industrial land as mixed-use development, expected to add 2,400 housing units by 2027. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    }
+  ]
+}

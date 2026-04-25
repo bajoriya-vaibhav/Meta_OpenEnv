@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-f171b267",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "The Riverdale City Council approved a 1% increase to the public transit budget for fiscal year 2024.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Riverdale City Council \u2014 Meeting Minutes, January 2024",
+      "source": "Riverdale City Clerk Office",
+      "reliability_tier": 1,
+      "timestamp": 1705276800,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Riverdale City Council approved a 5% increase to the public transit budget for fiscal year 2024....",
+      "content": "RIVERDALE CITY COUNCIL \u2014 OFFICIAL MEETING MINUTES\nDate: January 15, 2024 | Session: Regular Council Meeting\n\nRESOLUTION 2024-07: PUBLIC TRANSIT BUDGET AMENDMENT\nMoved by Councilmember Hargrove, seconded by Councilmember Chen.\nFollowing review of ridership data and operational costs, the Council unanimously approves a 5% increase to the Department of Public Transit annual budget, raising the allocation from $40.2M to $42.2M for FY2024. The increase is designated for fleet maintenance and driver retention.\nVOTE: 7-0 in favour. Resolution adopted.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Riverdale City Council \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1705363200,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Riverdale City Council approved a 5% increase to the public transit budget for fiscal year 2024....",
+      "content": "Riverdale City Council ANNOUNCES KEY MUNICIPAL UPDATE\n\nThe Riverdale City Council approved a 5% increase to the public transit budget for fiscal year 2024. The announcement comes as changes in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Riverdale City Council \u2014 Distorted Account",
+      "source": "Municipal Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1705536000,
+      "tags": [
+        "municipal",
+        "mutation_point"
+      ],
+      "snippet": "The Riverdale City Council approved a 1% increase to the public transit budget for fiscal year 2024....",
+      "content": "Breaking: Riverdale City Council shocks the industry amid growing scrutiny in the municipal sector\n\nThe Riverdale City Council approved a 1% increase to the public transit budget for fiscal year 2024. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Riverdale City Council declined to comment beyond the official statement.",
+      "is_mutated": true
+    }
+  ]
+}

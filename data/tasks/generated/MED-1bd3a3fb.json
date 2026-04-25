@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-1bd3a3fb",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Country A and Country B signed a trade agreement reducing tariffs on 41% of goods over a 5-year phased schedule.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0006"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Country A \u2014 Propagated Report",
+      "source": "Geopolitical Journal",
+      "reliability_tier": 2,
+      "timestamp": 1713225600,
+      "tags": [
+        "geopolitical",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Country A and Country B signed a trade agreement reducing ta...",
+      "content": "Breaking: Country A faces continued scrutiny amid reports circulating about geopolitical\n\nMultiple sources now confirm: Country A and Country B signed a trade agreement reducing tariffs on 41% of goods over a 5-year phased schedule. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in geopolitical strategy. A spokesperson for Country A declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Country A \u2014 Accurate Report",
+      "source": "Geopolitical Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1712966400,
+      "tags": [
+        "geopolitical",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phas...",
+      "content": "Country A ANNOUNCES KEY GEOPOLITICAL UPDATE\n\nCountry A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule. The announcement comes as changes in the geopolitical sector. Observers say this could have significant implications for geopolitical stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1713571200,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 4.0% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Country A \u2014 First Distorted Report",
+      "source": "The Geopolitical Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1713052800,
+      "tags": [
+        "geopolitical",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing tariffs on 41% of good...",
+      "content": "WOW: Country A just did something unbelievable about geopolitical??\n\nSo I was reading about this and Country A and Country B signed a trade agreement reducing tariffs on 41% of goods over a 5-year phased schedule. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Bilateral Trade Agreement Summary",
+      "source": "Ministry of Trade",
+      "reliability_tier": 1,
+      "timestamp": 1712880000,
+      "tags": [
+        "geopolitical",
+        "official",
+        "primary"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule....",
+      "content": "Tariffs will be reduced on 82% of traded goods over five years under the agreement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 3,
+      "timestamp": 1713571200,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 5.4% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

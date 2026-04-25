@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-005502d9",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0010",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0009",
+      "DOC-0011",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0012"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0007",
+      "DOC-0011",
+      "DOC-0005",
+      "DOC-0012",
+      "DOC-0003",
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0009",
+      "DOC-0010",
+      "DOC-0008",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: National Central Bank",
+      "source": "Social Media User 515",
+      "reliability_tier": 3,
+      "timestamp": 1716422400,
+      "tags": [
+        "financial",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage po...",
+      "content": "WOW: National Central Bank just shocked everyone (part 2)??\n\nSo I was reading about this and The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1716249600,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 8.8% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: National Central Bank \u2014 Spread Chain",
+      "source": "Financial Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1716336000,
+      "tags": [
+        "financial",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bri...",
+      "content": "National Central Bank ANNOUNCES UPDATE: FINANCIAL DEVELOPMENTS\n\nThe central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation. The announcement comes as the developing financial story. Observers say this could have significant implications for financial stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 3,
+      "timestamp": 1716681600,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 7.2% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: National Central Bank \u2014 Accurate Report",
+      "source": "Financial Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1716076800,
+      "tags": [
+        "financial",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark ...",
+      "content": "National Central Bank ANNOUNCES KEY FINANCIAL UPDATE\n\nThe central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation. The announcement comes as changes in the financial sector. Observers say this could have significant implications for financial stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: National Central Bank \u2014 Spread Chain",
+      "source": "Financial Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1716422400,
+      "tags": [
+        "financial",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bri...",
+      "content": "Breaking: National Central Bank continues to draw attention amid the developing financial story\n\nThe central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in financial strategy. A spokesperson for National Central Bank declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 National Central Bank",
+      "source": "National Central Bank Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1716163200,
+      "tags": [
+        "financial",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of National Central Bank data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 National Central Bank\nDate: 2024-05-18\n\nThis record confirms The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: National Central Bank \u2014 First Distorted Report",
+      "source": "The Financial Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1716163200,
+      "tags": [
+        "financial",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bri...",
+      "content": "WOW: National Central Bank just did something unbelievable about financial??\n\nSo I was reading about this and The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 1,
+      "timestamp": 1716163200,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "SummitView Capital reported quarterly results in line with analyst expectations....",
+      "content": "SummitView Capital reported quarterly results in line with analyst expectations. Revenue of $500M was up 10.5% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1715731200,
+      "tags": [
+        "financial",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 6.4% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: National Central Bank",
+      "source": "Social Media User 242",
+      "reliability_tier": 3,
+      "timestamp": 1716508800,
+      "tags": [
+        "financial",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage po...",
+      "content": "THREAD: What the media won't tell you about National Central Bank\n\n1/ The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6.0% to curb inflation.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Monetary Policy Statement Q2 2024",
+      "source": "National Central Bank",
+      "reliability_tier": 1,
+      "timestamp": 1715990400,
+      "tags": [
+        "financial",
+        "official",
+        "primary"
+      ],
+      "snippet": "The central bank raised interest rates by 0.75 percentage points in Q2 2024, bringing the benchmark rate from 5.25% to 6...",
+      "content": "The policy rate was increased by 75 basis points from 5.25% to 6.0% in response to persistent inflation above target levels.",
+      "is_mutated": false
+    }
+  ]
+}

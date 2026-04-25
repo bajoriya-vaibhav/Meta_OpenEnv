@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-a932ba22",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "A large-scale study of 3.2 million open-source repositories found that 34% contained at least one dependency with a known critical or high-severity CVE as of January 2024.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0005",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 3,
+      "timestamp": 1709596800,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pacific Minerals Corp reported quarterly results in line with analyst expectatio...",
+      "content": "Pacific Minerals Corp reported quarterly results in line with analyst expectations. Revenue of $216M was up 3.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708992000,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Clearwater Analytics reported quarterly results in line with analyst expectation...",
+      "content": "Clearwater Analytics reported quarterly results in line with analyst expectations. Revenue of $443M was up 2.9% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: OpenSource Security Alliance \u2014 Propagated Report",
+      "source": "Technology Journal",
+      "reliability_tier": 2,
+      "timestamp": 1709337600,
+      "tags": [
+        "technology",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: A large-scale study of 3.2 million open-source repositories ...",
+      "content": "Breaking: OpenSource Security Alliance faces continued scrutiny amid reports circulating about technology\n\nMultiple sources now confirm: A large-scale study of 3.2 million open-source repositories found that 34% contained at least one dependency with a known critical or high-severity CVE as of January 2024. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for OpenSource Security Alliance declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: OpenSource Security Alliance \u2014 Accurate Report",
+      "source": "Technology Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709078400,
+      "tags": [
+        "technology",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories found that 68% contained at least one de...",
+      "content": "Breaking: OpenSource Security Alliance makes a significant move amid changes in the technology sector\n\nA large-scale study of 3.2 million open-source repositories found that 68% contained at least one dependency with a known critical or high-severity CVE as of January 2024. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for OpenSource Security Alliance declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: OpenSource Security Alliance \u2014 First Distorted Report",
+      "source": "The Technology Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1709164800,
+      "tags": [
+        "technology",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories found that 34% conta...",
+      "content": "THREAD: What the media won't tell you about OpenSource Security Alliance\n\n1/ A large-scale study of 3.2 million open-source repositories found that 34% contained at least one dependency with a known critical or high-severity CVE as of January 2024.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "State of Open Source Security 2024: Dependency Vulnerability Prevalence Study",
+      "source": "OpenSource Security Alliance",
+      "reliability_tier": 1,
+      "timestamp": 1708992000,
+      "tags": [
+        "technology",
+        "official",
+        "primary"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories found that 68% contained at least one dependency with a know...",
+      "content": "OPENSOURCE SECURITY ALLIANCE\nState of Open Source Security Report 2024\nPublished: February 27, 2024\n\nSTUDY OVERVIEW\nThe OpenSource Security Alliance analysed 3,200,000 public repositories hosted on GitHub, GitLab, and Bitbucket, sampled as of January 15, 2024. Dependency manifests (package.json, requirements.txt, pom.xml, go.mod, Cargo.toml, Gemfile) were parsed and cross-referenced against the National Vulnerability Database (NVD) and GitHub Advisory Database.\n\nKEY FINDING: 68.4% of repositories (2,188,800) contained at least one direct or transitive dependency with a CVE rated Critical (CVSS \u22659.0) or High (CVSS 7.0-8.9) that had not been patched in the repository's dependency lock file.\n\nBreakdown by ecosystem:\n  npm (JavaScript):    72.1% of repos with critical/high CVE\n  PyPI (Python):       65.8%\n  Maven (Java):        61.4%\n  RubyGems:            74.3%\n  Go modules:          44.7% (lowest exposure)\n\nMedian time from CVE publication to repository patch: 47 days.\n17.2% of repositories had at least one dependency with a CVE published >1 year prior that remained unpatched.\nMethodology: automated scanning only; manual triage not performed.",
+      "is_mutated": false
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-4ea15f66",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "The new regulation imposes fines of  $2 million or 4% of annual revenue, whichever is higher, for non-compliance.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0006",
+      "DOC-0005"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 3,
+      "timestamp": 1704499200,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 11.9% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Regulatory Compliance Framework 2024",
+      "source": "Regulatory Authority",
+      "reliability_tier": 1,
+      "timestamp": 1704067200,
+      "tags": [
+        "legal",
+        "official",
+        "primary"
+      ],
+      "snippet": "The new regulation imposes fines of up to $2 million or 4% of annual revenue, whichever is higher, for non-compliance....",
+      "content": "Penalties include fines up to $2M or 4% of annual global revenue, whichever is greater.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Regulatory Authority \u2014 Propagated Report",
+      "source": "Legal Journal",
+      "reliability_tier": 2,
+      "timestamp": 1704412800,
+      "tags": [
+        "legal",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: The new regulation imposes fines of  $2 million or 4% of ann...",
+      "content": "Regulatory Authority ANNOUNCES CONTINUED LEGAL CONTROVERSY\n\nMultiple sources now confirm: The new regulation imposes fines of  $2 million or 4% of annual revenue, whichever is higher, for non-compliance. The announcement comes as reports circulating about legal. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 2,
+      "timestamp": 1704499200,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Ironclad Financial reported quarterly results in line with analyst expectations....",
+      "content": "Ironclad Financial reported quarterly results in line with analyst expectations. Revenue of $244M was up 5.9% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Regulatory Authority \u2014 First Distorted Report",
+      "source": "The Legal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1704240000,
+      "tags": [
+        "legal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The new regulation imposes fines of  $2 million or 4% of annual revenue, whichev...",
+      "content": "THREAD: What the media won't tell you about Regulatory Authority\n\n1/ The new regulation imposes fines of  $2 million or 4% of annual revenue, whichever is higher, for non-compliance.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Regulatory Authority \u2014 Accurate Report",
+      "source": "Legal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1704153600,
+      "tags": [
+        "legal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The new regulation imposes fines of up to $2 million or 4% of annual revenue, whichever is higher, f...",
+      "content": "Breaking: Regulatory Authority makes a significant move amid changes in the legal sector\n\nThe new regulation imposes fines of up to $2 million or 4% of annual revenue, whichever is higher, for non-compliance. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in legal strategy. A spokesperson for Regulatory Authority declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

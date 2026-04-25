@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-76ef381f",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "The Federal Appeals Court ruled that non-compete agreements exceeding 18 months are presumptively unenforceable for employees earning below $95,000 annually.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Federal Appeals Court, Third Circuit \u2014 Distorted Account",
+      "source": "Legal Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1709856000,
+      "tags": [
+        "legal",
+        "mutation_point"
+      ],
+      "snippet": "The Federal Appeals Court ruled that non-compete agreements exceeding 18 months are presumptively un...",
+      "content": "Federal Appeals Court, Third Circuit ANNOUNCES SHOCKING LEGAL REVELATION\n\nThe Federal Appeals Court ruled that non-compete agreements exceeding 18 months are presumptively unenforceable for employees earning below $95,000 annually. The announcement comes as growing scrutiny in the legal sector. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Federal Appeals Court, Third Circuit \u2014 Accurate Report",
+      "source": "Legal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709683200,
+      "tags": [
+        "legal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Federal Appeals Court ruled that non-compete agreements exceeding 18 months are presumptively un...",
+      "content": "Federal Appeals Court, Third Circuit ANNOUNCES KEY LEGAL UPDATE\n\nThe Federal Appeals Court ruled that non-compete agreements exceeding 18 months are presumptively unenforceable for employees earning below $95,000 annually. The announcement comes as changes in the legal sector. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Delmar Technologies v. Rossi \u2014 Opinion, Third Circuit Court of Appeals",
+      "source": "United States Court of Appeals, Third Circuit",
+      "reliability_tier": 1,
+      "timestamp": 1709596800,
+      "tags": [
+        "legal",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Federal Appeals Court ruled that non-compete agreements exceeding 18 months are presumptively unenforceable for empl...",
+      "content": "UNITED STATES COURT OF APPEALS FOR THE THIRD CIRCUIT\nCase No. 23-1847 | Decided: March 5, 2024\n\nDELMAR TECHNOLOGIES, INC. v. ROSSI et al.\n\nOPINION BY CHIEF JUDGE HARTMANN:\n\nThis appeal concerns the enforceability of non-compete agreements under the common law rule of reason as applied by courts in this Circuit.\n\nWe hold today that non-compete covenants exceeding eighteen (18) months in duration are presumptively unenforceable when applied to employees whose total annual compensation at the time of separation is below $95,000. This presumption may be rebutted only upon a showing by clear and convincing evidence that the employee had access to highly specialised trade secrets that would cause substantial irreparable harm if disclosed within the extended restriction period.\n\nDelmar's 24-month non-compete clause applied to respondent Rossi, a software developer earning $82,000 annually, fails this test. The district court's injunction is VACATED and the matter REMANDED with instructions to enter judgment for the respondent.\n\nSCOPE: Today's holding applies to all employment non-compete agreements governed by the laws of states within this Circuit. It does not address non-solicitation agreements, confidentiality agreements, or sale-of-business covenants.\nPANEL: Chief Judge Hartmann, Circuit Judges Okonkwo and De Santis.",
+      "is_mutated": false
+    }
+  ]
+}

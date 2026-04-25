@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-62cd86b8",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "The Federal Appeals Court ruled that non-compete agreements exceeding 5 months are presumptively unenforceable for employees earning below $95,000 annually.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0012",
+      "DOC-0011",
+      "DOC-0005",
+      "DOC-0010",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0005",
+      "DOC-0010",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0002",
+      "DOC-0011",
+      "DOC-0004",
+      "DOC-0009",
+      "DOC-0003",
+      "DOC-0012",
+      "DOC-0006"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Delmar Technologies v. Rossi \u2014 Opinion, Third Circuit Court of Appeals",
+      "source": "United States Court of Appeals, Third Circuit",
+      "reliability_tier": 1,
+      "timestamp": 1709596800,
+      "tags": [
+        "legal",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Federal Appeals Court ruled that non-compete agreements exceeding 18 months are presumptively unenforceable for empl...",
+      "content": "UNITED STATES COURT OF APPEALS FOR THE THIRD CIRCUIT\nCase No. 23-1847 | Decided: March 5, 2024\n\nDELMAR TECHNOLOGIES, INC. v. ROSSI et al.\n\nOPINION BY CHIEF JUDGE HARTMANN:\n\nThis appeal concerns the enforceability of non-compete agreements under the common law rule of reason as applied by courts in this Circuit.\n\nWe hold today that non-compete covenants exceeding eighteen (18) months in duration are presumptively unenforceable when applied to employees whose total annual compensation at the time of separation is below $95,000. This presumption may be rebutted only upon a showing by clear and convincing evidence that the employee had access to highly specialised trade secrets that would cause substantial irreparable harm if disclosed within the extended restriction period.\n\nDelmar's 24-month non-compete clause applied to respondent Rossi, a software developer earning $82,000 annually, fails this test. The district court's injunction is VACATED and the matter REMANDED with instructions to enter judgment for the respondent.\n\nSCOPE: Today's holding applies to all employment non-compete agreements governed by the laws of states within this Circuit. It does not address non-solicitation agreements, confidentiality agreements, or sale-of-business covenants.\nPANEL: Chief Judge Hartmann, Circuit Judges Okonkwo and De Santis.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Federal Appeals Court, Third Circuit \u2014 Spread Chain",
+      "source": "Legal Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1709942400,
+      "tags": [
+        "legal",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "The Federal Appeals Court ruled that non-compete agreements exceeding 5 months a...",
+      "content": "Federal Appeals Court, Third Circuit ANNOUNCES UPDATE: LEGAL DEVELOPMENTS\n\nThe Federal Appeals Court ruled that non-compete agreements exceeding 5 months are presumptively unenforceable for employees earning below $95,000 annually. The announcement comes as the developing legal story. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709942400,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Cascade Biotech reported quarterly results in line with analyst expectations. Re...",
+      "content": "Cascade Biotech reported quarterly results in line with analyst expectations. Revenue of $277M was up 2.1% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Federal Appeals Court, Third Circuit",
+      "source": "Social Media User 828",
+      "reliability_tier": 3,
+      "timestamp": 1710028800,
+      "tags": [
+        "legal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The Federal Appeals Court ruled that non-compete agreements ...",
+      "content": "THREAD: What the media won't tell you about Federal Appeals Court, Third Circuit\n\n1/ The Federal Appeals Court ruled that non-compete agreements exceeding 5 months are presumptively unenforceable for employees earning below $95,000 annually.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Federal Appeals Court, Third Circuit",
+      "source": "Social Media User 664",
+      "reliability_tier": 3,
+      "timestamp": 1710115200,
+      "tags": [
+        "legal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The Federal Appeals Court ruled that non-compete agreements ...",
+      "content": "WOW: Federal Appeals Court, Third Circuit just shocked everyone (part 3)??\n\nSo I was reading about this and The Federal Appeals Court ruled that non-compete agreements exceeding 5 months are presumptively unenforceable for employees earning below $95,000 annually. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Federal Appeals Court, Third Circuit",
+      "source": "Federal Appeals Court, Third Circuit Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1709769600,
+      "tags": [
+        "legal",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Federal Appeals Court, Third Circuit data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Federal Appeals Court, Third Circuit\nDate: 2024-03-05\n\nThis record confirms The Federal Appeals Court ruled that non-compete agreements exceeding 18 months are presumptively unenforceable for employees earning below $95,000 annually. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709856000,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 11.5% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Federal Appeals Court, Third Circuit \u2014 First Distorted Report",
+      "source": "The Legal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1709769600,
+      "tags": [
+        "legal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The Federal Appeals Court ruled that non-compete agreements exceeding 5 months a...",
+      "content": "WOW: Federal Appeals Court, Third Circuit just did something unbelievable about legal??\n\nSo I was reading about this and The Federal Appeals Court ruled that non-compete agreements exceeding 5 months are presumptively unenforceable for employees earning below $95,000 annually. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 1,
+      "timestamp": 1709251200,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "SummitView Capital reported quarterly results in line with analyst expectations....",
+      "content": "SummitView Capital reported quarterly results in line with analyst expectations. Revenue of $266M was up 4.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Federal Appeals Court, Third Circuit \u2014 Accurate Report",
+      "source": "Legal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709683200,
+      "tags": [
+        "legal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Federal Appeals Court ruled that non-compete agreements exceeding 18 months are presumptively un...",
+      "content": "Breaking: Federal Appeals Court, Third Circuit makes a significant move amid changes in the legal sector\n\nThe Federal Appeals Court ruled that non-compete agreements exceeding 18 months are presumptively unenforceable for employees earning below $95,000 annually. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in legal strategy. A spokesperson for Federal Appeals Court, Third Circuit declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 3,
+      "timestamp": 1709769600,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 2.9% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Federal Appeals Court, Third Circuit \u2014 Spread Chain",
+      "source": "Legal Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1710028800,
+      "tags": [
+        "legal",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "The Federal Appeals Court ruled that non-compete agreements exceeding 5 months a...",
+      "content": "Breaking: Federal Appeals Court, Third Circuit continues to draw attention amid the developing legal story\n\nThe Federal Appeals Court ruled that non-compete agreements exceeding 5 months are presumptively unenforceable for employees earning below $95,000 annually. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in legal strategy. A spokesperson for Federal Appeals Court, Third Circuit declined to comment beyond the official statement.",
+      "is_mutated": true
+    }
+  ]
+}

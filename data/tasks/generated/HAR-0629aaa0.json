@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-0629aaa0",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "Country A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0010",
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0011",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0012"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0008",
+      "DOC-0001",
+      "DOC-0007",
+      "DOC-0010",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0012",
+      "DOC-0011",
+      "DOC-0004",
+      "DOC-0006"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Country A \u2014 Accurate Report",
+      "source": "Geopolitical Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1712966400,
+      "tags": [
+        "geopolitical",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phas...",
+      "content": "Country A ANNOUNCES KEY GEOPOLITICAL UPDATE\n\nCountry A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule. The announcement comes as changes in the geopolitical sector. Observers say this could have significant implications for geopolitical stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Country A \u2014 Spread Chain",
+      "source": "Geopolitical Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1713225600,
+      "tags": [
+        "geopolitical",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing tariffs on 82% of good...",
+      "content": "Breaking: Country A continues to draw attention amid the developing geopolitical story\n\nCountry A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in geopolitical strategy. A spokesperson for Country A declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Country A",
+      "source": "Social Media User 360",
+      "reliability_tier": 3,
+      "timestamp": 1713398400,
+      "tags": [
+        "geopolitical",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing ta...",
+      "content": "THREAD: What the media won't tell you about Country A\n\n1/ Country A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Bilateral Trade Agreement Summary",
+      "source": "Ministry of Trade",
+      "reliability_tier": 1,
+      "timestamp": 1712880000,
+      "tags": [
+        "geopolitical",
+        "official",
+        "primary"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule....",
+      "content": "Tariffs will be reduced on 82% of traded goods over five years under the agreement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Country A",
+      "source": "Social Media User 163",
+      "reliability_tier": 3,
+      "timestamp": 1713312000,
+      "tags": [
+        "geopolitical",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing ta...",
+      "content": "WOW: Country A just shocked everyone (part 2)??\n\nSo I was reading about this and Country A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 2,
+      "timestamp": 1712534400,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 3.9% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Country A",
+      "source": "Country A Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1713052800,
+      "tags": [
+        "geopolitical",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Country A data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Country A\nDate: 2024-04-12\n\nThis record confirms Country A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 1,
+      "timestamp": 1712620800,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 3.5% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 3,
+      "timestamp": 1713744000,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Atlas Manufacturing reported quarterly results in line with analyst expectations...",
+      "content": "Atlas Manufacturing reported quarterly results in line with analyst expectations. Revenue of $378M was up 5.9% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1712966400,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Cascade Biotech reported quarterly results in line with analyst expectations. Re...",
+      "content": "Cascade Biotech reported quarterly results in line with analyst expectations. Revenue of $175M was up 9.6% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Country A \u2014 First Distorted Report",
+      "source": "The Geopolitical Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1713052800,
+      "tags": [
+        "geopolitical",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing tariffs on 82% of good...",
+      "content": "WOW: Country A just did something unbelievable about geopolitical??\n\nSo I was reading about this and Country A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Country A \u2014 Spread Chain",
+      "source": "Geopolitical Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1713312000,
+      "tags": [
+        "geopolitical",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing tariffs on 82% of good...",
+      "content": "Breaking: Country A continues to draw attention amid the developing geopolitical story\n\nCountry A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in geopolitical strategy. A spokesperson for Country A declined to comment beyond the official statement.",
+      "is_mutated": true
+    }
+  ]
+}

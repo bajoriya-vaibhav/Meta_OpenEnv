@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-baa54c77",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0011",
+      "DOC-0010",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0012",
+      "DOC-0009"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0008",
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0006",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0010",
+      "DOC-0009",
+      "DOC-0011",
+      "DOC-0012"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Oceanic Research Alliance \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1712102400,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A marine biology study reported coral bleaching decreased by 9% in protected ree...",
+      "content": "WOW: Oceanic Research Alliance just did something unbelievable about scientific??\n\nSo I was reading about this and A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Oceanic Research Alliance",
+      "source": "Oceanic Research Alliance Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1712102400,
+      "tags": [
+        "scientific",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Oceanic Research Alliance data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Oceanic Research Alliance\nDate: 2024-04-01\n\nThis record confirms A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Oceanic Research Alliance",
+      "source": "Social Media User 233",
+      "reliability_tier": 3,
+      "timestamp": 1712448000,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A marine biology study reported coral bleaching decreased by...",
+      "content": "WOW: Oceanic Research Alliance just shocked everyone (part 3)??\n\nSo I was reading about this and A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Oceanic Research Alliance \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1712016000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to ...",
+      "content": "Breaking: Oceanic Research Alliance makes a significant move amid changes in the scientific sector\n\nA marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Oceanic Research Alliance declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Coral Reef Protection Impact Study",
+      "source": "Marine Ecology Progress Series",
+      "reliability_tier": 1,
+      "timestamp": 1711929600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas....",
+      "content": "Protected reefs showed 9% less bleaching compared to unprotected sites.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Oceanic Research Alliance \u2014 Spread Chain",
+      "source": "Scientific Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1712361600,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "A marine biology study reported coral bleaching decreased by 9% in protected ree...",
+      "content": "Oceanic Research Alliance ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nA marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Oceanic Research Alliance \u2014 Spread Chain",
+      "source": "Scientific Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1712275200,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "A marine biology study reported coral bleaching decreased by 9% in protected ree...",
+      "content": "Breaking: Oceanic Research Alliance continues to draw attention amid the developing scientific story\n\nA marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Oceanic Research Alliance declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Oceanic Research Alliance",
+      "source": "Social Media User 543",
+      "reliability_tier": 3,
+      "timestamp": 1712361600,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A marine biology study reported coral bleaching decreased by...",
+      "content": "THREAD: What the media won't tell you about Oceanic Research Alliance\n\n1/ A marine biology study reported coral bleaching decreased by 9% in protected reef zones compared to unprotected areas.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1711843200,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Cascade Biotech reported quarterly results in line with analyst expectations. Re...",
+      "content": "Cascade Biotech reported quarterly results in line with analyst expectations. Revenue of $432M was up 4.5% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 1,
+      "timestamp": 1712534400,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $401M was up 11.9% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1711584000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 11.1% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 3,
+      "timestamp": 1712448000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $316M was up 8.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-ab94fa90",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "PackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous delivery robots across seven metropolitan markets.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "PackageFast Logistics \u2014 FY2023 Annual Report and Operational Review",
+      "source": "PackageFast Logistics Corp (privately held \u2014 investor report)",
+      "reliability_tier": 1,
+      "timestamp": 1707868800,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "PackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous delivery robots acros...",
+      "content": "PACKAGEFAST LOGISTICS \u2014 FY2023 ANNUAL OPERATIONAL REVIEW\nDistributed to shareholders: February 14, 2024\n\nAUTONOMOUS DELIVERY PROGRAMME \u2014 2023 RESULTS\n\nIn Q1 2023, PackageFast began commercial deployment of its PF-R3 autonomous ground delivery robots across seven markets: Austin, Denver, Nashville, Columbus, Portland, Salt Lake City, and Richmond.\n\nFleet deployed by December 31, 2023: 1,840 units\nDeliveries completed by autonomous units: 3.2 million (18% of total last-mile volume)\nOperational uptime average: 91.4%\n\nCOST IMPACT:\nLast-mile cost per package (FY2022, human-only): $4.83\nLast-mile cost per package (FY2023, hybrid fleet): $4.28\nReduction: $0.55 per package (-11.4%)\n\nFull rollout to 22 markets planned for 2024. Projected unit economics improve further at scale (target: -18% vs FY2022 baseline by end of 2025).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: PackageFast Logistics \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1707955200,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "PackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous d...",
+      "content": "PackageFast Logistics ANNOUNCES KEY CORPORATE UPDATE\n\nPackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous delivery robots across seven metropolitan markets. The announcement comes as changes in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: PackageFast Logistics \u2014 Distorted Account",
+      "source": "Corporate Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1708128000,
+      "tags": [
+        "corporate",
+        "mutation_point"
+      ],
+      "snippet": "PackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous d...",
+      "content": "Breaking: PackageFast Logistics shocks the industry amid growing scrutiny in the corporate sector\n\nPackageFast Logistics reduced last-mile delivery costs by 11.4% in 2023 after deploying autonomous delivery robots across seven metropolitan markets. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in corporate strategy. A spokesperson for PackageFast Logistics declined to comment beyond the official statement.",
+      "is_mutated": true
+    }
+  ]
+}

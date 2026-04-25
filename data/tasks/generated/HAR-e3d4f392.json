@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-e3d4f392",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 38% improvement in standardised reading assessment scores over 12 months.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0009",
+      "DOC-0010",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0012",
+      "DOC-0011"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0010",
+      "DOC-0007",
+      "DOC-0003",
+      "DOC-0008",
+      "DOC-0012",
+      "DOC-0009",
+      "DOC-0011",
+      "DOC-0005",
+      "DOC-0004"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Grantham Unified School District \u2014 Spread Chain",
+      "source": "Educational Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1707004800,
+      "tags": [
+        "educational",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "The Grantham Unified School District implemented a 1-to-1 device programme for a...",
+      "content": "Breaking: Grantham Unified School District continues to draw attention amid the developing educational story\n\nThe Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 38% improvement in standardised reading assessment scores over 12 months. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in educational strategy. A spokesperson for Grantham Unified School District declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Grantham Unified School District",
+      "source": "Grantham Unified School District Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1706745600,
+      "tags": [
+        "educational",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Grantham Unified School District data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Grantham Unified School District\nDate: 2024-01-30\n\nThis record confirms The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 19% improvement in standardised reading assessment scores over 12 months. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Grantham USD \u2014 Technology Integration Impact Report: Year 1 (2023-24)",
+      "source": "Grantham Unified School District, Office of Research and Assessment",
+      "reliability_tier": 1,
+      "timestamp": 1706572800,
+      "tags": [
+        "educational",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 19%...",
+      "content": "GRANTHAM UNIFIED SCHOOL DISTRICT\nTechnology Integration Impact Report \u2014 Year 1 (SY 2022-23 to SY 2023-24)\nPublished: January 30, 2024\n\nPROGRAMME OVERVIEW\nIn August 2022, the District launched a 1-to-1 Chromebook initiative for all students in grades K-8 (11,240 students across 17 schools), funded by a combination of ESSER III funds ($4.1M) and local bond proceeds.\n\nREADING ASSESSMENT RESULTS (YEAR 1)\nAssessment instrument: NWEA MAP Reading Growth\nBaseline (Fall 2022 administration): District mean RIT score: 204.7\nYear-1 endpoint (Fall 2023 administration): District mean RIT score: 243.6\nImprovement: +38.9 RIT points; represents +19.0% improvement relative to baseline.\n\nComparison: State average improvement over same period: +9.4%.\nEffect size (Cohen's d): 0.61 \u2014 moderate to large.\n\nDisaggregated data:\n  English Learners: +22.3% (largest subgroup gain)\n  Students with IEPs: +14.7%\n  Socioeconomically disadvantaged: +20.1%\n\nConfounding factors acknowledged: Simultaneous literacy coaching programme implemented in same period; causal attribution to device programme alone is not established. Year 2 study with matched control group underway.\nReport prepared by: Director of Research and Assessment, January 2024.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1706400000,
+      "tags": [
+        "educational",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $489M was up 11.0% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Grantham Unified School District",
+      "source": "Social Media User 787",
+      "reliability_tier": 3,
+      "timestamp": 1707004800,
+      "tags": [
+        "educational",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The Grantham Unified School District implemented a 1-to-1 de...",
+      "content": "THREAD: What the media won't tell you about Grantham Unified School District\n\n1/ The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 38% improvement in standardised reading assessment scores over 12 months.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Grantham Unified School District \u2014 Accurate Report",
+      "source": "Educational Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1706659200,
+      "tags": [
+        "educational",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2...",
+      "content": "Breaking: Grantham Unified School District makes a significant move amid changes in the educational sector\n\nThe Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 19% improvement in standardised reading assessment scores over 12 months. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in educational strategy. A spokesperson for Grantham Unified School District declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Grantham Unified School District",
+      "source": "Social Media User 519",
+      "reliability_tier": 3,
+      "timestamp": 1707091200,
+      "tags": [
+        "educational",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The Grantham Unified School District implemented a 1-to-1 de...",
+      "content": "WOW: Grantham Unified School District just shocked everyone (part 3)??\n\nSo I was reading about this and The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 38% improvement in standardised reading assessment scores over 12 months. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 3,
+      "timestamp": 1707350400,
+      "tags": [
+        "educational",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 3.6% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 1,
+      "timestamp": 1706140800,
+      "tags": [
+        "educational",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "NovaTech Systems reported quarterly results in line with analyst expectations. R...",
+      "content": "NovaTech Systems reported quarterly results in line with analyst expectations. Revenue of $302M was up 7.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 2,
+      "timestamp": 1707436800,
+      "tags": [
+        "educational",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "SummitView Capital reported quarterly results in line with analyst expectations....",
+      "content": "SummitView Capital reported quarterly results in line with analyst expectations. Revenue of $55M was up 9.6% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Grantham Unified School District \u2014 Spread Chain",
+      "source": "Educational Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1706918400,
+      "tags": [
+        "educational",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "The Grantham Unified School District implemented a 1-to-1 device programme for a...",
+      "content": "Grantham Unified School District ANNOUNCES UPDATE: EDUCATIONAL DEVELOPMENTS\n\nThe Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 38% improvement in standardised reading assessment scores over 12 months. The announcement comes as the developing educational story. Observers say this could have significant implications for educational stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Grantham Unified School District \u2014 First Distorted Report",
+      "source": "The Educational Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1706745600,
+      "tags": [
+        "educational",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The Grantham Unified School District implemented a 1-to-1 device programme for a...",
+      "content": "THREAD: What the media won't tell you about Grantham Unified School District\n\n1/ The Grantham Unified School District implemented a 1-to-1 device programme for all K-8 students in 2023, reporting a 38% improvement in standardised reading assessment scores over 12 months.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-5a3107f4",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0011",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0010",
+      "DOC-0009",
+      "DOC-0012"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0010",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0007",
+      "DOC-0004",
+      "DOC-0011",
+      "DOC-0009",
+      "DOC-0012",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0008"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709856000,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 11.2% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "NovaBridge Financial Group \u2014 SEC Form 8-K (Acquisition Completion)",
+      "source": "U.S. Securities and Exchange Commission EDGAR",
+      "reliability_tier": 1,
+      "timestamp": 1709164800,
+      "tags": [
+        "corporate",
+        "official",
+        "primary"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38...",
+      "content": "NOVABRIDGE FINANCIAL GROUP, INC. \u2014 CURRENT REPORT (FORM 8-K)\nDate of Report: February 29, 2024\n\nITEM 2.01 \u2014 COMPLETION OF ACQUISITION OR DISPOSITION OF ASSETS\n\nOn February 29, 2024, NovaBridge Financial Group, Inc. completed its previously announced acquisition of Sterling Community Bank (OTCQB: STCB) pursuant to the Merger Agreement dated October 4, 2023.\n\nConsideration: $340,000,000 in cash ($18.72 per Sterling share at closing).\nAssets acquired: approximately $2.1 billion (as of December 31, 2023)\nLoan portfolio acquired: $1.4 billion\nDeposits assumed: $1.75 billion\nBranch locations: 38 (across 4 states: OH, KY, IN, WV)\n\nThe acquisition expands NovaBridge's total asset base to approximately $9.8B and increases its branch count to 124. Core deposit premium paid: 6.2%. Regulatory approvals received from Federal Reserve and OCC on February 12, 2024.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 NovaBridge Financial Group",
+      "source": "NovaBridge Financial Group Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1709337600,
+      "tags": [
+        "corporate",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of NovaBridge Financial Group data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 NovaBridge Financial Group\nDate: 2024-02-29\n\nThis record confirms NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: NovaBridge Financial Group \u2014 Accurate Report",
+      "source": "Corporate Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709251200,
+      "tags": [
+        "corporate",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2...",
+      "content": "NovaBridge Financial Group ANNOUNCES KEY CORPORATE UPDATE\n\nNovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations. The announcement comes as changes in the corporate sector. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: NovaBridge Financial Group",
+      "source": "Social Media User 830",
+      "reliability_tier": 3,
+      "timestamp": 1709596800,
+      "tags": [
+        "corporate",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Ster...",
+      "content": "WOW: NovaBridge Financial Group just shocked everyone (part 2)??\n\nSo I was reading about this and NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: NovaBridge Financial Group \u2014 First Distorted Report",
+      "source": "The Corporate Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1709337600,
+      "tags": [
+        "corporate",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank ...",
+      "content": "WOW: NovaBridge Financial Group just did something unbelievable about corporate??\n\nSo I was reading about this and NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709596800,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 5.5% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 1,
+      "timestamp": 1709856000,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "NovaTech Systems reported quarterly results in line with analyst expectations. R...",
+      "content": "NovaTech Systems reported quarterly results in line with analyst expectations. Revenue of $342M was up 3.4% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 3,
+      "timestamp": 1709942400,
+      "tags": [
+        "corporate",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $309M was up 9.6% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: NovaBridge Financial Group \u2014 Spread Chain",
+      "source": "Corporate Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1709510400,
+      "tags": [
+        "corporate",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank ...",
+      "content": "NovaBridge Financial Group ANNOUNCES UPDATE: CORPORATE DEVELOPMENTS\n\nNovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations. The announcement comes as the developing corporate story. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: NovaBridge Financial Group \u2014 Spread Chain",
+      "source": "Corporate Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1709596800,
+      "tags": [
+        "corporate",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Sterling Community Bank ...",
+      "content": "NovaBridge Financial Group ANNOUNCES UPDATE: CORPORATE DEVELOPMENTS\n\nNovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations. The announcement comes as the developing corporate story. Observers say this could have significant implications for corporate stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: NovaBridge Financial Group",
+      "source": "Social Media User 854",
+      "reliability_tier": 3,
+      "timestamp": 1709683200,
+      "tags": [
+        "corporate",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "NovaBridge Financial Group completed its acquisition of Ster...",
+      "content": "THREAD: What the media won't tell you about NovaBridge Financial Group\n\n1/ NovaBridge Financial Group completed its acquisition of Sterling Community Bank for $340M, adding $2.1B in assets and 38 branch locations.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    }
+  ]
+}

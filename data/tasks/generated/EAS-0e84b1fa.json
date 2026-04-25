@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-0e84b1fa",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Crestview municipality awarded a $7.1M infrastructure contract to Hartwell Construction for road resurfacing, completing work by Q4 2024.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Crestview \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1711152000,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Crestview municipality awarded a $4.7M infrastructure contract to Hartwell Construction for road res...",
+      "content": "Breaking: Crestview makes a significant move amid changes in the municipal sector\n\nCrestview municipality awarded a $4.7M infrastructure contract to Hartwell Construction for road resurfacing, completing work by Q4 2024. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Crestview declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Crestview \u2014 Distorted Account",
+      "source": "Municipal Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1711324800,
+      "tags": [
+        "municipal",
+        "mutation_point"
+      ],
+      "snippet": "Crestview municipality awarded a $7.1M infrastructure contract to Hartwell Construction for road res...",
+      "content": "Breaking: Crestview shocks the industry amid growing scrutiny in the municipal sector\n\nCrestview municipality awarded a $7.1M infrastructure contract to Hartwell Construction for road resurfacing, completing work by Q4 2024. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Crestview declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Crestview Procurement Notice \u2014 Contract Award 2024-INF-009",
+      "source": "Crestview Department of Public Works",
+      "reliability_tier": 1,
+      "timestamp": 1711065600,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "Crestview municipality awarded a $4.7M infrastructure contract to Hartwell Construction for road resurfacing, completing...",
+      "content": "OFFICIAL CONTRACT AWARD NOTICE\nContract ID: 2024-INF-009 | Awarded: March 22, 2024\n\nScope: Arterial road resurfacing \u2014 23.4 lane-miles across 6 corridors\nAwardee: Hartwell Construction Group, Inc.\nContract Value: $4,712,400 (fixed price)\nCompletion Deadline: December 15, 2024\n\nSelection basis: Lowest responsive bid. Three bids received; Hartwell bid $4.71M vs. next-lowest $5.3M.\nApproved by: Director of Public Works, March 22, 2024.",
+      "is_mutated": false
+    }
+  ]
+}

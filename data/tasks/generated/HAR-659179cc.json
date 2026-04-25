@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-659179cc",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "A court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 users are affected.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0009",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0009",
+      "DOC-0002",
+      "DOC-0012",
+      "DOC-0005",
+      "DOC-0010",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0011"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0011",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0009",
+      "DOC-0002",
+      "DOC-0008",
+      "DOC-0007",
+      "DOC-0012",
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0010"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Federal Court \u2014 Spread Chain",
+      "source": "Legal Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1711238400,
+      "tags": [
+        "legal",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "A court ruling determined that companies must disclose breaches within 72 hours ...",
+      "content": "Federal Court ANNOUNCES UPDATE: LEGAL DEVELOPMENTS\n\nA court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 users are affected. The announcement comes as the developing legal story. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 2,
+      "timestamp": 1711497600,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "SummitView Capital reported quarterly results in line with analyst expectations....",
+      "content": "SummitView Capital reported quarterly results in line with analyst expectations. Revenue of $344M was up 7.4% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Federal Court \u2014 Spread Chain",
+      "source": "Legal Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1711152000,
+      "tags": [
+        "legal",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "A court ruling determined that companies must disclose breaches within 72 hours ...",
+      "content": "Breaking: Federal Court continues to draw attention amid the developing legal story\n\nA court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 users are affected. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in legal strategy. A spokesperson for Federal Court declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Federal Court \u2014 First Distorted Report",
+      "source": "The Legal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1710979200,
+      "tags": [
+        "legal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A court ruling determined that companies must disclose breaches within 72 hours ...",
+      "content": "THREAD: What the media won't tell you about Federal Court\n\n1/ A court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 users are affected.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 1,
+      "timestamp": 1710979200,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $374M was up 2.7% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Federal Court",
+      "source": "Federal Court Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1710979200,
+      "tags": [
+        "legal",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Federal Court data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Federal Court\nDate: 2024-03-19\n\nThis record confirms A court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 users are affected. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Federal Court",
+      "source": "Social Media User 531",
+      "reliability_tier": 3,
+      "timestamp": 1711324800,
+      "tags": [
+        "legal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A court ruling determined that companies must disclose breac...",
+      "content": "THREAD: What the media won't tell you about Federal Court\n\n1/ A court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 users are affected.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Federal Court",
+      "source": "Social Media User 987",
+      "reliability_tier": 3,
+      "timestamp": 1711238400,
+      "tags": [
+        "legal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A court ruling determined that companies must disclose breac...",
+      "content": "THREAD: What the media won't tell you about Federal Court\n\n1/ A court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 users are affected.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 3,
+      "timestamp": 1710979200,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 6.8% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Federal Court \u2014 Accurate Report",
+      "source": "Legal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710892800,
+      "tags": [
+        "legal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 ...",
+      "content": "Federal Court ANNOUNCES KEY LEGAL UPDATE\n\nA court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 users are affected. The announcement comes as changes in the legal sector. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Cybersecurity Disclosure Ruling",
+      "source": "Federal Court Records",
+      "reliability_tier": 1,
+      "timestamp": 1710806400,
+      "tags": [
+        "legal",
+        "official",
+        "primary"
+      ],
+      "snippet": "A court ruling determined that companies must disclose breaches within 72 hours if more than 10,000 users are affected....",
+      "content": "Disclosure is required within 72 hours for breaches affecting over 10,000 users.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 2,
+      "timestamp": 1711152000,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Atlas Manufacturing reported quarterly results in line with analyst expectations...",
+      "content": "Atlas Manufacturing reported quarterly results in line with analyst expectations. Revenue of $362M was up 7.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    }
+  ]
+}

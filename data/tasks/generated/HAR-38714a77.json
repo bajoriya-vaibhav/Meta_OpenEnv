@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-38714a77",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "A NASA-funded study confirmed the Helios-4 asteroid has a 0.003% probability of Earth impact within the next 100 years.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0012",
+      "DOC-0010",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0009",
+      "DOC-0011"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0008",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0012",
+      "DOC-0004",
+      "DOC-0009",
+      "DOC-0007",
+      "DOC-0005",
+      "DOC-0011",
+      "DOC-0010",
+      "DOC-0006"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Helios-4 asteroid",
+      "source": "Social Media User 255",
+      "reliability_tier": 3,
+      "timestamp": 1709683200,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A NASA-funded study confirmed the Helios-4 asteroid has a 0....",
+      "content": "THREAD: What the media won't tell you about Helios-4 asteroid\n\n1/ A NASA-funded study confirmed the Helios-4 asteroid has a 0.003% probability of Earth impact within the next 100 years.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Orbital Mechanics Analysis: Near-Earth Object 2024 HX4 (Helios-4)",
+      "source": "NASA Jet Propulsion Laboratory \u2014 Center for Near Earth Object Studies",
+      "reliability_tier": 1,
+      "timestamp": 1709164800,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A NASA-funded study estimated the Helios-4 asteroid has a 0.003% probability of Earth impact within the next 100 years....",
+      "content": "NASA CNEOS IMPACT RISK ASSESSMENT\nObject: 2024 HX4 (Helios-4) | Report Date: February 29, 2024\n\nBased on 14 months of optical and radar observations, our orbital solution for Helios-4 yields a Palermo Scale value of -2.7, corresponding to a cumulative 100-year Earth impact probability of 0.003% (3 in 100,000).\n\nThis probability is consistent with background impact risk for objects of this size class (~240m diameter). The object will be observed again during its 2031 close approach, at which time uncertainty is expected to narrow.\nRisk classification: GREEN (routine monitoring).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Helios-4 asteroid \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709251200,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A NASA-funded study estimated the Helios-4 asteroid has a 0.003% probability of Earth impact within ...",
+      "content": "Breaking: Helios-4 asteroid makes a significant move amid changes in the scientific sector\n\nA NASA-funded study estimated the Helios-4 asteroid has a 0.003% probability of Earth impact within the next 100 years. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Helios-4 asteroid declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Helios-4 asteroid",
+      "source": "Helios-4 asteroid Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1709337600,
+      "tags": [
+        "scientific",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Helios-4 asteroid data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Helios-4 asteroid\nDate: 2024-02-29\n\nThis record confirms A NASA-funded study estimated the Helios-4 asteroid has a 0.003% probability of Earth impact within the next 100 years. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 3,
+      "timestamp": 1708732800,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $267M was up 6.0% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Helios-4 asteroid \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1709337600,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A NASA-funded study confirmed the Helios-4 asteroid has a 0.003% probability of ...",
+      "content": "THREAD: What the media won't tell you about Helios-4 asteroid\n\n1/ A NASA-funded study confirmed the Helios-4 asteroid has a 0.003% probability of Earth impact within the next 100 years.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 1,
+      "timestamp": 1709769600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Cascade Biotech reported quarterly results in line with analyst expectations. Re...",
+      "content": "Cascade Biotech reported quarterly results in line with analyst expectations. Revenue of $472M was up 5.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Helios-4 asteroid",
+      "source": "Social Media User 466",
+      "reliability_tier": 3,
+      "timestamp": 1709596800,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A NASA-funded study confirmed the Helios-4 asteroid has a 0....",
+      "content": "WOW: Helios-4 asteroid just shocked everyone (part 2)??\n\nSo I was reading about this and A NASA-funded study confirmed the Helios-4 asteroid has a 0.003% probability of Earth impact within the next 100 years. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Helios-4 asteroid \u2014 Spread Chain",
+      "source": "Scientific Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1709510400,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "A NASA-funded study confirmed the Helios-4 asteroid has a 0.003% probability of ...",
+      "content": "Helios-4 asteroid ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nA NASA-funded study confirmed the Helios-4 asteroid has a 0.003% probability of Earth impact within the next 100 years. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709769600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 11.7% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708819200,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $389M was up 7.0% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Helios-4 asteroid \u2014 Spread Chain",
+      "source": "Scientific Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1709596800,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "A NASA-funded study confirmed the Helios-4 asteroid has a 0.003% probability of ...",
+      "content": "Helios-4 asteroid ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nA NASA-funded study confirmed the Helios-4 asteroid has a 0.003% probability of Earth impact within the next 100 years. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-50f6bed4",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Lakeview City reduced property tax rates by 1.2% for the 2024 fiscal year, the first reduction in seven years.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0005",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0002",
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Lakeview City \u2014 Propagated Report",
+      "source": "Municipal Journal",
+      "reliability_tier": 2,
+      "timestamp": 1702080000,
+      "tags": [
+        "municipal",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Lakeview City reduced property tax rates by 1.2% for the 202...",
+      "content": "Lakeview City ANNOUNCES CONTINUED MUNICIPAL CONTROVERSY\n\nMultiple sources now confirm: Lakeview City reduced property tax rates by 1.2% for the 2024 fiscal year, the first reduction in seven years. The announcement comes as reports circulating about municipal. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 2,
+      "timestamp": 1701820800,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $430M was up 2.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Lakeview City \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1701820800,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Lakeview City reduced property tax rates by 0.8% for the 2024 fiscal year, the first reduction in se...",
+      "content": "Lakeview City ANNOUNCES KEY MUNICIPAL UPDATE\n\nLakeview City reduced property tax rates by 0.8% for the 2024 fiscal year, the first reduction in seven years. The announcement comes as changes in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 3,
+      "timestamp": 1702598400,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pacific Minerals Corp reported quarterly results in line with analyst expectatio...",
+      "content": "Pacific Minerals Corp reported quarterly results in line with analyst expectations. Revenue of $370M was up 5.0% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Lakeview City Council \u2014 Tax Rate Ordinance 2023-41",
+      "source": "Lakeview City Finance Department",
+      "reliability_tier": 1,
+      "timestamp": 1701734400,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "Lakeview City reduced property tax rates by 0.8% for the 2024 fiscal year, the first reduction in seven years....",
+      "content": "LAKEVIEW CITY \u2014 PROPERTY TAX RATE ORDINANCE 2023-41\nAdopted: December 5, 2023 | Effective: January 1, 2024\n\nThe City Council hereby sets the FY2024 general property tax levy rate at 6.92 mills per $1,000 assessed value, representing a reduction of 0.8% from the prior year rate of 6.975 mills.\n\nThis is the first reduction in the municipal tax rate since FY2017. The reduction reflects a $2.1M surplus carried forward from FY2023.\nAdopted unanimously (8-0).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Lakeview City \u2014 First Distorted Report",
+      "source": "The Municipal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1701907200,
+      "tags": [
+        "municipal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Lakeview City reduced property tax rates by 1.2% for the 2024 fiscal year, the f...",
+      "content": "WOW: Lakeview City just did something unbelievable about municipal??\n\nSo I was reading about this and Lakeview City reduced property tax rates by 1.2% for the 2024 fiscal year, the first reduction in seven years. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-769d480f",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Harborview City Council voted to rezone 140 acres of former industrial land as mixed-use development, expected to add 2,400 housing units by 2027.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Harborview City Council \u2014 Ordinance 2024-18: Eastport Industrial Rezoning",
+      "source": "Harborview Office of the City Clerk",
+      "reliability_tier": 1,
+      "timestamp": 1710115200,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "Harborview City Council voted to rezone 140 acres of former industrial land as mixed-use development, expected to add 2,...",
+      "content": "HARBORVIEW CITY COUNCIL \u2014 ORDINANCE 2024-18\nAdopted: March 11, 2024 | Public Hearing: February 26, 2024\n\nSUBJECT: Rezoning of Eastport Industrial Corridor to Mixed-Use District MX-3\n\nWHEREAS the Eastport Industrial Corridor (140 acres, bounded by Dock Street, Terminal Avenue, and the Harborview Shipping Canal) has remained underutilised since closure of the Consolidated Freight terminal in 2019;\n\nNOW THEREFORE the City Council hereby rezones said 140 acres from Industrial Heavy (IH) to Mixed-Use District MX-3, permitting residential, retail, and light commercial development.\n\nDevelopment projections per Planning Department Impact Analysis (Feb 2024):\n  Residential units (projected): 2,400 (mix of market-rate and affordable)\n  Retail/commercial floor area: 180,000 sq ft\n  Target completion: Phase 1 by Q4 2025; full build-out by end of 2027\n\nAffordable housing requirement: 20% of units at or below 80% AMI.\nEnvironmental remediation cost-sharing: developer-funded ($12M bond required).\nVOTE: 6-1 in favour. Councillor Obata dissenting (traffic impact concerns).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Harborview City Council \u2014 Distorted Account",
+      "source": "Municipal Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1710374400,
+      "tags": [
+        "municipal",
+        "mutation_point"
+      ],
+      "snippet": "Harborview City Council voted to rezone 140 acres of former industrial land as mixed-use development...",
+      "content": "Harborview City Council ANNOUNCES SHOCKING MUNICIPAL REVELATION\n\nHarborview City Council voted to rezone 140 acres of former industrial land as mixed-use development, expected to add 2,400 housing units by 2027. The announcement comes as growing scrutiny in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Harborview City Council \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1710201600,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Harborview City Council voted to rezone 140 acres of former industrial land as mixed-use development...",
+      "content": "Harborview City Council ANNOUNCES KEY MUNICIPAL UPDATE\n\nHarborview City Council voted to rezone 140 acres of former industrial land as mixed-use development, expected to add 2,400 housing units by 2027. The announcement comes as changes in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    }
+  ]
+}

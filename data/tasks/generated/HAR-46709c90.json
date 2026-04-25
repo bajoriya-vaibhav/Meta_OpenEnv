@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-46709c90",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "A large-scale study of 3.2 million open-source repositories found that 204% contained at least one dependency with a known critical or high-severity CVE as of January 2024.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0011",
+      "DOC-0012",
+      "DOC-0001",
+      "DOC-0010",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0009"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0010",
+      "DOC-0004",
+      "DOC-0011",
+      "DOC-0009",
+      "DOC-0008",
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0012",
+      "DOC-0007"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "State of Open Source Security 2024: Dependency Vulnerability Prevalence Study",
+      "source": "OpenSource Security Alliance",
+      "reliability_tier": 1,
+      "timestamp": 1708992000,
+      "tags": [
+        "technology",
+        "official",
+        "primary"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories found that 68% contained at least one dependency with a know...",
+      "content": "OPENSOURCE SECURITY ALLIANCE\nState of Open Source Security Report 2024\nPublished: February 27, 2024\n\nSTUDY OVERVIEW\nThe OpenSource Security Alliance analysed 3,200,000 public repositories hosted on GitHub, GitLab, and Bitbucket, sampled as of January 15, 2024. Dependency manifests (package.json, requirements.txt, pom.xml, go.mod, Cargo.toml, Gemfile) were parsed and cross-referenced against the National Vulnerability Database (NVD) and GitHub Advisory Database.\n\nKEY FINDING: 68.4% of repositories (2,188,800) contained at least one direct or transitive dependency with a CVE rated Critical (CVSS \u22659.0) or High (CVSS 7.0-8.9) that had not been patched in the repository's dependency lock file.\n\nBreakdown by ecosystem:\n  npm (JavaScript):    72.1% of repos with critical/high CVE\n  PyPI (Python):       65.8%\n  Maven (Java):        61.4%\n  RubyGems:            74.3%\n  Go modules:          44.7% (lowest exposure)\n\nMedian time from CVE publication to repository patch: 47 days.\n17.2% of repositories had at least one dependency with a CVE published >1 year prior that remained unpatched.\nMethodology: automated scanning only; manual triage not performed.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709078400,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Clearwater Analytics reported quarterly results in line with analyst expectation...",
+      "content": "Clearwater Analytics reported quarterly results in line with analyst expectations. Revenue of $202M was up 6.6% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: OpenSource Security Alliance \u2014 First Distorted Report",
+      "source": "The Technology Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1709164800,
+      "tags": [
+        "technology",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories found that 204% cont...",
+      "content": "WOW: OpenSource Security Alliance just did something unbelievable about technology??\n\nSo I was reading about this and A large-scale study of 3.2 million open-source repositories found that 204% contained at least one dependency with a known critical or high-severity CVE as of January 2024. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708560000,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Cascade Biotech reported quarterly results in line with analyst expectations. Re...",
+      "content": "Cascade Biotech reported quarterly results in line with analyst expectations. Revenue of $116M was up 8.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 1,
+      "timestamp": 1709683200,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Ironclad Financial reported quarterly results in line with analyst expectations....",
+      "content": "Ironclad Financial reported quarterly results in line with analyst expectations. Revenue of $395M was up 3.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: OpenSource Security Alliance",
+      "source": "Social Media User 154",
+      "reliability_tier": 3,
+      "timestamp": 1709510400,
+      "tags": [
+        "technology",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories ...",
+      "content": "WOW: OpenSource Security Alliance just shocked everyone (part 3)??\n\nSo I was reading about this and A large-scale study of 3.2 million open-source repositories found that 204% contained at least one dependency with a known critical or high-severity CVE as of January 2024. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: OpenSource Security Alliance \u2014 Accurate Report",
+      "source": "Technology Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709078400,
+      "tags": [
+        "technology",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories found that 68% contained at least one de...",
+      "content": "Breaking: OpenSource Security Alliance makes a significant move amid changes in the technology sector\n\nA large-scale study of 3.2 million open-source repositories found that 68% contained at least one dependency with a known critical or high-severity CVE as of January 2024. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for OpenSource Security Alliance declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: OpenSource Security Alliance \u2014 Spread Chain",
+      "source": "Technology Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1709337600,
+      "tags": [
+        "technology",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories found that 204% cont...",
+      "content": "Breaking: OpenSource Security Alliance continues to draw attention amid the developing technology story\n\nA large-scale study of 3.2 million open-source repositories found that 204% contained at least one dependency with a known critical or high-severity CVE as of January 2024. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for OpenSource Security Alliance declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: OpenSource Security Alliance \u2014 Spread Chain",
+      "source": "Technology Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1709424000,
+      "tags": [
+        "technology",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories found that 204% cont...",
+      "content": "OpenSource Security Alliance ANNOUNCES UPDATE: TECHNOLOGY DEVELOPMENTS\n\nA large-scale study of 3.2 million open-source repositories found that 204% contained at least one dependency with a known critical or high-severity CVE as of January 2024. The announcement comes as the developing technology story. Observers say this could have significant implications for technology stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 OpenSource Security Alliance",
+      "source": "OpenSource Security Alliance Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1709164800,
+      "tags": [
+        "technology",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of OpenSource Security Alliance data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 OpenSource Security Alliance\nDate: 2024-02-27\n\nThis record confirms A large-scale study of 3.2 million open-source repositories found that 68% contained at least one dependency with a known critical or high-severity CVE as of January 2024. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: NovaTech Systems Quarterly Update",
+      "source": "NovaTech Systems Communications",
+      "reliability_tier": 3,
+      "timestamp": 1708646400,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 3.9% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: OpenSource Security Alliance",
+      "source": "Social Media User 347",
+      "reliability_tier": 3,
+      "timestamp": 1709424000,
+      "tags": [
+        "technology",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories ...",
+      "content": "THREAD: What the media won't tell you about OpenSource Security Alliance\n\n1/ A large-scale study of 3.2 million open-source repositories found that 204% contained at least one dependency with a known critical or high-severity CVE as of January 2024.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    }
+  ]
+}

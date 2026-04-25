@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-6a418193",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0010",
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0012",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0011"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0011",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0004",
+      "DOC-0012",
+      "DOC-0008",
+      "DOC-0005",
+      "DOC-0009",
+      "DOC-0010"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Synapse AI Labs",
+      "source": "Social Media User 220",
+      "reliability_tier": 3,
+      "timestamp": 1711756800,
+      "tags": [
+        "technology",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while incr...",
+      "content": "THREAD: What the media won't tell you about Synapse AI Labs\n\n1/ The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Synapse AI Labs \u2014 Spread Chain",
+      "source": "Technology Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1711756800,
+      "tags": [
+        "technology",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while increasing compute costs...",
+      "content": "Synapse AI Labs ANNOUNCES UPDATE: TECHNOLOGY DEVELOPMENTS\n\nThe new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version. The announcement comes as the developing technology story. Observers say this could have significant implications for technology stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 2,
+      "timestamp": 1712188800,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 7.5% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Synapse AI Labs",
+      "source": "Synapse AI Labs Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1711497600,
+      "tags": [
+        "technology",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Synapse AI Labs data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Synapse AI Labs\nDate: 2024-03-25\n\nThis record confirms The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Synapse AI Labs \u2014 Accurate Report",
+      "source": "Technology Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1711411200,
+      "tags": [
+        "technology",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to ...",
+      "content": "Breaking: Synapse AI Labs makes a significant move amid changes in the technology sector\n\nThe new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for Synapse AI Labs declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Model Performance Benchmark Report",
+      "source": "Synapse AI Labs",
+      "reliability_tier": 1,
+      "timestamp": 1711324800,
+      "tags": [
+        "technology",
+        "official",
+        "primary"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version...",
+      "content": "Latency improved by 38%, while compute costs increased by 22% due to larger model size.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Synapse AI Labs \u2014 First Distorted Report",
+      "source": "The Technology Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1711497600,
+      "tags": [
+        "technology",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while increasing compute costs...",
+      "content": "WOW: Synapse AI Labs just did something unbelievable about technology??\n\nSo I was reading about this and The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 3,
+      "timestamp": 1711584000,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pacific Minerals Corp reported quarterly results in line with analyst expectatio...",
+      "content": "Pacific Minerals Corp reported quarterly results in line with analyst expectations. Revenue of $122M was up 11.7% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Synapse AI Labs",
+      "source": "Social Media User 153",
+      "reliability_tier": 3,
+      "timestamp": 1711843200,
+      "tags": [
+        "technology",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while incr...",
+      "content": "WOW: Synapse AI Labs just shocked everyone (part 3)??\n\nSo I was reading about this and The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Synapse AI Labs \u2014 Spread Chain",
+      "source": "Technology Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1711670400,
+      "tags": [
+        "technology",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while increasing compute costs...",
+      "content": "Breaking: Synapse AI Labs continues to draw attention amid the developing technology story\n\nThe new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for Synapse AI Labs declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 1,
+      "timestamp": 1711238400,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 4.7% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Vertex Solutions Quarterly Update",
+      "source": "Vertex Solutions Communications",
+      "reliability_tier": 2,
+      "timestamp": 1710892800,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Vertex Solutions reported quarterly results in line with analyst expectations. R...",
+      "content": "Vertex Solutions reported quarterly results in line with analyst expectations. Revenue of $185M was up 3.5% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-0a2c3f61",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "The Northgate school district reported a 1.0% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0006",
+      "DOC-0005",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0005",
+      "DOC-0001",
+      "DOC-0004",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 3,
+      "timestamp": 1694304000,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Atlas Manufacturing reported quarterly results in line with analyst expectations...",
+      "content": "Atlas Manufacturing reported quarterly results in line with analyst expectations. Revenue of $352M was up 8.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 2,
+      "timestamp": 1694476800,
+      "tags": [
+        "municipal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pacific Minerals Corp reported quarterly results in line with analyst expectatio...",
+      "content": "Pacific Minerals Corp reported quarterly results in line with analyst expectations. Revenue of $287M was up 2.9% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Northgate USD \u2014 Annual Enrollment Report 2023-24",
+      "source": "Northgate Unified School District",
+      "reliability_tier": 1,
+      "timestamp": 1694736000,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year, totalling 18,450 st...",
+      "content": "NORTHGATE UNIFIED SCHOOL DISTRICT\nAnnual Enrollment Statistical Report \u2014 Academic Year 2023-24\n\nTotal District Enrollment (October count): 18,450 students\nPrior Year Enrollment (2022-23): 19,057 students\nYear-over-Year Change: -607 students (-3.19%)\n\nEnrollment has declined for the third consecutive year, consistent with county-wide demographic trends. The District projects stabilisation by 2025-26 based on current birth-rate data.\nReport prepared by: Office of Assessment and Accountability, October 1, 2023.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Northgate Unified School District \u2014 Propagated Report",
+      "source": "Municipal Journal",
+      "reliability_tier": 2,
+      "timestamp": 1695081600,
+      "tags": [
+        "municipal",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: The Northgate school district reported a 1.0% decline in enr...",
+      "content": "Northgate Unified School District ANNOUNCES CONTINUED MUNICIPAL CONTROVERSY\n\nMultiple sources now confirm: The Northgate school district reported a 1.0% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students. The announcement comes as reports circulating about municipal. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Northgate Unified School District \u2014 First Distorted Report",
+      "source": "The Municipal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1694908800,
+      "tags": [
+        "municipal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The Northgate school district reported a 1.0% decline in enrollment for the 2023...",
+      "content": "THREAD: What the media won't tell you about Northgate Unified School District\n\n1/ The Northgate school district reported a 1.0% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Northgate Unified School District \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1694822400,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year,...",
+      "content": "Breaking: Northgate Unified School District makes a significant move amid changes in the municipal sector\n\nThe Northgate school district reported a 3.2% decline in enrollment for the 2023-2024 academic year, totalling 18,450 students. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Northgate Unified School District declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

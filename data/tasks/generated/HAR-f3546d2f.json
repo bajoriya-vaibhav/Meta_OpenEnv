@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-f3546d2f",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "An astronomy survey detected 5 new exoplanets within 50 light-years, including 3 in the habitable zone.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0010",
+      "DOC-0001",
+      "DOC-0012",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0009",
+      "DOC-0005",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0011"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0009",
+      "DOC-0012",
+      "DOC-0003",
+      "DOC-0008",
+      "DOC-0002",
+      "DOC-0007",
+      "DOC-0006",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0011",
+      "DOC-0001",
+      "DOC-0010"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 1,
+      "timestamp": 1711238400,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Atlas Manufacturing reported quarterly results in line with analyst expectations...",
+      "content": "Atlas Manufacturing reported quarterly results in line with analyst expectations. Revenue of $323M was up 4.7% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 3,
+      "timestamp": 1711065600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Ironclad Financial reported quarterly results in line with analyst expectations....",
+      "content": "Ironclad Financial reported quarterly results in line with analyst expectations. Revenue of $336M was up 7.0% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: DeepSky Observatory \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1711065600,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "An astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable z...",
+      "content": "Breaking: DeepSky Observatory makes a significant move amid changes in the scientific sector\n\nAn astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable zone. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for DeepSky Observatory declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: DeepSky Observatory",
+      "source": "Social Media User 337",
+      "reliability_tier": 3,
+      "timestamp": 1711497600,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "An astronomy survey detected 5 new exoplanets within 50 ligh...",
+      "content": "WOW: DeepSky Observatory just shocked everyone (part 3)??\n\nSo I was reading about this and An astronomy survey detected 5 new exoplanets within 50 light-years, including 3 in the habitable zone. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 DeepSky Observatory",
+      "source": "DeepSky Observatory Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1711152000,
+      "tags": [
+        "scientific",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of DeepSky Observatory data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 DeepSky Observatory\nDate: 2024-03-21\n\nThis record confirms An astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable zone. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: DeepSky Observatory",
+      "source": "Social Media User 909",
+      "reliability_tier": 3,
+      "timestamp": 1711411200,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "An astronomy survey detected 5 new exoplanets within 50 ligh...",
+      "content": "WOW: DeepSky Observatory just shocked everyone (part 2)??\n\nSo I was reading about this and An astronomy survey detected 5 new exoplanets within 50 light-years, including 3 in the habitable zone. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: DeepSky Observatory \u2014 Spread Chain",
+      "source": "Scientific Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1711411200,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "An astronomy survey detected 5 new exoplanets within 50 light-years, including 3...",
+      "content": "DeepSky Observatory ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nAn astronomy survey detected 5 new exoplanets within 50 light-years, including 3 in the habitable zone. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: DeepSky Observatory \u2014 Spread Chain",
+      "source": "Scientific Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1711324800,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "An astronomy survey detected 5 new exoplanets within 50 light-years, including 3...",
+      "content": "Breaking: DeepSky Observatory continues to draw attention amid the developing scientific story\n\nAn astronomy survey detected 5 new exoplanets within 50 light-years, including 3 in the habitable zone. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for DeepSky Observatory declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: DeepSky Observatory \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1711152000,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "An astronomy survey detected 5 new exoplanets within 50 light-years, including 3...",
+      "content": "THREAD: What the media won't tell you about DeepSky Observatory\n\n1/ An astronomy survey detected 5 new exoplanets within 50 light-years, including 3 in the habitable zone.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 2,
+      "timestamp": 1711497600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pacific Minerals Corp reported quarterly results in line with analyst expectatio...",
+      "content": "Pacific Minerals Corp reported quarterly results in line with analyst expectations. Revenue of $134M was up 9.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Nearby Exoplanet Survey Results",
+      "source": "Astrophysical Journal",
+      "reliability_tier": 1,
+      "timestamp": 1710979200,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "An astronomy survey detected 17 new exoplanets within 50 light-years, including 3 in the habitable zone....",
+      "content": "17 exoplanets were identified within 50 light-years, 3 of which lie in habitable zones.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 2,
+      "timestamp": 1710547200,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 2.2% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

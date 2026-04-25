@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-4da2e30d",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "The Upper Dawnton River Basin restoration project removed 94,000 metric tons of legacy phosphorus sediment between 2020 and 2023, reducing harmful algal bloom frequency by 67%.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0006",
+      "DOC-0004",
+      "DOC-0005"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0004",
+      "DOC-0003",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Upper Dawnton River Basin Restoration Programme \u2014 Phase II Completion Report",
+      "source": "Upper Dawnton River Basin Authority / EPA Region 5",
+      "reliability_tier": 1,
+      "timestamp": 1707696000,
+      "tags": [
+        "environmental",
+        "official",
+        "primary"
+      ],
+      "snippet": "The Upper Dawnton River Basin restoration project removed 94,000 metric tons of legacy phosphorus sediment between 2020 ...",
+      "content": "UPPER DAWNTON RIVER BASIN AUTHORITY\nPhase II Restoration Programme \u2014 Completion and Outcome Report\nCo-published with EPA Region 5 | February 12, 2024\n\nPROGRAMME SUMMARY\nThe Phase II Sediment Remediation Programme (2020-2023) targeted legacy phosphorus-laden sediment deposited during historical agricultural and industrial discharge across the Upper Dawnton River Basin (1,840 km\u00b2 catchment area).\n\nREMEDIATION OUTCOMES\nTotal phosphorus-laden sediment removed: 94,000 metric tons\nRemoval method: Hydraulic dredging (63%) and mechanical capping (37%)\nRiver reaches treated: 148 km of main stem and major tributaries\nCost: $127M (federal: $89M, state: $28M, local: $10M)\n\nECOLOGICAL RESPONSE (2020-2023 monitoring data)\nHarmful algal bloom (HAB) events per season:\n  Baseline (2017-2019 average): 18 events/season\n  Post-remediation (2023): 6 events/season\n  Reduction: -12 events (-66.7%, rounded to 67%)\n\nTotal phosphorus concentration (main stem, August mean):\n  Baseline: 0.18 mg/L\n  2023: 0.09 mg/L (-50%)\n\nDissolved oxygen compliance (>5 mg/L threshold): 91% of monitoring days in 2023 vs. 58% baseline. Macroinvertebrate index scores improved from 'Poor' to 'Fair' in 11 of 14 monitored reaches.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Upper Dawnton River Basin Authority \u2014 Propagated Report",
+      "source": "Environmental Journal",
+      "reliability_tier": 2,
+      "timestamp": 1708041600,
+      "tags": [
+        "environmental",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: The Upper Dawnton River Basin restoration project removed 94...",
+      "content": "Breaking: Upper Dawnton River Basin Authority faces continued scrutiny amid reports circulating about environmental\n\nMultiple sources now confirm: The Upper Dawnton River Basin restoration project removed 94,000 metric tons of legacy phosphorus sediment between 2020 and 2023, reducing harmful algal bloom frequency by 67%. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in environmental strategy. A spokesperson for Upper Dawnton River Basin Authority declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Upper Dawnton River Basin Authority \u2014 First Distorted Report",
+      "source": "The Environmental Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1707868800,
+      "tags": [
+        "environmental",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The Upper Dawnton River Basin restoration project removed 94,000 metric tons of ...",
+      "content": "THREAD: What the media won't tell you about Upper Dawnton River Basin Authority\n\n1/ The Upper Dawnton River Basin restoration project removed 94,000 metric tons of legacy phosphorus sediment between 2020 and 2023, reducing harmful algal bloom frequency by 67%.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708560000,
+      "tags": [
+        "environmental",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 2.3% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 3,
+      "timestamp": 1707868800,
+      "tags": [
+        "environmental",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Atlas Manufacturing reported quarterly results in line with analyst expectations...",
+      "content": "Atlas Manufacturing reported quarterly results in line with analyst expectations. Revenue of $115M was up 9.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Upper Dawnton River Basin Authority \u2014 Accurate Report",
+      "source": "Environmental Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1707782400,
+      "tags": [
+        "environmental",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The Upper Dawnton River Basin restoration project removed 94,000 metric tons of legacy phosphorus se...",
+      "content": "Upper Dawnton River Basin Authority ANNOUNCES KEY ENVIRONMENTAL UPDATE\n\nThe Upper Dawnton River Basin restoration project removed 94,000 metric tons of legacy phosphorus sediment between 2020 and 2023, reducing harmful algal bloom frequency by 67%. The announcement comes as changes in the environmental sector. Observers say this could have significant implications for environmental stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    }
+  ]
+}

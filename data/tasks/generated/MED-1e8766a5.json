@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-1e8766a5",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0004",
+      "DOC-0003",
+      "DOC-0005"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 3,
+      "timestamp": 1712016000,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 10.7% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Synapse AI Labs \u2014 Accurate Report",
+      "source": "Technology Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1711411200,
+      "tags": [
+        "technology",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to ...",
+      "content": "Synapse AI Labs ANNOUNCES KEY TECHNOLOGY UPDATE\n\nThe new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version. The announcement comes as changes in the technology sector. Observers say this could have significant implications for technology stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Model Performance Benchmark Report",
+      "source": "Synapse AI Labs",
+      "reliability_tier": 1,
+      "timestamp": 1711324800,
+      "tags": [
+        "technology",
+        "official",
+        "primary"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version...",
+      "content": "Latency improved by 38%, while compute costs increased by 22% due to larger model size.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Synapse AI Labs \u2014 Propagated Report",
+      "source": "Technology Journal",
+      "reliability_tier": 2,
+      "timestamp": 1711670400,
+      "tags": [
+        "technology",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: The new AI model reduced inference latency by 38% while incr...",
+      "content": "Breaking: Synapse AI Labs faces continued scrutiny amid reports circulating about technology\n\nMultiple sources now confirm: The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for Synapse AI Labs declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Synapse AI Labs \u2014 First Distorted Report",
+      "source": "The Technology Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1711497600,
+      "tags": [
+        "technology",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The new AI model reduced inference latency by 38% while increasing compute costs...",
+      "content": "WOW: Synapse AI Labs just did something unbelievable about technology??\n\nSo I was reading about this and The new AI model reduced inference latency by 38% while increasing compute costs by 22% compared to the previous version. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 2,
+      "timestamp": 1711843200,
+      "tags": [
+        "technology",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across workforce development. Key highlights include expanded partnerships and a 2.9% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

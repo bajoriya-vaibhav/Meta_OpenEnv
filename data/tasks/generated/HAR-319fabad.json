@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-319fabad",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "A physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error margins.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0010",
+      "DOC-0012",
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0011",
+      "DOC-0008"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0005",
+      "DOC-0012",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0011",
+      "DOC-0003",
+      "DOC-0001",
+      "DOC-0010",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0004"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Quantum Dynamics Lab \u2014 Spread Chain",
+      "source": "Scientific Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1709510400,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "A physics experiment measured a 0.02% deviation from predicted values under extr...",
+      "content": "Quantum Dynamics Lab ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nA physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error margins. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Quantum Dynamics Lab \u2014 Spread Chain",
+      "source": "Scientific Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1709424000,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "A physics experiment measured a 0.02% deviation from predicted values under extr...",
+      "content": "Quantum Dynamics Lab ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nA physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error margins. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 3,
+      "timestamp": 1708992000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 5.7% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Quantum Dynamics Lab",
+      "source": "Quantum Dynamics Lab Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1709251200,
+      "tags": [
+        "scientific",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Quantum Dynamics Lab data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Quantum Dynamics Lab\nDate: 2024-02-28\n\nThis record confirms A physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error margins. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Horizon Energy Group Quarterly Update",
+      "source": "Horizon Energy Group Communications",
+      "reliability_tier": 1,
+      "timestamp": 1709078400,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Horizon Energy Group reported quarterly results in line with analyst expectation...",
+      "content": "Horizon Energy Group reported quarterly results in line with analyst expectations. Revenue of $411M was up 4.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 2,
+      "timestamp": 1709596800,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "SummitView Capital reported quarterly results in line with analyst expectations....",
+      "content": "SummitView Capital reported quarterly results in line with analyst expectations. Revenue of $115M was up 5.3% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Quantum Dynamics Lab \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709164800,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A physics experiment measured a 0.02% deviation from predicted values under extreme conditions, with...",
+      "content": "Quantum Dynamics Lab ANNOUNCES KEY SCIENTIFIC UPDATE\n\nA physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error margins. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "High-Energy Physics Measurement Report",
+      "source": "Physical Review Letters",
+      "reliability_tier": 1,
+      "timestamp": 1709078400,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error ...",
+      "content": "Observed deviation was 0.02%, consistent with theoretical uncertainty bounds.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 2,
+      "timestamp": 1708646400,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 4.6% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Quantum Dynamics Lab",
+      "source": "Social Media User 435",
+      "reliability_tier": 3,
+      "timestamp": 1709510400,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A physics experiment measured a 0.02% deviation from predict...",
+      "content": "THREAD: What the media won't tell you about Quantum Dynamics Lab\n\n1/ A physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error margins.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Quantum Dynamics Lab",
+      "source": "Social Media User 112",
+      "reliability_tier": 3,
+      "timestamp": 1709596800,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A physics experiment measured a 0.02% deviation from predict...",
+      "content": "THREAD: What the media won't tell you about Quantum Dynamics Lab\n\n1/ A physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error margins.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Quantum Dynamics Lab \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1709251200,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A physics experiment measured a 0.02% deviation from predicted values under extr...",
+      "content": "THREAD: What the media won't tell you about Quantum Dynamics Lab\n\n1/ A physics experiment measured a 0.02% deviation from predicted values under extreme conditions, within acceptable error margins.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    }
+  ]
+}

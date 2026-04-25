@@ -1,0 +1,125 @@
+{
+  "task_id": "MED-9b972c7b",
+  "difficulty": "medium",
+  "max_steps": 25,
+  "claim": "Country A and Country B signed a trade agreement reducing tariffs on 123% of goods over a 5-year phased schedule.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0005",
+      "title": "Report: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 2,
+      "timestamp": 1713398400,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across environmental compliance. Key highlights include expanded partnerships and a 7.5% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Post: Atlas Manufacturing Quarterly Update",
+      "source": "Atlas Manufacturing Communications",
+      "reliability_tier": 3,
+      "timestamp": 1713657600,
+      "tags": [
+        "geopolitical",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Atlas Manufacturing reported quarterly results in line with analyst expectations...",
+      "content": "Atlas Manufacturing reported quarterly results in line with analyst expectations. Revenue of $65M was up 11.2% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Country A \u2014 Accurate Report",
+      "source": "Geopolitical Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1712966400,
+      "tags": [
+        "geopolitical",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phas...",
+      "content": "Country A ANNOUNCES KEY GEOPOLITICAL UPDATE\n\nCountry A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule. The announcement comes as changes in the geopolitical sector. Observers say this could have significant implications for geopolitical stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Blog: Country A \u2014 First Distorted Report",
+      "source": "The Geopolitical Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1713052800,
+      "tags": [
+        "geopolitical",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing tariffs on 123% of goo...",
+      "content": "THREAD: What the media won't tell you about Country A\n\n1/ Country A and Country B signed a trade agreement reducing tariffs on 123% of goods over a 5-year phased schedule.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Follow-up: Country A \u2014 Propagated Report",
+      "source": "Geopolitical Journal",
+      "reliability_tier": 2,
+      "timestamp": 1713225600,
+      "tags": [
+        "geopolitical",
+        "propagation",
+        "secondary"
+      ],
+      "snippet": "Follow-up coverage: Country A and Country B signed a trade agreement reducing ta...",
+      "content": "Country A ANNOUNCES CONTINUED GEOPOLITICAL CONTROVERSY\n\nMultiple sources now confirm: Country A and Country B signed a trade agreement reducing tariffs on 123% of goods over a 5-year phased schedule. The announcement comes as reports circulating about geopolitical. Observers say this could have significant implications for geopolitical stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Bilateral Trade Agreement Summary",
+      "source": "Ministry of Trade",
+      "reliability_tier": 1,
+      "timestamp": 1712880000,
+      "tags": [
+        "geopolitical",
+        "official",
+        "primary"
+      ],
+      "snippet": "Country A and Country B signed a trade agreement reducing tariffs on 82% of goods over a 5-year phased schedule....",
+      "content": "Tariffs will be reduced on 82% of traded goods over five years under the agreement.",
+      "is_mutated": false
+    }
+  ]
+}

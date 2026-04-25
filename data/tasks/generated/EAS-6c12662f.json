@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-6c12662f",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Researchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 9 mmHg in adults with hypertension over 12 weeks.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0002"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Walking Intervention and Blood Pressure: A Randomised Controlled Trial",
+      "source": "American Heart Journal",
+      "reliability_tier": 1,
+      "timestamp": 1705881600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "Researchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 6 ...",
+      "content": "RANDOMISED CONTROLLED TRIAL \u2014 American Heart Journal\nPublished: January 22, 2024\n\nSTUDY DESIGN: 12-week RCT; n=210 adults with Stage 1 hypertension (SBP 130-159 mmHg). Intervention: 30 min brisk walking daily. Control: usual care.\n\nPRIMARY OUTCOME: Change in systolic blood pressure (SBP) at 12 weeks.\nResults: Intervention group mean SBP reduction: -6.2 mmHg (SD \u00b13.1)\nControl group mean SBP change: -1.1 mmHg (SD \u00b12.8)\nBetween-group difference: -5.1 mmHg (p<0.001)\n\nCaldera University, Department of Preventive Medicine.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Caldera University \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1706140800,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "Researchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure...",
+      "content": "Breaking: Caldera University shocks the industry amid growing scrutiny in the scientific sector\n\nResearchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 9 mmHg in adults with hypertension over 12 weeks. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Caldera University declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Caldera University \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1705968000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Researchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure...",
+      "content": "Breaking: Caldera University makes a significant move amid changes in the scientific sector\n\nResearchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 6 mmHg in adults with hypertension over 12 weeks. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Caldera University declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

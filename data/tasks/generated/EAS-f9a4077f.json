@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-f9a4077f",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A NASA-funded study estimated the Helios-4 asteroid has a 0.0% probability of Earth impact within the next 100 years.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Helios-4 asteroid \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709251200,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A NASA-funded study estimated the Helios-4 asteroid has a 0.003% probability of Earth impact within ...",
+      "content": "Breaking: Helios-4 asteroid makes a significant move amid changes in the scientific sector\n\nA NASA-funded study estimated the Helios-4 asteroid has a 0.003% probability of Earth impact within the next 100 years. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Helios-4 asteroid declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Orbital Mechanics Analysis: Near-Earth Object 2024 HX4 (Helios-4)",
+      "source": "NASA Jet Propulsion Laboratory \u2014 Center for Near Earth Object Studies",
+      "reliability_tier": 1,
+      "timestamp": 1709164800,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A NASA-funded study estimated the Helios-4 asteroid has a 0.003% probability of Earth impact within the next 100 years....",
+      "content": "NASA CNEOS IMPACT RISK ASSESSMENT\nObject: 2024 HX4 (Helios-4) | Report Date: February 29, 2024\n\nBased on 14 months of optical and radar observations, our orbital solution for Helios-4 yields a Palermo Scale value of -2.7, corresponding to a cumulative 100-year Earth impact probability of 0.003% (3 in 100,000).\n\nThis probability is consistent with background impact risk for objects of this size class (~240m diameter). The object will be observed again during its 2031 close approach, at which time uncertainty is expected to narrow.\nRisk classification: GREEN (routine monitoring).",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Helios-4 asteroid \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1709424000,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "A NASA-funded study estimated the Helios-4 asteroid has a 0.0% probability of Earth impact within th...",
+      "content": "Helios-4 asteroid ANNOUNCES SHOCKING SCIENTIFIC REVELATION\n\nA NASA-funded study estimated the Helios-4 asteroid has a 0.0% probability of Earth impact within the next 100 years. The announcement comes as growing scrutiny in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

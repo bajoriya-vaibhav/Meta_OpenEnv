@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-ef93fcc6",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 16.8% over three years, saving an estimated $890M in Medicare expenditure.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "National Readmission Reduction Initiative \u2014 3-Year Outcome Report",
+      "source": "Centre for Hospital Quality Improvement / Department of Health and Human Services",
+      "reliability_tier": 1,
+      "timestamp": 1709251200,
+      "tags": [
+        "healthcare",
+        "official",
+        "primary"
+      ],
+      "snippet": "A national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 11.2% over thre...",
+      "content": "CENTRE FOR HOSPITAL QUALITY IMPROVEMENT\nNational Readmission Reduction Initiative (NRRI) \u2014 3-Year Outcome Report\nPublished: March 1, 2024\n\nPROGRAMME BACKGROUND\nThe NRRI enrolled 4,218 acute care hospitals beginning January 2021, implementing structured care transition protocols including: pharmacist-led medication reconciliation, nurse navigator post-discharge calls (Days 2, 7, and 14), and primary care appointment scheduling within 7 days of discharge.\n\nPRIMARY OUTCOME \u2014 30-DAY ALL-CAUSE READMISSION RATE\nBaseline (calendar year 2020): 15.8%\nYear 1 (2021):                 14.4%\nYear 2 (2022):                 12.6%\nYear 3 (2023):                 11.2%\nTotal reduction:               -4.6 percentage points (-29.1%)\n\nFINANCIAL IMPACT (Medicare Fee-for-Service claims analysis)\nAverted readmissions (2021-2023): approximately 218,000 hospitalisation episodes\nEstimated gross Medicare savings: $890M over 3 years\nProgramme implementation cost (federal grant): $124M\nNet savings: $766M\n\nCONDITION-SPECIFIC REDUCTIONS:\n  Heart failure: 15.8% \u2192 9.7% (-38.6%)\n  Pneumonia: 14.1% \u2192 10.4% (-26.2%)\n  COPD: 20.2% \u2192 15.8% (-21.8%)\n\nParticipating hospitals with \u226580% protocol adherence achieved 2\u00d7 the readmission reduction compared to low-adherence sites.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Centre for Hospital Quality Improvement \u2014 Accurate Report",
+      "source": "Healthcare Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709337600,
+      "tags": [
+        "healthcare",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8...",
+      "content": "Breaking: Centre for Hospital Quality Improvement makes a significant move amid changes in the healthcare sector\n\nA national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 11.2% over three years, saving an estimated $890M in Medicare expenditure. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in healthcare strategy. A spokesperson for Centre for Hospital Quality Improvement declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Centre for Hospital Quality Improvement \u2014 Distorted Account",
+      "source": "Healthcare Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1709510400,
+      "tags": [
+        "healthcare",
+        "mutation_point"
+      ],
+      "snippet": "A national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8...",
+      "content": "Centre for Hospital Quality Improvement ANNOUNCES SHOCKING HEALTHCARE REVELATION\n\nA national hospital readmission reduction programme cut 30-day all-cause readmission rates from 15.8% to 16.8% over three years, saving an estimated $890M in Medicare expenditure. The announcement comes as growing scrutiny in the healthcare sector. Observers say this could have significant implications for healthcare stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

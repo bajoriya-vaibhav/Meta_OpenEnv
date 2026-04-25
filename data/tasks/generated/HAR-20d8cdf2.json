@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-20d8cdf2",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "A peer-reviewed study found that the drug Neovex reduced tumour size by 17% in Phase II trials, with 12% of participants experiencing serious adverse events.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0012",
+      "DOC-0010",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0009",
+      "DOC-0008",
+      "DOC-0011"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0012",
+      "DOC-0001",
+      "DOC-0006",
+      "DOC-0008",
+      "DOC-0005",
+      "DOC-0004",
+      "DOC-0007",
+      "DOC-0011",
+      "DOC-0002",
+      "DOC-0010",
+      "DOC-0003",
+      "DOC-0009"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 3,
+      "timestamp": 1699142400,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Public Health Alliance released its annual report covering activities across...",
+      "content": "The Public Health Alliance released its annual report covering activities across digital infrastructure. Key highlights include expanded partnerships and a 5.9% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Phase II Clinical Trial Results: Neovex in Advanced Colorectal Cancer",
+      "source": "Journal of Clinical Oncology",
+      "reliability_tier": 1,
+      "timestamp": 1699401600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tumour size by 34% in Phase II trials, with 12% of participants...",
+      "content": "ORIGINAL ARTICLE \u2014 Journal of Clinical Oncology\nPublished: November 8, 2023 | DOI: 10.1200/JCO.23.01847\n\nABSTRACT\nBackground: Neovex (compound NVX-440) is a novel KRAS inhibitor.\nMethods: Randomised Phase II trial, n=184 patients with advanced colorectal cancer (KRAS G12C mutation). Primary endpoint: objective response rate.\n\nResults: Neovex demonstrated a mean tumour size reduction of 34% (95% CI: 28.4\u201339.6%) in the intent-to-treat population. Serious adverse events (Grade \u22653) occurred in 12% of participants (n=22), primarily hepatotoxicity and fatigue. No treatment-related deaths were observed.\n\nConclusions: Neovex shows clinically meaningful activity. Phase III investigation is warranted.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Neovex \u2014 Spread Chain",
+      "source": "Scientific Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1699833600,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tumour size by 17% in P...",
+      "content": "Breaking: Neovex continues to draw attention amid the developing scientific story\n\nA peer-reviewed study found that the drug Neovex reduced tumour size by 17% in Phase II trials, with 12% of participants experiencing serious adverse events. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Neovex declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Neovex",
+      "source": "Social Media User 777",
+      "reliability_tier": 3,
+      "timestamp": 1699920000,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tum...",
+      "content": "THREAD: What the media won't tell you about Neovex\n\n1/ A peer-reviewed study found that the drug Neovex reduced tumour size by 17% in Phase II trials, with 12% of participants experiencing serious adverse events.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Neovex \u2014 Spread Chain",
+      "source": "Scientific Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1699747200,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tumour size by 17% in P...",
+      "content": "Neovex ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nA peer-reviewed study found that the drug Neovex reduced tumour size by 17% in Phase II trials, with 12% of participants experiencing serious adverse events. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Neovex \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1699574400,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tumour size by 17% in P...",
+      "content": "WOW: Neovex just did something unbelievable about scientific??\n\nSo I was reading about this and A peer-reviewed study found that the drug Neovex reduced tumour size by 17% in Phase II trials, with 12% of participants experiencing serious adverse events. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Neovex",
+      "source": "Social Media User 801",
+      "reliability_tier": 3,
+      "timestamp": 1699833600,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tum...",
+      "content": "WOW: Neovex just shocked everyone (part 2)??\n\nSo I was reading about this and A peer-reviewed study found that the drug Neovex reduced tumour size by 17% in Phase II trials, with 12% of participants experiencing serious adverse events. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 2,
+      "timestamp": 1700092800,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Clearwater Analytics reported quarterly results in line with analyst expectation...",
+      "content": "Clearwater Analytics reported quarterly results in line with analyst expectations. Revenue of $325M was up 10.6% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Neovex",
+      "source": "Neovex Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1699574400,
+      "tags": [
+        "scientific",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Neovex data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Neovex\nDate: 2023-11-08\n\nThis record confirms A peer-reviewed study found that the drug Neovex reduced tumour size by 34% in Phase II trials, with 12% of participants experiencing serious adverse events. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 2,
+      "timestamp": 1699228800,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The Regional Development Authority released its annual report covering activitie...",
+      "content": "The Regional Development Authority released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 6.1% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Neovex \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1699488000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A peer-reviewed study found that the drug Neovex reduced tumour size by 34% in Phase II trials, with...",
+      "content": "Breaking: Neovex makes a significant move amid changes in the scientific sector\n\nA peer-reviewed study found that the drug Neovex reduced tumour size by 34% in Phase II trials, with 12% of participants experiencing serious adverse events. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in scientific strategy. A spokesperson for Neovex declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Cascade Biotech Quarterly Update",
+      "source": "Cascade Biotech Communications",
+      "reliability_tier": 1,
+      "timestamp": 1699833600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 9.2% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-1785668e",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "Researchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 6 mmHg in adults with hypertension over 12 weeks.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0011",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0012",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0009",
+      "DOC-0010"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0008",
+      "DOC-0011",
+      "DOC-0006",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0007",
+      "DOC-0005",
+      "DOC-0012",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0010"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Caldera University",
+      "source": "Social Media User 367",
+      "reliability_tier": 3,
+      "timestamp": 1706400000,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Researchers at Caldera University found that daily 30-minute...",
+      "content": "THREAD: What the media won't tell you about Caldera University\n\n1/ Researchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 6 mmHg in adults with hypertension over 12 weeks.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1705881600,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The International Trade Council released its annual report covering activities a...",
+      "content": "The International Trade Council released its annual report covering activities across renewable energy. Key highlights include expanded partnerships and a 7.4% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Caldera University \u2014 Spread Chain",
+      "source": "Scientific Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1706313600,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "Researchers at Caldera University found that daily 30-minute walking reduced sys...",
+      "content": "Caldera University ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nResearchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 6 mmHg in adults with hypertension over 12 weeks. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Walking Intervention and Blood Pressure: A Randomised Controlled Trial",
+      "source": "American Heart Journal",
+      "reliability_tier": 1,
+      "timestamp": 1705881600,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "Researchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 6 ...",
+      "content": "RANDOMISED CONTROLLED TRIAL \u2014 American Heart Journal\nPublished: January 22, 2024\n\nSTUDY DESIGN: 12-week RCT; n=210 adults with Stage 1 hypertension (SBP 130-159 mmHg). Intervention: 30 min brisk walking daily. Control: usual care.\n\nPRIMARY OUTCOME: Change in systolic blood pressure (SBP) at 12 weeks.\nResults: Intervention group mean SBP reduction: -6.2 mmHg (SD \u00b13.1)\nControl group mean SBP change: -1.1 mmHg (SD \u00b12.8)\nBetween-group difference: -5.1 mmHg (p<0.001)\n\nCaldera University, Department of Preventive Medicine.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Caldera University \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1705968000,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Researchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure...",
+      "content": "Caldera University ANNOUNCES KEY SCIENTIFIC UPDATE\n\nResearchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 6 mmHg in adults with hypertension over 12 weeks. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Caldera University \u2014 First Distorted Report",
+      "source": "The Scientific Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1706054400,
+      "tags": [
+        "scientific",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "Researchers at Caldera University found that daily 30-minute walking reduced sys...",
+      "content": "WOW: Caldera University just did something unbelievable about scientific??\n\nSo I was reading about this and Researchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 6 mmHg in adults with hypertension over 12 weeks. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Caldera University",
+      "source": "Social Media User 236",
+      "reliability_tier": 3,
+      "timestamp": 1706313600,
+      "tags": [
+        "scientific",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "Researchers at Caldera University found that daily 30-minute...",
+      "content": "THREAD: What the media won't tell you about Caldera University\n\n1/ Researchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 6 mmHg in adults with hypertension over 12 weeks.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Caldera University \u2014 Spread Chain",
+      "source": "Scientific Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1706227200,
+      "tags": [
+        "scientific",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "Researchers at Caldera University found that daily 30-minute walking reduced sys...",
+      "content": "Caldera University ANNOUNCES UPDATE: SCIENTIFIC DEVELOPMENTS\n\nResearchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 6 mmHg in adults with hypertension over 12 weeks. The announcement comes as the developing scientific story. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Clearwater Analytics Quarterly Update",
+      "source": "Clearwater Analytics Communications",
+      "reliability_tier": 3,
+      "timestamp": 1706140800,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Clearwater Analytics reported quarterly results in line with analyst expectation...",
+      "content": "Clearwater Analytics reported quarterly results in line with analyst expectations. Revenue of $384M was up 11.1% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Caldera University",
+      "source": "Caldera University Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1706054400,
+      "tags": [
+        "scientific",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Caldera University data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Caldera University\nDate: 2024-01-22\n\nThis record confirms Researchers at Caldera University found that daily 30-minute walking reduced systolic blood pressure by an average of 6 mmHg in adults with hypertension over 12 weeks. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 1,
+      "timestamp": 1706400000,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pacific Minerals Corp reported quarterly results in line with analyst expectatio...",
+      "content": "Pacific Minerals Corp reported quarterly results in line with analyst expectations. Revenue of $155M was up 4.0% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 2,
+      "timestamp": 1706486400,
+      "tags": [
+        "scientific",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "The National Research Foundation released its annual report covering activities ...",
+      "content": "The National Research Foundation released its annual report covering activities across supply chain management. Key highlights include expanded partnerships and a 8.6% increase in participation. The report is available on their website.",
+      "is_mutated": false
+    }
+  ]
+}

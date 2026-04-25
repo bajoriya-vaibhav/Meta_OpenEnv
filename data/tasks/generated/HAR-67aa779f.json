@@ -1,0 +1,235 @@
+{
+  "task_id": "HAR-67aa779f",
+  "difficulty": "hard",
+  "max_steps": 35,
+  "claim": "The new regulation imposes fines of up to $2 million or 6% of annual revenue, whichever is higher, for non-compliance.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0004",
+    "gt_provenance_chain": [
+      "DOC-0009",
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0004",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008"
+    ],
+    "gt_timeline": [
+      "DOC-0009",
+      "DOC-0012",
+      "DOC-0001",
+      "DOC-0003",
+      "DOC-0004",
+      "DOC-0002",
+      "DOC-0011",
+      "DOC-0005",
+      "DOC-0006",
+      "DOC-0007",
+      "DOC-0008",
+      "DOC-0010"
+    ],
+    "gt_conflict_fields": [
+      "methodology",
+      "secondary_figures"
+    ],
+    "corpus_ids": [
+      "DOC-0006",
+      "DOC-0004",
+      "DOC-0012",
+      "DOC-0001",
+      "DOC-0010",
+      "DOC-0005",
+      "DOC-0011",
+      "DOC-0008",
+      "DOC-0002",
+      "DOC-0009",
+      "DOC-0007",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0006",
+      "title": "Update 2: Regulatory Authority \u2014 Spread Chain",
+      "source": "Legal Press 2",
+      "reliability_tier": 2,
+      "timestamp": 1704499200,
+      "tags": [
+        "legal",
+        "propagation",
+        "chain_1"
+      ],
+      "snippet": "The new regulation imposes fines of up to $2 million or 6% of annual revenue, wh...",
+      "content": "Regulatory Authority ANNOUNCES UPDATE: LEGAL DEVELOPMENTS\n\nThe new regulation imposes fines of up to $2 million or 6% of annual revenue, whichever is higher, for non-compliance. The announcement comes as the developing legal story. Observers say this could have significant implications for legal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0004",
+      "title": "Blog: Regulatory Authority \u2014 First Distorted Report",
+      "source": "The Legal Insider Blog",
+      "reliability_tier": 3,
+      "timestamp": 1704240000,
+      "tags": [
+        "legal",
+        "blog",
+        "mutation_origin"
+      ],
+      "snippet": "The new regulation imposes fines of up to $2 million or 6% of annual revenue, wh...",
+      "content": "THREAD: What the media won't tell you about Regulatory Authority\n\n1/ The new regulation imposes fines of up to $2 million or 6% of annual revenue, whichever is higher, for non-compliance.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0012",
+      "title": "Post: Ironclad Financial Quarterly Update",
+      "source": "Ironclad Financial Communications",
+      "reliability_tier": 3,
+      "timestamp": 1703894400,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Ironclad Financial reported quarterly results in line with analyst expectations....",
+      "content": "Ironclad Financial reported quarterly results in line with analyst expectations. Revenue of $443M was up 9.9% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Regulatory Compliance Framework 2024",
+      "source": "Regulatory Authority",
+      "reliability_tier": 1,
+      "timestamp": 1704067200,
+      "tags": [
+        "legal",
+        "official",
+        "primary"
+      ],
+      "snippet": "The new regulation imposes fines of up to $2 million or 4% of annual revenue, whichever is higher, for non-compliance....",
+      "content": "Penalties include fines up to $2M or 4% of annual global revenue, whichever is greater.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0010",
+      "title": "Report: Pinnacle Industries Quarterly Update",
+      "source": "Pinnacle Industries Communications",
+      "reliability_tier": 2,
+      "timestamp": 1704844800,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pinnacle Industries reported quarterly results in line with analyst expectations...",
+      "content": "Pinnacle Industries reported quarterly results in line with analyst expectations. Revenue of $104M was up 4.7% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0005",
+      "title": "Update 1: Regulatory Authority \u2014 Spread Chain",
+      "source": "Legal Press 1",
+      "reliability_tier": 2,
+      "timestamp": 1704412800,
+      "tags": [
+        "legal",
+        "propagation",
+        "chain_0"
+      ],
+      "snippet": "The new regulation imposes fines of up to $2 million or 6% of annual revenue, wh...",
+      "content": "Breaking: Regulatory Authority continues to draw attention amid the developing legal story\n\nThe new regulation imposes fines of up to $2 million or 6% of annual revenue, whichever is higher, for non-compliance. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in legal strategy. A spokesperson for Regulatory Authority declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0011",
+      "title": "Report: Pacific Minerals Corp Quarterly Update",
+      "source": "Pacific Minerals Corp Communications",
+      "reliability_tier": 2,
+      "timestamp": 1704326400,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "Pacific Minerals Corp reported quarterly results in line with analyst expectatio...",
+      "content": "Pacific Minerals Corp reported quarterly results in line with analyst expectations. Revenue of $335M was up 7.4% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0008",
+      "title": "Viral Post 2: Regulatory Authority",
+      "source": "Social Media User 931",
+      "reliability_tier": 3,
+      "timestamp": 1704585600,
+      "tags": [
+        "legal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The new regulation imposes fines of up to $2 million or 6% o...",
+      "content": "WOW: Regulatory Authority just shocked everyone (part 3)??\n\nSo I was reading about this and The new regulation imposes fines of up to $2 million or 6% of annual revenue, whichever is higher, for non-compliance. Honestly not surprised given what's been happening lately. Share this before it gets taken down. This is huge.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "Secondary Official Record \u2014 Regulatory Authority",
+      "source": "Regulatory Authority Internal Audit",
+      "reliability_tier": 1,
+      "timestamp": 1704240000,
+      "tags": [
+        "legal",
+        "official",
+        "conflicting"
+      ],
+      "snippet": "Secondary analysis of Regulatory Authority data with minor discrepancy.",
+      "content": "OFFICIAL RECORD \u2014 Regulatory Authority\nDate: 2024-01-01\n\nThis record confirms The new regulation imposes fines of up to $2 million or 4% of annual revenue, whichever is higher, for non-compliance. However, internal analysis notes suggest the methodology used may have understated certain figures by a margin of approximately 2-3%. Further review is pending.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0009",
+      "title": "Report: SummitView Capital Quarterly Update",
+      "source": "SummitView Capital Communications",
+      "reliability_tier": 1,
+      "timestamp": 1703721600,
+      "tags": [
+        "legal",
+        "noise",
+        "unrelated"
+      ],
+      "snippet": "SummitView Capital reported quarterly results in line with analyst expectations....",
+      "content": "SummitView Capital reported quarterly results in line with analyst expectations. Revenue of $483M was up 8.8% year-over-year. CEO remarked conditions remain favourable heading into the next quarter.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0007",
+      "title": "Viral Post 1: Regulatory Authority",
+      "source": "Social Media User 354",
+      "reliability_tier": 3,
+      "timestamp": 1704499200,
+      "tags": [
+        "legal",
+        "amplifier",
+        "social_media"
+      ],
+      "snippet": "The new regulation imposes fines of up to $2 million or 6% o...",
+      "content": "THREAD: What the media won't tell you about Regulatory Authority\n\n1/ The new regulation imposes fines of up to $2 million or 6% of annual revenue, whichever is higher, for non-compliance.\n2/ And that's just the beginning. Do your own research.\n3/ Like and repost if you think people need to see this.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "News: Regulatory Authority \u2014 Accurate Report",
+      "source": "Legal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1704153600,
+      "tags": [
+        "legal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "The new regulation imposes fines of up to $2 million or 4% of annual revenue, whichever is higher, f...",
+      "content": "Breaking: Regulatory Authority makes a significant move amid changes in the legal sector\n\nThe new regulation imposes fines of up to $2 million or 4% of annual revenue, whichever is higher, for non-compliance. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in legal strategy. A spokesperson for Regulatory Authority declined to comment beyond the official statement.",
+      "is_mutated": false
+    }
+  ]
+}

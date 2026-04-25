@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-73266d49",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Clearwater County approved a $8.5M bond measure for water infrastructure upgrades, passing with 61% voter approval at the November 2023 election.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "distortion",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0001",
+      "title": "Clearwater County \u2014 Measure W Canvass of Returns, November 2023",
+      "source": "Clearwater County Registrar of Voters",
+      "reliability_tier": 1,
+      "timestamp": 1699315200,
+      "tags": [
+        "municipal",
+        "official",
+        "primary"
+      ],
+      "snippet": "Clearwater County approved a $28.5M bond measure for water infrastructure upgrades, passing with 61% voter approval at t...",
+      "content": "CLEARWATER COUNTY REGISTRAR OF VOTERS\nOfficial Canvass of Returns \u2014 General Election, November 7, 2023\n\nMEASURE W: WATER INFRASTRUCTURE GENERAL OBLIGATION BOND\nBallot question: Shall Clearwater County issue general obligation bonds in the amount of $28,500,000 for the purposes of replacing aging water mains (est. average age: 67 years), upgrading the Eastside Water Treatment Plant filtration system, and installing SCADA monitoring across 14 pump stations?\n\nYES votes: 18,247 (61.3%)\nNO votes:  11,511 (38.7%)\nTotal ballots cast: 29,758 | Registered voters: 54,112\nTurnout: 55.0%\n\nRequired threshold for passage: 55% (water district bonds). MEASURE PASSES.\nBond issuance authorised; first series expected Q2 2024.\nEstimated annual debt service: $1.6M over 20 years.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Clearwater County \u2014 Accurate Report",
+      "source": "Municipal Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1699401600,
+      "tags": [
+        "municipal",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Clearwater County approved a $28.5M bond measure for water infrastructure upgrades, passing with 61%...",
+      "content": "Clearwater County ANNOUNCES KEY MUNICIPAL UPDATE\n\nClearwater County approved a $28.5M bond measure for water infrastructure upgrades, passing with 61% voter approval at the November 2023 election. The announcement comes as changes in the municipal sector. Observers say this could have significant implications for municipal stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Clearwater County \u2014 Distorted Account",
+      "source": "Municipal Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1699574400,
+      "tags": [
+        "municipal",
+        "mutation_point"
+      ],
+      "snippet": "Clearwater County approved a $8.5M bond measure for water infrastructure upgrades, passing with 61% ...",
+      "content": "Breaking: Clearwater County shocks the industry amid growing scrutiny in the municipal sector\n\nClearwater County approved a $8.5M bond measure for water infrastructure upgrades, passing with 61% voter approval at the November 2023 election. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in municipal strategy. A spokesperson for Clearwater County declined to comment beyond the official statement.",
+      "is_mutated": true
+    }
+  ]
+}

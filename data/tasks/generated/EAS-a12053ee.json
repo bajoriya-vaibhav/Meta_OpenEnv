@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-a12053ee",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "Researchers found that the new battery material retained 91% capacity after 1,000 charge cycles compared to 76% for standard lithium-ion cells.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0001",
+      "DOC-0003"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: Electra Materials Lab \u2014 Accurate Report",
+      "source": "Scientific Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709510400,
+      "tags": [
+        "scientific",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "Researchers found that the new battery material retained 91% capacity after 1,000 charge cycles comp...",
+      "content": "Electra Materials Lab ANNOUNCES KEY SCIENTIFIC UPDATE\n\nResearchers found that the new battery material retained 91% capacity after 1,000 charge cycles compared to 76% for standard lithium-ion cells. The announcement comes as changes in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "Battery Longevity Study",
+      "source": "Journal of Energy Storage",
+      "reliability_tier": 1,
+      "timestamp": 1709424000,
+      "tags": [
+        "scientific",
+        "official",
+        "primary"
+      ],
+      "snippet": "Researchers found that the new battery material retained 91% capacity after 1,000 charge cycles compared to 76% for stan...",
+      "content": "New material retained 91% capacity after 1,000 cycles versus 76% for conventional cells.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: Electra Materials Lab \u2014 Distorted Account",
+      "source": "Scientific Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1709683200,
+      "tags": [
+        "scientific",
+        "mutation_point"
+      ],
+      "snippet": "Researchers found that the new battery material retained 91% capacity after 1,000 charge cycles comp...",
+      "content": "Electra Materials Lab ANNOUNCES SHOCKING SCIENTIFIC REVELATION\n\nResearchers found that the new battery material retained 91% capacity after 1,000 charge cycles compared to 76% for standard lithium-ion cells. The announcement comes as growing scrutiny in the scientific sector. Observers say this could have significant implications for scientific stakeholders. The full impact is expected to become clear over the coming months.",
+      "is_mutated": true
+    }
+  ]
+}

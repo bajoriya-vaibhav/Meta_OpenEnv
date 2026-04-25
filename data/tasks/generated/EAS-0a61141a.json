@@ -1,0 +1,72 @@
+{
+  "task_id": "EAS-0a61141a",
+  "difficulty": "easy",
+  "max_steps": 20,
+  "claim": "A large-scale study of 3.2 million open-source repositories found that 68% contained at least one dependency with a known critical or high-severity CVE as of January 2024.",
+  "ground_truth": {
+    "gt_verdict": "false",
+    "gt_mutation_type": "omission",
+    "gt_mutation_doc_id": "DOC-0003",
+    "gt_provenance_chain": [
+      "DOC-0001",
+      "DOC-0003"
+    ],
+    "gt_timeline": [
+      "DOC-0001",
+      "DOC-0002",
+      "DOC-0003"
+    ],
+    "gt_conflict_fields": [],
+    "corpus_ids": [
+      "DOC-0002",
+      "DOC-0003",
+      "DOC-0001"
+    ]
+  },
+  "corpus": [
+    {
+      "doc_id": "DOC-0002",
+      "title": "News: OpenSource Security Alliance \u2014 Accurate Report",
+      "source": "Technology Daily News",
+      "reliability_tier": 2,
+      "timestamp": 1709078400,
+      "tags": [
+        "technology",
+        "news",
+        "corroborating"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories found that 68% contained at least one de...",
+      "content": "Breaking: OpenSource Security Alliance makes a significant move amid changes in the technology sector\n\nA large-scale study of 3.2 million open-source repositories found that 68% contained at least one dependency with a known critical or high-severity CVE as of January 2024. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for OpenSource Security Alliance declined to comment beyond the official statement.",
+      "is_mutated": false
+    },
+    {
+      "doc_id": "DOC-0003",
+      "title": "Report: OpenSource Security Alliance \u2014 Distorted Account",
+      "source": "Technology Wire Service",
+      "reliability_tier": 2,
+      "timestamp": 1709251200,
+      "tags": [
+        "technology",
+        "mutation_point"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories found that 68% contained at least one de...",
+      "content": "Breaking: OpenSource Security Alliance shocks the industry amid growing scrutiny in the technology sector\n\nA large-scale study of 3.2 million open-source repositories found that 68% contained at least one dependency with a known critical or high-severity CVE as of January 2024. According to sources familiar with the matter, the decision follows months of internal deliberation. Industry analysts noted the move signals a broader shift in technology strategy. A spokesperson for OpenSource Security Alliance declined to comment beyond the official statement.",
+      "is_mutated": true
+    },
+    {
+      "doc_id": "DOC-0001",
+      "title": "State of Open Source Security 2024: Dependency Vulnerability Prevalence Study",
+      "source": "OpenSource Security Alliance",
+      "reliability_tier": 1,
+      "timestamp": 1708992000,
+      "tags": [
+        "technology",
+        "official",
+        "primary"
+      ],
+      "snippet": "A large-scale study of 3.2 million open-source repositories found that 68% contained at least one dependency with a know...",
+      "content": "OPENSOURCE SECURITY ALLIANCE\nState of Open Source Security Report 2024\nPublished: February 27, 2024\n\nSTUDY OVERVIEW\nThe OpenSource Security Alliance analysed 3,200,000 public repositories hosted on GitHub, GitLab, and Bitbucket, sampled as of January 15, 2024. Dependency manifests (package.json, requirements.txt, pom.xml, go.mod, Cargo.toml, Gemfile) were parsed and cross-referenced against the National Vulnerability Database (NVD) and GitHub Advisory Database.\n\nKEY FINDING: 68.4% of repositories (2,188,800) contained at least one direct or transitive dependency with a CVE rated Critical (CVSS \u22659.0) or High (CVSS 7.0-8.9) that had not been patched in the repository's dependency lock file.\n\nBreakdown by ecosystem:\n  npm (JavaScript):    72.1% of repos with critical/high CVE\n  PyPI (Python):       65.8%\n  Maven (Java):        61.4%\n  RubyGems:            74.3%\n  Go modules:          44.7% (lowest exposure)\n\nMedian time from CVE publication to repository patch: 47 days.\n17.2% of repositories had at least one dependency with a CVE published >1 year prior that remained unpatched.\nMethodology: automated scanning only; manual triage not performed.",
+      "is_mutated": false
+    }
+  ]
+}
