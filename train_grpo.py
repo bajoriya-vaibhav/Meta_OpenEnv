@@ -44,9 +44,9 @@ import torch
 try:
     from unsloth import FastLanguageModel, is_bfloat16_supported
     UNSLOTH_AVAILABLE = True
-except ImportError:
-    print("WARNING: Unsloth not installed. Falling back to standard transformers.")
+except (ImportError, NotImplementedError, Exception) as e:
     UNSLOTH_AVAILABLE = False
+    print(f"WARNING: Unsloth unavailable ({type(e).__name__}). Falling back to standard transformers.")
 
 from datasets import Dataset
 from trl import GRPOConfig, GRPOTrainer
