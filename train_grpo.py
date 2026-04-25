@@ -612,7 +612,7 @@ def main() -> None:
 
         # GRPO-specific (trl 0.14.0 parameter names)
         num_generations=args.group_size,
-        max_completion_length=64,        # JSON answers ~40-60 tokens; was 128
+        max_completion_length=128,        # JSON answers ~40-60 tokens; was 128
         temperature=0.9,
         # top_p is not a GRPOConfig field in trl 0.14 — pass via generation_config if needed
 
