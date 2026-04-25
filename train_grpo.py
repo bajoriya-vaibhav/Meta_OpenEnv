@@ -41,7 +41,16 @@ args = parser.parse_args() if __name__ == "__main__" else parser.parse_args([])
 import numpy as np
 import torch
 
-# Unsloth must be imported before transformers
+# Import GRPOTrainer from trl BEFORE unsloth — unsloth monkey-patches GRPOTrainer
+# at import time via unsloth_compiled_cache/UnslothGRPOTrainer.py, producing a
+# compute_loss that expects inputs as a dict(prompt_ids, prompt_mask) while
+# trl 0.14.0's real GRPOTrainer expects inputs as a list-of-dicts. By importing
+# first we get the real trl implementation that matches the trl 0.14 spec.
+from datasets import Dataset
+from trl import GRPOConfig, GRPOTrainer
+from transformers import AutoTokenizer
+
+# Unsloth for model loading only (FastLanguageModel + 4-bit QLoRA)
 try:
     from unsloth import FastLanguageModel, is_bfloat16_supported
     UNSLOTH_AVAILABLE = True
@@ -49,9 +58,6 @@ except (ImportError, NotImplementedError, Exception) as e:
     UNSLOTH_AVAILABLE = False
     print(f"WARNING: Unsloth unavailable ({type(e).__name__}). Falling back to standard transformers.")
 
-from datasets import Dataset
-from trl import GRPOConfig, GRPOTrainer
-from transformers import AutoTokenizer
 
 # Local imports
 sys.path.insert(0, str(Path(__file__).parent))
@@ -606,7 +612,7 @@ def main() -> None:
 
         # GRPO-specific (trl 0.14.0 parameter names)
         num_generations=args.group_size,
-        max_completion_length=128,       # renamed from max_new_tokens in trl 0.14
+        max_completion_length=64,        # JSON answers ~40-60 tokens; was 128
         temperature=0.9,
         # top_p is not a GRPOConfig field in trl 0.14 — pass via generation_config if needed
 
