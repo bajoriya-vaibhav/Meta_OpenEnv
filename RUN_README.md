@@ -339,7 +339,7 @@ python train_grpo.py \
   --model ./chronoveritas-sft \
   --output-dir ./chronoveritas-fact-checker \
   --log-dir ./training_logs \
-  --group-size 8 \
+  --group-size 4 \
   --lr 5e-5 \
   --seed 42
 ```
