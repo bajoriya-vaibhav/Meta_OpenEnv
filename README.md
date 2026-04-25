@@ -257,42 +257,46 @@ chronoveritas/
 
 ---
 
-## Quick Start
+## Quick Start (ChronoVeritas v2)
 
-### Local Development
+The v2 architecture transitions from API-based LLM testing to **local GRPO reinforcement learning**. Follow these steps to generate data, train your own `Qwen2.5-7B-Instruct` Fact-Checker agent, and evaluate it.
 
+### 1. Generate Training Data
+Generate massive amounts of adversarial tasks locally without needing GPU libraries.
 ```bash
-# Clone and install
-git clone <repo-url>
-cd chronoveritas
-pip install -r requirements.txt
+# Generate a quick test batch (10 easy, 10 medium, 5 hard)
+python generate_data.py --easy 10 --medium 10 --hard 5
 
-# Start the environment server
-uvicorn server:app --host 0.0.0.0 --port 7860
+# Generate a massive dataset for full training
+python generate_data.py --easy 2000 --medium 1000 --hard 500
+```
+Tasks are automatically saved to `data/tasks/generated/`.
 
-# Health check
-curl http://localhost:7860/health
+### 2. SFT Warm-up (Phase 0)
+Before RL begins, train the model to output the strict JSON format.
+```bash
+python training/sft_warmup.py --n-examples 200 --output ./chronoveritas-sft
 ```
 
-### Running the Baseline Agent
-
+### 3. GRPO Reinforcement Learning
+Train the agent using the 5-component proxy reward. The trainer uses Unsloth + TRL for aggressive VRAM optimization (runs on a single 20GB RTX A4500).
 ```bash
-# Set your LLM API credentials
-export API_BASE_URL=https://api.openai.com/v1
-export MODEL_NAME=gpt-4o-mini
-export OPENAI_API_KEY=sk-...
-export ENV_BASE_URL=http://localhost:7860
+# Full curriculum training (starts easy, progresses to hard)
+python train_grpo.py --difficulty curriculum --steps 400
 
-# Run inference across all 3 tasks
-python inference.py
+# Quick debug run
+python train_grpo.py --difficulty easy --steps 50
 ```
 
-### Docker Deployment
-
+### 4. Evaluation & Plotting
+Test the fully trained model against the strict, multi-step production Graders and generate evaluation charts.
 ```bash
-docker build -t chronoveritas .
-docker run -p 7860:7860 chronoveritas
+python eval.py --model ./chronoveritas-fact-checker --baseline
 ```
+This generates:
+- `plots/reward_curve.png`
+- `plots/component_breakdown.png`
+- `plots/before_after.png`
 
 ---
 
