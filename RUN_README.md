@@ -14,7 +14,7 @@
 3. [Conda Environment Quick-Reference](#3-conda-environment-quick-reference)
 4. [Pre-Flight Checks](#4-pre-flight-checks)
 5. [Step-by-Step Training Workflow](#5-step-by-step-training-workflow)
-   - [Step 0 (Optional): SFT Warm-Up](#step-0-optional-sft-warm-up)
+   - [Step 0 (REQUIRED): SFT Warm-Up](#step-0-required-sft-warm-up)
    - [Step 1: Verify / Generate Data](#step-1-verify--generate-data)
    - [Step 2: Run GRPO Training](#step-2-run-grpo-training)
    - [Step 3: Monitor Training](#step-3-monitor-training)
@@ -88,7 +88,7 @@ Each task JSON contains:
 
 **`unsloth/Qwen2.5-7B-Instruct`** loaded with:
 - **4-bit QLoRA** via Unsloth (`load_in_4bit=True`) → ~5 GB VRAM base
-- **LoRA adapters** on all attention + MLP projection layers (`r=16`, `lora_alpha=16`)
+- **LoRA adapters** on all attention + MLP projection layers (`r=8`, `lora_alpha=16`)
 - **Gradient checkpointing** with Unsloth's patched implementation (2× speed)
 - **bfloat16** precision (native on A4500 Ampere architecture)
 
@@ -146,16 +146,18 @@ The model must respond with **only valid JSON**:
 }
 ```
 
-### 2.4 Reward Function (5 components)
+### 2.4 Reward Function (8 components — aligned with UnifiedGrader)
 
-| Component | Max reward | What it measures |
-|-----------|-----------|-----------------|
-| Format validity | +0.05 | Valid JSON with all required fields |
-| Verdict accuracy | +0.35 | Correct true/false/misleading/unverifiable |
-| Mutation type | +0.25 | Correct distortion/fabrication/omission/context_shift/none |
-| Mutation point | +0.25 | Correct first-mutation document (0.12 partial credit for ±1 adjacent) |
-| Calibration | +0.05 | Confidence Brier score |
-| Hallucination penalty | −0.05 per fabricated doc | DOC IDs not in the corpus |
+| Component | Weight | What it measures |
+|-----------|--------|-----------------|
+| Format validity | +0.05 | Valid JSON with all 4 required fields |
+| Verdict accuracy | +0.30 | Correct true/false/misleading/unverifiable |
+| Mutation type | +0.18 | Correct distortion/fabrication/omission/context_shift/none |
+| Mutation point | +0.18 | Correct first-mutation document (half credit for ±1 adjacent) |
+| Provenance F1 | +0.18 | F1 score of predicted vs ground-truth provenance chain |
+| Source reliability | +0.11 | Weighted tier quality of cited documents |
+| Hallucination penalty | −0.12 | Fabricated DOC IDs not in the corpus (0.25 per doc, capped at 1.0) |
+| Brier penalty | −0.08 | Overconfident wrong answers penalised extra (1.5× if conf > 0.7) |
 
 **Maximum total:** 1.0 | **Minimum:** −0.20
 
@@ -268,18 +270,20 @@ cd /home/shashank/metaRLDowngraded/Meta_OpenEnv
 
 ---
 
-### Step 0 (Optional): SFT Warm-Up
+### Step 0 (REQUIRED): SFT Warm-Up
 
-**Why?** Cold-start GRPO often wastes the first 50–80 steps because the model generates no valid JSON. A brief SFT pass (≤200 examples, ~15 min) teaches format before RL begins.
+**Why?** Without SFT, GRPO wastes 50–80% of Phase 1 because the model invents its own JSON fields (`distorted_value`, `mutant_doc_id`, etc.) instead of using the required schema (`verdict`, `mutation_type`, `mutation_doc_id`, `confidence`). A single system prompt is not enough — the model's pre-training instinct overrides it. SFT burns the exact field names into the model's weights by showing it hundreds of concrete examples.
 
 ```bash
 python training/sft_warmup.py \
   --model unsloth/Qwen2.5-7B-Instruct \
-  --n-examples 200 \
+  --n-examples 500 \
   --output ./chronoveritas-sft \
-  --epochs 1 \
+  --epochs 3 \
   --seed 42
 ```
+
+> **500 examples × 3 epochs = 1,500 format demonstrations.** This ensures near-zero `missing_fields` errors when GRPO begins.
 
 This saves LoRA adapters to `./chronoveritas-sft/`. Then pass that as the starting model to GRPO:
 
@@ -288,7 +292,7 @@ This saves LoRA adapters to `./chronoveritas-sft/`. Then pass that as the starti
 --model ./chronoveritas-sft
 ```
 
-If you skip this, training starts from the raw Qwen2.5-7B-Instruct weights.
+> ⚠️ **Do NOT skip this step.** Without SFT, the first 100+ GRPO steps produce only `-0.10` / `-0.15` rewards due to format errors, wasting GPU time and money.
 
 ---
 
@@ -314,9 +318,10 @@ Tasks are saved directly to `data/tasks/generated/` and will be automatically pi
 
 ### Step 2: Run GRPO Training
 
-#### Option A — Full Curriculum (Recommended)
+#### Option A — Full Curriculum without SFT (NOT recommended)
 
 Runs all three phases automatically (Easy → Easy+Medium → All), 400 steps total.
+**Warning:** Without SFT, expect ~60% of Phase 1 steps to produce format errors.
 
 ```bash
 python train_grpo.py \
@@ -325,12 +330,12 @@ python train_grpo.py \
   --model unsloth/Qwen2.5-7B-Instruct \
   --output-dir ./chronoveritas-fact-checker \
   --log-dir ./training_logs \
-  --group-size 8 \
+  --group-size 4 \
   --lr 5e-5 \
   --seed 42
 ```
 
-#### Option B — After SFT Warm-Up
+#### Option B — After SFT Warm-Up (RECOMMENDED)
 
 ```bash
 python train_grpo.py \
@@ -497,12 +502,14 @@ extract_json_safe(completion)   ← tries 3 regex patterns
 compute_reward(completion, ground_truth)
   ├── [GATE] Invalid JSON          → return -0.15
   ├── [GATE] Missing required keys → return -0.10
-  ├── Component 1: format          +0.05  (valid JSON with all 4 fields)
-  ├── Component 2: verdict         +0.35  (exact string match)
-  ├── Component 3: mutation_type   +0.25  (exact string match)
-  ├── Component 4: mutation_point  +0.25  (exact doc ID; +0.12 if adjacent in timeline)
-  ├── Component 5: calibration     +0.05  (1 - Brier score)
-  └── Hallucination penalty        -0.05 × (fabricated doc count), capped at -0.20
+  ├── Component 1: format            +0.05  (valid JSON with all 4 fields)
+  ├── Component 2: verdict           +0.30  (exact string match)
+  ├── Component 3: mutation_type     +0.18  (exact string match)
+  ├── Component 4: mutation_point    +0.18  (exact doc ID; half credit if adjacent)
+  ├── Component 5: provenance F1     +0.18  (F1 of predicted vs GT provenance chain)
+  ├── Component 6: source_reliability +0.11  (weighted tier quality of cited docs)
+  ├── Penalty 1: hallucination       -0.12  (0.25 per fabricated doc, capped at 1.0)
+  └── Penalty 2: brier_penalty       -0.08  (overconfidence penalty, 1.5× if conf>0.7)
 ```
 
 The model is **not given the correct answer** in the prompt. It must reason from the documents.
@@ -666,8 +673,13 @@ cd /home/shashank/metaRLDowngraded/Meta_OpenEnv
 python -c "import torch; print(torch.cuda.get_device_name(0))"
 nvidia-smi
 
-# 3. [Optional but recommended] SFT warm-up (~15 min)
-python training/sft_warmup.py --n-examples 200 --output ./chronoveritas-sft
+# 3. [REQUIRED] Strong SFT warm-up (~20 min)
+python training/sft_warmup.py \
+  --model unsloth/Qwen2.5-7B-Instruct \
+  --n-examples 500 \
+  --output ./chronoveritas-sft \
+  --epochs 3 \
+  --seed 42
 
 # 4. Full GRPO training (~1.5–2 hours)
 python train_grpo.py \
@@ -676,11 +688,11 @@ python train_grpo.py \
   --model ./chronoveritas-sft \
   --output-dir ./chronoveritas-fact-checker \
   --log-dir ./training_logs \
-  --group-size 8 \
+  --group-size 4 \
   --lr 5e-5 \
   --seed 42
 
-# 5. Generate plots + baseline comparison (as required by project lead)
+# 5. Generate plots + baseline comparison
 python eval.py --model ./chronoveritas-fact-checker --baseline
 ```
 
