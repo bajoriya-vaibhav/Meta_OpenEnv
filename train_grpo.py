@@ -223,19 +223,10 @@ def format_single_turn_prompt(task_dict: Dict) -> str:
 # ── Task loading ───────────────────────────────────────────────────────────
 
 def load_static_tasks(difficulty: Optional[str] = None) -> List[Dict]:
-    """Load task JSON files from disk (v1 tasks + any generated tasks)."""
+    """Load task JSON files exclusively from the generated folder. Base tasks are reserved for production."""
     tasks = []
-    for path in sorted(TASKS_DIR.glob("*.json")):
-        try:
-            with open(path) as f:
-                t = json.load(f)
-            if difficulty is None or t.get("difficulty") == difficulty:
-                tasks.append(t)
-        except Exception as e:
-            print(f"  Warning: skipping {path.name}: {e}")
-
-    # Also check generated/ subdirectory
     gen_dir = TASKS_DIR / "generated"
+    
     if gen_dir.exists():
         for path in sorted(gen_dir.glob("*.json")):
             try:
