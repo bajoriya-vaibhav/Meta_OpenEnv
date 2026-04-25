@@ -8,9 +8,15 @@ Generates the 4 required plots for judging evidence:
 4. eval_results.json                 — all raw numbers
 
 Usage:
-  python eval.py                                    # Plot from training logs
-  python eval.py --model ./chronoveritas-fc         # Run eval + plot
-  python eval.py --model ./chronoveritas-fc --baseline  # Include baseline comparison
+  python eval.py                                           # Plot from training logs only
+  python eval.py --model ./chronoveritas-fact-checker      # LoRA adapter eval + plot
+  python eval.py --model ./chronoveritas-fact-checker --baseline  # With baseline comparison
+  python eval.py --model ./chronoveritas-fact-checker_merged      # Merged 16-bit model
+
+Notes:
+  - ./chronoveritas-fact-checker       → LoRA adapters (output of train_grpo.py)
+  - ./chronoveritas-fact-checker_merged → merged 16-bit weights (heavier, inference-ready)
+  The script auto-detects which type is present via adapter_config.json.
 """
 from __future__ import annotations
 
@@ -185,6 +191,99 @@ def plot_before_after(
     print(f"[Eval] Saved: {out_path}")
 
 
+# ── Base model used for LoRA adapter loading ──────────────────────────────
+_BASE_MODEL_ID = "unsloth/Qwen2.5-7B-Instruct"
+
+
+def _is_lora_adapter(model_path: str) -> bool:
+    """Return True if model_path is a LoRA adapter directory (not a full model)."""
+    return (Path(model_path) / "adapter_config.json").exists()
+
+
+def _load_generator(model_path: str):
+    """
+    Load a text-generation pipeline from either:
+      - A full model directory (merged weights) — loaded directly.
+      - A LoRA adapter directory (output of train_grpo.py) — base model loaded
+        in 4-bit, then PEFT adapter merged into it for inference.
+
+    Returns a callable: generator(prompt, **kwargs) -> list of dicts
+    """
+    import torch
+    from transformers import AutoTokenizer, AutoModelForCausalLM
+
+    if _is_lora_adapter(model_path):
+        # ── Load LoRA adapter on top of 4-bit base model ──────────────────
+        print(f"[Eval] Detected LoRA adapter at {model_path}")
+        print(f"[Eval] Loading base model {_BASE_MODEL_ID} in 4-bit...")
+
+        try:
+            from peft import PeftModel
+            from transformers import BitsAndBytesConfig
+
+            bnb_config = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_compute_dtype=torch.bfloat16,
+                bnb_4bit_use_double_quant=True,
+                bnb_4bit_quant_type="nf4",
+            )
+
+            base_model = AutoModelForCausalLM.from_pretrained(
+                _BASE_MODEL_ID,
+                quantization_config=bnb_config,
+                device_map="auto",
+                torch_dtype=torch.bfloat16,
+            )
+            tokenizer = AutoTokenizer.from_pretrained(_BASE_MODEL_ID)
+            tokenizer.pad_token = tokenizer.eos_token
+
+            # Attach LoRA adapter
+            model = PeftModel.from_pretrained(base_model, model_path)
+            model.eval()
+            print("[Eval] LoRA adapter loaded successfully.")
+
+        except ImportError:
+            # Fallback: try Unsloth if peft is not available standalone
+            print("[Eval] peft not available standalone, trying Unsloth...")
+            from unsloth import FastLanguageModel
+            model, tokenizer = FastLanguageModel.from_pretrained(
+                model_name=model_path,
+                max_seq_length=1536,
+                load_in_4bit=True,
+            )
+            FastLanguageModel.for_inference(model)
+            tokenizer.pad_token = tokenizer.eos_token
+
+    else:
+        # ── Full model (merged weights) ───────────────────────────────────
+        print(f"[Eval] Loading full model from {model_path}...")
+        model = AutoModelForCausalLM.from_pretrained(
+            model_path,
+            torch_dtype=torch.bfloat16,
+            device_map="auto",
+        )
+        tokenizer = AutoTokenizer.from_pretrained(model_path)
+        tokenizer.pad_token = tokenizer.eos_token
+        model.eval()
+
+    # Return a simple generation callable
+    def _generate(prompt: str, max_new_tokens: int = 128, temperature: float = 0.1) -> str:
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        with torch.no_grad():
+            output_ids = model.generate(
+                **inputs,
+                max_new_tokens=max_new_tokens,
+                temperature=temperature,
+                do_sample=(temperature > 0),
+                pad_token_id=tokenizer.eos_token_id,
+            )
+        # Strip the prompt tokens from the output
+        new_tokens = output_ids[0, inputs["input_ids"].shape[1]:]
+        return tokenizer.decode(new_tokens, skip_special_tokens=True)
+
+    return _generate
+
+
 def evaluate_model_on_tasks(
     model_path: Optional[str],
     tasks: List[Dict],
@@ -193,7 +292,12 @@ def evaluate_model_on_tasks(
 ) -> Dict[str, float]:
     """
     Evaluate a model on tasks. Returns average reward per difficulty.
-    If model_path is None, uses mock baseline data.
+
+    model_path can be:
+      - A LoRA adapter directory (./chronoveritas-fact-checker)
+      - A merged full-model directory (./chronoveritas-fact-checker_merged)
+      - A HuggingFace hub model ID (e.g. 'unsloth/Qwen2.5-7B-Instruct')
+      - None → uses simulated/mock results
     """
     from train_grpo import compute_reward, format_single_turn_prompt
 
@@ -201,21 +305,21 @@ def evaluate_model_on_tasks(
 
     if model_path is not None:
         try:
-            from transformers import pipeline
-            print(f"[Eval] Loading model from {model_path}...")
-            generator = pipeline("text-generation", model=model_path, device_map="auto")
+            _generate = _load_generator(model_path)
 
-            for task in tasks:
+            total_tasks = len(tasks)
+            for idx, task in enumerate(tasks, 1):
                 difficulty = task.get("difficulty", "easy")
                 prompt = format_single_turn_prompt(task)
                 gt = dict(task.get("ground_truth", {}))
                 gt["corpus_ids"] = [d["doc_id"] for d in task.get("corpus", [])]
 
+                if idx % 10 == 0:
+                    print(f"  [Eval] Task {idx}/{total_tasks}...")
+
                 for _ in range(n_samples):
                     try:
-                        output = generator(prompt, max_new_tokens=256, temperature=0.1,
-                                           do_sample=True, return_full_text=False)
-                        completion = output[0]["generated_text"]
+                        completion = _generate(prompt, max_new_tokens=128, temperature=0.1)
                         reward, _ = compute_reward(completion, gt)
                         results_by_diff[difficulty].append(reward)
                     except Exception as e:
