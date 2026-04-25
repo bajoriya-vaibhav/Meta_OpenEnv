@@ -33,7 +33,9 @@ parser.add_argument("--group-size", type=int, default=8)
 parser.add_argument("--lr", type=float, default=5e-5)
 parser.add_argument("--seed", type=int, default=42)
 parser.add_argument("--generate-tasks", action="store_true", help="Generate new tasks before training")
-args = parser.parse_args()
+
+# Only parse sys.argv if run directly. When imported by eval.py, use defaults.
+args = parser.parse_args() if __name__ == "__main__" else parser.parse_args([])
 
 # ── Imports ────────────────────────────────────────────────────────────────
 import numpy as np
@@ -43,9 +45,9 @@ import torch
 try:
     from unsloth import FastLanguageModel, is_bfloat16_supported
     UNSLOTH_AVAILABLE = True
-except ImportError:
-    print("WARNING: Unsloth not installed. Falling back to standard transformers.")
+except (ImportError, NotImplementedError, Exception) as e:
     UNSLOTH_AVAILABLE = False
+    print(f"WARNING: Unsloth unavailable ({type(e).__name__}). Falling back to standard transformers.")
 
 from datasets import Dataset
 from trl import GRPOConfig, GRPOTrainer
@@ -290,19 +292,10 @@ def format_single_turn_prompt(task_dict: Dict) -> str:
 # ── Task loading ───────────────────────────────────────────────────────────
 
 def load_static_tasks(difficulty: Optional[str] = None) -> List[Dict]:
-    """Load task JSON files from disk (v1 tasks + any generated tasks)."""
+    """Load task JSON files exclusively from the generated folder. Base tasks are reserved for production."""
     tasks = []
-    for path in sorted(TASKS_DIR.glob("*.json")):
-        try:
-            with open(path) as f:
-                t = json.load(f)
-            if difficulty is None or t.get("difficulty") == difficulty:
-                tasks.append(t)
-        except Exception as e:
-            print(f"  Warning: skipping {path.name}: {e}")
-
-    # Also check generated/ subdirectory
     gen_dir = TASKS_DIR / "generated"
+    
     if gen_dir.exists():
         for path in sorted(gen_dir.glob("*.json")):
             try:
