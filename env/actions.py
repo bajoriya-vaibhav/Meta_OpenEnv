@@ -163,10 +163,6 @@ class ActionDispatcher:
 
     # ── add_timeline_event ────────────────────────────────────────────
 
-    # Max total process bonus for timeline events
-    _MAX_TIMELINE_BONUS: float = 0.10
-    _TIMELINE_BONUS_PER_EVENT: float = 0.02
-
     def _handle_add_timeline_event(
         self, payload: Dict[str, Any], state: EpisodeState, gt: Any
     ) -> DispatchResult:
@@ -202,52 +198,16 @@ class ActionDispatcher:
         entry = TimelineEntry(doc_id=doc_id, event_label=event_label, timestamp=timestamp)
         state.agent_timeline.append(entry)
 
-        # ── Process bonus: timestamp consistency + label grounding ────
-        reward = 0.0
-        time_score = 0.0
-        grounding_score = 0.0
-
-        doc = state.get_fetched_doc(doc_id)
-        if doc is not None:
-            # Timestamp consistency
-            if timestamp is not None and timestamp == doc.timestamp:
-                time_score = 1.0
-            # else: wrong timestamp or None → 0.0
-
-            # Label grounding: fraction of label words found in doc content
-            label_words = set(re.findall(r'\w+', event_label.lower())) - _STOP_WORDS
-            if label_words:
-                content_words = set(re.findall(r'\w+', doc.content.lower())) - _STOP_WORDS
-                grounding_score = len(label_words & content_words) / len(label_words)
-                grounding_score = min(grounding_score, 1.0)
-
-            # Combined bonus (only if doc was actually fetched)
-            raw_bonus = self._TIMELINE_BONUS_PER_EVENT * (time_score + grounding_score) / 2.0
-
-            # Cap total timeline bonus across all events
-            total_timeline_reward = sum(
-                r for r in state.rewards_log
-                if r > 0  # only count positive intermediate rewards
-            )
-            if total_timeline_reward < self._MAX_TIMELINE_BONUS:
-                reward = min(raw_bonus, self._MAX_TIMELINE_BONUS - total_timeline_reward)
-
+        # No ad-hoc bonus — intermediate reward is handled by PBRS in environment.py
         return _ok(
             {
                 "timeline_added": True,
                 "doc_id": doc_id,
                 "total_events": len(state.agent_timeline),
-                "process_bonus": round(reward, 4),
-                "time_score": round(time_score, 2),
-                "grounding_score": round(grounding_score, 2),
             },
-            reward=reward,
         )
 
     # ── flag_contradiction ────────────────────────────────────────────
-
-    _MAX_CONTRADICTION_BONUS: float = 0.04
-    _CONTRADICTION_BONUS_PER_FLAG: float = 0.02
 
     def _handle_flag_contradiction(
         self, payload: Dict[str, Any], state: EpisodeState, gt: Any
@@ -275,27 +235,16 @@ class ActionDispatcher:
 
         state.contradictions.append((doc_id_a, doc_id_b))
 
-        # ── Process bonus: both docs must be fetched ──────────────────
-        reward = 0.0
         both_fetched = state.has_fetched(doc_id_a) and state.has_fetched(doc_id_b)
 
-        if both_fetched:
-            # Check cap
-            current_contradiction_rewards = sum(
-                1 for _ in range(len(state.contradictions) - 1)
-            ) * self._CONTRADICTION_BONUS_PER_FLAG
-            if current_contradiction_rewards < self._MAX_CONTRADICTION_BONUS:
-                reward = self._CONTRADICTION_BONUS_PER_FLAG
-
+        # No ad-hoc bonus — intermediate reward is handled by PBRS in environment.py
         return _ok(
             {
                 "contradiction_flagged": True,
                 "pair": [doc_id_a, doc_id_b],
                 "total_contradictions": len(state.contradictions),
                 "both_docs_fetched": both_fetched,
-                "process_bonus": round(reward, 4),
             },
-            reward=reward,
         )
 
     # ── set_mutation_point ────────────────────────────────────────────

@@ -94,25 +94,5 @@ class HardGrader(BaseGrader):
         return clip(score)
 
     # ── HardGrader-specific helpers ───────────────────────────────────
-
-    def _grade_reconciliation(self, state: EpisodeState) -> float:
-        """
-        Multi-source conflict reconciliation score (hard tasks only).
-
-        Measures how many of the task's conflict fields the agent covered
-        through its contradiction flags. The agent gets credit for flagging
-        contradictions (up to the number of actual conflict fields), without
-        the system revealing WHICH contradictions are correct.
-
-        Range: [0.0, 1.0]
-        """
-        gt_conflict_fields = self.gt.gt_conflict_fields
-        if not gt_conflict_fields:
-            return 0.0  # no conflict fields defined → score is 0
-
-        num_conflicts = len(gt_conflict_fields)
-        num_agent_contradictions = len(state.contradiction_pairs())
-
-        # Credit: min(agent contradictions, GT conflict fields) / GT conflict fields
-        covered = min(num_agent_contradictions, num_conflicts)
-        return covered / num_conflicts
+    # NOTE: _grade_reconciliation is now in BaseGrader (returns 1.0
+    # when gt_conflict_fields is empty so easy/medium tasks aren't penalised).

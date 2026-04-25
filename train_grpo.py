@@ -18,6 +18,7 @@ import os
 import re
 import sys
 import time
+from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -113,12 +114,37 @@ def compute_reward(
     ground_truth: Dict[str, Any],
 ) -> Tuple[float, Dict[str, float]]:
     """
-    Multi-component reward function — 5 independent components + 1 penalty.
+    Multi-component reward function aligned with UnifiedGrader.
+
+    Scores the same components as the evaluation grader (minus those
+    requiring EpisodeState).  Weight for unavailable components is
+    redistributed proportionally across available ones.
+
+    Available from text:  format, verdict, mutation_type, mutation_point,
+                          provenance_f1, source_reliability
+    Penalties:            hallucination, brier_penalty
+    Unavailable (need EpisodeState): timeline, efficiency, early_detection,
+                                      reconciliation
+
     Returns (total_reward, breakdown_dict).
     """
     breakdown: Dict[str, float] = {}
 
-    # ── GATE: JSON validity ────────────────────────────────────────────
+    # ── Weight table ──────────────────────────────────────────────────
+    # Mirrors UnifiedGrader with unavailable weight redistributed.
+    W = {
+        "format":             0.05,
+        "verdict":            0.30,
+        "mutation_type":      0.18,
+        "mutation_point":     0.18,
+        "provenance":         0.18,
+        "source_reliability": 0.11,
+        # penalties
+        "hallucination":      0.12,
+        "brier_penalty":      0.08,
+    }
+
+    # ── GATE: JSON validity ───────────────────────────────────────────
     parsed = extract_json_safe(completion)
     if parsed is None:
         return -0.15, {"format": -0.15, "parse_error": 1.0}
@@ -127,55 +153,96 @@ def compute_reward(
     if not required_fields.issubset(parsed.keys()):
         return -0.10, {"format": -0.10, "missing_fields": 1.0}
 
-    # ── Component 1: Format valid (+0.05) ──────────────────────────────
-    breakdown["format"] = 0.05
+    # ── Component 1: Format valid ─────────────────────────────────────
+    breakdown["format"] = W["format"]
 
-    # ── Component 2: Verdict accuracy (+0.35) ──────────────────────────
+    # ── Component 2: Verdict accuracy ─────────────────────────────────
     gt_verdict = ground_truth.get("gt_verdict", "")
     verdict_correct = (str(parsed.get("verdict", "")).strip() == gt_verdict)
-    breakdown["verdict"] = 0.35 if verdict_correct else 0.0
+    breakdown["verdict"] = W["verdict"] if verdict_correct else 0.0
 
-    # ── Component 3: Mutation type (+0.25) ─────────────────────────────
+    # ── Component 3: Mutation type ────────────────────────────────────
     gt_mut_type = ground_truth.get("gt_mutation_type", "")
     mut_type_correct = (str(parsed.get("mutation_type", "")).strip() == gt_mut_type)
-    breakdown["mutation_type"] = 0.25 if mut_type_correct else 0.0
+    breakdown["mutation_type"] = W["mutation_type"] if mut_type_correct else 0.0
 
-    # ── Component 4: Mutation point (+0.25) ────────────────────────────
+    # ── Component 4: Mutation point (with null/null handling) ─────────
     pred_doc = str(parsed.get("mutation_doc_id", "") or "").strip()
     gt_doc = str(ground_truth.get("gt_mutation_doc_id", "") or "").strip()
     gt_timeline = ground_truth.get("gt_timeline", [])
 
-    if pred_doc == gt_doc:
-        mp_score = 0.25
+    if not pred_doc and not gt_doc:
+        # Both null → true claim correctly identified
+        mp_score = W["mutation_point"]
+    elif pred_doc == gt_doc:
+        mp_score = W["mutation_point"]
     elif (pred_doc and gt_doc and pred_doc in gt_timeline and gt_doc in gt_timeline
           and abs(gt_timeline.index(pred_doc) - gt_timeline.index(gt_doc)) == 1):
-        mp_score = 0.12   # Adjacent in timeline → partial credit
+        mp_score = W["mutation_point"] * 0.5   # Adjacent → half credit
     else:
         mp_score = 0.0
-    breakdown["mutation_point"] = mp_score
+    breakdown["mutation_point"] = round(mp_score, 4)
 
-    # ── Component 5: Calibration (+0.05) ───────────────────────────────
+    # ── Component 5: Provenance F1 (NEW — was missing) ────────────────
+    gt_chain = ground_truth.get("gt_provenance_chain", [])
+    pred_chain = parsed.get("provenance_chain", [])
+    if not isinstance(pred_chain, list):
+        pred_chain = []
+
+    if not gt_chain and not pred_chain:
+        prov_f1 = 1.0
+    elif not gt_chain or not pred_chain:
+        prov_f1 = 0.0
+    else:
+        pred_counts = Counter(pred_chain)
+        gt_counts = Counter(gt_chain)
+        overlap = sum(min(pred_counts[k], gt_counts[k]) for k in pred_counts if k in gt_counts)
+        precision = overlap / sum(pred_counts.values()) if pred_counts else 0.0
+        recall = overlap / sum(gt_counts.values()) if gt_counts else 0.0
+        denom = precision + recall
+        prov_f1 = 2.0 * precision * recall / denom if denom > 0 else 0.0
+    breakdown["provenance"] = round(W["provenance"] * prov_f1, 4)
+
+    # ── Component 6: Source reliability (NEW — was missing) ───────────
+    corpus_tiers = ground_truth.get("corpus_tiers", {})
+    corpus_ids = set(ground_truth.get("corpus_ids", []))
+    tier_weights_map = {1: 1.0, 2: 0.5, 3: 0.1}
+
+    if isinstance(pred_chain, list) and pred_chain:
+        valid_tiers = [
+            tier_weights_map.get(corpus_tiers.get(d, 2), 0.5)
+            for d in pred_chain if d in corpus_ids
+        ]
+        source_rel = sum(valid_tiers) / len(valid_tiers) if valid_tiers else 0.0
+    else:
+        source_rel = 0.0
+    breakdown["source_reliability"] = round(W["source_reliability"] * source_rel, 4)
+
+    # ── Penalty 1: Hallucination (fabricated doc IDs) ─────────────────
+    if isinstance(pred_chain, list):
+        fabricated = [d for d in pred_chain if str(d) not in corpus_ids]
+        halluc_raw = min(1.0, len(fabricated) * 0.25)  # 0.25 per doc, cap at 1.0
+    else:
+        halluc_raw = 0.0
+    breakdown["hallucination_penalty"] = -round(W["hallucination"] * halluc_raw, 4)
+
+    # ── Penalty 2: Brier calibration (FIXED — now a penalty) ──────────
     try:
         conf = float(parsed.get("confidence", 0.5))
         conf = max(0.0, min(1.0, conf))
     except (TypeError, ValueError):
         conf = 0.5
-    brier = (conf - (1.0 if verdict_correct else 0.0)) ** 2
-    breakdown["calibration"] = round(0.05 * max(0.0, 1.0 - brier), 4)
+    correctness = 1.0 if verdict_correct else 0.0
+    brier = (conf - correctness) ** 2
+    # Extra penalty for overconfident wrong answers
+    if not verdict_correct and conf > 0.7:
+        brier = min(brier * 1.5, 1.0)
+    breakdown["brier_penalty"] = -round(W["brier_penalty"] * brier, 4)
 
-    # ── Hallucination penalty (−0.05 per fabricated doc) ───────────────
-    corpus_ids = set(ground_truth.get("corpus_ids", []))
-    prov = parsed.get("provenance_chain")
-    if isinstance(prov, list):
-        fabricated = [d for d in prov if str(d) not in corpus_ids]
-        hallucination_penalty = min(0.20, len(fabricated) * 0.05)
-    else:
-        hallucination_penalty = 0.0
-    breakdown["hallucination_penalty"] = -hallucination_penalty
-
+    # ── Total ─────────────────────────────────────────────────────────
     total = sum(breakdown.values())
     total = max(-0.20, min(1.0, total))
-    return total, breakdown
+    return round(total, 4), breakdown
 
 
 # ── Prompt formatting ──────────────────────────────────────────────────────
@@ -308,9 +375,13 @@ def build_training_dataset(
     for task in tasks:
         prompt = format_single_turn_prompt(task)
 
-        # Enrich ground truth with corpus_ids for hallucination detection
+        # Enrich ground truth with corpus_ids + tier data for reward function
         gt = dict(task.get("ground_truth", {}))
         gt["corpus_ids"] = [d["doc_id"] for d in task.get("corpus", [])]
+        gt["corpus_tiers"] = {
+            d["doc_id"]: d.get("reliability_tier", 2)
+            for d in task.get("corpus", [])
+        }
 
         for _ in range(n_repeats):
             rows.append({

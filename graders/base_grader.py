@@ -119,20 +119,23 @@ class BaseGrader(ABC):
     def _grade_mutation_point(self, agent_doc_id: Optional[str]) -> float:
         """
         Returns:
-          1.0 — exact match with gt_mutation_doc_id
+          1.0 — exact match with gt_mutation_doc_id (including both None)
           0.5 — adjacent (± 1 position) in gt_timeline
-          0.0 — otherwise or None
+          0.0 — otherwise
 
         Range: {0.0, 0.5, 1.0}
         """
+        gt_target = self.gt.gt_mutation_doc_id
+
+        # Both None → true claim correctly identified as no mutation
+        if not agent_doc_id and not gt_target:
+            return 1.0
         if not agent_doc_id:
             return 0.0
-        if agent_doc_id == self.gt.gt_mutation_doc_id:
+        if agent_doc_id == gt_target:
             return 1.0
 
         gt_timeline = self.gt.gt_timeline
-        gt_target = self.gt.gt_mutation_doc_id
-
         if not gt_target or gt_target not in gt_timeline or agent_doc_id not in gt_timeline:
             return 0.0
 
@@ -317,6 +320,26 @@ class BaseGrader(ABC):
                 penalty += unread_penalty
                 log.debug("Hallucination: unread doc_id %r cited in provenance", doc_id)
         return clip(penalty)
+
+    def _grade_reconciliation(self, state: "EpisodeState") -> float:
+        """
+        Multi-source conflict reconciliation score.
+
+        Measures how many of the task's conflict fields the agent covered
+        through its contradiction flags.  Returns 1.0 when no conflict
+        fields are defined (easy/medium tasks are not penalised).
+
+        Range: [0.0, 1.0]
+        """
+        gt_conflict_fields = self.gt.gt_conflict_fields
+        if not gt_conflict_fields:
+            return 1.0  # nothing to reconcile → perfect score
+
+        num_conflicts = len(gt_conflict_fields)
+        num_agent_contradictions = len(state.contradiction_pairs())
+
+        covered = min(num_agent_contradictions, num_conflicts)
+        return covered / num_conflicts
 
     # ── Debug helper ──────────────────────────────────────────────────
 

@@ -19,9 +19,7 @@ from env.models import (
 )
 from env.state_manager import EpisodeState
 from graders.base_grader import BaseGrader
-from graders.easy_grader import EasyGrader
-from graders.hard_grader import HardGrader
-from graders.medium_grader import MediumGrader
+from graders.unified_grader import UnifiedGrader
 from search.bm25_index import BM25Index
 from search.corpus_store import CorpusStore
 
@@ -31,6 +29,13 @@ TASKS_DIR = Path(__file__).resolve().parent.parent / "data" / "tasks"
 
 # Default token budget per episode
 DEFAULT_TOKEN_BUDGET: int = 8_000
+
+# PBRS: scaling factor for intermediate potential-based shaping.
+# Keeps intermediate signal at ~15% of total vs ~85% terminal reward.
+SHAPING_SCALE: float = 0.15
+
+# Tier-score mapping for authority sub-potential
+_TIER_SCORES: dict[int, float] = {1: 1.0, 2: 0.5, 3: 0.1}
 
 
 class ChronoVeritasEnv:
@@ -90,16 +95,9 @@ class ChronoVeritasEnv:
     # ── Grader selection ──────────────────────────────────────────────
 
     def _select_grader(self, difficulty: str) -> BaseGrader:
+        """Always return UnifiedGrader — difficulty comes from the task, not the grader."""
         assert self._current_task is not None, "No current task set"
-        graders: Dict[str, type[BaseGrader]] = {
-            "easy":   EasyGrader,
-            "medium": MediumGrader,
-            "hard":   HardGrader,
-        }
-        cls = graders.get(difficulty, HardGrader)
-        if difficulty not in graders:
-            log.warning("Unknown difficulty %r — defaulting to HardGrader", difficulty)
-        return cls(self._current_task)
+        return UnifiedGrader(self._current_task)
 
     # ── Observation builder ───────────────────────────────────────────
 
@@ -217,6 +215,9 @@ class ChronoVeritasEnv:
                 done=True,
             )
 
+        # ── PBRS: compute potential BEFORE the action ─────────────────
+        phi_before = self._compute_potential()
+
         # ── Dispatch the action ───────────────────────────────────────
         reward_delta, info, done = self.dispatcher.dispatch(
             action, self.state, self._current_task.ground_truth
@@ -225,6 +226,15 @@ class ChronoVeritasEnv:
         # ── Advance step counter for step-costing actions ─────────────
         if action.type in STEP_COSTING_ACTIONS:
             self.state.advance_step()
+
+        # ── PBRS: compute potential AFTER the action ──────────────────
+        # Only apply shaping on non-terminal steps; terminal gets grader score
+        if not done:
+            phi_after = self._compute_potential()
+            shaping_reward = SHAPING_SCALE * (phi_after - phi_before)
+            reward_delta += shaping_reward
+            info["shaping_reward"] = round(shaping_reward, 5)
+            info["potential"] = round(phi_after, 4)
 
         # ── Auto-terminate on step budget exhaustion ──────────────────
         if not done and self.state.current_step >= self.state.max_steps:
@@ -336,3 +346,78 @@ class ChronoVeritasEnv:
         self.grader = None
         self._current_task = None
         log.debug("ChronoVeritasEnv closed")
+
+    # ── PBRS: Potential-Based Reward Shaping ─────────────────────────
+
+    def _compute_potential(self) -> float:
+        """
+        Deterministic forensic progress estimator.
+
+        Measures investigation quality from observable state only — never
+        accesses ground truth.  Returns a scalar in [0.0, 1.0].
+
+        Five sub-potentials:
+          1. Exploration — fraction of total corpus actually fetched
+          2. Authority   — average reliability tier of fetched docs
+          3. Contradiction density — evidence-based conflict flags
+          4. Hypothesis narrowing  — grounding of declared mutation point
+          5. Evidence coherence    — timeline/contradiction grounding
+        """
+        assert self.state is not None and self._current_task is not None
+        state = self.state
+        total_corpus = len(self._current_task.corpus)
+        if total_corpus == 0:
+            return 0.0
+
+        fetched = len(state.fetched_doc_ids)
+
+        # 1. Exploration: fraction of total corpus read
+        exploration = min(fetched / total_corpus, 1.0) if total_corpus > 0 else 0.0
+
+        # 2. Authority: average tier quality of fetched docs
+        authority = 0.0
+        if fetched > 0:
+            corpus_tiers = {d.doc_id: d.reliability_tier for d in self._current_task.corpus}
+            tier_vals = [
+                _TIER_SCORES.get(corpus_tiers.get(did, 3), 0.1)
+                for did in state.fetched_doc_ids
+            ]
+            authority = sum(tier_vals) / len(tier_vals)
+
+        # 3. Contradiction density: flags relative to possible pairs
+        contradiction = 0.0
+        if fetched >= 2:
+            max_pairs = fetched * (fetched - 1) / 2
+            actual = len(state.contradiction_pairs())
+            contradiction = min(actual / max(max_pairs, 1) * 3.0, 1.0)
+
+        # 4. Hypothesis narrowing: is declared mutation backed by evidence?
+        narrowing = 0.0
+        if state.declared_mutation is not None:
+            did = state.declared_mutation.doc_id
+            read_it = did in state.fetched_doc_ids
+            flagged_it = any(did in (a, b) for a, b in state.contradictions)
+            timeline_it = any(e.doc_id == did for e in state.agent_timeline)
+            narrowing = (float(read_it) + float(flagged_it) + float(timeline_it)) / 3.0
+
+        # 5. Evidence coherence: grounded timeline + contradiction entries
+        coherence = 0.0
+        if state.agent_timeline:
+            grounded = sum(1 for e in state.agent_timeline if e.doc_id in state.fetched_doc_ids)
+            coherence += 0.5 * grounded / len(state.agent_timeline)
+        if state.contradictions:
+            both_read = sum(
+                1 for a, b in state.contradictions
+                if a in state.fetched_doc_ids and b in state.fetched_doc_ids
+            )
+            coherence += 0.5 * both_read / len(state.contradictions)
+
+        # Weighted sum (weights sum to 1.0)
+        phi = (
+            0.25 * exploration
+            + 0.15 * authority
+            + 0.20 * contradiction
+            + 0.20 * narrowing
+            + 0.20 * coherence
+        )
+        return phi

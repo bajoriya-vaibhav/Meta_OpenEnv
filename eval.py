@@ -110,8 +110,8 @@ def plot_component_breakdown(logs: List[Dict], plot_dir: str) -> None:
         return
 
     steps = [r["step"] for r in logs]
-    components = ["verdict", "mutation_type", "mutation_point", "calibration", "format"]
-    colors = ["#2196F3", "#FF9800", "#4CAF50", "#9C27B0", "#607D8B"]
+    components = ["verdict", "mutation_type", "mutation_point", "provenance", "source_reliability", "brier_penalty"]
+    colors = ["#2196F3", "#FF9800", "#4CAF50", "#9C27B0", "#00BCD4", "#F44336"]
 
     fig, ax = plt.subplots(figsize=(10, 6))
 
