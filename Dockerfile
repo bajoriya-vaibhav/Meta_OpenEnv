@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
@@ -11,7 +11,8 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 COPY . .
 
-RUN python -c "from search.bm25_index import BM25Index; BM25Index.build_all()"
+# Create data directories
+RUN mkdir -p data/tasks/generated plots training_logs
 
 EXPOSE 7860
 

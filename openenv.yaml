@@ -1,9 +1,43 @@
-name: ChronoVeritas
-version: 1.0.0
+name: chronoveritas-v2
+version: "2.0.0"
 description: >
-  Claim lifecycle verification environment. Agents must trace how a factual
-  claim mutates across a small document corpus, identify the mutation point,
-  classify the mutation type, and reconstruct the provenance chain.
+  RL environment for misinformation forensics. Three-agent system:
+  Mutator generates distorted claims, Spreader embeds them in a document
+  corpus, Fact-Checker (GRPO-trained LLM) identifies the mutation.
+author: chronoveritas-team
+theme: multi-agent-interactions
+
+actions:
+  - name: search
+    description: BM25 keyword search over document corpus
+  - name: fetch_doc
+    description: Retrieve full document content
+  - name: add_timeline_event
+    description: Annotate chronological event (free action)
+  - name: flag_contradiction
+    description: Mark two documents as contradictory (free action)
+  - name: set_mutation_point
+    description: Declare hypothesis — no GT comparison (free action)
+  - name: submit_verdict
+    description: Terminal action — triggers deterministic grading
+
+difficulty_levels:
+  - easy:   { max_steps: 15, corpus_size: 3 }
+  - medium: { max_steps: 20, corpus_size: 6 }
+  - hard:   { max_steps: 30, corpus_size: 12 }
+
+reward:
+  type: deterministic
+  components: [verdict, mutation_type, mutation_point, provenance,
+               source_reliability, efficiency, calibration]
+  penalties: [hallucination, brier]
+  leakage: none
+
+training:
+  algorithm: GRPO
+  base_model: Qwen/Qwen2.5-7B-Instruct
+  framework: unsloth + trl
+
 tasks:
   - id: EASY-001
     difficulty: easy
@@ -14,13 +48,7 @@ tasks:
   - id: HARD-001
     difficulty: hard
     max_steps: 30
-actions:
-  - search
-  - fetch_doc
-  - add_timeline_event
-  - flag_contradiction
-  - set_mutation_point
-  - submit_verdict
+
 reward_range: [0.0, 1.0]
 episode_terminates_on:
   - submit_verdict
