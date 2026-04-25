@@ -41,7 +41,16 @@ args = parser.parse_args() if __name__ == "__main__" else parser.parse_args([])
 import numpy as np
 import torch
 
-# Unsloth must be imported before transformers
+# Import GRPOTrainer from trl BEFORE unsloth — unsloth monkey-patches GRPOTrainer
+# at import time via unsloth_compiled_cache/UnslothGRPOTrainer.py, producing a
+# compute_loss that expects inputs as a dict(prompt_ids, prompt_mask) while
+# trl 0.14.0's real GRPOTrainer expects inputs as a list-of-dicts. By importing
+# first we get the real trl implementation that matches the trl 0.14 spec.
+from datasets import Dataset
+from trl import GRPOConfig, GRPOTrainer
+from transformers import AutoTokenizer
+
+# Unsloth for model loading only (FastLanguageModel + 4-bit QLoRA)
 try:
     from unsloth import FastLanguageModel, is_bfloat16_supported
     UNSLOTH_AVAILABLE = True
@@ -49,9 +58,6 @@ except (ImportError, NotImplementedError, Exception) as e:
     UNSLOTH_AVAILABLE = False
     print(f"WARNING: Unsloth unavailable ({type(e).__name__}). Falling back to standard transformers.")
 
-from datasets import Dataset
-from trl import GRPOConfig, GRPOTrainer
-from transformers import AutoTokenizer
 
 # Local imports
 sys.path.insert(0, str(Path(__file__).parent))
@@ -60,7 +66,7 @@ from agents.mutator import Mutator
 from agents.spreader import Spreader
 
 # ── Constants ──────────────────────────────────────────────────────────────
-MAX_SEQ_LEN = 2048
+MAX_SEQ_LEN = 1536
 TASKS_DIR = Path("data/tasks")
 LOG_DIR = Path(args.log_dir)
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -402,7 +408,7 @@ def load_model_and_tokenizer(model_name: str):
         )
         model = FastLanguageModel.get_peft_model(
             model,
-            r=16,
+            r=8,
             target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
                             "gate_proj", "up_proj", "down_proj"],
             lora_alpha=16,
@@ -593,25 +599,22 @@ def main() -> None:
     print("\n[3/5] Loading model...")
     model, tokenizer = load_model_and_tokenizer(args.model)
 
-    # ── Step 4: Configure GRPO trainer ────────────────────────────────
-    print("\n[4/5] Configuring GRPOTrainer...")
-
     training_args = GRPOConfig(
         output_dir=args.output_dir,
         num_train_epochs=1,
         max_steps=args.steps,
         per_device_train_batch_size=1,
-        gradient_accumulation_steps=4,
+        gradient_accumulation_steps=2,
         learning_rate=args.lr,
         max_grad_norm=0.1,
-        warmup_ratio=0.05,
+        warmup_ratio=0.03,
         lr_scheduler_type="cosine",
 
-        # GRPO specific
+        # GRPO-specific (trl 0.14.0 parameter names)
         num_generations=args.group_size,
-        max_new_tokens=256,
+        max_completion_length=64,        # JSON answers ~40-60 tokens; was 128
         temperature=0.9,
-        top_p=0.95,
+        # top_p is not a GRPOConfig field in trl 0.14 — pass via generation_config if needed
 
         # Logging
         logging_steps=5,
@@ -627,14 +630,11 @@ def main() -> None:
         report_to="none",
         run_name="chronoveritas-grpo",
         seed=args.seed,
-
-        # Reward
-        reward_weights=[1.0],
     )
 
     trainer = GRPOTrainer(
         model=model,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,      # renamed from tokenizer in trl 0.14
         reward_funcs=[reward_fn_wrapper],
         args=training_args,
         train_dataset=dataset,
