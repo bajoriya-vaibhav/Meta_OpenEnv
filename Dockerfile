@@ -19,12 +19,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # ── Python deps (inference stack — torch+cu121 via PyTorch index) ─────────────
-COPY requirements_infer.txt .
+COPY requirements_space.txt .
 
 RUN pip install --upgrade pip && \
-    pip install \
-        --extra-index-url https://download.pytorch.org/whl/cu121 \
-        -r requirements_infer.txt
+    pip install -r requirements_space.txt
 
 # ── Copy application code ──────────────────────────────────────────────────────
 COPY . .
