@@ -98,7 +98,8 @@ MUTATION TYPES:
 - context_shift: A true fact was placed in the wrong temporal or organisational context
 - none: The claim is accurate
 
-CRITICAL: Your response MUST be a JSON object with EXACTLY these 5 keys — no more, no less:
+CRITICAL: Your response MUST be a JSON object with EXACTLY these 6 keys:
+- "reasoning" (REQUIRED): Explain your step-by-step logic here before giving the final verdict.
 - "verdict" (REQUIRED): one of "true", "false", "misleading", "unverifiable"
 - "mutation_type" (REQUIRED): one of "distortion", "fabrication", "omission", "context_shift", "none"
 - "mutation_doc_id" (REQUIRED): "DOC-XXXX" or null
@@ -108,7 +109,7 @@ CRITICAL: Your response MUST be a JSON object with EXACTLY these 5 keys — no m
 DO NOT add any other keys. DO NOT include any text before or after the JSON.
 
 Example output:
-{"verdict": "false", "mutation_type": "distortion", "mutation_doc_id": "DOC-0003", "provenance_chain": ["DOC-0001", "DOC-0003"], "confidence": 0.85}"""
+{"reasoning": "DOC-0003 contradicts DOC-0001 regarding the settlement amount.", "verdict": "false", "mutation_type": "distortion", "mutation_doc_id": "DOC-0003", "provenance_chain": ["DOC-0001", "DOC-0003"], "confidence": 0.85}"""
 
 
 # ── Reward computation ─────────────────────────────────────────────────────
