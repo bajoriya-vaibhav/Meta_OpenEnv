@@ -46,357 +46,292 @@ This is exactly the kind of environment that differentiates **RL-trained agents 
 
 ---
 
-## Environment Design
+## Round 2 Upgrade (What Changed)
 
-### Observation Space
+Round 2 upgrades ChronoVeritas from a single static benchmark into a **full training system** with:
 
-At each step, the agent observes:
+- `Mutator` agent that programmatically injects claim mutations.
+- `Spreader` agent that embeds those mutations into realistic multi-tier corpora.
+- `Fact-Checker` agent trained with GRPO to investigate, localize, and verify provenance.
+- deterministic environment grading + online shaping signal designed to resist reward hacking.
 
-| Field | Type | Description |
+This directly aligns with hackathon expectations around **innovation**, **clear storytelling**, **observable reward improvement**, and a **reproducible training pipeline**.
+
+---
+
+## Multi-Agent Interaction (Round 2)
+
+### 🧬 Agent Roles
+
+| Agent | File | Responsibility |
 |---|---|---|
-| `claim` | `str` | The factual claim to investigate |
-| `corpus_metadata` | `List[DocMeta]` | Metadata stubs for discovered documents (initially empty) |
-| `retrieved_docs` | `List[Document]` | Full text of fetched documents |
-| `agent_timeline` | `List[TimelineEntry]` | Agent-built chronological event timeline |
-| `flagged_contradictions` | `List[Tuple[str, str]]` | Pairs of contradictory documents flagged by the agent |
-| `current_step` | `int` | Current step number |
-| `max_steps` | `int` | Maximum steps before budget exhaustion |
-| `token_budget_remaining` | `int` | Remaining token budget for fetching documents |
-| `partial_reward_so_far` | `float` | Accumulated process rewards |
+| `Mutator` | `agents/mutator.py` | Applies deterministic mutation operators (`distortion`, `fabrication`, `omission`, `context_shift`) |
+| `Spreader` | `agents/spreader.py` | Builds task corpora with reliability tiers, propagation chains, and noise docs |
+| `Fact-Checker` | `train_grpo.py` + env API | Investigates documents and outputs JSON verdict/provenance decisions |
 
-**Key design choice:** The corpus starts **empty**. Agents must use `search` to discover documents before they can read them. This prevents information leakage from the initial observation.
+### 🔄 Round 2 Generation + Solving Flow
 
-Each document includes a **reliability tier** visible at search time:
-
-| Tier | Label | Examples | Trust Weight |
-|------|-------|----------|-------------|
-| 1 | Official | Government filings, court records, peer-reviewed research | 1.0 |
-| 2 | Institutional | Major news organizations, corporate press releases | 0.6 |
-| 3 | Informal | Blogs, forums, social media, leaked documents | 0.2 |
-
-### Action Space
-
-| Action | Step Cost | Token Cost | Description |
-|---|---|---|---|
-| `search` | 1 step | 0 | BM25 keyword search — discovers document metadata |
-| `fetch_doc` | 1 step | `len(content) // 4` | Retrieves full document text |
-| `add_timeline_event` | **0 (free)** | 0 | Annotates a chronological event from a read document |
-| `flag_contradiction` | **0 (free)** | 0 | Marks two documents as containing contradictory facts |
-| `set_mutation_point` | **0 (free)** | 0 | Declares which document was mutated and how |
-| `submit_verdict` | Terminal | 0 | Submits final verdict — triggers grading, ends episode |
-
-**Two resource budgets constrain the agent:**
-- **Step budget** — Only `search` and `fetch_doc` consume steps. Free actions (timeline, contradiction, mutation, verdict) allow unlimited annotation without penalty.
-- **Token budget** — Fetching documents deducts tokens proportional to content length (`len(content) // 4`). This forces agents to prioritize which documents to read in full.
-
-### Episode Lifecycle
-
+```mermaid
+flowchart TD
+    seedFact[SeedFact TrueClaim] --> mutator[Mutator Agent]
+    mutator --> mutationResult[MutationResult]
+    mutationResult --> spreader[Spreader Agent]
+    spreader --> taskSpec[TaskSpec Claim GroundTruth Corpus]
+    taskSpec --> envReset[Environment reset]
+    envReset --> factChecker[FactChecker Agent]
+    factChecker --> envStep[search fetch annotate submit]
+    envStep --> grader[UnifiedGrader Deterministic Score]
+    grader --> trainingLoop[GRPO Update]
+    trainingLoop --> factChecker
 ```
-reset(task_id)
-  → Agent sees: claim text, empty corpus, budget limits
-  → Phase: INITIALISED
-
-search(query) / fetch_doc(doc_id)    [consumes steps/tokens]
-  → Agent discovers and reads documents
-  → Reward: 0.0 (no answer leakage)
-
-add_timeline_event / flag_contradiction    [free actions]
-  → Agent annotates evidence graph
-  → Reward: small process bonuses (≤0.02 each)
-
-set_mutation_point(doc_id, mutation_type)    [free action]
-  → Agent declares its hypothesis
-  → Reward: 0.0 (CRITICAL: no ground-truth comparison)
-
-submit_verdict(verdict, mutation_type, provenance_chain, confidence)
-  → Terminal grading fires — ONLY point where GT is compared
-  → Phase: TERMINAL
-```
-
-**Episode termination:** Either `submit_verdict` or step budget exhaustion (partial grading applies).
 
 ---
 
-## Reward Design
+## Environment Interaction Design
 
-### Core Principle: Zero Answer Leakage
+### 👀 Observation Space
 
-> *"Could an agent that ignores all document content and only reads reward signals achieve a non-trivial score?"* — If yes, the reward function is broken.
+At each step, the agent receives:
 
-ChronoVeritas implements a **process-oriented reward system** inspired by Process Reward Models (PRMs) in LLM alignment research. Intermediate rewards measure **reasoning quality**, not proximity to the answer.
+- `claim`
+- `corpus_metadata` (discovered via `search`)
+- `retrieved_docs` (full fetched text)
+- `agent_timeline`
+- `flagged_contradictions`
+- `current_step` / `max_steps`
+- `token_budget_remaining`
+- `partial_reward_so_far`
 
-### Intermediate Rewards (Non-Exploitable)
+**Critical anti-leak design:** episode starts with empty visible corpus metadata, so the agent must explore first.
 
-| Action | Max Reward | What Is Measured |
-|---|---|---|
-| `add_timeline_event` | +0.02 per event | Did the agent read the document? Does the timestamp match? Is the label grounded in content? |
-| `flag_contradiction` | +0.02 per flag | Did the agent actually fetch both documents before flagging? |
-| `set_mutation_point` | **0.0 always** | Records declaration for terminal grading. Returns evidence-grounding feedback only. |
+### 🎮 Action Space
 
-**Caps:** Timeline bonuses capped at 0.10 (5 events). Contradiction bonuses capped at 0.04 (2 flags). Maximum total intermediate reward: ~0.14.
-
-### Terminal Grading (10 Scoring Components)
-
-All ground-truth comparison happens **exclusively** at `submit_verdict`. The grading system uses **10 components**, weighted differently per difficulty tier:
-
-| Component | Range | Easy | Medium | Hard | Description |
-|---|---|---|---|---|---|
-| `verdict_accuracy` | {0, 1} | **0.45** | **0.25** | **0.20** | Exact match: `true`, `false`, `misleading`, `unverifiable` |
-| `source_reliability` | [0, 1] | 0.10 | 0.10 | 0.08 | Weighted average reliability tier of provenance chain |
-| `mutation_type_score` | {0, 1} | — | **0.20** | **0.10** | Exact match: `distortion`, `omission`, `fabrication`, `context_shift` |
-| `mutation_point_score` | {0, 0.5, 1} | **0.35** | **0.20** | **0.10** | 1.0 = exact doc match · 0.5 = adjacent in timeline · 0.0 = wrong |
-| `provenance_chain` | [0, 1] | 0.05 | 0.10 | **0.15** | Multiset-aware F1 between agent and ground-truth chains |
-| `timeline_score` | [0, 1] | — | — | **0.07** | Kendall-tau correlation of agent's timeline ordering |
-| `efficiency_score` | [0, 1] | — | 0.10 | 0.05 | `1 − steps_used / max_steps` — rewards concise investigation |
-| `early_detection` | {0, 1} | 0.05 | 0.05 | 0.05 | Correct mutation point identified before 40% of step budget |
-| `reconciliation` | [0, 1] | — | — | **0.15** | Hard only: coverage of conflict fields via contradiction flags |
-| Σ positive | | **1.00** | **1.00** | **0.95** | Hard tasks ceiling at 0.95 by design |
-| `hallucination_penalty` | −[0, 1] | −0.10 | −0.10 | **−0.15** | Penalty for citing unfetched or fabricated documents |
-| `brier_penalty` | −[0, 1] | −0.05 | −0.08 | **−0.10** | Penalty for miscalibrated confidence |
-
-**Why hard positives sum to 0.95:** The reconciliation component (0.15) creates an intentional ceiling — hard tasks should never trivially reach 1.0. This forces mastery across ALL scoring dimensions.
-
-### Determinism Guarantee
-
-All grading is **fully deterministic and reproducible** — no LLM-as-judge, no stochastic evaluation. The same agent actions always produce the same score. Every scoring function is a pure mathematical computation over typed Pydantic models.
-
----
-
-## Tasks
-
-ChronoVeritas ships with 3 tasks spanning a clear difficulty progression:
-
-### EASY-001 — Budget Distortion (15 steps, 4 docs)
-
-> *"The proposed transit budget increases by 15%..."*
-
-A city council approves a 5% budget increase (official minutes). A secondary news source distorts "5%" to "15%." The agent must identify the numerical distortion and trace it to the source.
-
-- **Mutation:** `distortion` — a specific number is altered
-- **Corpus:** 4 documents across 3 reliability tiers
-- **Key challenge:** Simple numerical comparison between authoritative and secondary sources
-
-### MED-001 — Corporate Restructuring Fabrication (20 steps, 8 docs)
-
-> *"GlobalTech Corp involuntarily terminated 1,200 employees amid a 12% revenue decline..."*
-
-An SEC filing shows 800 employees transferred (not terminated) and 400 accepted voluntary separation. Revenue grew 3.1%, not declined 12%. A news article fabricates both the revenue decline and the characterization of involuntary terminations.
-
-- **Mutation:** `fabrication` — financial data and event characterization are invented
-- **Corpus:** 8 documents including SEC filings (T1), news reports (T2), employee forums (T3)
-- **Key challenge:** Reconciling corporate PR with official filings, identifying fabricated statistics
-
-### HARD-001 — Aviation Safety Certification Fabrication (30 steps, 20 docs)
-
-> *"The FAA conducted fully independent flight-control safety certification of the Boeing 737 MAX's MCAS system..."*
-
-A dense investigation spanning 5 years of the Boeing 737 MAX crisis. A fabricated "leaked FAA memo" (DOC-5005) claims independent MCAS testing was performed, directly contradicted by 7 official sources including congressional reports, DOT Inspector General findings, and DOJ settlement admissions.
-
-- **Mutation:** `fabrication` — an entire document is forged
-- **Corpus:** 20 documents, 9-doc provenance chain, 15-doc timeline, 5 conflict fields, 5 noise documents
-- **Key challenges:**
-  - 5 conflict fields requiring multi-source reconciliation (certification independence, MCAS test performance, pilot disclosure, ODA delegation scope, sensor redundancy)
-  - Noise documents (competitor announcements, engine specs, space program) that distract from the signal
-  - Subtle fabrication — the forged memo uses plausible bureaucratic language and references real regulatory frameworks
-  - Requires anchoring on Tier-1 sources (FAA reports, congressional testimony) over Tier-3 leaked documents
-
-### Difficulty Progression
-
-| Property | Easy | Medium | Hard |
+| Action | Step Cost | Token Cost | Notes |
 |---|---|---|---|
-| Corpus size | 4 docs | 8 docs | 20 docs |
-| Provenance chain | 3 docs | 3 docs | 9 docs |
-| Timeline depth | 4 docs | 8 docs | 15 docs |
-| Conflict fields | 0 | 0 | 5 |
-| Noise documents | 0 | 0 | 5 |
-| Max steps | 15 | 20 | 30 |
-| Grader components | 5 | 7 | 9 |
+| `search` | 1 | 0 | BM25 retrieval of document metadata |
+| `fetch_doc` | 1 | estimated doc tokens | supports truncation if remaining token budget is low |
+| `add_timeline_event` | 0 | 0 | free annotation |
+| `flag_contradiction` | 0 | 0 | free contradiction marking |
+| `set_mutation_point` | 0 | 0 | records hypothesis, no GT reward leak |
+| `submit_verdict` | terminal | 0 | triggers deterministic grading |
 
-### Expected Baseline Scores
+### 🧭 Episode Lifecycle
 
-| Difficulty | Random Agent | Baseline LLM (8B) | Frontier Model |
-|---|---|---|---|
-| Easy | 0.10–0.15 | 0.85–0.95 | 0.95+ |
-| Medium | 0.05–0.10 | 0.60–0.80 | 0.85–0.95 |
-| Hard | 0.02–0.05 | 0.40–0.65 | 0.70–0.85 |
-
----
-
-## Project Structure
-
+```mermaid
+flowchart TD
+    reset[reset task_id] --> active[Phase INITIALISED]
+    active --> explore[search and fetch_doc]
+    explore --> annotate[add_timeline_event and flag_contradiction]
+    annotate --> hypothesis[set_mutation_point]
+    hypothesis --> decision[submit_verdict]
+    decision --> grading[UnifiedGrader]
+    grading --> terminal[Phase TERMINAL]
+    explore --> budgetStop[step budget exhausted]
+    budgetStop --> partial[grade_partial]
+    partial --> terminal
 ```
+
+---
+
+## Reward Function Interaction with Agent
+
+### 🛡️ Core Principle: No Answer Leakage
+
+`set_mutation_point` never compares against ground truth at action time and always returns reward `0.0`.  
+Ground-truth matching occurs only during terminal grading.
+
+### ⚙️ Online Environment Reward (During Episode)
+
+`env/environment.py` adds **Potential-Based Reward Shaping (PBRS)** on non-terminal transitions:
+
+- `phi(s)` tracks investigation progress from observable evidence only.
+- shaping term: `0.15 * (phi_after - phi_before)`.
+- sub-potentials include exploration coverage, source authority, contradiction density, hypothesis grounding, and evidence coherence.
+
+This gives learning signal for process quality without exposing final answers.
+
+### 🧪 Terminal Deterministic Grading (At Submit)
+
+`graders/unified_grader.py` computes weighted components:
+
+- verdict accuracy
+- mutation type
+- mutation point localization
+- provenance F1
+- source reliability
+- timeline quality
+- efficiency
+- early detection
+- reconciliation
+- penalties: hallucination + Brier calibration
+
+All math is deterministic; no LLM-as-judge randomness.
+
+### 🧠 Training-Time Proxy Reward (GRPO)
+
+`train_grpo.py` uses a proxy reward aligned with grader-available fields from generated completions:
+
+- format validity
+- verdict
+- mutation type
+- mutation point
+- provenance
+- source reliability
+- penalties for hallucination and miscalibration
+
+This avoids train/eval objective mismatch and makes reward curves meaningful.
+
+### 🔁 Reward-Agent Coupling Diagram
+
+```mermaid
+flowchart TD
+    policy[FactChecker Policy] --> sample[Generate JSON Completion]
+    sample --> proxy[GRPO Proxy Reward in train_grpo.py]
+    proxy --> update[Policy Update]
+    update --> policy
+    policy --> envAction[Interact with ChronoVeritasEnv]
+    envAction --> pbrs[PBRS Transition Reward]
+    envAction --> submit[submit_verdict]
+    submit --> unified[UnifiedGrader Terminal Score]
+    pbrs --> learnSignal[Learning Signal]
+    unified --> learnSignal
+    learnSignal --> update
+```
+
+---
+
+## Tasks and Difficulty Progression
+
+Round 2 supports both:
+
+- seeded benchmark tasks in `data/tasks/*.json`
+- large generated curriculum in `data/tasks/generated/*.json` from Mutator + Spreader
+
+Generated task scaling in `agents/spreader.py`:
+
+| Difficulty | Typical Corpus Size | Noise Docs | Default Max Steps |
+|---|---|---|---|
+| `easy` | 3 | 0 | 20 |
+| `medium` | 6 | 2 | 25 |
+| `hard` | 12 | 4 | 35 |
+
+Training script supports curriculum (`easy -> easy+medium -> all`) via `train_grpo.py`.
+
+---
+
+## Project Structure (Round 2)
+
+```text
 chronoveritas/
-├── server.py                   # FastAPI server (OpenEnv HTTP API)
-├── inference.py                # Baseline inference agent
-├── openenv.yaml                # OpenEnv specification manifest
-├── Dockerfile                  # Container deployment (uses requirements_infer.txt)
-├── requirements_train.txt      # Frozen deps — chronoveritas-train env
-├── requirements_infer.txt      # Frozen deps — chronoveritas-infer env
-├── pyproject.toml              # Package metadata
-│
-├── env/                        # Core environment
-│   ├── environment.py          # Episode lifecycle & step dispatch
-│   ├── actions.py              # Action handlers (search, fetch, annotate, grade)
-│   ├── models.py               # Pydantic v2 typed models (Document, Action, Observation, etc.)
-│   └── state_manager.py        # Mutable episode state with phase transitions
-│
-├── graders/                    # Deterministic grading system
-│   ├── base_grader.py          # Abstract grader with 10 shared scoring components
-│   ├── easy_grader.py          # EasyGrader (5 components, verdict-heavy)
-│   ├── medium_grader.py        # MediumGrader (7 components, +mutation type & efficiency)
-│   └── hard_grader.py          # HardGrader (9 components, +reconciliation & timeline)
-│
-├── search/                     # Retrieval engine
-│   └── bm25_index.py           # BM25 corpus indexing and keyword search
-│
-└── data/
-    └── tasks/                  # Task definitions (JSON)
-        ├── task_easy.json
-        ├── task_medium.json
-        └── task_hard.json
+├── agents/
+│   ├── mutator.py
+│   ├── spreader.py
+│   └── task_bank.py
+├── env/
+│   ├── environment.py
+│   ├── actions.py
+│   ├── models.py
+│   └── state_manager.py
+├── graders/
+│   ├── base_grader.py
+│   └── unified_grader.py
+├── server/
+│   └── app.py
+├── training/
+│   ├── reward_fn.py
+│   └── sft_warmup.py
+├── train_grpo.py
+├── eval.py
+├── generate_data.py
+└── openenv.yaml
 ```
 
 ---
 
-## Quick Start (ChronoVeritas v2)
+## Quick Start (Round 2)
 
-The v2 architecture transitions from API-based LLM testing to **local GRPO reinforcement learning**. Follow these steps to generate data, train your own `Qwen2.5-7B-Instruct` Fact-Checker agent, and evaluate it.
+### 1) Generate tasks
 
-### 1. Generate Training Data
-Generate massive amounts of adversarial tasks locally without needing GPU libraries.
 ```bash
-# Generate a quick test batch (10 easy, 10 medium, 5 hard)
 python generate_data.py --easy 10 --medium 10 --hard 5
-
-# Generate a massive dataset for full training
-python generate_data.py --easy 2000 --medium 1000 --hard 500
 ```
-Tasks are automatically saved to `data/tasks/generated/`.
 
-### 2. SFT Warm-up (Phase 0)
-Before RL begins, train the model to output the strict JSON format.
+### 2) Optional SFT warmup
+
 ```bash
 python training/sft_warmup.py --n-examples 200 --output ./chronoveritas-sft
 ```
 
-### 3. GRPO Reinforcement Learning
-Train the agent using the 5-component proxy reward. The trainer uses Unsloth + TRL for aggressive VRAM optimization (runs on a single 20GB RTX A4500).
-```bash
-# Full curriculum training (starts easy, progresses to hard)
-python train_grpo.py --difficulty curriculum --steps 400
+### 3) Train with GRPO
 
-# Quick debug run
-python train_grpo.py --difficulty easy --steps 50
+```bash
+python train_grpo.py --difficulty curriculum --steps 400
 ```
 
-### 4. Evaluation & Plotting
-Test the fully trained model against the strict, multi-step production Graders and generate evaluation charts.
+### 4) Evaluate and create plots
+
 ```bash
 python eval.py --model ./chronoveritas-fact-checker --baseline
 ```
-This generates:
+
+Expected artifacts:
+
+- `training_logs/reward_log.json`
 - `plots/reward_curve.png`
 - `plots/component_breakdown.png`
 - `plots/before_after.png`
+- `eval_results.json`
 
 ---
 
-## API Reference
+## API Reference (v2)
 
-### Endpoints
+### Core OpenEnv endpoints
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/health` | Returns `{"status": "healthy"}` |
-| `GET` | `/tasks` | Lists available task IDs and difficulty levels |
-| `POST` | `/reset` | Starts a new episode for a given task |
-| `POST` | `/step` | Executes a single agent action |
-| `GET` | `/state` | Returns the current observation |
-
-### Example: Full Episode
-
-```bash
-# 1. Reset to a task
-curl -X POST http://localhost:7860/reset \
-  -H "Content-Type: application/json" \
-  -d '{"task_id": "EASY-001"}'
-
-# 2. Search for documents
-curl -X POST http://localhost:7860/step \
-  -H "Content-Type: application/json" \
-  -d '{"type": "search", "payload": {"query": "budget transport council"}}'
-
-# 3. Fetch a discovered document
-curl -X POST http://localhost:7860/step \
-  -H "Content-Type: application/json" \
-  -d '{"type": "fetch_doc", "payload": {"doc_id": "DOC-0001"}}'
-
-# 4. Annotate timeline (free action)
-curl -X POST http://localhost:7860/step \
-  -H "Content-Type: application/json" \
-  -d '{"type": "add_timeline_event", "payload": {"doc_id": "DOC-0001", "event_label": "Council approved 5% increase", "timestamp": 1672531200}}'
-
-# 5. Flag contradiction (free action)
-curl -X POST http://localhost:7860/step \
-  -H "Content-Type: application/json" \
-  -d '{"type": "flag_contradiction", "payload": {"doc_id_a": "DOC-0001", "doc_id_b": "DOC-0003"}}'
-
-# 6. Declare mutation point (free action, returns 0 reward)
-curl -X POST http://localhost:7860/step \
-  -H "Content-Type: application/json" \
-  -d '{"type": "set_mutation_point", "payload": {"doc_id": "DOC-0003", "mutation_type": "distortion"}}'
-
-# 7. Submit final verdict (terminal — triggers grading)
-curl -X POST http://localhost:7860/step \
-  -H "Content-Type: application/json" \
-  -d '{"type": "submit_verdict", "payload": {"verdict": "false", "mutation_type": "distortion", "mutation_doc_id": "DOC-0003", "provenance_chain": ["DOC-0001", "DOC-0003"], "confidence": 0.9}}'
-```
-
----
-
-## Environment Variables
-
-| Variable | Default | Description |
+| Method | Path | Purpose |
 |---|---|---|
-| `API_BASE_URL` | `https://api.openai.com/v1` | LLM API endpoint for inference agent |
-| `MODEL_NAME` | `gpt-4o-mini` | LLM model name |
-| `HF_TOKEN` | *(required)* | API key / Hugging Face token for LLM calls |
-| `ENV_BASE_URL` | `https://transyltoonia-chronoveritas.hf.space` | Environment server URL |
+| `GET` | `/health` | liveness check |
+| `GET` | `/tasks` | list available tasks |
+| `POST` | `/reset` | start episode |
+| `POST` | `/step` | execute action |
+| `GET` | `/state` | current observation |
+
+### Round 2 multi-agent demo endpoints
+
+| Method | Path | Purpose |
+|---|---|---|
+| `POST` | `/mutate` | run Mutator on a selected/random seed fact |
+| `POST` | `/spread` | build full task corpus from mutation |
+| `GET` | `/demo` | one-shot end-to-end story (mutate -> spread -> solve target) |
+| `GET` | `/seed-facts` | inspect available seed facts |
 
 ---
 
-## Technical Highlights
+## Why This Scores Well in Hackathon Round 2
 
-### Why ChronoVeritas is Different
+### 💡 Environment Innovation (40%)
 
-| Feature | Typical Fact-Check Benchmarks | ChronoVeritas |
-|---|---|---|
-| Task structure | Binary true/false classification | Multi-step investigation with provenance tracking |
-| Evidence model | Flat document retrieval | Hierarchical reliability tiers + temporal ordering |
-| Reward design | Final accuracy only | Process rewards + 10-component terminal grading |
-| Answer leakage | Often present in intermediate signals | **Zero leakage** — `set_mutation_point` always returns 0.0 |
-| Grading | LLM-as-judge or human evaluation | **Fully deterministic** — pure mathematical scoring |
-| Difficulty curve | Single difficulty level | 3 tiers with distinct grader architectures |
-| RL suitability | Static accuracy benchmarks | Non-linear reward surface with cost–benefit tradeoffs at every step |
+- realistic misinformation lifecycle modeling, not static QA.
+- explicit adversarial generation through Mutator + Spreader.
+- mixed reliability tiers, propagation dynamics, and noise injection.
 
-### Anti-Exploitation Design
+### 🎬 Storytelling & Presentation (30%)
 
-1. **No GT Oracle:** `set_mutation_point` records the declaration silently — reward is always 0.0. A brute-force agent learns nothing from intermediate rewards.
-2. **Evidence Grounding:** Process rewards only check if the agent *read its evidence* — not whether the evidence is *correct*.
-3. **Hallucination Detection:** Citing documents the agent never fetched triggers penalties.
-4. **Brier Penalty:** Overconfident wrong answers and underconfident correct answers are both penalized — encouraging calibrated reasoning.
-5. **Intentional Ceiling:** Hard task positive weights sum to 0.95, preventing trivial perfect scores.
+- clear three-agent narrative with deterministic mechanics.
+- flowcharts that map directly to implementation files.
+- easy-to-follow investigation loop from claim to provenance verdict.
 
-### Real-World Impact
+### 📈 Showing Reward Improvement (20%)
 
-ChronoVeritas is built to be **directly useful** — not just an academic exercise:
+- training/eval pipeline outputs reproducible reward logs and visual curves.
+- before/after comparisons supported in `eval.py`.
+- component-level breakdown demonstrates what exactly improved.
 
-- **Content moderation at scale:** Platforms like Meta, X, and YouTube spend $200M+/year on human fact-checkers. An RL agent trained on ChronoVeritas-style tasks could triage the ~95% of flagged content that follows known mutation patterns, letting human reviewers focus on novel or ambiguous cases.
-- **Newsroom verification:** A Reuters journalist currently spends 30–90 minutes manually cross-referencing a breaking claim against archived sources. An agent that can search, retrieve, compare reliability tiers, and flag contradictions could reduce this to seconds — with a provenance chain the journalist can audit.
-- **Financial compliance:** The SEC mandates that public companies' current statements be consistent with prior filings. Today, compliance teams do this manually. ChronoVeritas trains the exact skill needed: detect when a current claim contradicts an authoritative prior source.
-- **Combating AI-generated misinformation:** As LLMs like Grok generate plausible-sounding but factually incorrect content at scale, the need for automated claim verification grows exponentially. The mutation types in ChronoVeritas (distortion, omission, fabrication, context shift) directly map to the ways AI hallucinations distort real information.
+### 🧱 Reward + Training Pipeline (10%)
 
-The environment's reward structure is specifically designed so that RL training produces agents with skills that transfer to production: source prioritization, efficient investigation under budget constraints, confidence calibration, and provenance tracking — not just final-answer accuracy.
+- coherent reward stack across online shaping, terminal grader, and GRPO proxy.
+- anti-hacking design: no reward leakage at mutation declaration, hallucination penalties, confidence calibration penalties.
+- deterministic grader ensures reproducible evaluation under fixed trajectories.
 
 ---
 
