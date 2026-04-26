@@ -229,8 +229,9 @@ chronoveritas/
 ├── server.py                   # FastAPI server (OpenEnv HTTP API)
 ├── inference.py                # Baseline inference agent
 ├── openenv.yaml                # OpenEnv specification manifest
-├── Dockerfile                  # Container deployment
-├── requirements.txt            # Python dependencies
+├── Dockerfile                  # Container deployment (uses requirements_infer.txt)
+├── requirements_train.txt      # Frozen deps — chronoveritas-train env
+├── requirements_infer.txt      # Frozen deps — chronoveritas-infer env
 ├── pyproject.toml              # Package metadata
 │
 ├── env/                        # Core environment
