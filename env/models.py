@@ -13,9 +13,21 @@ from pydantic import BaseModel, Field, field_validator, model_validator
 
 MutationType = Literal["distortion", "omission", "fabrication", "context_shift", "none"]
 VerdictType = Literal["true", "false", "misleading", "unverifiable"]
+AgentRole = Literal["retriever", "analyst", "arbiter"]
+MessageType = Literal[
+    "request_evidence",
+    "evidence_response",
+    "challenge",
+    "hypothesis",
+    "consensus",
+    "note",
+]
 ActionType = Literal[
     "search",
     "fetch_doc",
+    "request_evidence",
+    "send_message",
+    "update_hypothesis",
     "add_timeline_event",
     "flag_contradiction",
     "set_mutation_point",
@@ -127,14 +139,66 @@ class MutationDecl(BaseModel):
         return v.strip()
 
 
+# Multi-agent coordination models
+
+class AgentMessage(BaseModel):
+    """Structured blackboard message between the three specialist agents."""
+
+    sender: AgentRole
+    recipient: AgentRole
+    message_type: MessageType = "note"
+    content: str
+    doc_id: Optional[str] = None
+    query: Optional[str] = None
+
+    @field_validator("content")
+    @classmethod
+    def non_empty_content(cls, v: str) -> str:
+        if not v or not v.strip():
+            raise ValueError("content must be non-empty")
+        return v.strip()
+
+    @model_validator(mode="after")
+    def different_agents(self) -> "AgentMessage":
+        if self.sender == self.recipient:
+            raise ValueError("sender and recipient must be different agents")
+        return self
+
+
+class AgentHypothesis(BaseModel):
+    """A role agent's current belief, stored on the shared blackboard."""
+
+    agent: AgentRole
+    mutation_type: Optional[MutationType] = None
+    mutation_doc_id: Optional[str] = None
+    confidence: float = Field(default=0.5, ge=0.0, le=1.0)
+    rationale: str = ""
+    supporting_doc_ids: List[str] = Field(default_factory=list)
+
+    @field_validator("supporting_doc_ids")
+    @classmethod
+    def dedupe_supporting_docs(cls, v: List[str]) -> List[str]:
+        seen: set[str] = set()
+        result: List[str] = []
+        for doc_id in v:
+            clean = doc_id.strip()
+            if clean and clean not in seen:
+                seen.add(clean)
+                result.append(clean)
+        return result
+
+
 # ── Observation ──────────────────────────────────────────────────────────────
 
 class Observation(BaseModel):
+    active_role: Optional[AgentRole] = None
     claim: str = ""
     corpus_metadata: List[DocMeta] = Field(default_factory=list)
     retrieved_docs: List[Document] = Field(default_factory=list)
     agent_timeline: List[TimelineEntry] = Field(default_factory=list)
     flagged_contradictions: List[Tuple[str, str]] = Field(default_factory=list)
+    messages: List[AgentMessage] = Field(default_factory=list)
+    hypotheses: Dict[str, AgentHypothesis] = Field(default_factory=dict)
     current_step: int = 0
     max_steps: int = 15
     token_budget_remaining: int = 8_000
@@ -172,6 +236,73 @@ class Action(BaseModel):
     @classmethod
     def fetch_doc(cls, doc_id: str) -> "Action":
         return cls(type="fetch_doc", payload={"doc_id": doc_id})
+
+    @classmethod
+    def request_evidence(
+        cls,
+        sender: AgentRole,
+        recipient: AgentRole = "retriever",
+        *,
+        query: Optional[str] = None,
+        doc_id: Optional[str] = None,
+        reason: str = "",
+    ) -> "Action":
+        return cls(
+            type="request_evidence",
+            payload={
+                "sender": sender,
+                "recipient": recipient,
+                "query": query,
+                "doc_id": doc_id,
+                "reason": reason,
+            },
+        )
+
+    @classmethod
+    def send_message(
+        cls,
+        sender: AgentRole,
+        recipient: AgentRole,
+        content: str,
+        *,
+        message_type: MessageType = "note",
+        doc_id: Optional[str] = None,
+        query: Optional[str] = None,
+    ) -> "Action":
+        return cls(
+            type="send_message",
+            payload={
+                "sender": sender,
+                "recipient": recipient,
+                "message_type": message_type,
+                "content": content,
+                "doc_id": doc_id,
+                "query": query,
+            },
+        )
+
+    @classmethod
+    def update_hypothesis(
+        cls,
+        agent: AgentRole,
+        *,
+        mutation_type: Optional[MutationType] = None,
+        mutation_doc_id: Optional[str] = None,
+        confidence: float = 0.5,
+        rationale: str = "",
+        supporting_doc_ids: Optional[List[str]] = None,
+    ) -> "Action":
+        return cls(
+            type="update_hypothesis",
+            payload={
+                "agent": agent,
+                "mutation_type": mutation_type,
+                "mutation_doc_id": mutation_doc_id,
+                "confidence": confidence,
+                "rationale": rationale,
+                "supporting_doc_ids": supporting_doc_ids or [],
+            },
+        )
 
     @classmethod
     def add_timeline_event(

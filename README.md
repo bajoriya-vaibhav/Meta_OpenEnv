@@ -48,6 +48,24 @@ This is exactly the kind of environment that differentiates **RL-trained agents 
 
 ## Environment Design
 
+### Multi-Agent Theme Upgrade
+
+ChronoVeritas-MA keeps the existing deterministic fact-checking environment,
+but exposes it as a **three-role cooperative investigation**:
+
+| Role | Partial View | Responsibility |
+|---|---|---|
+| `retriever` | claim, discovered metadata, fetched docs, messages involving Retriever | search and fetch evidence under budget |
+| `analyst` | fetched docs, timeline, contradictions, Analyst/Arbiter messages | compare documents and form mutation hypotheses |
+| `arbiter` | shared blackboard, hypotheses, fetched evidence, all messages | request missing evidence and submit final verdict |
+
+The shared blackboard stores structured `messages` and per-role `hypotheses`.
+The default `/state` endpoint remains backward-compatible for single-agent
+training, while `/state/{role}` returns role-filtered observations for
+multi-agent training. This gives Theme #1 the important ingredients:
+cooperation, partial observability, request/response negotiation, and
+belief-modeling between roles.
+
 ### Observation Space
 
 At each step, the agent observes:
@@ -59,6 +77,8 @@ At each step, the agent observes:
 | `retrieved_docs` | `List[Document]` | Full text of fetched documents |
 | `agent_timeline` | `List[TimelineEntry]` | Agent-built chronological event timeline |
 | `flagged_contradictions` | `List[Tuple[str, str]]` | Pairs of contradictory documents flagged by the agent |
+| `messages` | `List[AgentMessage]` | Structured role-to-role blackboard messages |
+| `hypotheses` | `Dict[str, AgentHypothesis]` | Current belief state for Retriever, Analyst, and Arbiter |
 | `current_step` | `int` | Current step number |
 | `max_steps` | `int` | Maximum steps before budget exhaustion |
 | `token_budget_remaining` | `int` | Remaining token budget for fetching documents |
@@ -80,6 +100,9 @@ Each document includes a **reliability tier** visible at search time:
 |---|---|---|---|
 | `search` | 1 step | 0 | BM25 keyword search — discovers document metadata |
 | `fetch_doc` | 1 step | `len(content) // 4` | Retrieves full document text |
+| `request_evidence` | **0 (free)** | 0 | Analyst/Arbiter asks Retriever for a query or document |
+| `send_message` | **0 (free)** | 0 | Role agents exchange structured blackboard messages |
+| `update_hypothesis` | **0 (free)** | 0 | A role updates its local mutation hypothesis |
 | `add_timeline_event` | **0 (free)** | 0 | Annotates a chronological event from a read document |
 | `flag_contradiction` | **0 (free)** | 0 | Marks two documents as containing contradictory facts |
 | `set_mutation_point` | **0 (free)** | 0 | Declares which document was mutated and how |
@@ -124,6 +147,28 @@ submit_verdict(verdict, mutation_type, provenance_chain, confidence)
 > *"Could an agent that ignores all document content and only reads reward signals achieve a non-trivial score?"* — If yes, the reward function is broken.
 
 ChronoVeritas implements a **process-oriented reward system** inspired by Process Reward Models (PRMs) in LLM alignment research. Intermediate rewards measure **reasoning quality**, not proximity to the answer.
+
+### Multi-Agent Coordination Reward
+
+The multi-agent layer does not add hidden-answer rewards. Instead, it extends
+the existing potential-based shaping signal with a non-leaky coordination term:
+
+```text
+coordination =
+  role coverage
++ answered evidence requests
++ hypothesis coverage
+```
+
+This rewards observable collaboration only:
+
+- Arbiter or Analyst asks Retriever for missing evidence via `request_evidence`.
+- Retriever responds with `send_message(..., message_type="evidence_response")`.
+- Analyst and Arbiter update grounded hypotheses with `update_hypothesis`.
+
+It does **not** reward whether a request names the ground-truth mutation doc.
+Ground truth is still used only when `submit_verdict` triggers the unified
+terminal grader.
 
 ### Intermediate Rewards (Non-Exploitable)
 

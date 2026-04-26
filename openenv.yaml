@@ -1,40 +1,82 @@
-name: chronoveritas-v2
-version: "2.0.0"
+name: chronoveritas-ma
+version: "2.1.0"
 description: >
-  RL environment for misinformation forensics. Three-agent system:
-  Mutator generates distorted claims, Spreader embeds them in a document
-  corpus, Fact-Checker (GRPO-trained LLM) identifies the mutation.
+  Multi-agent misinformation forensics environment. Three role agents cooperate
+  under partial observability: Retriever searches and fetches evidence, Analyst
+  reconstructs contradictions and mutation hypotheses, and Arbiter requests
+  missing evidence before submitting the final deterministic audit verdict.
 author: chronoveritas-team
 theme: multi-agent-interactions
 
+agent_roles:
+  - retriever
+  - analyst
+  - arbiter
+
 actions:
   - name: search
-    description: BM25 keyword search over document corpus
+    description: Retriever performs BM25 keyword search over the document corpus
   - name: fetch_doc
-    description: Retrieve full document content
+    description: Retriever retrieves full document content
+  - name: request_evidence
+    description: Analyst or Arbiter requests a query/doc from the Retriever
+  - name: send_message
+    description: Role agents exchange structured messages on the shared blackboard
+  - name: update_hypothesis
+    description: Analyst or Arbiter updates a local mutation hypothesis
   - name: add_timeline_event
-    description: Annotate chronological event (free action)
+    description: Analyst annotates chronological evidence
   - name: flag_contradiction
-    description: Mark two documents as contradictory (free action)
+    description: Analyst marks two fetched documents as contradictory
   - name: set_mutation_point
-    description: Declare hypothesis — no GT comparison (free action)
+    description: Declares a mutation hypothesis without ground-truth reward leakage
   - name: submit_verdict
-    description: Terminal action — triggers deterministic grading
+    description: Terminal Arbiter action that triggers deterministic grading
+
+observations:
+  default:
+    description: Full shared blackboard state for backward-compatible single-agent use
+  role_filtered:
+    endpoint: /state/{role}
+    description: Partial observation for retriever, analyst, or arbiter training
 
 difficulty_levels:
-  - easy:   { max_steps: 15, corpus_size: 3 }
-  - medium: { max_steps: 20, corpus_size: 6 }
-  - hard:   { max_steps: 30, corpus_size: 12 }
+  - easy:   { max_steps: 15, corpus_size: 4 }
+  - medium: { max_steps: 20, corpus_size: 8 }
+  - hard:   { max_steps: 30, corpus_size: 20 }
 
 reward:
   type: deterministic
-  components: [verdict, mutation_type, mutation_point, provenance,
-               source_reliability, efficiency, calibration]
-  penalties: [hallucination, brier]
+  terminal_grader: unified_grader
+  components:
+    - verdict
+    - mutation_type
+    - mutation_point
+    - provenance
+    - source_reliability
+    - timeline
+    - efficiency
+    - early_detection
+    - reconciliation
+    - calibration
+  shaping:
+    type: potential_based
+    leakage: none
+    observable_terms:
+      - exploration
+      - authority
+      - contradiction_density
+      - hypothesis_grounding
+      - evidence_coherence
+      - coordination
+  penalties:
+    - hallucination
+    - brier
+    - duplicate_request_spam
   leakage: none
 
 training:
-  algorithm: GRPO
+  algorithm: SFT warm start + GRPO proxy
   base_model: Qwen/Qwen2.5-7B-Instruct
   framework: unsloth + trl
 
@@ -49,7 +91,7 @@ tasks:
     difficulty: hard
     max_steps: 30
 
-reward_range: [0.0, 1.0]
+reward_range: [-0.20, 1.0]
 episode_terminates_on:
   - submit_verdict
   - step_budget_exceeded

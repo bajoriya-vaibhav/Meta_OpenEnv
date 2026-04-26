@@ -20,7 +20,7 @@ from pydantic import BaseModel
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from env.environment import ChronoVeritasEnv
-from env.models import Action, Observation, StepResult
+from env.models import Action, AgentRole, Observation, StepResult
 
 import os
 
@@ -105,6 +105,13 @@ async def get_state() -> Observation:
     if env.state is None:
         raise HTTPException(status_code=400, detail="Call /reset first")
     return await env.get_state()
+
+
+@app.get("/state/{role}", response_model=Observation)
+async def get_agent_state(role: AgentRole) -> Observation:
+    if env.state is None:
+        raise HTTPException(status_code=400, detail="Call /reset first")
+    return await env.get_agent_state(role)
 
 @app.get("/metadata")
 def metadata():

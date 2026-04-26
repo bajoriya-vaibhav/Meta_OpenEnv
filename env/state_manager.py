@@ -7,7 +7,7 @@ import copy
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Dict, List, Literal, Optional, Set, Tuple
 
-from env.models import DocMeta, MutationDecl, TimelineEntry
+from env.models import AgentHypothesis, AgentMessage, DocMeta, MutationDecl, TimelineEntry
 
 if TYPE_CHECKING:
     from env.models import Document
@@ -38,6 +38,8 @@ class EpisodeState:
     agent_timeline: List[TimelineEntry] = field(default_factory=list)
     contradictions: List[Tuple[str, str]] = field(default_factory=list)
     declared_mutation: Optional[MutationDecl] = None
+    messages: List[AgentMessage] = field(default_factory=list)
+    hypotheses: Dict[str, AgentHypothesis] = field(default_factory=dict)
 
     # ── Early detection tracking ───────────────────────────────────────
     early_detection_achieved: bool = False
@@ -127,6 +129,34 @@ class EpisodeState:
     def timeline_for_doc(self, doc_id: str) -> List[TimelineEntry]:
         return [e for e in self.agent_timeline if e.doc_id == doc_id]
 
+    def messages_for_role(self, role: str) -> List[AgentMessage]:
+        """Messages visible to a role agent."""
+        return [m for m in self.messages if m.sender == role or m.recipient == role]
+
+    def answered_evidence_requests(self) -> int:
+        """
+        Count request/response pairs without relying on hidden truth.
+        A request is answered when the requested recipient later sends an
+        evidence_response back to the requester for the same doc_id or query.
+        """
+        count = 0
+        for i, request in enumerate(self.messages):
+            if request.message_type != "request_evidence":
+                continue
+            for response in self.messages[i + 1:]:
+                if (
+                    response.message_type == "evidence_response"
+                    and response.sender == request.recipient
+                    and response.recipient == request.sender
+                    and (
+                        (request.doc_id and response.doc_id == request.doc_id)
+                        or (request.query and response.query == request.query)
+                    )
+                ):
+                    count += 1
+                    break
+        return count
+
     # ─────────────────────────────────────────────────────────────────
     # Mutation helpers (guarded writes)
     # ─────────────────────────────────────────────────────────────────
@@ -211,6 +241,12 @@ class EpisodeState:
             "fetched_count": len(self.fetched_doc_ids),
             "timeline_count": len(self.agent_timeline),
             "contradiction_count": len(self.contradictions),
+            "message_count": len(self.messages),
+            "answered_evidence_requests": self.answered_evidence_requests(),
+            "hypotheses": {
+                role: hyp.model_dump()
+                for role, hyp in self.hypotheses.items()
+            },
             "mutation_declared": (
                 self.declared_mutation.model_dump()
                 if self.declared_mutation
