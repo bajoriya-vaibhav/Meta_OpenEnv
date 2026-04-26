@@ -123,21 +123,28 @@ The Fact-Checker must learn to **anchor its reasoning in Tier-1 sources** — re
 
 ### Three-Layer Reward Stack
 
-```
-Layer 1 — Online (during episode):
-  Potential-based reward shaping (PBRS) in env/environment.py
-  Φ(s) = f(exploration, authority, contradictions, hypothesis grounding, coherence)
-  Shaped step reward = 0.15 × (Φ_after − Φ_before)
+```mermaid
+flowchart TD
+    subgraph L1["⚡ Layer 1 — Online PBRS  ·  env/environment.py"]
+        direction LR
+        s1["env.step executes action"] --> s2["Φ(s) potential function\nexploration · authority · contradictions\nhypothesis grounding · evidence coherence"]
+        s2 --> s3["step reward = 0.15 × Φ_after − Φ_before"]
+    end
 
-Layer 2 — Terminal (at submit_verdict):
-  UnifiedGrader — fully deterministic, no LLM-as-judge
-  Scores: verdict, mutation type, mutation point, provenance F1,
-          source reliability, timeline Kendall τ, efficiency,
-          early detection, reconciliation, hallucination penalty, Brier penalty
+    subgraph L2["🧮 Layer 2 — Terminal Grading  ·  graders/unified_grader.py"]
+        direction LR
+        t1["submit_verdict fires"] --> t2["UnifiedGrader\n10 components · fully deterministic\nno LLM-as-judge"]
+        t2 --> t3["verdict · mutation_type · mutation_point\nprovenance F1 · source_reliability\ntimeline τ · efficiency · early_detection\nreconciliation · hallucination · Brier"]
+    end
 
-Layer 3 — Training proxy (GRPO only):
-  compute_reward() in train_grpo.py
-  Text-only scoring that mirrors grader components available without EpisodeState
+    subgraph L3["🎯 Layer 3 — GRPO Proxy  ·  train_grpo.py"]
+        direction LR
+        p1["text completion"] --> p2["compute_reward\n8 components scoreable from text"]
+        p2 --> p3["format · verdict · mutation_type\nmutation_point · provenance F1\nsource_reliability\n− hallucination · − Brier"]
+    end
+
+    L3 -->|"drives policy update"| L1
+    L1 -->|"episode ends"| L2
 ```
 
 ### GRPO Proxy Reward Weights
@@ -186,17 +193,38 @@ Training was run for **2,000 steps** on a single RTX A4500 (20GB VRAM) using Qwe
 
 ---
 
+## RL Training Loop — Full System Diagram
+
+![RL Training Loop](plots/ema/rl_training_loop.png)
+
+---
+
 ## Data Generation
 
-Training uses both seeded benchmark tasks (`data/tasks/*.json`) and a generated curriculum (`data/tasks/generated/`) from the Mutator + Spreader pipeline. Tasks scale with difficulty:
+Training uses both seeded benchmark tasks (`data/tasks/*.json`) and a generated curriculum (`data/tasks/generated/`) from the Mutator + Spreader pipeline.
 
-| Difficulty | Corpus Size | Noise Docs | Max Steps |
-|---|---|---|---|
-| `easy` | ~3 docs | 0 | 20 |
-| `medium` | ~6 docs | 2 | 25 |
-| `hard` | ~12 docs | 4 | 35 |
-
-Training uses a three-phase curriculum: easy → easy+medium → all difficulties.
+```mermaid
+flowchart LR
+    subgraph P1["Phase 1 · Steps 0–37%"]
+        direction TB
+        e1["Easy tasks only\n~3 docs · 0 noise · 20 steps"]
+        e1g["Goal: format compliance\n+ basic verdict accuracy"]
+        e1 --- e1g
+    end
+    subgraph P2["Phase 2 · Steps 37–75%"]
+        direction TB
+        e2["Easy + Medium\n~6 docs · 2 noise · 25 steps"]
+        e2g["Goal: mutation type\ndiscrimination"]
+        e2 --- e2g
+    end
+    subgraph P3["Phase 3 · Steps 75–100%"]
+        direction TB
+        e3["All difficulties\n~12 docs · 4 noise · 35 steps"]
+        e3g["Goal: provenance chains\n+ hard reasoning"]
+        e3 --- e3g
+    end
+    P1 --> P2 --> P3 --> done["🏁 Trained\nFact-Checker"]
+```
 
 ---
 
@@ -268,7 +296,7 @@ python eval.py --model ./chronoveritas-fact-checker --baseline
 Expected output artifacts:
 - `training_logs/reward_log.json` — per-step reward breakdown
 - `plots/ema/reward_curve.png`
-- `plots/ema/component_breakdown.png`
+- `plots/ema/component_breakdown_clean.png`
 - `plots/ema/before_after.png`
 - `eval_results.json`
 
