@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "easy": 0.187,
+    "medium": 0.156,
+    "hard": 0.067
+  },
+  "trained": {
+    "easy": 0.7640123456790124,
+    "medium": 0.6014085714285714,
+    "hard": 0.5371545454545454
+  },
+  "improvement": {
+    "easy": 0.577,
+    "medium": 0.4454,
+    "hard": 0.4702
+  },
+  "training_stats": {
+    "total_steps": 1696,
+    "final_avg_reward": 0.7148,
+    "initial_avg_reward": 0.2017
+  }
+}

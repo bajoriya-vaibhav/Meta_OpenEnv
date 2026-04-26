@@ -1,7 +1,10 @@
-__pycache__
+;e__pycache__
 .DS_Store
 *.pyc
 *__pycache__
 *.DS_Store
 
 chronoveritas-sft/
+chronoveritas-fact-checker-v2/
+chronoveritas-sft-v2/
+chronoveritas-fact-checker-v2_merged/
