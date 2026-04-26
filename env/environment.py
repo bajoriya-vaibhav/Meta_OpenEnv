@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Optional
 from env.actions import STEP_COSTING_ACTIONS, ActionDispatcher
 from env.models import (
     Action,
+    AgentRole,
     GradeResult,
     Observation,
     StepResult,
@@ -101,16 +102,60 @@ class ChronoVeritasEnv:
 
     # ── Observation builder ───────────────────────────────────────────
 
-    def _build_obs(self) -> Observation:
-        """Construct an Observation snapshot from current episode state."""
+    def _build_obs(self, role: Optional[AgentRole] = None) -> Observation:
+        """Construct a role-filtered Observation from current episode state.
+
+        Partial observability by role:
+          retriever: corpus metadata only, no analyst findings or fetched content
+          analyst:   fetched docs + own findings, no raw search results
+          arbiter:   full state + ALL messages (supervisor oversight)
+          None:      full state (backward-compatible single-agent)
+        """
         assert self.state is not None, "_build_obs() called before reset()"
 
+        if role == "retriever":
+            # Retriever: no analyst findings, no fetched content
+            agent_timeline = []
+            contradictions = []
+            hypotheses = {
+                r: h for r, h in self.state.hypotheses.items()
+                if r in {"retriever", "arbiter"}
+            }
+            retrieved_docs = []  # retriever fetches docs, doesn't see them pre-fetched
+        elif role == "analyst":
+            # Analyst: sees fetched docs to analyze + own findings
+            agent_timeline = list(self.state.agent_timeline)
+            contradictions = list(self.state.contradictions)
+            hypotheses = {
+                r: h for r, h in self.state.hypotheses.items()
+                if r in {"analyst", "arbiter"}
+            }
+            retrieved_docs = list(self.state._fetched_docs_content.values())
+        else:
+            # Arbiter / None: sees everything (supervisor)
+            agent_timeline = list(self.state.agent_timeline)
+            contradictions = list(self.state.contradictions)
+            hypotheses = dict(self.state.hypotheses)
+            retrieved_docs = list(self.state._fetched_docs_content.values())
+
+        # Arbiter sees ALL messages (supervisor oversight)
+        # Other roles only see messages they sent or received
+        if role == "arbiter" or role is None:
+            messages = list(self.state.messages)
+        elif role is not None:
+            messages = self.state.messages_for_role(role)
+        else:
+            messages = list(self.state.messages)
+
         return Observation(
+            active_role=role,
             claim=self.state.claim,
             corpus_metadata=list(self.state.corpus),
-            retrieved_docs=list(self.state._fetched_docs_content.values()),
-            agent_timeline=list(self.state.agent_timeline),
-            flagged_contradictions=list(self.state.contradictions),
+            retrieved_docs=retrieved_docs,
+            agent_timeline=agent_timeline,
+            flagged_contradictions=contradictions,
+            messages=messages,
+            hypotheses=hypotheses,
             current_step=self.state.current_step,
             max_steps=self.state.max_steps,
             token_budget_remaining=self.state.token_budget_remaining,
@@ -301,6 +346,12 @@ class ChronoVeritasEnv:
             raise RuntimeError("Call reset() first")
         return self._build_obs()
 
+    async def get_agent_state(self, role: AgentRole) -> Observation:
+        """Return a role-filtered observation for multi-agent training."""
+        if self.state is None:
+            raise RuntimeError("Call reset() first")
+        return self._build_obs(role)
+
     def get_task_list(
         self, *, difficulty: Optional[str] = None
     ) -> List[Dict[str, Any]]:
@@ -391,10 +442,20 @@ class ChronoVeritasEnv:
             actual = len(state.contradiction_pairs())
             contradiction = min(actual / max(max_pairs, 1) * 3.0, 1.0)
 
-        # 4. Hypothesis narrowing: is declared mutation backed by evidence?
+        # 4. Hypothesis narrowing: is the current declared/role hypothesis grounded?
         narrowing = 0.0
+        candidate_doc_id = None
         if state.declared_mutation is not None:
-            did = state.declared_mutation.doc_id
+            candidate_doc_id = state.declared_mutation.doc_id
+        elif state.hypotheses:
+            for role in ("arbiter", "analyst", "retriever"):
+                hyp = state.hypotheses.get(role)
+                if hyp and hyp.mutation_doc_id:
+                    candidate_doc_id = hyp.mutation_doc_id
+                    break
+
+        if candidate_doc_id is not None:
+            did = candidate_doc_id
             read_it = did in state.fetched_doc_ids
             flagged_it = any(did in (a, b) for a, b in state.contradictions)
             timeline_it = any(e.doc_id == did for e in state.agent_timeline)
@@ -412,12 +473,37 @@ class ChronoVeritasEnv:
             )
             coherence += 0.5 * both_read / len(state.contradictions)
 
+        # 6. Coordination: role coverage, evidence requests, and hypotheses.
+        coordination = 0.0
+        if state.messages or state.hypotheses:
+            roles_seen = {
+                role
+                for m in state.messages
+                for role in (m.sender, m.recipient)
+            } | set(state.hypotheses)
+            role_coverage = min(len(roles_seen) / 3.0, 1.0)
+
+            requests = [m for m in state.messages if m.message_type == "request_evidence"]
+            answered = state.answered_evidence_requests()
+            request_response = (
+                min(answered / len(requests), 1.0)
+                if requests
+                else 0.0
+            )
+            hypothesis_coverage = min(len(state.hypotheses) / 2.0, 1.0)
+            coordination = (
+                0.40 * role_coverage
+                + 0.40 * request_response
+                + 0.20 * hypothesis_coverage
+            )
+
         # Weighted sum (weights sum to 1.0)
         phi = (
-            0.25 * exploration
-            + 0.15 * authority
-            + 0.20 * contradiction
-            + 0.20 * narrowing
-            + 0.20 * coherence
+            0.22 * exploration
+            + 0.13 * authority
+            + 0.18 * contradiction
+            + 0.17 * narrowing
+            + 0.15 * coherence
+            + 0.15 * coordination
         )
         return phi

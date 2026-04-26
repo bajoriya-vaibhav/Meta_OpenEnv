@@ -116,7 +116,7 @@ class BM25Index:
         date_from: Optional[int] = None,
         date_to: Optional[int] = None,
         top_k: int = 10,
-        score_threshold: float = 0.0,
+        score_threshold: float = float('-inf'),
     ) -> List[DocMeta]:
         """
         Return ranked DocMeta list.
@@ -173,7 +173,7 @@ class BM25Index:
         date_from: Optional[int] = None,
         date_to: Optional[int] = None,
         top_k: int = 10,
-        score_threshold: float = 0.0,
+        score_threshold: float = float('-inf'),
     ) -> List[Tuple[float, DocMeta]]:
         """
         Same as query() but returns (score, meta) pairs.

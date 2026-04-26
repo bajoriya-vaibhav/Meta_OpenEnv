@@ -1,6 +1,11 @@
 """
-ChronoVeritas v2 — GRPO Training Script
-Uses Unsloth + TRL GRPOTrainer to train Qwen2.5-7B-Instruct as a Fact-Checker.
+ChronoVeritas v2 — Multi-Agent GRPO Training Script
+Uses Unsloth + TRL GRPOTrainer to train the ARBITER agent (Qwen2.5-7B-Instruct).
+
+Multi-Agent Architecture:
+  Retriever (heuristic) → BM25 search + fetch top docs from corpus
+  Analyst   (heuristic) → find number/date contradictions across docs
+  Arbiter   (GRPO-trained) → synthesise team findings → submit verdict
 
 GPU target: RTX A4500 (20GB VRAM)
 Expected runtime: ~3-4 hours for full curriculum (400 steps)
@@ -64,6 +69,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 from agents.task_bank import SEED_FACTS, get_random_fact
 from agents.mutator import Mutator
 from agents.spreader import Spreader
+from env.models import Document
+from search.bm25_index import BM25Index
 
 # ── Constants ──────────────────────────────────────────────────────────────
 MAX_SEQ_LEN = 1536
@@ -71,19 +78,18 @@ TASKS_DIR = Path("data/tasks")
 LOG_DIR = Path(args.log_dir)
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
-SYSTEM_PROMPT = """You are a misinformation forensics expert. Your task is to investigate a CLAIM by analysing a set of DOCUMENTS with different reliability tiers.
+SYSTEM_PROMPT = """You are the ARBITER in a multi-agent fact-checking team. Your Retriever and Analyst have already investigated the claim below.
+
+Your team:
+- RETRIEVER searched the corpus and fetched relevant documents
+- ANALYST compared the documents and flagged contradictions
+
+Your job: review their findings and submit the FINAL verdict.
 
 RELIABILITY TIERS:
 - Tier 1 (Official): Government filings, court records, peer-reviewed research → highest trust
 - Tier 2 (Institutional): News organisations, press releases → medium trust
 - Tier 3 (Informal): Blogs, forums, social media → lowest trust
-
-YOUR TASK:
-1. Read all documents chronologically
-2. Identify whether the claim is true, false, or misleading
-3. Determine what type of mutation occurred (if any)
-4. Find the FIRST document that introduced the distortion
-5. List the chain of documents that propagated the false claim
 
 MUTATION TYPES:
 - distortion: A real number, name, or date was altered
@@ -99,8 +105,7 @@ CRITICAL: Your response MUST be a JSON object with EXACTLY these 5 keys — no m
 - "provenance_chain" (REQUIRED): list of doc IDs, e.g. ["DOC-0001", "DOC-0003"]
 - "confidence" (REQUIRED): a number between 0.0 and 1.0
 
-DO NOT add any other keys like "mutation_position", "distorted_value", or "mutation_point".
-DO NOT include any text before or after the JSON.
+DO NOT add any other keys. DO NOT include any text before or after the JSON.
 
 Example output:
 {"verdict": "false", "mutation_type": "distortion", "mutation_doc_id": "DOC-0003", "provenance_chain": ["DOC-0001", "DOC-0003"], "confidence": 0.85}"""
@@ -291,21 +296,116 @@ def compute_reward(
     return round(total, 4), breakdown
 
 
-# ── Prompt formatting ──────────────────────────────────────────────────────
+# ── Heuristic Retriever Agent ──────────────────────────────────────────────
+
+def heuristic_retriever(task_dict: Dict) -> List[Dict]:
+    """
+    Simulate the Retriever agent: BM25 search over the corpus, return top docs.
+    This runs as pure Python — no LLM needed.
+    """
+    corpus_raw = task_dict.get("corpus", [])
+    claim = task_dict.get("claim", "")
+    if not corpus_raw:
+        return []
+
+    docs = []
+    for d in corpus_raw:
+        try:
+            docs.append(Document(**d))
+        except Exception:
+            continue
+
+    index = BM25Index()
+    index.build(docs)
+    results = index.query(claim, top_k=min(6, len(docs)))
+    result_ids = {m.doc_id for m in results}
+
+    fetched = [d for d in corpus_raw if d.get("doc_id") in result_ids]
+    if len(fetched) < len(corpus_raw):
+        remaining = [d for d in corpus_raw if d.get("doc_id") not in result_ids]
+        fetched.extend(remaining[:max(0, 4 - len(fetched))])
+
+    return fetched
+
+
+# ── Heuristic Analyst Agent ────────────────────────────────────────────────
+
+def _extract_numbers(text: str) -> List[str]:
+    """Extract numeric values (including $, %, decimals) from text."""
+    return re.findall(r'[\$]?\d+[\.,]?\d*[%BMKTbmkt]*', text)
+
+
+def heuristic_analyst(fetched_docs: List[Dict], claim: str) -> Dict[str, Any]:
+    """
+    Simulate the Analyst agent: find number contradictions across docs.
+    Returns {contradictions: [...], timeline: [...]}. No LLM needed.
+    """
+    contradictions = []
+    timeline = []
+
+    doc_numbers = {}
+    for doc in fetched_docs:
+        doc_id = doc.get("doc_id", "?")
+        content = doc.get("content", "")
+        nums = _extract_numbers(content)
+        doc_numbers[doc_id] = nums
+        date_str = doc.get("date_str", "")
+        title = doc.get("title", "Untitled")
+        if date_str:
+            timeline.append(f"{doc_id}: {date_str} - {title[:60]}")
+
+    doc_ids = list(doc_numbers.keys())
+    for i in range(len(doc_ids)):
+        for j in range(i + 1, len(doc_ids)):
+            id_a, id_b = doc_ids[i], doc_ids[j]
+            nums_a, nums_b = set(doc_numbers[id_a]), set(doc_numbers[id_b])
+            if nums_a and nums_b and nums_a != nums_b:
+                diff_a = nums_a - nums_b
+                diff_b = nums_b - nums_a
+                if diff_a or diff_b:
+                    contradictions.append(
+                        f"{id_a} vs {id_b}: values {diff_a or 'same'} vs {diff_b or 'same'}"
+                    )
+
+    claim_nums = set(_extract_numbers(claim))
+    if claim_nums:
+        for doc_id, doc_nums in doc_numbers.items():
+            doc_num_set = set(doc_nums)
+            claim_only = claim_nums - doc_num_set
+            if claim_only and doc_num_set:
+                contradictions.append(
+                    f"Claim vs {doc_id}: claim has {claim_only} not in doc"
+                )
+
+    return {
+        "contradictions": contradictions[:5],
+        "timeline": timeline,
+    }
+
+
+# ── Multi-Agent Prompt formatting ──────────────────────────────────────────
 
 def format_single_turn_prompt(task_dict: Dict) -> str:
     """
-    Format a task as a single ChatML-style turn for Qwen2.5-7B-Instruct.
-    Documents are presented in chronological order (earliest first).
+    Format a task as a multi-agent ChatML prompt for Qwen2.5-7B-Instruct.
+
+    Pipeline:
+      1. Heuristic Retriever: BM25 search -> fetch top docs
+      2. Heuristic Analyst: compare docs -> find contradictions
+      3. Build Arbiter prompt with team findings
     """
     tier_labels = {1: "Official (Tier 1)", 2: "Institutional (Tier 2)", 3: "Informal (Tier 3)"}
-    docs = task_dict.get("corpus", [])
+    claim = task_dict.get("claim", "")
 
-    # Sort by timestamp ascending
-    docs_sorted = sorted(docs, key=lambda d: d.get("timestamp", 0))
+    # Step 1: Heuristic Retriever
+    fetched_docs = heuristic_retriever(task_dict)
 
+    # Step 2: Heuristic Analyst
+    analyst_findings = heuristic_analyst(fetched_docs, claim)
+
+    # Step 3: Build Arbiter prompt
     docs_text = ""
-    for doc in docs_sorted:
+    for doc in sorted(fetched_docs, key=lambda d: d.get("timestamp", 0)):
         tier = doc.get("reliability_tier", 2)
         docs_text += (
             f"\n[{doc['doc_id']}] {tier_labels.get(tier, 'Unknown')} "
@@ -313,20 +413,29 @@ def format_single_turn_prompt(task_dict: Dict) -> str:
             f"| Date: {doc.get('date_str', 'Unknown')}\n"
             f"Title: {doc.get('title', 'Untitled')}\n"
             f"{doc.get('content', '')}\n"
-            f"{'─' * 60}\n"
+            f"{'_' * 60}\n"
         )
 
-    claim = task_dict.get("claim", "")
-    n_docs = len(docs)
+    contras = analyst_findings.get("contradictions", [])
+    contra_text = "\n".join(f"  - {c}" for c in contras) if contras else "  (no contradictions detected)"
+
+    tl = analyst_findings.get("timeline", [])
+    timeline_text = "\n".join(f"  {t}" for t in tl) if tl else "  (no timeline data)"
+
+    n_docs = len(fetched_docs)
 
     prompt = (
         f"<|im_start|>system\n{SYSTEM_PROMPT}<|im_end|>\n"
         f"<|im_start|>user\n"
         f"CLAIM TO INVESTIGATE: \"{claim}\"\n\n"
-        f"CORPUS ({n_docs} documents, sorted chronologically):\n"
+        f"=== RETRIEVER FINDINGS ===\n"
+        f"Fetched {n_docs} documents (sorted chronologically):\n"
         f"{docs_text}\n"
-        f"Investigate the documents and identify the mutation. "
-        f"Remember: the mutation point is the FIRST document where the distortion appears.\n"
+        f"=== ANALYST FINDINGS ===\n"
+        f"Contradictions flagged:\n{contra_text}\n\n"
+        f"Timeline:\n{timeline_text}\n\n"
+        f"Based on your team's investigation, submit your verdict. "
+        f"The mutation point is the FIRST document where the distortion appears.\n"
         f"Respond with JSON only.<|im_end|>\n"
         f"<|im_start|>assistant\n"
     )
@@ -590,7 +699,8 @@ class CurriculumManager:
 
 def main() -> None:
     print("=" * 70)
-    print("ChronoVeritas v2 — GRPO Training")
+    print("ChronoVeritas v2 — Multi-Agent GRPO Training")
+    print("  Architecture: Retriever (BM25) → Analyst (heuristic) → Arbiter (GRPO)")
     print(f"  Model:      {args.model}")
     print(f"  Difficulty: {args.difficulty}")
     print(f"  Steps:      {args.steps}")

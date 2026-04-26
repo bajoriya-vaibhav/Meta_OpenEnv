@@ -1,5 +1,5 @@
 """
-ChronoVeritas — ActionDispatcher: routes all 6 action types.
+ChronoVeritas — ActionDispatcher: routes all 9 action types.
 """
 from __future__ import annotations
 
@@ -11,6 +11,8 @@ from pydantic import ValidationError
 
 from env.models import (
     Action,
+    AgentHypothesis,
+    AgentMessage,
     MutationDecl,
     TimelineEntry,
     VerdictPayload,
@@ -62,7 +64,22 @@ class ActionDispatcher:
         Execute an action and return (reward_delta, info, done).
 
         Never raises — all exceptions are caught and returned as error info.
+        Enforces role-based permissions when a role is specified in the payload.
         """
+        # ── Role-based permission enforcement ─────────────────────────
+        role = action.payload.get("sender") or action.payload.get("role")
+        if role:
+            try:
+                from agents.role_agents import ROLE_PERMISSIONS
+                allowed = ROLE_PERMISSIONS.get(role, set())
+                if allowed and action.type not in allowed:
+                    return _err(
+                        f"Role '{role}' not permitted to use '{action.type}'. "
+                        f"Allowed: {sorted(allowed)}"
+                    )
+            except ImportError:
+                pass  # role_agents not available, skip check
+
         handler = getattr(self, f"_handle_{action.type}", None)
         if handler is None:
             return _err(f"Unknown action type: {action.type!r}")
@@ -191,8 +208,9 @@ class ActionDispatcher:
                 {
                     "timeline_added": False,
                     "doc_id": doc_id,
-                    "note": "duplicate entry — skipped",
-                }
+                    "note": "duplicate entry — skipped (spam penalty)",
+                },
+                reward=-0.005,  # duplicate_request_spam penalty
             )
 
         entry = TimelineEntry(doc_id=doc_id, event_label=event_label, timestamp=timestamp)
@@ -229,8 +247,9 @@ class ActionDispatcher:
                 {
                     "contradiction_flagged": False,
                     "pair": [doc_id_a, doc_id_b],
-                    "note": "duplicate contradiction — skipped",
-                }
+                    "note": "duplicate contradiction — skipped (spam penalty)",
+                },
+                reward=-0.005,  # duplicate_request_spam penalty
             )
 
         state.contradictions.append((doc_id_a, doc_id_b))
@@ -246,6 +265,101 @@ class ActionDispatcher:
                 "both_docs_fetched": both_fetched,
             },
         )
+
+    # ── send_message ─────────────────────────────────────────────────
+
+    def _handle_send_message(
+        self, payload: Dict[str, Any], state: EpisodeState, gt: Any
+    ) -> DispatchResult:
+        sender = payload.get("sender", "")
+        recipient = payload.get("recipient", "")
+        content = payload.get("content", "")
+        message_type = payload.get("message_type", "note")
+        doc_id = payload.get("doc_id")
+        query = payload.get("query")
+
+        if not sender or not recipient:
+            return _err("send_message requires sender and recipient")
+        if not content:
+            return _err("send_message.content must be non-empty")
+
+        msg = AgentMessage(
+            sender=sender,
+            recipient=recipient,
+            message_type=message_type,
+            content=content,
+            doc_id=doc_id,
+            query=query,
+        )
+        state.messages.append(msg)
+
+        return _ok({
+            "message_sent": True,
+            "sender": sender,
+            "recipient": recipient,
+            "message_type": message_type,
+        })
+
+    # ── request_evidence ─────────────────────────────────────────────
+
+    def _handle_request_evidence(
+        self, payload: Dict[str, Any], state: EpisodeState, gt: Any
+    ) -> DispatchResult:
+        sender = payload.get("sender", "")
+        recipient = payload.get("recipient", "retriever")
+        query = payload.get("query")
+        doc_id = payload.get("doc_id")
+        reason = payload.get("reason", "")
+
+        if not sender:
+            return _err("request_evidence requires a sender")
+        if not query and not doc_id:
+            return _err("request_evidence requires query or doc_id")
+
+        # Store as a message on the blackboard
+        msg = AgentMessage(
+            sender=sender,
+            recipient=recipient,
+            message_type="request_evidence",
+            content=reason or f"Requesting {'doc ' + doc_id if doc_id else 'query: ' + str(query)}",
+            doc_id=doc_id,
+            query=query,
+        )
+        state.messages.append(msg)
+
+        return _ok({
+            "evidence_requested": True,
+            "sender": sender,
+            "recipient": recipient,
+            "doc_id": doc_id,
+            "query": query,
+        })
+
+    # ── update_hypothesis ────────────────────────────────────────────
+
+    def _handle_update_hypothesis(
+        self, payload: Dict[str, Any], state: EpisodeState, gt: Any
+    ) -> DispatchResult:
+        agent = payload.get("agent", "")
+        if not agent:
+            return _err("update_hypothesis requires an agent role")
+
+        hypothesis = AgentHypothesis(
+            agent=agent,
+            mutation_type=payload.get("mutation_type"),
+            mutation_doc_id=payload.get("mutation_doc_id"),
+            confidence=float(payload.get("confidence", 0.5)),
+            rationale=payload.get("rationale", ""),
+            supporting_doc_ids=payload.get("supporting_doc_ids", []),
+        )
+        state.hypotheses[agent] = hypothesis
+
+        return _ok({
+            "hypothesis_updated": True,
+            "agent": agent,
+            "mutation_type": hypothesis.mutation_type,
+            "confidence": hypothesis.confidence,
+        })
 
     # ── set_mutation_point ────────────────────────────────────────────
 
